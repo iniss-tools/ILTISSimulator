@@ -1,0 +1,5 @@
+;Kolaje testovacej stanice
+"N","-","Neznama","Neznama","","","","",0
+"1A","1A","Kolej 1A","Nastupiste 2","1A","2","0104","02",0
+"2","2","Kolej 2","Nastupiste 2","2","2","0200","02",0
+"3","3","Kolej 3","Nastupiste 3","3","3","0300","03",0

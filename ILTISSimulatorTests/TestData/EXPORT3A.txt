@@ -1,0 +1,6 @@
+;id,cislo,nazov,typ,varianta,smerovanie,priznaky,prichod,odchod,zo stanice,do stanice,-,dopravca,linka prichod,linka odchod
+1,"2005","","Os",-1,P,,10:15,10:17,5433295,5433425,-1,-1,,
+2,"2007","","Os",-1,V,,,23:50,,5433295,-1,-1,,
+3,"2009","Nitra","R",-1,K,M,00:05,,5433425,,-1,-1,,
+4,"2011","","Os",-1,P,,23:50,00:05,5433295,5433425,-1,-1,,
+5,"2011","","Os",-1,K,,23:50,,5433295,,-1,-1,,

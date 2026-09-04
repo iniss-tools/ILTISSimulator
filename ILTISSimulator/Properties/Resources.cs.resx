@@ -1,0 +1,409 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Main_GvdNotLoaded" xml:space="preserve">
+    <value>Grafikon není načtený.</value>
+  </data>
+  <data name="Main_GvdInfoStation" xml:space="preserve">
+    <value>{0} ({1}), pole zprávy {2}</value>
+  </data>
+  <data name="Main_GvdInfoContent" xml:space="preserve">
+    <value>{0} vlaků, {1} z {2} kolejí, {3}</value>
+  </data>
+  <data name="Main_GvdInfoValid" xml:space="preserve">
+    <value>platnost {0:dd.MM.yyyy} - {1:dd.MM.yyyy}</value>
+  </data>
+  <data name="Main_ReasonCountOne" xml:space="preserve">
+    <value>1 důvod zpoždění</value>
+  </data>
+  <data name="Main_ReasonCountFew" xml:space="preserve">
+    <value>{0} důvody zpoždění</value>
+  </data>
+  <data name="Main_ReasonCountMany" xml:space="preserve">
+    <value>{0} důvodů zpoždění</value>
+  </data>
+  <data name="Main_Connected" xml:space="preserve">
+    <value>připojeno</value>
+  </data>
+  <data name="Main_Disconnected" xml:space="preserve">
+    <value>nepřipojeno</value>
+  </data>
+  <data name="Main_LanguageSlovak" xml:space="preserve">
+    <value>Slovenština</value>
+  </data>
+  <data name="Main_LanguageCzech" xml:space="preserve">
+    <value>Čeština</value>
+  </data>
+  <data name="Main_StatusNoGvd" xml:space="preserve">
+    <value>bez grafikonu</value>
+  </data>
+  <data name="Main_StatusNoPlan" xml:space="preserve">
+    <value>bez plánu</value>
+  </data>
+  <data name="Main_StatusSent" xml:space="preserve">
+    <value>odesláno {0}</value>
+  </data>
+  <data name="Main_StatusEvents" xml:space="preserve">
+    <value>události {0}/{1}</value>
+  </data>
+  <data name="Grid_Train" xml:space="preserve">
+    <value>Vlak</value>
+  </data>
+  <data name="Grid_Type" xml:space="preserve">
+    <value>Typ</value>
+  </data>
+  <data name="Grid_Routing" xml:space="preserve">
+    <value>Směr</value>
+  </data>
+  <data name="Grid_Arrival" xml:space="preserve">
+    <value>Příjezd</value>
+  </data>
+  <data name="Grid_ArrivalDelay" xml:space="preserve">
+    <value>Zpož. př.</value>
+  </data>
+  <data name="Grid_Departure" xml:space="preserve">
+    <value>Odjezd</value>
+  </data>
+  <data name="Grid_DepartureDelay" xml:space="preserve">
+    <value>Zpož. od.</value>
+  </data>
+  <data name="Grid_Track" xml:space="preserve">
+    <value>Kolej</value>
+  </data>
+  <data name="Grid_TrackSource" xml:space="preserve">
+    <value>Kolej podle</value>
+  </data>
+  <data name="Grid_DelayReason" xml:space="preserve">
+    <value>Důvod zpoždění</value>
+  </data>
+  <data name="Grid_Events" xml:space="preserve">
+    <value>Událostí</value>
+  </data>
+  <data name="Grid_Name" xml:space="preserve">
+    <value>Název</value>
+  </data>
+  <data name="Source_Timetable" xml:space="preserve">
+    <value>grafikon</value>
+  </data>
+  <data name="Source_Diverted" xml:space="preserve">
+    <value>odklon</value>
+  </data>
+  <data name="Source_Assigned" xml:space="preserve">
+    <value>vybraná</value>
+  </data>
+  <data name="Source_Conflict" xml:space="preserve">
+    <value>konflikt</value>
+  </data>
+  <data name="Source_Cancelled" xml:space="preserve">
+    <value>zrušený</value>
+  </data>
+  <data name="Manual_ReasonClear" xml:space="preserve">
+    <value>00 - smazat důvod</value>
+  </data>
+  <data name="MessageType_Arrival" xml:space="preserve">
+    <value>Příjezd vlaku</value>
+  </data>
+  <data name="MessageType_Departure" xml:space="preserve">
+    <value>Odjezd vlaku</value>
+  </data>
+  <data name="MessageType_Route" xml:space="preserve">
+    <value>Vlaková cesta</value>
+  </data>
+  <data name="MessageType_DelayReason" xml:space="preserve">
+    <value>Důvod zpoždění</value>
+  </data>
+  <data name="MessageType_Transfer" xml:space="preserve">
+    <value>Hlášení o přestupu</value>
+  </data>
+  <data name="RouteKind_Entry" xml:space="preserve">
+    <value>0 - vjezdová vlaková cesta</value>
+  </data>
+  <data name="RouteKind_Exit" xml:space="preserve">
+    <value>1 - odjezdová vlaková cesta</value>
+  </data>
+  <data name="RouteKind_TrainNumberSet" xml:space="preserve">
+    <value>2 - zavedení čísla vlaku</value>
+  </data>
+  <data name="TransferKind_Normal" xml:space="preserve">
+    <value>0 - přestup</value>
+  </data>
+  <data name="TransferKind_Express" xml:space="preserve">
+    <value>1 - urychlený přestup</value>
+  </data>
+  <data name="EventKind_EntryRoute" xml:space="preserve">
+    <value>vjezdová vlaková cesta</value>
+  </data>
+  <data name="EventKind_DelayReason" xml:space="preserve">
+    <value>důvod zpoždění</value>
+  </data>
+  <data name="EventKind_Arrival" xml:space="preserve">
+    <value>příjezd</value>
+  </data>
+  <data name="EventKind_ExitRoute" xml:space="preserve">
+    <value>odjezdová vlaková cesta</value>
+  </data>
+  <data name="EventKind_Departure" xml:space="preserve">
+    <value>odjezd</value>
+  </data>
+  <data name="Event_Format" xml:space="preserve">
+    <value>{0:HH:mm:ss} {1} vlak {2} kolej {3}</value>
+  </data>
+  <data name="Event_Delay" xml:space="preserve">
+    <value> ({0:+0;-0} min)</value>
+  </data>
+  <data name="Run_Format" xml:space="preserve">
+    <value>{0} {1} {2} kolej {3} ({4})</value>
+  </data>
+  <data name="Run_Cancelled" xml:space="preserve">
+    <value> ZRUŠENÝ</value>
+  </data>
+  <data name="Log_GvdLoadFailed" xml:space="preserve">
+    <value>Grafikon se nepodařilo načíst: {0}</value>
+  </data>
+  <data name="Log_GvdLoaded" xml:space="preserve">
+    <value>Načtený grafikon {0}: {1} vlaků, {2} kolejí.</value>
+  </data>
+  <data name="Log_ReasonsFailed" xml:space="preserve">
+    <value>Důvody zpoždění se nepodařilo načíst: {0}</value>
+  </data>
+  <data name="Log_ReasonsMissing" xml:space="preserve">
+    <value>Zvuková banka nemá skupinu {0}, zprávy 080-5 se posílat nebudou.</value>
+  </data>
+  <data name="Log_Reason" xml:space="preserve">
+    <value>Důvod zpoždění {0}: {1} - {2}</value>
+  </data>
+  <data name="Log_ReasonUnusable" xml:space="preserve">
+    <value>Důvod zpoždění {0}: {1} - poslední ve skupině, INISS ho neumí vybrat.</value>
+  </data>
+  <data name="Log_NoExcludedTracks" xml:space="preserve">
+    <value>Z plánování není vyloučena žádná kolej.</value>
+  </data>
+  <data name="Log_ExcludedTracks" xml:space="preserve">
+    <value>Z plánování vyloučeno: {0}.</value>
+  </data>
+  <data name="Log_Connected" xml:space="preserve">
+    <value>Připojeno na {0}:{1}.</value>
+  </data>
+  <data name="Log_ConnectFailed" xml:space="preserve">
+    <value>Připojení selhalo: {0}</value>
+  </data>
+  <data name="Log_PlanFailed" xml:space="preserve">
+    <value>Plánování selhalo: {0}</value>
+  </data>
+  <data name="Log_Planned" xml:space="preserve">
+    <value>Naplánováno {0} jízd, {1} událostí.</value>
+  </data>
+  <data name="Log_NotSent" xml:space="preserve">
+    <value>{0} se neodeslala: {1}</value>
+  </data>
+  <data name="Log_NoConnection" xml:space="preserve">
+    <value>Není navázané spojení.</value>
+  </data>
+  <data name="Log_SendFailed" xml:space="preserve">
+    <value>Odeslání selhalo: {0}</value>
+  </data>
+  <data name="Log_ManualDecoded" xml:space="preserve">
+    <value>Ručně: {0}</value>
+  </data>
+  <data name="Log_ManualRejected" xml:space="preserve">
+    <value>INISS tuto zprávu odmítne: {0}</value>
+  </data>
+  <data name="Engine_Planned" xml:space="preserve">
+    <value>Naplánován {0:dd.MM.yyyy}: {1} jízd, {2} událostí, přeskočeno {3}, seed {4}.</value>
+  </data>
+  <data name="Engine_SkippedDuplicates" xml:space="preserve">
+    <value>Vynechána dvojitá čísla vlaků: {0}</value>
+  </data>
+  <data name="Engine_Running" xml:space="preserve">
+    <value>Běží od {0:dd.MM.yyyy HH:mm:ss}, zrychlení {1:0.##}×.</value>
+  </data>
+  <data name="Engine_Paused" xml:space="preserve">
+    <value>Pozastaveno na {0:dd.MM.yyyy HH:mm:ss}.</value>
+  </data>
+  <data name="Engine_Stopped" xml:space="preserve">
+    <value>Zastaveno.</value>
+  </data>
+  <data name="Engine_Jumped" xml:space="preserve">
+    <value>Skok na {0:dd.MM.yyyy HH:mm:ss}, přeskočeno {1} událostí.</value>
+  </data>
+  <data name="Engine_EventFailed" xml:space="preserve">
+    <value>Událost {0} selhala: {1}</value>
+  </data>
+  <data name="Engine_RunFailed" xml:space="preserve">
+    <value>Chyba v běhu simulace: {0}</value>
+  </data>
+  <data name="Error_NoTrackLeft" xml:space="preserve">
+    <value>Nezůstala žádná kolej, na kterou by šlo vlak postavit - zkontrolujte vyloučené koleje.</value>
+  </data>
+  <data name="Error_UnknownEventKind" xml:space="preserve">
+    <value>Neznámý druh události {0}.</value>
+  </data>
+  <data name="Error_PlanFirst" xml:space="preserve">
+    <value>Nejprve je třeba naplánovat den přes PlanDay.</value>
+  </data>
+  <data name="Error_ReasonsNull" xml:space="preserve">
+    <value>Seznam důvodů zpoždění nesmí být null.</value>
+  </data>
+  <data name="Error_ReasonRange" xml:space="preserve">
+    <value>Důvod zpoždění musí být v rozsahu 1 až 99.</value>
+  </data>
+  <data name="Error_ReasonRangeZero" xml:space="preserve">
+    <value>Důvod zpoždění musí být v rozsahu 0 až 99.</value>
+  </data>
+  <data name="Error_MinDelayForReason" xml:space="preserve">
+    <value>Hranice pro důvod zpoždění nemůže být záporná.</value>
+  </data>
+  <data name="Error_TimeFactor" xml:space="preserve">
+    <value>Faktor zrychlení času musí být kladný.</value>
+  </data>
+  <data name="Error_MeanDelay" xml:space="preserve">
+    <value>Střední zpoždění musí být kladné.</value>
+  </data>
+  <data name="Error_DelayGrowth" xml:space="preserve">
+    <value>Nárůst zpoždění nemůže být záporný.</value>
+  </data>
+  <data name="Error_DelayCeiling" xml:space="preserve">
+    <value>Zpoždění musí být kladné a nejvýše {0} h - INISS delší zahodí.</value>
+  </data>
+  <data name="Error_TrackReleaseMargin" xml:space="preserve">
+    <value>Rezerva na uvolnění koleje nemůže být záporná.</value>
+  </data>
+  <data name="Error_Probability" xml:space="preserve">
+    <value>Pravděpodobnost musí být v rozsahu 0 až 1.</value>
+  </data>
+  <data name="Error_LeadCeiling" xml:space="preserve">
+    <value>Předstih musí být v rozsahu 0 až {0} h - starší zprávu INISS zahodí.</value>
+  </data>
+  <data name="Error_Port" xml:space="preserve">
+    <value>Port musí být v rozsahu 1 až 65535.</value>
+  </data>
+  <data name="Error_MessageTypeNull" xml:space="preserve">
+    <value>Zpráva nemá nastavený typ.</value>
+  </data>
+  <data name="Error_FieldTooLong" xml:space="preserve">
+    <value>Pole "{0}" má délku {1}, povoleno je nejvýše {2} znaků.</value>
+  </data>
+  <data name="Error_StationId" xml:space="preserve">
+    <value>Identifikátor stanice nemůže být záporný.</value>
+  </data>
+  <data name="Error_RawBankMissing" xml:space="preserve">
+    <value>Složka se zvukovou bankou {0} neexistuje.</value>
+  </data>
+  <data name="Error_GvdMissing" xml:space="preserve">
+    <value>Složka s grafikonem {0} neexistuje.</value>
+  </data>
+  <data name="Error_UnknownRouting" xml:space="preserve">
+    <value>Neznámé směrování vlaku {0}.</value>
+  </data>
+  <data name="Error_UnknownTrainId" xml:space="preserve">
+    <value>Neznámé ID vlaku {0} (nemá definici v {1}).</value>
+  </data>
+  <data name="Error_FileLine" xml:space="preserve">
+    <value>Chyba v souboru {0} na řádku {1}.</value>
+  </data>
+  <data name="Field_MessageType" xml:space="preserve">
+    <value>typ zprávy</value>
+  </data>
+  <data name="Field_Station" xml:space="preserve">
+    <value>stanice</value>
+  </data>
+  <data name="Field_TrainNumber" xml:space="preserve">
+    <value>číslo vlaku</value>
+  </data>
+  <data name="Field_DelayReason" xml:space="preserve">
+    <value>důvod zpoždění</value>
+  </data>
+  <data name="Field_Track" xml:space="preserve">
+    <value>kolej</value>
+  </data>
+  <data name="Field_SecondTrack" xml:space="preserve">
+    <value>druhá kolej</value>
+  </data>
+  <data name="Tracks_HiddenOne" xml:space="preserve">
+    <value>1 kolej se v seznamu neuvádí</value>
+  </data>
+  <data name="Tracks_HiddenFew" xml:space="preserve">
+    <value>{0} koleje se v seznamu neuvádějí</value>
+  </data>
+  <data name="Tracks_HiddenMany" xml:space="preserve">
+    <value>{0} kolejí se v seznamu neuvádí</value>
+  </data>
+  <data name="Tracks_HiddenReason" xml:space="preserve">
+    <value>{0} - klíč se nevejde do zprávy.</value>
+  </data>
+  <data name="Tracks_Count" xml:space="preserve">
+    <value>Použije se {0} z {1} kolejí.</value>
+  </data>
+  <data name="Tracks_NeedOne" xml:space="preserve">
+    <value>Alespoň jedna kolej musí zůstat k dispozici.</value>
+  </data>
+  <data name="Tracks_ItemFormat" xml:space="preserve">
+    <value>{0} - {1} ({2})</value>
+  </data>
+  <data name="Tracks_WithPlatform" xml:space="preserve">
+    <value>nástupiště {0}</value>
+  </data>
+  <data name="Tracks_NoPlatform" xml:space="preserve">
+    <value>bez nástupiště</value>
+  </data>
+  <data name="Main_ChooseGvdDir" xml:space="preserve">
+    <value>Vyberte složku s grafikonem (např. DATA\Košice.2025)</value>
+  </data>
+</root>

@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="GTNCommands/GTNCommands.csproj" />
+  <Project Path="ILTISSimulator/ILTISSimulator.csproj" />
+  <Project Path="ILTISSimulatorTests/ILTISSimulatorTests.csproj" />
+</Solution>

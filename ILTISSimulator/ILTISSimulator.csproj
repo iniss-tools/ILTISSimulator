@@ -13,6 +13,7 @@
 		     (DpiAwareness=PerMonitorV2 + EnableWindowsFormsHighDpiAutoResizing=true). Pozri [[winforms-permonitorv2-scaling]] -
 		     rozloženie sa neškáluje samo, aplikácia už má na to vlastnú logiku v Tools\DpiTools.cs. -->
 		<ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
+		<LangVersion>default</LangVersion>
 	</PropertyGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\..\ExControls\ExControls\ExControls.csproj" />

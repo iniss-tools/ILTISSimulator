@@ -1,11 +1,7 @@
-using System;
-using System.IO;
-using System.Linq;
 using System.Reflection;
 using GVDEditor.Entities;
 using ILTISSimulator.Data;
 using ILTISSimulator.Gtn;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ILTISSimulatorTests;
 

@@ -1,4 +1,3 @@
-using System.Threading;
 using ILTISSimulator.Properties;
 using ILTISSimulator.Simulation;
 

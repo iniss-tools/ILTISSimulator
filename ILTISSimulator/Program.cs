@@ -1,4 +1,3 @@
-using System.Windows.Forms;
 using ILTISSimulator.Tools;
 
 namespace ILTISSimulator;

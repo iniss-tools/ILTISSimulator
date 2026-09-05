@@ -1,5 +1,4 @@
 using System.Diagnostics;
-using System.Threading;
 using ILTISSimulator.Data;
 using ILTISSimulator.Gtn;
 using ILTISSimulator.Properties;

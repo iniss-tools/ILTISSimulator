@@ -11,6 +11,7 @@
 		<ApplicationManifest>app.manifest</ApplicationManifest>
 		<!-- Zodpovedá pôvodnému app.manifest dpiAware=true (system-aware) -->
 		<ApplicationHighDpiMode>SystemAware</ApplicationHighDpiMode>
+		<LangVersion>default</LangVersion>
 	</PropertyGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\..\ExControls\ExControls\ExControls.csproj" />

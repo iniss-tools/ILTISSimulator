@@ -1,4 +1,3 @@
-using System.Windows.Forms;
 using GVDEditor.Entities;
 using ILTISSimulator.Properties;
 using ILTISSimulator.Simulation;

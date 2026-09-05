@@ -1,7 +1,4 @@
-using System;
-using System.Linq;
 using ILTISSimulator.Gtn;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ILTISSimulatorTests;
 

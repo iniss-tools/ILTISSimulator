@@ -1,7 +1,4 @@
 using System.ComponentModel;
-using System.Drawing;
-using System.Threading;
-using System.Windows.Forms;
 using ExControls;
 using GVDEditor.Entities;
 using ILTISSimulator.Data;

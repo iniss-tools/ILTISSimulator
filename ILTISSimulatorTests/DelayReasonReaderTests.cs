@@ -84,7 +84,7 @@ public class DelayReasonReaderTests
     [TestMethod]
     public void Read_MissingDirectory_Throws()
     {
-        Assert.ThrowsException<DirectoryNotFoundException>(
+        Assert.ThrowsExactly<DirectoryNotFoundException>(
             () => DelayReasonReader.Read(Path.Combine(Path.GetTempPath(), "iltis-ziadna-banka-" + Guid.NewGuid())));
     }
 

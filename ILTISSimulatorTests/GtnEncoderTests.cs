@@ -107,7 +107,7 @@ public class GtnEncoderTests
             Track = "12345"
         };
 
-        Assert.ThrowsException<ArgumentException>(() => GtnEncoder.Encode(message));
+        Assert.ThrowsExactly<ArgumentException>(() => GtnEncoder.Encode(message));
     }
 
     [TestMethod]
@@ -355,8 +355,8 @@ public class GtnEncoderTests
         Assert.AreEqual("00", GtnEncoder.FormatDelayReason(0));
         Assert.AreEqual("04", GtnEncoder.FormatDelayReason(4));
         Assert.AreEqual("99", GtnEncoder.FormatDelayReason(99));
-        Assert.ThrowsException<ArgumentOutOfRangeException>(() => GtnEncoder.FormatDelayReason(100));
-        Assert.ThrowsException<ArgumentOutOfRangeException>(() => GtnEncoder.FormatDelayReason(-1));
+        Assert.ThrowsExactly<ArgumentOutOfRangeException>(() => GtnEncoder.FormatDelayReason(100));
+        Assert.ThrowsExactly<ArgumentOutOfRangeException>(() => GtnEncoder.FormatDelayReason(-1));
     }
 
     [TestMethod]

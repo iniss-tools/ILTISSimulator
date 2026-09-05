@@ -1,7 +1,9 @@
 using System.Reflection;
 using System.Resources;
 using System.Runtime.InteropServices;
+using System.Runtime.Versioning;
 
+[assembly: SupportedOSPlatform("windows7.0")]
 [assembly: AssemblyTitle("ILTISSimulator")]
 [assembly: AssemblyDescription("Simulátor rozhrania ILTIS-INISS (GTN)")]
 [assembly: AssemblyConfiguration("")]

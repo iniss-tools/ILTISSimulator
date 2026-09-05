@@ -227,7 +227,7 @@ public class SimulationEngineTests
     {
         using var engine = NewEngine();
 
-        Assert.ThrowsException<InvalidOperationException>(() => engine.Start());
+        Assert.ThrowsExactly<InvalidOperationException>(() => engine.Start());
     }
 
     [TestMethod]

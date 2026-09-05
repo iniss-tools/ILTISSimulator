@@ -20,7 +20,7 @@ public sealed class SimulationEngine : IDisposable
     private readonly GvdData _gvd;
     private readonly Stopwatch _clock = new();
 
-    private Timer _timer;
+    private System.Threading.Timer _timer;
     private DateTime _virtualStart;
     private int _ticking;
     private bool _disposed;
@@ -146,7 +146,7 @@ public sealed class SimulationEngine : IDisposable
                 return;
 
             _clock.Start();
-            _timer = new Timer(Tick, null, 0, TickMilliseconds);
+            _timer = new System.Threading.Timer(Tick, null, 0, TickMilliseconds);
 
             OnLog(Texts.F(Resources.Engine_Running, CurrentTime(), Options.TimeFactor));
         }
@@ -209,7 +209,7 @@ public sealed class SimulationEngine : IDisposable
             if (running)
             {
                 _clock.Start();
-                _timer = new Timer(Tick, null, 0, TickMilliseconds);
+                _timer = new System.Threading.Timer(Tick, null, 0, TickMilliseconds);
             }
         }
     }

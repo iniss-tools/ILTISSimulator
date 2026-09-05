@@ -63,12 +63,13 @@ public class DayPlannerTests
     [TestMethod]
     public void Plan_DifferentSeedsEventuallyDiffer()
     {
-        var signatures = Enumerable.Range(1, 20)
-            .Select(seed => string.Join(";", Plan(Options(seed)).Select(run => $"{run.ArrivalDelay}|{run.Track.Key}")))
-            .Distinct()
-            .Count();
+        // ExControls injektuje vlastnú System.Linq.Enumerable (rovnaký plne kvalifikovaný názov ako BCL) -
+        // Enumerable.Range je preto nejednoznačný (CS0433) a nedá sa vyriešiť kvalifikáciou, iba obídením.
+        var seedSignatures = new HashSet<string>();
+        for (var seed = 1; seed <= 20; seed++)
+            seedSignatures.Add(string.Join(";", Plan(Options(seed)).Select(run => $"{run.ArrivalDelay}|{run.Track.Key}")));
 
-        Assert.IsTrue(signatures > 1, "Rôzne seedy dali stále rovnaký deň.");
+        Assert.IsTrue(seedSignatures.Count > 1, "Rôzne seedy dali stále rovnaký deň.");
     }
 
     [TestMethod]
@@ -243,7 +244,7 @@ public class DayPlannerTests
         var options = Options();
         options.ExcludedTrackKeys = new HashSet<string>(new[] { "1A", "2", "3" }, StringComparer.OrdinalIgnoreCase);
 
-        Assert.ThrowsException<InvalidOperationException>(() => Plan(options));
+        Assert.ThrowsExactly<InvalidOperationException>(() => Plan(options));
     }
 
     [TestMethod]

@@ -39,7 +39,7 @@ public class StationCodecTests
     [TestMethod]
     public void Encode_NegativeStation_Throws()
     {
-        Assert.ThrowsException<ArgumentOutOfRangeException>(() => StationCodec.Encode(-1));
+        Assert.ThrowsExactly<ArgumentOutOfRangeException>(() => StationCodec.Encode(-1));
     }
 
     [TestMethod]

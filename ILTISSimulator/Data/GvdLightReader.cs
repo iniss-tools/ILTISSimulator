@@ -57,10 +57,10 @@ public static class GvdLightReader
     /// <returns>Informácie o grafikone.</returns>
     public static GVDInfo ReadInfo(string gvdDir)
     {
-        var config = new TxtProps(CombinePath(gvdDir, FILE_GRAFIKON));
+        var config = new TxtProps(CombinePath(gvdDir, FILE_GRAFIKON)!);
 
         var id = int.Parse(config.Get("IDSTATION"), CultureInfo.InvariantCulture);
-        var name = Unquote(config.Get("NAMESTATION", id.ToString(CultureInfo.InvariantCulture)));
+        var name = Unquote(config.Get("NAMESTATION", id.ToString(CultureInfo.InvariantCulture)))!;
 
         return new GVDInfo
         {
@@ -117,7 +117,7 @@ public static class GvdLightReader
     {
         var tracks = new List<Track> { Track.None };
 
-        ForEachRow(CombinePath(gvdDir, FILE_POZICE_A), (row, line) => tracks.Add(new Track
+        ForEachRow(CombinePath(gvdDir, FILE_POZICE_A)!, (row, line) => tracks.Add(new Track
         {
             Key = row[0],
             Name = row[1],
@@ -134,7 +134,7 @@ public static class GvdLightReader
     {
         var trains = new List<Train>();
 
-        ForEachRow(CombinePath(gvdDir, FILE_EXPORT3A), (row, line) =>
+        ForEachRow(CombinePath(gvdDir, FILE_EXPORT3A)!, (row, line) =>
         {
             var routing = Routing.Parse(row[5]);
             if (routing is null)
@@ -184,7 +184,7 @@ public static class GvdLightReader
     {
         var days = new Dictionary<int, BitArray>();
 
-        ForEachRow(CombinePath(gvdDir, FILE_EXPORT3B), (row, line) =>
+        ForEachRow(CombinePath(gvdDir, FILE_EXPORT3B)!, (row, line) =>
         {
             var id = int.Parse(row[0], CultureInfo.InvariantCulture);
 
@@ -238,7 +238,7 @@ public static class GvdLightReader
     private static Station GetStation(string id) =>
         string.IsNullOrEmpty(id) || id == "-1" ? Station.None : new Station(id, id);
 
-    private static string Unquote(string text) =>
+    private static string? Unquote(string? text) =>
         text is not null && text.Length > 1 && text.StartsWith("\"") && text.EndsWith("\"")
             ? text.Substring(1, text.Length - 2)
             : text;

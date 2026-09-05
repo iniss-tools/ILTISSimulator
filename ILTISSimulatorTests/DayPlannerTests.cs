@@ -99,7 +99,7 @@ public class DayPlannerTests
 
             var arrival = run.Events.Single(simEvent => simEvent.Kind == SimEventKind.Arrival);
             Assert.AreEqual(run.ArrivalDelay, arrival.Delay);
-            Assert.AreEqual(run.PlannedArrival.Value + run.ArrivalDelay, arrival.Time);
+            Assert.AreEqual(run.PlannedArrival!.Value + run.ArrivalDelay, arrival.Time);
         }
     }
 
@@ -330,8 +330,8 @@ public class DayPlannerTests
 
         var run = Run(Plan(options), "2005");
 
-        Assert.AreEqual(run.PlannedArrival.Value - options.EntryRouteLead, run.OccupiedFrom);
-        Assert.AreEqual(run.PlannedDeparture.Value + options.TrackReleaseMargin, run.OccupiedTo);
+        Assert.AreEqual(run.PlannedArrival!.Value - options.EntryRouteLead, run.OccupiedFrom);
+        Assert.AreEqual(run.PlannedDeparture!.Value + options.TrackReleaseMargin, run.OccupiedTo);
     }
 
     [TestMethod]
@@ -340,6 +340,6 @@ public class DayPlannerTests
         var run = Run(Plan(Options()), "2011");
 
         Assert.IsTrue(run.ActualDeparture > run.ActualArrival);
-        Assert.AreEqual(SimulationFixture.FirstDay.AddDays(1), run.PlannedDeparture.Value.Date);
+        Assert.AreEqual(SimulationFixture.FirstDay.AddDays(1), run.PlannedDeparture!.Value.Date);
     }
 }

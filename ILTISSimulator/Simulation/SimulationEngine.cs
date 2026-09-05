@@ -19,7 +19,7 @@ public sealed class SimulationEngine : IDisposable
     private readonly GvdData _gvd;
     private readonly Stopwatch _clock = new();
 
-    private System.Threading.Timer _timer;
+    private System.Threading.Timer? _timer;
     private DateTime _virtualStart;
     private int _ticking;
     private bool _disposed;
@@ -51,12 +51,12 @@ public sealed class SimulationEngine : IDisposable
     /// <summary>
     ///     Naplánované jazdy vlakov, alebo <see langword="null" />, kým sa deň nenaplánoval.
     /// </summary>
-    public IReadOnlyList<TrainRun> Runs { get; private set; }
+    public IReadOnlyList<TrainRun>? Runs { get; private set; }
 
     /// <summary>
     ///     Časová os naplánovaného dňa.
     /// </summary>
-    public SimulationTimeline Timeline { get; private set; }
+    public SimulationTimeline? Timeline { get; private set; }
 
     /// <summary>
     ///     Deň, ktorý je naplánovaný.
@@ -90,12 +90,12 @@ public sealed class SimulationEngine : IDisposable
     /// <summary>
     ///     Udalosť, ktorej čas nastal, aj s hotovou správou. Volá sa z vlákna časovača.
     /// </summary>
-    public event EventHandler<SimEventDueEventArgs> EventDue;
+    public event EventHandler<SimEventDueEventArgs>? EventDue;
 
     /// <summary>
     ///     Priebežné hlásenia jadra.
     /// </summary>
-    public event EventHandler<string> Log;
+    public event EventHandler<string>? Log;
 
     /// <summary>
     ///     Naplánuje deň a nastaví virtuálne hodiny.
@@ -259,7 +259,7 @@ public sealed class SimulationEngine : IDisposable
         }
     }
 
-    private void Tick(object state)
+    private void Tick(object? state)
     {
         // Ak sa predchádzajúci tik ešte nedobehol, tento sa preskočí - udalosti nezmiznú, len počkajú.
         if (Interlocked.CompareExchange(ref _ticking, 1, 0) != 0)

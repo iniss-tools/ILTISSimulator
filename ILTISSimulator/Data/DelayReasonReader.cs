@@ -41,7 +41,7 @@ public static class DelayReasonReader
     /// </summary>
     /// <param name="gvdDir">Priečinok s grafikonom, napríklad <c>...\DATA\Košice.2025</c>.</param>
     /// <returns>Cesta k banke, alebo <see langword="null" />, ak sa nenašla.</returns>
-    public static string ResolveRawBankDir(string gvdDir)
+    public static string? ResolveRawBankDir(string? gvdDir)
     {
         if (string.IsNullOrWhiteSpace(gvdDir))
             return null;

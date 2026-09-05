@@ -42,7 +42,7 @@ public sealed class GtnMessageType : Enumeration<GtnMessageType>
     /// </summary>
     /// <param name="code">Kód typu správy (napr. <c>0802</c>).</param>
     /// <returns>Typ správy alebo <see langword="null" />, ak kód nezodpovedá žiadnemu známemu typu.</returns>
-    public static GtnMessageType FromCode(string code) => GetValues().FirstOrDefault(type => type.Key == code);
+    public static GtnMessageType? FromCode(string code) => GetValues().FirstOrDefault(type => type.Key == code);
 
     /// <inheritdoc />
     public override string ToString() => $"{Key} - {Name}";

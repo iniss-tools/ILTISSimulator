@@ -123,8 +123,8 @@ public sealed class DayPlanner
 
     private void AssignTrack(TrainRun run, TrackAllocator allocator, Random random)
     {
-        var start = (run.ActualArrival ?? run.ActualDeparture).Value;
-        var end = (run.ActualDeparture ?? run.ActualArrival).Value;
+        var start = (run.ActualArrival ?? run.ActualDeparture)!.Value;
+        var end = (run.ActualDeparture ?? run.ActualArrival)!.Value;
 
         run.OccupiedFrom = start - _options.EntryRouteLead;
         run.OccupiedTo = end + _options.TrackReleaseMargin;
@@ -179,7 +179,7 @@ public sealed class DayPlanner
         if (run.PlannedArrival.HasValue)
         {
             run.AddEvent(SimEventKind.EntryRoute, run.PlannedArrival.Value - _options.EntryRouteLead,
-                run.ActualArrival.Value - _options.EntryRouteLead);
+                run.ActualArrival!.Value - _options.EntryRouteLead);
 
             if (run.DelayReason != 0)
                 run.AddEvent(SimEventKind.DelayReason, run.PlannedArrival.Value - _options.EntryRouteLead,
@@ -193,10 +193,10 @@ public sealed class DayPlanner
 
         if (run.DelayReason != 0 && !run.PlannedArrival.HasValue)
             run.AddEvent(SimEventKind.DelayReason, run.PlannedDeparture.Value - _options.ExitRouteLead,
-                run.ActualDeparture.Value - _options.ExitRouteLead);
+                run.ActualDeparture!.Value - _options.ExitRouteLead);
 
         run.AddEvent(SimEventKind.ExitRoute, run.PlannedDeparture.Value - _options.ExitRouteLead,
-            run.ActualDeparture.Value - _options.ExitRouteLead);
+            run.ActualDeparture!.Value - _options.ExitRouteLead);
         run.AddEvent(SimEventKind.Departure, run.PlannedDeparture.Value, run.ActualDeparture.Value);
     }
 }

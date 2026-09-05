@@ -13,7 +13,7 @@ internal static class Utils
     {
         var key = Registry.CurrentUser.OpenSubKey($"SOFTWARE\\{Application.ProductName}");
         var val = key?.GetValue(REG_RECENT_DIRS);
-        return val != null ? val.ToString() : "";
+        return val != null ? val.ToString() ?? "" : "";
     }
 
     public static void SetRecentPath(string path)
@@ -32,8 +32,8 @@ internal static class Utils
             var ipO = key.GetValue(REG_LAST_IP);
             var portO = key.GetValue(REG_LAST_PORT);
 
-            ip = ipO == null ? "" : ipO.ToString();
-            port = portO == null ? 0 : int.Parse(portO.ToString());
+            ip = ipO == null ? "" : ipO.ToString() ?? "";
+            port = portO == null ? 0 : int.Parse(portO.ToString() ?? "0");
             return;
         }
 

@@ -8,7 +8,7 @@ namespace ILTISSimulatorTests;
 /// </summary>
 internal static class SimulationFixture
 {
-    private static GvdData _gvd;
+    private static GvdData? _gvd;
 
     /// <summary>
     ///     Prvý deň platnosti testovacieho grafikonu.

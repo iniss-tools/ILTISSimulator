@@ -143,7 +143,7 @@ public class GtnEncoderTests
         var decoded = GtnEncoder.TryDecode(CapturedBlock, CaptureTime, out var message, out var error);
 
         Assert.IsTrue(decoded, error);
-        Assert.AreEqual(GtnMessageType.Route, message.Type);
+        Assert.AreEqual(GtnMessageType.Route, message!.Type);
         // INISS na túto správu odpovedal "train 000008 not found" - číslo vlaku číta zo znakov 10 až 15.
         Assert.AreEqual("000008", message.TrainNumber);
     }
@@ -173,7 +173,7 @@ public class GtnEncoderTests
         var decoded = GtnEncoder.TryDecode("08020000000000082920124000", CaptureTime, out var message, out var error);
 
         Assert.IsTrue(decoded, error);
-        Assert.AreEqual(new DateTime(2022, 5, 20, 12, 40, 0), message.Time);
+        Assert.AreEqual(new DateTime(2022, 5, 20, 12, 40, 0), message!.Time);
     }
 
     [TestMethod]
@@ -364,7 +364,7 @@ public class GtnEncoderTests
         var decoded = GtnEncoder.TryDecode("08035613600189   08311216015", CaptureTime, out var message, out var error);
 
         Assert.IsTrue(decoded, error);
-        Assert.AreEqual("0189", message.TrainNumber);
+        Assert.AreEqual("0189", message!.TrainNumber);
     }
 
     [TestMethod]

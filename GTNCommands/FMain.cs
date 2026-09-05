@@ -12,11 +12,11 @@ namespace GTNCommands;
 
 internal partial class FMain : Form
 {
-    private TcpClient _connection;
-    private string _command;
-    private List<Station> _stations;
+    private TcpClient? _connection;
+    private string? _command;
+    private List<Station>? _stations;
     //private TcpListener _listener;
-    private NetworkStream _stream;
+    private NetworkStream? _stream;
 
     public FMain()
     {
@@ -47,7 +47,7 @@ internal partial class FMain : Form
         cbStation.DataSource = _stations;
 
         var autocom = new AutoCompleteStringCollection();
-        foreach (var station in _stations)
+        foreach (var station in _stations!)
         {
             autocom.Add(station.ID.ToString());
             autocom.Add(station.Name);
@@ -134,7 +134,7 @@ internal partial class FMain : Form
             try
             {
                 var buf = Encoding.ASCII.GetBytes(_command);
-                _stream.Write(buf, 0, buf.Length);
+                _stream!.Write(buf, 0, buf.Length);
                 _stream.Dispose();
                 Invoke(() => AppendTextLog(LogType.Info, "Cmd send: " + _command));
             }
@@ -223,7 +223,7 @@ internal partial class FMain : Form
         var sec = dtpTime.Value.Second.PadZeros(2);
         var track = decimal.ToInt32(nudTrack.Value).ToString();
 
-        var selected = (CommandType)cbCommand.SelectedItem;
+        var selected = (CommandType)cbCommand.SelectedItem!;
 
         if (selected == CommandType.VVC)
         {

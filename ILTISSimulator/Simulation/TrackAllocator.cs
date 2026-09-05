@@ -18,7 +18,7 @@ public sealed class TrackAllocator
     /// <param name="tracks">Koľaje z grafikonu. Vynechajú sa tie, ktoré sa nedajú ohlásiť - viď
     ///     <see cref="CanUse" />.</param>
     /// <param name="excludedKeys">Kľúče koľají, ktoré simulátor nemá prideľovať, hoci ohlásiť by sa dali.</param>
-    public TrackAllocator(IEnumerable<Track> tracks, IEnumerable<string> excludedKeys = null)
+    public TrackAllocator(IEnumerable<Track> tracks, IEnumerable<string>? excludedKeys = null)
     {
         if (tracks is null)
             throw new ArgumentNullException(nameof(tracks));
@@ -37,7 +37,7 @@ public sealed class TrackAllocator
     /// </summary>
     /// <param name="track">Koľaj.</param>
     /// <returns><see langword="true" />, ak sa koľaj dá poslať INISSu.</returns>
-    public static bool CanUse(Track track) =>
+    public static bool CanUse(Track? track) =>
         track is not null && track != Track.None && !string.IsNullOrWhiteSpace(track.TrackName) &&
         track.Key.Length <= GtnEncoder.LenTrack;
 
@@ -94,7 +94,7 @@ public sealed class TrackAllocator
     /// <param name="preferPlatformOf">Ak je zadaná, uprednostnia sa koľaje pri tom istom nástupišti.</param>
     /// <param name="except">Koľaj, ktorá sa vybrať nemá.</param>
     /// <returns>Zarezervovaná koľaj, alebo <see langword="null" />, ak žiadna voľná nie je.</returns>
-    public Track ReserveAny(DateTime from, DateTime to, Random random, Track preferPlatformOf = null, Track except = null)
+    public Track? ReserveAny(DateTime from, DateTime to, Random random, Track? preferPlatformOf = null, Track? except = null)
     {
         if (random is null)
             throw new ArgumentNullException(nameof(random));

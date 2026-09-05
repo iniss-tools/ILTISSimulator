@@ -74,6 +74,6 @@ internal static class Texts
     /// <param name="format">Formátovací reťazec zo zdrojov.</param>
     /// <param name="args">Argumenty.</param>
     /// <returns>Zložený text.</returns>
-    public static string F(string format, params object[] args) =>
+    public static string F(string format, params object?[] args) =>
         string.Format(CultureInfo.CurrentCulture, format, args);
 }

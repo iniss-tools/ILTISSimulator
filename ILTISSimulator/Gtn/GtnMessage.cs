@@ -9,7 +9,7 @@ public sealed record GtnMessage
     /// <summary>
     ///     Typ správy (0802 / 0803 / 0804).
     /// </summary>
-    public GtnMessageType Type { get; set; }
+    public GtnMessageType? Type { get; set; }
 
     /// <summary>
     ///     Pole stanice tak, ako ide na drôt - šesť znakov. Zakódovanie identifikátora stanice do tohto poľa
@@ -42,7 +42,7 @@ public sealed record GtnMessage
     ///     ďalším vlakom nájdeným pod tým istým číslom. <see langword="null" /> znamená, že sa pole neposiela;
     ///     INISS chýbajúce koncové pole nepovažuje za chybu.
     /// </summary>
-    public string SecondTrack { get; set; }
+    public string? SecondTrack { get; set; }
 
     /// <summary>
     ///     Poradové číslo dôvodu meškania - uplatní sa iba pri <see cref="GtnMessageType.DelayReason" />.

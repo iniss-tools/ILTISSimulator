@@ -18,9 +18,9 @@ internal partial class FMain : Form
     private readonly Dictionary<TrainRun, int> _rowByRun = new();
     private ISet<string> _excludedTracks = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
     private IReadOnlyList<DelayReason> _delayReasons = new List<DelayReason>();
-    private GvdData _gvd;
-    private SimulationEngine _engine;
-    private GtnClient _client;
+    private GvdData? _gvd;
+    private SimulationEngine? _engine;
+    private GtnClient? _client;
     private int _sentCount;
     private bool _manualUpdating;
     private string _manualGenerated = "";
@@ -272,18 +272,18 @@ internal partial class FMain : Form
 
     private void ApplyGridHeaders()
     {
-        dgvPlan.Columns["colTrain"].HeaderText = Resources.Grid_Train;
-        dgvPlan.Columns["colType"].HeaderText = Resources.Grid_Type;
-        dgvPlan.Columns["colRouting"].HeaderText = Resources.Grid_Routing;
-        dgvPlan.Columns["colArrival"].HeaderText = Resources.Grid_Arrival;
-        dgvPlan.Columns["colArrivalDelay"].HeaderText = Resources.Grid_ArrivalDelay;
-        dgvPlan.Columns["colDeparture"].HeaderText = Resources.Grid_Departure;
-        dgvPlan.Columns["colDepartureDelay"].HeaderText = Resources.Grid_DepartureDelay;
-        dgvPlan.Columns["colTrack"].HeaderText = Resources.Grid_Track;
-        dgvPlan.Columns["colSource"].HeaderText = Resources.Grid_TrackSource;
-        dgvPlan.Columns["colReason"].HeaderText = Resources.Grid_DelayReason;
-        dgvPlan.Columns["colEvents"].HeaderText = Resources.Grid_Events;
-        dgvPlan.Columns["colName"].HeaderText = Resources.Grid_Name;
+        dgvPlan.Columns["colTrain"]!.HeaderText = Resources.Grid_Train;
+        dgvPlan.Columns["colType"]!.HeaderText = Resources.Grid_Type;
+        dgvPlan.Columns["colRouting"]!.HeaderText = Resources.Grid_Routing;
+        dgvPlan.Columns["colArrival"]!.HeaderText = Resources.Grid_Arrival;
+        dgvPlan.Columns["colArrivalDelay"]!.HeaderText = Resources.Grid_ArrivalDelay;
+        dgvPlan.Columns["colDeparture"]!.HeaderText = Resources.Grid_Departure;
+        dgvPlan.Columns["colDepartureDelay"]!.HeaderText = Resources.Grid_DepartureDelay;
+        dgvPlan.Columns["colTrack"]!.HeaderText = Resources.Grid_Track;
+        dgvPlan.Columns["colSource"]!.HeaderText = Resources.Grid_TrackSource;
+        dgvPlan.Columns["colReason"]!.HeaderText = Resources.Grid_DelayReason;
+        dgvPlan.Columns["colEvents"]!.HeaderText = Resources.Grid_Events;
+        dgvPlan.Columns["colName"]!.HeaderText = Resources.Grid_Name;
     }
 
     private void FillGrid()
@@ -298,13 +298,13 @@ internal partial class FMain : Form
         {
             var index = dgvPlan.Rows.Add(
                 run.Train.Number,
-                run.Train.Type?.Key,
-                run.Train.Routing?.CharSymbol,
+                run.Train.Type?.Key ?? "",
+                run.Train.Routing?.CharSymbol ?? "",
                 Time(run.PlannedArrival),
                 Delay(run.PlannedArrival, run.ArrivalDelay),
                 Time(run.PlannedDeparture),
                 Delay(run.PlannedDeparture, run.DepartureDelay),
-                run.Cancelled ? "" : run.Track?.Key,
+                run.Cancelled ? "" : run.Track?.Key ?? "",
                 run.Cancelled ? Resources.Source_Cancelled : Texts.Of(run.TrackSource),
                 ReasonText(run.DelayReason),
                 run.Events.Count,
@@ -379,7 +379,7 @@ internal partial class FMain : Form
         UpdateButtons();
     }
 
-    private List<Track> UsableTracks() => _gvd.Tracks.Where(TrackAllocator.CanUse).ToList();
+    private List<Track> UsableTracks() => _gvd!.Tracks.Where(TrackAllocator.CanUse).ToList();
 
     private List<DelayReason> UsableReasons() => _delayReasons.Where(reason => reason.Usable).ToList();
 
@@ -509,7 +509,7 @@ internal partial class FMain : Form
 
             FillGrid();
             AppendLog(LogKind.Info,
-                Texts.F(Resources.Log_Planned, _engine.Runs.Count, _engine.Timeline.Events.Count));
+                Texts.F(Resources.Log_Planned, _engine.Runs!.Count, _engine.Timeline!.Events.Count));
 
             _sentCount = 0;
         }
@@ -670,7 +670,7 @@ internal partial class FMain : Form
             }
     }
 
-    private static T SelectedValue<T>(ComboBox box) => box.SelectedItem is Choice<T> choice ? choice.Value : default;
+    private static T SelectedValue<T>(ComboBox box) => box.SelectedItem is Choice<T> choice ? choice.Value : default!;
 
     /// <summary>
     ///     Doplní do ručnej správy hodnoty z načítaného grafikonu - stanicu, čísla vlakov a koľaje.
@@ -751,7 +751,7 @@ internal partial class FMain : Form
     ///     Zloží správu z ovládacích prvkov ručnej správy.
     /// </summary>
     /// <returns>Správa alebo <see langword="null" />, ak nie je vybraný typ.</returns>
-    private GtnMessage BuildManualMessage()
+    private GtnMessage? BuildManualMessage()
     {
         var type = SelectedValue<GtnMessageType>(cbManualType);
         if (type is null)
@@ -864,10 +864,10 @@ internal partial class FMain : Form
 
     #region Odosielanie
 
-    private void Engine_EventDue(object sender, SimEventDueEventArgs e)
+    private void Engine_EventDue(object? sender, SimEventDueEventArgs e)
     {
         var wire = GtnEncoder.Encode(e.Message);
-        string error = null;
+        string? error = null;
 
         if (cbSend.Checked)
         {
@@ -897,7 +897,7 @@ internal partial class FMain : Form
         });
     }
 
-    private void Engine_Log(object sender, string text) => RunOnUi(() => AppendLog(LogKind.Info, text));
+    private void Engine_Log(object? sender, string text) => RunOnUi(() => AppendLog(LogKind.Info, text));
 
     private void HighlightRun(TrainRun run)
     {

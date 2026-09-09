@@ -56,7 +56,7 @@ public sealed class TrainRun
     /// <summary>
     ///     Koľaj, na ktorú simulátor vlak postavil.
     /// </summary>
-    public Track Track { get; internal set; }
+    public Track Track { get; internal set; } = null!;
 
     /// <summary>
     ///     Odkiaľ sa koľaj vzala.

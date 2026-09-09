@@ -1,9 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using ILTISSimulator.Gtn;
 using ILTISSimulator.Simulation;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ILTISSimulatorTests;
 
@@ -26,7 +22,7 @@ public class SimulationEngineTests
         CancellationProbability = 0.0
     };
 
-    private static SimulationEngine NewEngine(SimulationOptions options = null) =>
+    private static SimulationEngine NewEngine(SimulationOptions? options = null) =>
         new(SimulationFixture.Gvd, options ?? Options());
 
     [TestMethod]
@@ -89,7 +85,7 @@ public class SimulationEngineTests
         engine.PlanDay(Day);
         var count = engine.Pump(EndOfDay);
 
-        Assert.AreEqual(engine.Timeline.Events.Count, count);
+        Assert.AreEqual(engine.Timeline!.Events.Count, count);
         Assert.AreEqual(count, seen.Count);
         CollectionAssert.AreEqual(seen.Select(args => args.SimEvent.Time).OrderBy(time => time).ToArray(),
             seen.Select(args => args.SimEvent.Time).ToArray());
@@ -133,7 +129,7 @@ public class SimulationEngineTests
         engine.PlanDay(Day);
         engine.Pump(EndOfDay);
 
-        Assert.AreEqual(engine.Timeline.Events.Count, messages.Count);
+        Assert.AreEqual(engine.Timeline!.Events.Count, messages.Count);
         Assert.IsTrue(messages.All(message => message.StationField == "613600"));
         Assert.IsTrue(messages.All(message => GtnEncoder.Encode(message).Length >= 30));
     }
@@ -227,7 +223,7 @@ public class SimulationEngineTests
     {
         using var engine = NewEngine();
 
-        Assert.ThrowsException<InvalidOperationException>(() => engine.Start());
+        Assert.ThrowsExactly<InvalidOperationException>(() => engine.Start());
     }
 
     [TestMethod]

@@ -1,9 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using GVDEditor.Entities;
 using ILTISSimulator.Simulation;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ILTISSimulatorTests;
 
@@ -63,12 +59,13 @@ public class DayPlannerTests
     [TestMethod]
     public void Plan_DifferentSeedsEventuallyDiffer()
     {
-        var signatures = Enumerable.Range(1, 20)
-            .Select(seed => string.Join(";", Plan(Options(seed)).Select(run => $"{run.ArrivalDelay}|{run.Track.Key}")))
-            .Distinct()
-            .Count();
+        // ExControls injektuje vlastnú System.Linq.Enumerable (rovnaký plne kvalifikovaný názov ako BCL) -
+        // Enumerable.Range je preto nejednoznačný (CS0433) a nedá sa vyriešiť kvalifikáciou, iba obídením.
+        var seedSignatures = new HashSet<string>();
+        for (var seed = 1; seed <= 20; seed++)
+            seedSignatures.Add(string.Join(";", Plan(Options(seed)).Select(run => $"{run.ArrivalDelay}|{run.Track.Key}")));
 
-        Assert.IsTrue(signatures > 1, "Rôzne seedy dali stále rovnaký deň.");
+        Assert.IsTrue(seedSignatures.Count > 1, "Rôzne seedy dali stále rovnaký deň.");
     }
 
     [TestMethod]
@@ -102,7 +99,7 @@ public class DayPlannerTests
 
             var arrival = run.Events.Single(simEvent => simEvent.Kind == SimEventKind.Arrival);
             Assert.AreEqual(run.ArrivalDelay, arrival.Delay);
-            Assert.AreEqual(run.PlannedArrival.Value + run.ArrivalDelay, arrival.Time);
+            Assert.AreEqual(run.PlannedArrival!.Value + run.ArrivalDelay, arrival.Time);
         }
     }
 
@@ -243,7 +240,7 @@ public class DayPlannerTests
         var options = Options();
         options.ExcludedTrackKeys = new HashSet<string>(new[] { "1A", "2", "3" }, StringComparer.OrdinalIgnoreCase);
 
-        Assert.ThrowsException<InvalidOperationException>(() => Plan(options));
+        Assert.ThrowsExactly<InvalidOperationException>(() => Plan(options));
     }
 
     [TestMethod]
@@ -333,8 +330,8 @@ public class DayPlannerTests
 
         var run = Run(Plan(options), "2005");
 
-        Assert.AreEqual(run.PlannedArrival.Value - options.EntryRouteLead, run.OccupiedFrom);
-        Assert.AreEqual(run.PlannedDeparture.Value + options.TrackReleaseMargin, run.OccupiedTo);
+        Assert.AreEqual(run.PlannedArrival!.Value - options.EntryRouteLead, run.OccupiedFrom);
+        Assert.AreEqual(run.PlannedDeparture!.Value + options.TrackReleaseMargin, run.OccupiedTo);
     }
 
     [TestMethod]
@@ -343,6 +340,6 @@ public class DayPlannerTests
         var run = Run(Plan(Options()), "2011");
 
         Assert.IsTrue(run.ActualDeparture > run.ActualArrival);
-        Assert.AreEqual(SimulationFixture.FirstDay.AddDays(1), run.PlannedDeparture.Value.Date);
+        Assert.AreEqual(SimulationFixture.FirstDay.AddDays(1), run.PlannedDeparture!.Value.Date);
     }
 }

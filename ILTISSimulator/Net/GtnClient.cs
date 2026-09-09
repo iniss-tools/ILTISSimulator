@@ -15,8 +15,8 @@ namespace ILTISSimulator.Net;
 public sealed class GtnClient : IDisposable
 {
     private readonly object _sync = new();
-    private TcpClient _client;
-    private NetworkStream _stream;
+    private TcpClient? _client;
+    private NetworkStream? _stream;
     private bool _disposed;
 
     /// <summary>
@@ -142,14 +142,14 @@ public sealed class GtnClient : IDisposable
             try
             {
                 EnsureConnected();
-                _stream.Write(bytes, 0, bytes.Length);
+                _stream!.Write(bytes, 0, bytes.Length);
                 _stream.Flush();
             }
             catch (Exception e) when (e is IOException or SocketException or ObjectDisposedException or InvalidOperationException)
             {
                 // Jeden pokus o obnovenie spojenia - INISS pri reštarte spojenie zahodí.
                 Reconnect();
-                _stream.Write(bytes, 0, bytes.Length);
+                _stream!.Write(bytes, 0, bytes.Length);
                 _stream.Flush();
             }
         }

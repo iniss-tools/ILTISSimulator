@@ -1,7 +1,4 @@
-using System;
-using System.Linq;
 using ILTISSimulator.Gtn;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ILTISSimulatorTests;
 
@@ -107,7 +104,7 @@ public class GtnEncoderTests
             Track = "12345"
         };
 
-        Assert.ThrowsException<ArgumentException>(() => GtnEncoder.Encode(message));
+        Assert.ThrowsExactly<ArgumentException>(() => GtnEncoder.Encode(message));
     }
 
     [TestMethod]
@@ -146,7 +143,7 @@ public class GtnEncoderTests
         var decoded = GtnEncoder.TryDecode(CapturedBlock, CaptureTime, out var message, out var error);
 
         Assert.IsTrue(decoded, error);
-        Assert.AreEqual(GtnMessageType.Route, message.Type);
+        Assert.AreEqual(GtnMessageType.Route, message!.Type);
         // INISS na túto správu odpovedal "train 000008 not found" - číslo vlaku číta zo znakov 10 až 15.
         Assert.AreEqual("000008", message.TrainNumber);
     }
@@ -176,7 +173,7 @@ public class GtnEncoderTests
         var decoded = GtnEncoder.TryDecode("08020000000000082920124000", CaptureTime, out var message, out var error);
 
         Assert.IsTrue(decoded, error);
-        Assert.AreEqual(new DateTime(2022, 5, 20, 12, 40, 0), message.Time);
+        Assert.AreEqual(new DateTime(2022, 5, 20, 12, 40, 0), message!.Time);
     }
 
     [TestMethod]
@@ -355,8 +352,8 @@ public class GtnEncoderTests
         Assert.AreEqual("00", GtnEncoder.FormatDelayReason(0));
         Assert.AreEqual("04", GtnEncoder.FormatDelayReason(4));
         Assert.AreEqual("99", GtnEncoder.FormatDelayReason(99));
-        Assert.ThrowsException<ArgumentOutOfRangeException>(() => GtnEncoder.FormatDelayReason(100));
-        Assert.ThrowsException<ArgumentOutOfRangeException>(() => GtnEncoder.FormatDelayReason(-1));
+        Assert.ThrowsExactly<ArgumentOutOfRangeException>(() => GtnEncoder.FormatDelayReason(100));
+        Assert.ThrowsExactly<ArgumentOutOfRangeException>(() => GtnEncoder.FormatDelayReason(-1));
     }
 
     [TestMethod]
@@ -367,7 +364,7 @@ public class GtnEncoderTests
         var decoded = GtnEncoder.TryDecode("08035613600189   08311216015", CaptureTime, out var message, out var error);
 
         Assert.IsTrue(decoded, error);
-        Assert.AreEqual("0189", message.TrainNumber);
+        Assert.AreEqual("0189", message!.TrainNumber);
     }
 
     [TestMethod]

@@ -1,8 +1,5 @@
-using System;
-using System.Linq;
 using GVDEditor.Entities;
 using ILTISSimulator.Simulation;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ILTISSimulatorTests;
 
@@ -59,7 +56,7 @@ public class TrackAllocatorTests
             var allocator = new TrackAllocator(SimulationFixture.Gvd.Tracks, new[] { "2" });
             var chosen = allocator.ReserveAny(Noon, Noon.AddMinutes(10), new Random(seed));
 
-            Assert.AreNotEqual("2", chosen.Key, $"seed {seed}");
+            Assert.AreNotEqual("2", chosen!.Key, $"seed {seed}");
         }
     }
 
@@ -110,7 +107,7 @@ public class TrackAllocatorTests
         var second = allocator.ReserveAny(Noon, Noon.AddMinutes(10), random);
         var third = allocator.ReserveAny(Noon, Noon.AddMinutes(10), random);
 
-        CollectionAssert.AreEquivalent(new[] { "1A", "2", "3" }, new[] { first.Key, second.Key, third.Key });
+        CollectionAssert.AreEquivalent(new[] { "1A", "2", "3" }, new[] { first!.Key, second!.Key, third!.Key });
         Assert.IsNull(allocator.ReserveAny(Noon, Noon.AddMinutes(10), random));
     }
 
@@ -121,7 +118,7 @@ public class TrackAllocatorTests
 
         var chosen = allocator.ReserveAny(Noon, Noon.AddMinutes(10), new Random(1), except: Track("2"));
 
-        Assert.AreNotEqual("2", chosen.Key);
+        Assert.AreNotEqual("2", chosen!.Key);
     }
 
     [TestMethod]
@@ -135,7 +132,7 @@ public class TrackAllocatorTests
             allocator.Reset();
             var chosen = allocator.ReserveAny(Noon, Noon.AddMinutes(10), new Random(i), Track("1A"));
 
-            Assert.AreEqual("2", chosen.Platform.Key, $"seed {i} vybral koľaj {chosen.Key}");
+            Assert.AreEqual("2", chosen!.Platform.Key, $"seed {i} vybral koľaj {chosen.Key}");
         }
     }
 

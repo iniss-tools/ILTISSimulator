@@ -1,5 +1,3 @@
-using System;
-using System.IO;
 using System.Reflection;
 using ILTISSimulator.Data;
 
@@ -10,7 +8,7 @@ namespace ILTISSimulatorTests;
 /// </summary>
 internal static class SimulationFixture
 {
-    private static GvdData _gvd;
+    private static GvdData? _gvd;
 
     /// <summary>
     ///     Prvý deň platnosti testovacieho grafikonu.

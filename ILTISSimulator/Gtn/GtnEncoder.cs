@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using ILTISSimulator.Properties;
 using ILTISSimulator.Tools;
 using ToolsCore.Tools;
@@ -147,7 +148,7 @@ public static class GtnEncoder
 
         var builder = new StringBuilder(HeaderLength + LenRouteKind + 2 * LenTrack);
 
-        builder.Append(Fixed(message.Type.Key, LenType, Resources.Field_MessageType));
+        builder.Append(Fixed(message.Type!.Key!, LenType, Resources.Field_MessageType));
         builder.Append(Fixed(message.StationField, LenStation, Resources.Field_Station));
         builder.Append(Fixed(message.TrainNumber, LenTrain, Resources.Field_TrainNumber));
         builder.Append(message.Time.ToString(TimeFormat, CultureInfo.InvariantCulture));
@@ -218,7 +219,8 @@ public static class GtnEncoder
     /// <param name="message">Rozobratá správa, ak sa rozbor podaril.</param>
     /// <param name="error">Chyba v takom znení, v akom ju do <c>GTN.LOG</c> zapíše INISS.</param>
     /// <returns><see langword="true" />, ak sa správu podarilo rozobrať.</returns>
-    public static bool TryDecode(string text, DateTime reference, out GtnMessage message, out string error)
+    public static bool TryDecode(string text, DateTime reference, [NotNullWhen(true)] out GtnMessage? message,
+        [NotNullWhen(false)] out string? error)
     {
         message = null;
         error = null;
@@ -280,7 +282,8 @@ public static class GtnEncoder
     /// <param name="message">Rozobratá správa, ak sa rozbor podaril.</param>
     /// <param name="error">Chyba v takom znení, v akom ju do <c>GTN.LOG</c> zapíše INISS.</param>
     /// <returns><see langword="true" />, ak sa správu podarilo rozobrať.</returns>
-    public static bool TryDecode(string text, out GtnMessage message, out string error) =>
+    public static bool TryDecode(string text, [NotNullWhen(true)] out GtnMessage? message,
+        [NotNullWhen(false)] out string? error) =>
         TryDecode(text, DateTime.Now, out message, out error);
 
     /// <summary>
@@ -363,7 +366,8 @@ public static class GtnEncoder
     ///     nie je chyba, ale posun o dva roky a štyri mesiace. Chybou je až to, keď výsledok <c>mktime</c>
     ///     nedokáže zapísať, čo INISS zaloguje ako <c>invalid date</c>.
     /// </remarks>
-    private static bool TryParseTime(string field, DateTime reference, out DateTime time, out string error)
+    private static bool TryParseTime(string field, DateTime reference, out DateTime time,
+        [NotNullWhen(false)] out string? error)
     {
         time = DateTime.MinValue;
         error = null;

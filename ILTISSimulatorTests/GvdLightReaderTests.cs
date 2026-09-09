@@ -1,11 +1,7 @@
-using System;
-using System.IO;
-using System.Linq;
 using System.Reflection;
 using GVDEditor.Entities;
 using ILTISSimulator.Data;
 using ILTISSimulator.Gtn;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ILTISSimulatorTests;
 
@@ -15,7 +11,7 @@ namespace ILTISSimulatorTests;
 [TestClass]
 public class GvdLightReaderTests
 {
-    private static GvdData _gvd;
+    private static GvdData _gvd = null!;
 
     /// <summary>
     ///     Prvý deň platnosti testovacieho grafikonu.
@@ -64,8 +60,8 @@ public class GvdLightReaderTests
         var train = GetTrain(1);
 
         Assert.AreEqual(Routing.Prechadzajuci, train.Routing);
-        Assert.AreEqual(new TimeSpan(10, 15, 0), train.Arrival.Value.TimeOfDay);
-        Assert.AreEqual(new TimeSpan(10, 17, 0), train.Departure.Value.TimeOfDay);
+        Assert.AreEqual(new TimeSpan(10, 15, 0), train.Arrival!.Value.TimeOfDay);
+        Assert.AreEqual(new TimeSpan(10, 17, 0), train.Departure!.Value.TimeOfDay);
         Assert.AreEqual("2", train.Track.Key);
         Assert.IsTrue(GvdData.HasRealTrack(train));
     }
@@ -77,7 +73,7 @@ public class GvdLightReaderTests
 
         Assert.AreEqual(Routing.Vychadzajuci, train.Routing);
         Assert.IsFalse(train.Arrival.HasValue);
-        Assert.AreEqual(new TimeSpan(23, 50, 0), train.Departure.Value.TimeOfDay);
+        Assert.AreEqual(new TimeSpan(23, 50, 0), train.Departure!.Value.TimeOfDay);
     }
 
     [TestMethod]
@@ -131,7 +127,7 @@ public class GvdLightReaderTests
     public void GvdTrain_CanBeEncodedIntoArrivalMessage()
     {
         var train = GetTrain(1);
-        var arrival = GvdData.ArrivalOn(train, FirstDay).Value;
+        var arrival = GvdData.ArrivalOn(train, FirstDay)!.Value;
 
         var message = new GtnMessage
         {

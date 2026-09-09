@@ -113,7 +113,7 @@ partial class FMain
         this.slPlan = new System.Windows.Forms.ToolStripStatusLabel();
         this.slSent = new System.Windows.Forms.ToolStripStatusLabel();
         this.slLanguage = new System.Windows.Forms.ToolStripComboBox();
-        this.fbdGvd = new ExControls.ExFolderBrowserDialog();
+        this.fbdGvd = new System.Windows.Forms.FolderBrowserDialog();
         this.ttMain = new System.Windows.Forms.ToolTip(this.components);
         this.tmrClock = new System.Windows.Forms.Timer(this.components);
         ((System.ComponentModel.ISupportInitialize)(this.splitMain)).BeginInit();
@@ -961,7 +961,7 @@ partial class FMain
     private System.Windows.Forms.ToolStripStatusLabel slPlan;
     private System.Windows.Forms.ToolStripStatusLabel slSent;
     private System.Windows.Forms.ToolStripComboBox slLanguage;
-    private ExControls.ExFolderBrowserDialog fbdGvd;
+    private System.Windows.Forms.FolderBrowserDialog fbdGvd;
     private System.Windows.Forms.ToolTip ttMain;
     private System.Windows.Forms.Timer tmrClock;
 }

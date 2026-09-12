@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!-- 
-    Microsoft ResX Schema 
-    
+  <!--
+    Microsoft ResX Schema
+
     Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
     associated with the data types.
-    
+
     Example:
-    
+
     ... ado.net/XML headers & schema ...
     <resheader name="resmimetype">text/microsoft-resx</resheader>
     <resheader name="version">2.0</resheader>
@@ -26,36 +26,36 @@
         <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
         <comment>This is a comment</comment>
     </data>
-                
-    There are any number of "resheader" rows that contain simple 
+
+    There are any number of "resheader" rows that contain simple
     name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
     mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
     extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
     read any of the formats listed below.
-    
+
     mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
-    
+
     mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
 
     mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
+    value   : The object must be serialized into a byte array
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
@@ -117,13 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="splitMain.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="splitMain.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 425</value>
+    <value>0, 167</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="splitMain.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="splitMain.Orientation" type="System.Windows.Forms.Orientation, System.Windows.Forms">
     <value>Horizontal</value>
@@ -134,8 +138,11 @@
   <data name="dgvPlan.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
+  <data name="dgvPlan.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
   <data name="dgvPlan.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1160, 25</value>
+    <value>896, 90</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="dgvPlan.TabIndex" type="System.Int32, mscorlib">
@@ -145,7 +152,7 @@
     <value>dgvPlan</value>
   </data>
   <data name="&gt;&gt;dgvPlan.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;dgvPlan.Parent" xml:space="preserve">
     <value>splitMain.Panel1</value>
@@ -157,7 +164,7 @@
     <value>splitMain.Panel1</value>
   </data>
   <data name="&gt;&gt;splitMain.Panel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;splitMain.Panel1.Parent" xml:space="preserve">
     <value>splitMain</value>
@@ -174,8 +181,11 @@
   <data name="rtbLog.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
+  <data name="rtbLog.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
   <data name="rtbLog.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1160, 25</value>
+    <value>896, 104</value>
   </data>
   <data name="rtbLog.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -187,7 +197,7 @@
     <value>rtbLog</value>
   </data>
   <data name="&gt;&gt;rtbLog.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RichTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.RichTextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;rtbLog.Parent" xml:space="preserve">
     <value>splitMain.Panel2</value>
@@ -199,7 +209,7 @@
     <value>splitMain.Panel2</value>
   </data>
   <data name="&gt;&gt;splitMain.Panel2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;splitMain.Panel2.Parent" xml:space="preserve">
     <value>splitMain</value>
@@ -208,10 +218,13 @@
     <value>1</value>
   </data>
   <data name="splitMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1160, 51</value>
+    <value>896, 196</value>
   </data>
   <data name="splitMain.SplitterDistance" type="System.Int32, mscorlib">
-    <value>25</value>
+    <value>90</value>
+  </data>
+  <data name="splitMain.SplitterWidth" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
   <data name="splitMain.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -220,7 +233,7 @@
     <value>splitMain</value>
   </data>
   <data name="&gt;&gt;splitMain.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;splitMain.Parent" xml:space="preserve">
     <value>$this</value>
@@ -253,10 +266,13 @@
     <value>Top, Left, Right</value>
   </data>
   <data name="tbGvdDir.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
+    <value>2, 2</value>
+  </data>
+  <data name="tbGvdDir.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="tbGvdDir.Size" type="System.Drawing.Size, System.Drawing">
-    <value>300, 31</value>
+    <value>211, 23</value>
   </data>
   <data name="tbGvdDir.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -265,7 +281,7 @@
     <value>tbGvdDir</value>
   </data>
   <data name="&gt;&gt;tbGvdDir.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tbGvdDir.Parent" xml:space="preserve">
     <value>tlpGvd</value>
@@ -279,11 +295,17 @@
   <data name="flowGvdButtons.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
+  <data name="bBrowseGvd.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
   <data name="bBrowseGvd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
+    <value>2, 2</value>
+  </data>
+  <data name="bBrowseGvd.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="bBrowseGvd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 25</value>
+    <value>22, 25</value>
   </data>
   <data name="bBrowseGvd.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -301,7 +323,7 @@
     <value>bBrowseGvd</value>
   </data>
   <data name="&gt;&gt;bBrowseGvd.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;bBrowseGvd.Parent" xml:space="preserve">
     <value>flowGvdButtons</value>
@@ -316,13 +338,16 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="bLoadGvd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>41, 3</value>
+    <value>28, 2</value>
+  </data>
+  <data name="bLoadGvd.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="bLoadGvd.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>75, 25</value>
+    <value>52, 15</value>
   </data>
   <data name="bLoadGvd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>79, 35</value>
+    <value>56, 25</value>
   </data>
   <data name="bLoadGvd.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -334,7 +359,7 @@
     <value>bLoadGvd</value>
   </data>
   <data name="&gt;&gt;bLoadGvd.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;bLoadGvd.Parent" xml:space="preserve">
     <value>flowGvdButtons</value>
@@ -343,13 +368,13 @@
     <value>1</value>
   </data>
   <data name="flowGvdButtons.Location" type="System.Drawing.Point, System.Drawing">
-    <value>306, 0</value>
+    <value>215, 0</value>
   </data>
   <data name="flowGvdButtons.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="flowGvdButtons.Size" type="System.Drawing.Size, System.Drawing">
-    <value>123, 41</value>
+    <value>86, 29</value>
   </data>
   <data name="flowGvdButtons.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -361,7 +386,7 @@
     <value>flowGvdButtons</value>
   </data>
   <data name="&gt;&gt;flowGvdButtons.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;flowGvdButtons.Parent" xml:space="preserve">
     <value>tlpGvd</value>
@@ -373,10 +398,13 @@
     <value>True</value>
   </data>
   <data name="lGvdInfo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 41</value>
+    <value>2, 29</value>
+  </data>
+  <data name="lGvdInfo.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="lGvdInfo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 25</value>
+    <value>0, 15</value>
   </data>
   <data name="lGvdInfo.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -385,7 +413,7 @@
     <value>lGvdInfo</value>
   </data>
   <data name="&gt;&gt;lGvdInfo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lGvdInfo.Parent" xml:space="preserve">
     <value>tlpGvd</value>
@@ -406,13 +434,16 @@
     <value>False</value>
   </data>
   <data name="bTracks.Location" type="System.Drawing.Point, System.Drawing">
-    <value>309, 44</value>
+    <value>217, 31</value>
+  </data>
+  <data name="bTracks.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="bTracks.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>90, 25</value>
+    <value>63, 15</value>
   </data>
   <data name="bTracks.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 35</value>
+    <value>63, 25</value>
   </data>
   <data name="bTracks.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -424,7 +455,7 @@
     <value>bTracks</value>
   </data>
   <data name="&gt;&gt;bTracks.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;bTracks.Parent" xml:space="preserve">
     <value>tlpGvd</value>
@@ -436,13 +467,16 @@
     <value>Fill</value>
   </data>
   <data name="tlpGvd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 27</value>
+    <value>4, 18</value>
+  </data>
+  <data name="tlpGvd.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="tlpGvd.RowCount" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
   <data name="tlpGvd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>429, 82</value>
+    <value>301, 58</value>
   </data>
   <data name="tlpGvd.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -451,7 +485,7 @@
     <value>tlpGvd</value>
   </data>
   <data name="&gt;&gt;tlpGvd.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tlpGvd.Parent" xml:space="preserve">
     <value>gbGvd</value>
@@ -463,13 +497,16 @@
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="tbGvdDir" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="flowGvdButtons" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="lGvdInfo" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="bTracks" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="gbGvd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 5</value>
+    <value>5, 3</value>
+  </data>
+  <data name="gbGvd.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="gbGvd.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 3, 6, 6</value>
+    <value>4, 2, 4, 4</value>
   </data>
   <data name="gbGvd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>441, 115</value>
+    <value>309, 80</value>
   </data>
   <data name="gbGvd.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -481,7 +518,7 @@
     <value>gbGvd</value>
   </data>
   <data name="&gt;&gt;gbGvd.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;gbGvd.Parent" xml:space="preserve">
     <value>panelTop</value>
@@ -511,10 +548,13 @@
     <value>True</value>
   </data>
   <data name="lHost.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 6</value>
+    <value>2, 6</value>
+  </data>
+  <data name="lHost.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="lHost.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 25</value>
+    <value>46, 15</value>
   </data>
   <data name="lHost.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -526,7 +566,7 @@
     <value>lHost</value>
   </data>
   <data name="&gt;&gt;lHost.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lHost.Parent" xml:space="preserve">
     <value>tlpConnection</value>
@@ -538,10 +578,13 @@
     <value>Left</value>
   </data>
   <data name="tbHost.Location" type="System.Drawing.Point, System.Drawing">
-    <value>99, 3</value>
+    <value>69, 2</value>
+  </data>
+  <data name="tbHost.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="tbHost.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 31</value>
+    <value>106, 23</value>
   </data>
   <data name="tbHost.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -550,7 +593,7 @@
     <value>tbHost</value>
   </data>
   <data name="&gt;&gt;tbHost.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tbHost.Parent" xml:space="preserve">
     <value>tlpConnection</value>
@@ -565,10 +608,13 @@
     <value>True</value>
   </data>
   <data name="lPort.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 43</value>
+    <value>2, 33</value>
+  </data>
+  <data name="lPort.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="lPort.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 25</value>
+    <value>32, 15</value>
   </data>
   <data name="lPort.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -580,7 +626,7 @@
     <value>lPort</value>
   </data>
   <data name="&gt;&gt;lPort.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lPort.Parent" xml:space="preserve">
     <value>tlpConnection</value>
@@ -592,10 +638,13 @@
     <value>Left</value>
   </data>
   <data name="nudPort.Location" type="System.Drawing.Point, System.Drawing">
-    <value>99, 40</value>
+    <value>69, 29</value>
+  </data>
+  <data name="nudPort.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="nudPort.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 31</value>
+    <value>56, 23</value>
   </data>
   <data name="nudPort.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -604,7 +653,7 @@
     <value>nudPort</value>
   </data>
   <data name="&gt;&gt;nudPort.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;nudPort.Parent" xml:space="preserve">
     <value>tlpConnection</value>
@@ -622,13 +671,16 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="bConnect.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 77</value>
+    <value>2, 56</value>
+  </data>
+  <data name="bConnect.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="bConnect.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>90, 25</value>
+    <value>63, 15</value>
   </data>
   <data name="bConnect.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 35</value>
+    <value>63, 25</value>
   </data>
   <data name="bConnect.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -640,7 +692,7 @@
     <value>bConnect</value>
   </data>
   <data name="&gt;&gt;bConnect.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;bConnect.Parent" xml:space="preserve">
     <value>tlpConnection</value>
@@ -655,10 +707,13 @@
     <value>True</value>
   </data>
   <data name="lConnection.Location" type="System.Drawing.Point, System.Drawing">
-    <value>99, 82</value>
+    <value>69, 61</value>
+  </data>
+  <data name="lConnection.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="lConnection.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 25</value>
+    <value>0, 15</value>
   </data>
   <data name="lConnection.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -667,7 +722,7 @@
     <value>lConnection</value>
   </data>
   <data name="&gt;&gt;lConnection.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lConnection.Parent" xml:space="preserve">
     <value>tlpConnection</value>
@@ -679,13 +734,16 @@
     <value>Fill</value>
   </data>
   <data name="tlpConnection.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 27</value>
+    <value>4, 18</value>
+  </data>
+  <data name="tlpConnection.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="tlpConnection.RowCount" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
   <data name="tlpConnection.Size" type="System.Drawing.Size, System.Drawing">
-    <value>252, 115</value>
+    <value>177, 83</value>
   </data>
   <data name="tlpConnection.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -694,7 +752,7 @@
     <value>tlpConnection</value>
   </data>
   <data name="&gt;&gt;tlpConnection.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tlpConnection.Parent" xml:space="preserve">
     <value>gbConnection</value>
@@ -706,13 +764,16 @@
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="lHost" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="tbHost" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="lPort" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="nudPort" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="bConnect" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="lConnection" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="gbConnection.Location" type="System.Drawing.Point, System.Drawing">
-    <value>454, 5</value>
+    <value>318, 3</value>
+  </data>
+  <data name="gbConnection.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="gbConnection.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 3, 6, 6</value>
+    <value>4, 2, 4, 4</value>
   </data>
   <data name="gbConnection.Size" type="System.Drawing.Size, System.Drawing">
-    <value>264, 148</value>
+    <value>185, 105</value>
   </data>
   <data name="gbConnection.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -724,7 +785,7 @@
     <value>gbConnection</value>
   </data>
   <data name="&gt;&gt;gbConnection.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;gbConnection.Parent" xml:space="preserve">
     <value>panelTop</value>
@@ -754,10 +815,13 @@
     <value>True</value>
   </data>
   <data name="lOnTime.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 6</value>
+    <value>2, 6</value>
+  </data>
+  <data name="lOnTime.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="lOnTime.Size" type="System.Drawing.Size, System.Drawing">
-    <value>93, 25</value>
+    <value>63, 15</value>
   </data>
   <data name="lOnTime.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -769,7 +833,7 @@
     <value>lOnTime</value>
   </data>
   <data name="&gt;&gt;lOnTime.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lOnTime.Parent" xml:space="preserve">
     <value>tlpModel</value>
@@ -781,10 +845,13 @@
     <value>Left</value>
   </data>
   <data name="nudOnTime.Location" type="System.Drawing.Point, System.Drawing">
-    <value>228, 3</value>
+    <value>155, 2</value>
+  </data>
+  <data name="nudOnTime.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="nudOnTime.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 31</value>
+    <value>42, 23</value>
   </data>
   <data name="nudOnTime.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -793,7 +860,7 @@
     <value>nudOnTime</value>
   </data>
   <data name="&gt;&gt;nudOnTime.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;nudOnTime.Parent" xml:space="preserve">
     <value>tlpModel</value>
@@ -808,13 +875,13 @@
     <value>True</value>
   </data>
   <data name="lDiversion.Location" type="System.Drawing.Point, System.Drawing">
-    <value>307, 6</value>
+    <value>210, 6</value>
   </data>
   <data name="lDiversion.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>16, 0, 3, 0</value>
+    <value>11, 0, 2, 0</value>
   </data>
   <data name="lDiversion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>105, 25</value>
+    <value>70, 15</value>
   </data>
   <data name="lDiversion.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -826,7 +893,7 @@
     <value>lDiversion</value>
   </data>
   <data name="&gt;&gt;lDiversion.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lDiversion.Parent" xml:space="preserve">
     <value>tlpModel</value>
@@ -838,10 +905,13 @@
     <value>Left</value>
   </data>
   <data name="nudDiversion.Location" type="System.Drawing.Point, System.Drawing">
-    <value>425, 3</value>
+    <value>290, 2</value>
+  </data>
+  <data name="nudDiversion.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="nudDiversion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 31</value>
+    <value>42, 23</value>
   </data>
   <data name="nudDiversion.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -850,7 +920,7 @@
     <value>nudDiversion</value>
   </data>
   <data name="&gt;&gt;nudDiversion.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;nudDiversion.Parent" xml:space="preserve">
     <value>tlpModel</value>
@@ -865,10 +935,13 @@
     <value>True</value>
   </data>
   <data name="lMeanDelay.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 43</value>
+    <value>2, 33</value>
+  </data>
+  <data name="lMeanDelay.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="lMeanDelay.Size" type="System.Drawing.Size, System.Drawing">
-    <value>219, 25</value>
+    <value>149, 15</value>
   </data>
   <data name="lMeanDelay.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -880,7 +953,7 @@
     <value>lMeanDelay</value>
   </data>
   <data name="&gt;&gt;lMeanDelay.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lMeanDelay.Parent" xml:space="preserve">
     <value>tlpModel</value>
@@ -892,10 +965,13 @@
     <value>Left</value>
   </data>
   <data name="nudMeanDelay.Location" type="System.Drawing.Point, System.Drawing">
-    <value>228, 40</value>
+    <value>155, 29</value>
+  </data>
+  <data name="nudMeanDelay.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="nudMeanDelay.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 31</value>
+    <value>42, 23</value>
   </data>
   <data name="nudMeanDelay.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -904,7 +980,7 @@
     <value>nudMeanDelay</value>
   </data>
   <data name="&gt;&gt;nudMeanDelay.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;nudMeanDelay.Parent" xml:space="preserve">
     <value>tlpModel</value>
@@ -919,13 +995,13 @@
     <value>True</value>
   </data>
   <data name="lCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>307, 43</value>
+    <value>210, 33</value>
   </data>
   <data name="lCancel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>16, 0, 3, 0</value>
+    <value>11, 0, 2, 0</value>
   </data>
   <data name="lCancel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>108, 25</value>
+    <value>73, 15</value>
   </data>
   <data name="lCancel.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -937,7 +1013,7 @@
     <value>lCancel</value>
   </data>
   <data name="&gt;&gt;lCancel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lCancel.Parent" xml:space="preserve">
     <value>tlpModel</value>
@@ -949,10 +1025,13 @@
     <value>Left</value>
   </data>
   <data name="nudCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>425, 40</value>
+    <value>290, 29</value>
+  </data>
+  <data name="nudCancel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="nudCancel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 31</value>
+    <value>42, 23</value>
   </data>
   <data name="nudCancel.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -961,7 +1040,7 @@
     <value>nudCancel</value>
   </data>
   <data name="&gt;&gt;nudCancel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;nudCancel.Parent" xml:space="preserve">
     <value>tlpModel</value>
@@ -976,10 +1055,13 @@
     <value>True</value>
   </data>
   <data name="lReason.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 80</value>
+    <value>2, 60</value>
+  </data>
+  <data name="lReason.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="lReason.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 25</value>
+    <value>119, 15</value>
   </data>
   <data name="lReason.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -991,7 +1073,7 @@
     <value>lReason</value>
   </data>
   <data name="&gt;&gt;lReason.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lReason.Parent" xml:space="preserve">
     <value>tlpModel</value>
@@ -1003,10 +1085,13 @@
     <value>Left</value>
   </data>
   <data name="nudReason.Location" type="System.Drawing.Point, System.Drawing">
-    <value>228, 77</value>
+    <value>155, 56</value>
+  </data>
+  <data name="nudReason.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="nudReason.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 31</value>
+    <value>42, 23</value>
   </data>
   <data name="nudReason.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -1015,7 +1100,7 @@
     <value>nudReason</value>
   </data>
   <data name="&gt;&gt;nudReason.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;nudReason.Parent" xml:space="preserve">
     <value>tlpModel</value>
@@ -1030,13 +1115,13 @@
     <value>True</value>
   </data>
   <data name="lFactor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>307, 80</value>
+    <value>210, 60</value>
   </data>
   <data name="lFactor.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>16, 0, 3, 0</value>
+    <value>11, 0, 2, 0</value>
   </data>
   <data name="lFactor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>112, 25</value>
+    <value>76, 15</value>
   </data>
   <data name="lFactor.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -1048,7 +1133,7 @@
     <value>lFactor</value>
   </data>
   <data name="&gt;&gt;lFactor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lFactor.Parent" xml:space="preserve">
     <value>tlpModel</value>
@@ -1060,10 +1145,13 @@
     <value>Left</value>
   </data>
   <data name="nudFactor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>425, 77</value>
+    <value>290, 56</value>
+  </data>
+  <data name="nudFactor.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="nudFactor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 31</value>
+    <value>42, 23</value>
   </data>
   <data name="nudFactor.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -1072,7 +1160,7 @@
     <value>nudFactor</value>
   </data>
   <data name="&gt;&gt;nudFactor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;nudFactor.Parent" xml:space="preserve">
     <value>tlpModel</value>
@@ -1087,10 +1175,13 @@
     <value>True</value>
   </data>
   <data name="lSeed.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 117</value>
+    <value>2, 87</value>
+  </data>
+  <data name="lSeed.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="lSeed.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 25</value>
+    <value>35, 15</value>
   </data>
   <data name="lSeed.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -1102,7 +1193,7 @@
     <value>lSeed</value>
   </data>
   <data name="&gt;&gt;lSeed.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lSeed.Parent" xml:space="preserve">
     <value>tlpModel</value>
@@ -1114,10 +1205,13 @@
     <value>Left</value>
   </data>
   <data name="nudSeed.Location" type="System.Drawing.Point, System.Drawing">
-    <value>228, 114</value>
+    <value>155, 83</value>
+  </data>
+  <data name="nudSeed.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="nudSeed.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 31</value>
+    <value>42, 23</value>
   </data>
   <data name="nudSeed.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -1126,7 +1220,7 @@
     <value>nudSeed</value>
   </data>
   <data name="&gt;&gt;nudSeed.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;nudSeed.Parent" xml:space="preserve">
     <value>tlpModel</value>
@@ -1138,13 +1232,16 @@
     <value>Fill</value>
   </data>
   <data name="tlpModel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 27</value>
+    <value>4, 18</value>
+  </data>
+  <data name="tlpModel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="tlpModel.RowCount" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
   <data name="tlpModel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>488, 148</value>
+    <value>334, 108</value>
   </data>
   <data name="tlpModel.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1153,7 +1250,7 @@
     <value>tlpModel</value>
   </data>
   <data name="&gt;&gt;tlpModel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tlpModel.Parent" xml:space="preserve">
     <value>gbModel</value>
@@ -1165,13 +1262,16 @@
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="lOnTime" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="nudOnTime" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="lDiversion" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="nudDiversion" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="lMeanDelay" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="nudMeanDelay" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="lCancel" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="nudCancel" Row="1" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="lReason" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="nudReason" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="lFactor" Row="2" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="nudFactor" Row="2" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="lSeed" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="nudSeed" Row="3" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="gbModel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 159</value>
+    <value>507, 3</value>
+  </data>
+  <data name="gbModel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="gbModel.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 3, 6, 6</value>
+    <value>4, 2, 4, 4</value>
   </data>
   <data name="gbModel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>500, 181</value>
+    <value>342, 130</value>
   </data>
   <data name="gbModel.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1183,7 +1283,7 @@
     <value>gbModel</value>
   </data>
   <data name="&gt;&gt;gbModel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;gbModel.Parent" xml:space="preserve">
     <value>panelTop</value>
@@ -1197,11 +1297,14 @@
   <data name="panelTop.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
+  <data name="panelTop.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
   <data name="panelTop.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 2, 4, 2</value>
+    <value>3, 1, 3, 1</value>
   </data>
   <data name="panelTop.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1160, 345</value>
+    <value>896, 136</value>
   </data>
   <data name="panelTop.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1210,7 +1313,7 @@
     <value>panelTop</value>
   </data>
   <data name="&gt;&gt;panelTop.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;panelTop.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1240,10 +1343,13 @@
     <value>True</value>
   </data>
   <data name="lDay.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 6</value>
+    <value>2, 6</value>
+  </data>
+  <data name="lDay.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="lDay.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 25</value>
+    <value>31, 15</value>
   </data>
   <data name="lDay.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1255,7 +1361,7 @@
     <value>lDay</value>
   </data>
   <data name="&gt;&gt;lDay.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lDay.Parent" xml:space="preserve">
     <value>fieldDay</value>
@@ -1267,10 +1373,13 @@
     <value>None</value>
   </data>
   <data name="dtpDay.Location" type="System.Drawing.Point, System.Drawing">
-    <value>57, 3</value>
+    <value>37, 2</value>
+  </data>
+  <data name="dtpDay.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="dtpDay.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 31</value>
+    <value>85, 23</value>
   </data>
   <data name="dtpDay.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1279,7 +1388,7 @@
     <value>dtpDay</value>
   </data>
   <data name="&gt;&gt;dtpDay.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;dtpDay.Parent" xml:space="preserve">
     <value>fieldDay</value>
@@ -1288,13 +1397,13 @@
     <value>1</value>
   </data>
   <data name="fieldDay.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 4</value>
+    <value>3, 2</value>
   </data>
   <data name="fieldDay.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 12, 0</value>
+    <value>0, 0, 8, 0</value>
   </data>
   <data name="fieldDay.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 37</value>
+    <value>124, 27</value>
   </data>
   <data name="fieldDay.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1306,7 +1415,7 @@
     <value>fieldDay</value>
   </data>
   <data name="&gt;&gt;fieldDay.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;fieldDay.Parent" xml:space="preserve">
     <value>panelRun</value>
@@ -1330,10 +1439,13 @@
     <value>True</value>
   </data>
   <data name="lFrom.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 6</value>
+    <value>2, 6</value>
+  </data>
+  <data name="lFrom.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="lFrom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 25</value>
+    <value>26, 15</value>
   </data>
   <data name="lFrom.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1345,7 +1457,7 @@
     <value>lFrom</value>
   </data>
   <data name="&gt;&gt;lFrom.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lFrom.Parent" xml:space="preserve">
     <value>fieldFrom</value>
@@ -1357,10 +1469,13 @@
     <value>None</value>
   </data>
   <data name="dtpFrom.Location" type="System.Drawing.Point, System.Drawing">
-    <value>50, 3</value>
+    <value>32, 2</value>
+  </data>
+  <data name="dtpFrom.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="dtpFrom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 31</value>
+    <value>64, 23</value>
   </data>
   <data name="dtpFrom.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1369,7 +1484,7 @@
     <value>dtpFrom</value>
   </data>
   <data name="&gt;&gt;dtpFrom.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;dtpFrom.Parent" xml:space="preserve">
     <value>fieldFrom</value>
@@ -1378,13 +1493,13 @@
     <value>1</value>
   </data>
   <data name="fieldFrom.Location" type="System.Drawing.Point, System.Drawing">
-    <value>196, 4</value>
+    <value>135, 2</value>
   </data>
   <data name="fieldFrom.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 12, 0</value>
+    <value>0, 0, 8, 0</value>
   </data>
   <data name="fieldFrom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>143, 37</value>
+    <value>98, 27</value>
   </data>
   <data name="fieldFrom.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1396,7 +1511,7 @@
     <value>fieldFrom</value>
   </data>
   <data name="&gt;&gt;fieldFrom.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;fieldFrom.Parent" xml:space="preserve">
     <value>panelRun</value>
@@ -1414,16 +1529,16 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="bPlan.Location" type="System.Drawing.Point, System.Drawing">
-    <value>351, 5</value>
+    <value>241, 3</value>
   </data>
   <data name="bPlan.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 3, 3, 3</value>
+    <value>0, 2, 2, 2</value>
   </data>
   <data name="bPlan.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>100, 25</value>
+    <value>70, 15</value>
   </data>
   <data name="bPlan.Size" type="System.Drawing.Size, System.Drawing">
-    <value>115, 35</value>
+    <value>79, 25</value>
   </data>
   <data name="bPlan.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1435,7 +1550,7 @@
     <value>bPlan</value>
   </data>
   <data name="&gt;&gt;bPlan.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;bPlan.Parent" xml:space="preserve">
     <value>panelRun</value>
@@ -1453,13 +1568,16 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="bStart.Location" type="System.Drawing.Point, System.Drawing">
-    <value>472, 5</value>
+    <value>324, 3</value>
+  </data>
+  <data name="bStart.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="bStart.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>70, 25</value>
+    <value>49, 15</value>
   </data>
   <data name="bStart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>70, 35</value>
+    <value>49, 25</value>
   </data>
   <data name="bStart.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -1471,7 +1589,7 @@
     <value>bStart</value>
   </data>
   <data name="&gt;&gt;bStart.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;bStart.Parent" xml:space="preserve">
     <value>panelRun</value>
@@ -1489,13 +1607,16 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="bPause.Location" type="System.Drawing.Point, System.Drawing">
-    <value>548, 5</value>
+    <value>377, 3</value>
+  </data>
+  <data name="bPause.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="bPause.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>70, 25</value>
+    <value>49, 15</value>
   </data>
   <data name="bPause.Size" type="System.Drawing.Size, System.Drawing">
-    <value>70, 35</value>
+    <value>49, 25</value>
   </data>
   <data name="bPause.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -1507,7 +1628,7 @@
     <value>bPause</value>
   </data>
   <data name="&gt;&gt;bPause.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;bPause.Parent" xml:space="preserve">
     <value>panelRun</value>
@@ -1525,13 +1646,16 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="bStop.Location" type="System.Drawing.Point, System.Drawing">
-    <value>624, 5</value>
+    <value>430, 3</value>
+  </data>
+  <data name="bStop.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="bStop.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>70, 25</value>
+    <value>49, 15</value>
   </data>
   <data name="bStop.Size" type="System.Drawing.Size, System.Drawing">
-    <value>70, 35</value>
+    <value>49, 25</value>
   </data>
   <data name="bStop.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -1543,7 +1667,7 @@
     <value>bStop</value>
   </data>
   <data name="&gt;&gt;bStop.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;bStop.Parent" xml:space="preserve">
     <value>panelRun</value>
@@ -1561,13 +1685,16 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="bJump.Location" type="System.Drawing.Point, System.Drawing">
-    <value>700, 5</value>
+    <value>483, 3</value>
+  </data>
+  <data name="bJump.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="bJump.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>100, 25</value>
+    <value>70, 15</value>
   </data>
   <data name="bJump.Size" type="System.Drawing.Size, System.Drawing">
-    <value>115, 35</value>
+    <value>78, 25</value>
   </data>
   <data name="bJump.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -1579,7 +1706,7 @@
     <value>bJump</value>
   </data>
   <data name="&gt;&gt;bJump.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;bJump.Parent" xml:space="preserve">
     <value>panelRun</value>
@@ -1597,13 +1724,13 @@
     <value>Segoe UI, 11pt, style=Bold</value>
   </data>
   <data name="lVirtualTime.Location" type="System.Drawing.Point, System.Drawing">
-    <value>830, 7</value>
+    <value>571, 5</value>
   </data>
   <data name="lVirtualTime.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>12, 0, 12, 0</value>
+    <value>8, 0, 8, 0</value>
   </data>
   <data name="lVirtualTime.Size" type="System.Drawing.Size, System.Drawing">
-    <value>79, 30</value>
+    <value>53, 20</value>
   </data>
   <data name="lVirtualTime.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -1615,7 +1742,7 @@
     <value>lVirtualTime</value>
   </data>
   <data name="&gt;&gt;lVirtualTime.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lVirtualTime.Parent" xml:space="preserve">
     <value>panelRun</value>
@@ -1630,10 +1757,13 @@
     <value>True</value>
   </data>
   <data name="cbSend.Location" type="System.Drawing.Point, System.Drawing">
-    <value>924, 8</value>
+    <value>634, 6</value>
+  </data>
+  <data name="cbSend.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="cbSend.Size" type="System.Drawing.Size, System.Drawing">
-    <value>185, 29</value>
+    <value>122, 19</value>
   </data>
   <data name="cbSend.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -1645,7 +1775,7 @@
     <value>cbSend</value>
   </data>
   <data name="&gt;&gt;cbSend.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;cbSend.Parent" xml:space="preserve">
     <value>panelRun</value>
@@ -1660,13 +1790,13 @@
     <value>True</value>
   </data>
   <data name="cbOnTop.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 46</value>
+    <value>766, 6</value>
   </data>
   <data name="cbOnTop.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>12, 3, 3, 3</value>
+    <value>8, 2, 2, 2</value>
   </data>
   <data name="cbOnTop.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 29</value>
+    <value>71, 19</value>
   </data>
   <data name="cbOnTop.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -1678,7 +1808,7 @@
     <value>cbOnTop</value>
   </data>
   <data name="&gt;&gt;cbOnTop.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;cbOnTop.Parent" xml:space="preserve">
     <value>panelRun</value>
@@ -1690,13 +1820,16 @@
     <value>Top</value>
   </data>
   <data name="panelRun.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 345</value>
+    <value>0, 136</value>
+  </data>
+  <data name="panelRun.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="panelRun.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 2, 4, 2</value>
+    <value>3, 1, 3, 1</value>
   </data>
   <data name="panelRun.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1160, 80</value>
+    <value>896, 31</value>
   </data>
   <data name="panelRun.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1705,7 +1838,7 @@
     <value>panelRun</value>
   </data>
   <data name="&gt;&gt;panelRun.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;panelRun.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1735,10 +1868,13 @@
     <value>True</value>
   </data>
   <data name="lManualPreview.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 8</value>
+    <value>2, 7</value>
+  </data>
+  <data name="lManualPreview.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="lManualPreview.Size" type="System.Drawing.Size, System.Drawing">
-    <value>70, 25</value>
+    <value>45, 15</value>
   </data>
   <data name="lManualPreview.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1750,7 +1886,7 @@
     <value>lManualPreview</value>
   </data>
   <data name="&gt;&gt;lManualPreview.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lManualPreview.Parent" xml:space="preserve">
     <value>tlpManualSend</value>
@@ -1765,10 +1901,13 @@
     <value>Consolas, 9pt</value>
   </data>
   <data name="tbManual.Location" type="System.Drawing.Point, System.Drawing">
-    <value>79, 3</value>
+    <value>51, 2</value>
+  </data>
+  <data name="tbManual.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="tbManual.Size" type="System.Drawing.Size, System.Drawing">
-    <value>970, 29</value>
+    <value>768, 22</value>
   </data>
   <data name="tbManual.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1780,7 +1919,7 @@
     <value>tbManual</value>
   </data>
   <data name="&gt;&gt;tbManual.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tbManual.Parent" xml:space="preserve">
     <value>tlpManualSend</value>
@@ -1798,13 +1937,16 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="bManualSend.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1055, 3</value>
+    <value>823, 2</value>
+  </data>
+  <data name="bManualSend.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="bManualSend.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>90, 25</value>
+    <value>63, 15</value>
   </data>
   <data name="bManualSend.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 35</value>
+    <value>63, 25</value>
   </data>
   <data name="bManualSend.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1816,7 +1958,7 @@
     <value>bManualSend</value>
   </data>
   <data name="&gt;&gt;bManualSend.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;bManualSend.Parent" xml:space="preserve">
     <value>tlpManualSend</value>
@@ -1828,13 +1970,16 @@
     <value>Top</value>
   </data>
   <data name="tlpManualSend.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 144</value>
+    <value>4, 72</value>
+  </data>
+  <data name="tlpManualSend.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="tlpManualSend.RowCount" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
   <data name="tlpManualSend.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1148, 41</value>
+    <value>888, 29</value>
   </data>
   <data name="tlpManualSend.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1843,7 +1988,7 @@
     <value>tlpManualSend</value>
   </data>
   <data name="&gt;&gt;tlpManualSend.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tlpManualSend.Parent" xml:space="preserve">
     <value>gbManual</value>
@@ -1873,10 +2018,13 @@
     <value>True</value>
   </data>
   <data name="lManualType.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 7</value>
+    <value>2, 6</value>
+  </data>
+  <data name="lManualType.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="lManualType.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 25</value>
+    <value>29, 15</value>
   </data>
   <data name="lManualType.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1888,7 +2036,7 @@
     <value>lManualType</value>
   </data>
   <data name="&gt;&gt;lManualType.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lManualType.Parent" xml:space="preserve">
     <value>fieldType</value>
@@ -1900,10 +2048,13 @@
     <value>None</value>
   </data>
   <data name="cbManualType.Location" type="System.Drawing.Point, System.Drawing">
-    <value>53, 3</value>
+    <value>35, 2</value>
+  </data>
+  <data name="cbManualType.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="cbManualType.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 33</value>
+    <value>141, 23</value>
   </data>
   <data name="cbManualType.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1912,7 +2063,7 @@
     <value>cbManualType</value>
   </data>
   <data name="&gt;&gt;cbManualType.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;cbManualType.Parent" xml:space="preserve">
     <value>fieldType</value>
@@ -1924,10 +2075,10 @@
     <value>0, 0</value>
   </data>
   <data name="fieldType.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 12, 0</value>
+    <value>0, 0, 8, 0</value>
   </data>
   <data name="fieldType.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 39</value>
+    <value>178, 27</value>
   </data>
   <data name="fieldType.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1939,7 +2090,7 @@
     <value>fieldType</value>
   </data>
   <data name="&gt;&gt;fieldType.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;fieldType.Parent" xml:space="preserve">
     <value>flowManual</value>
@@ -1960,10 +2111,13 @@
     <value>True</value>
   </data>
   <data name="lManualStation.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 5</value>
+    <value>2, 5</value>
+  </data>
+  <data name="lManualStation.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="lManualStation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 25</value>
+    <value>48, 15</value>
   </data>
   <data name="lManualStation.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1975,7 +2129,7 @@
     <value>lManualStation</value>
   </data>
   <data name="&gt;&gt;lManualStation.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lManualStation.Parent" xml:space="preserve">
     <value>fieldStation</value>
@@ -1990,13 +2144,16 @@
     <value>Consolas, 9pt</value>
   </data>
   <data name="tbManualStation.Location" type="System.Drawing.Point, System.Drawing">
-    <value>80, 3</value>
+    <value>54, 2</value>
+  </data>
+  <data name="tbManualStation.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="tbManualStation.MaxLength" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
   <data name="tbManualStation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>70, 29</value>
+    <value>50, 22</value>
   </data>
   <data name="tbManualStation.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -2005,7 +2162,7 @@
     <value>tbManualStation</value>
   </data>
   <data name="&gt;&gt;tbManualStation.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tbManualStation.Parent" xml:space="preserve">
     <value>fieldStation</value>
@@ -2014,13 +2171,13 @@
     <value>1</value>
   </data>
   <data name="fieldStation.Location" type="System.Drawing.Point, System.Drawing">
-    <value>268, 0</value>
+    <value>186, 0</value>
   </data>
   <data name="fieldStation.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 12, 0</value>
+    <value>0, 0, 8, 0</value>
   </data>
   <data name="fieldStation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>153, 35</value>
+    <value>106, 26</value>
   </data>
   <data name="fieldStation.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -2032,7 +2189,7 @@
     <value>fieldStation</value>
   </data>
   <data name="&gt;&gt;fieldStation.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;fieldStation.Parent" xml:space="preserve">
     <value>flowManual</value>
@@ -2053,10 +2210,13 @@
     <value>True</value>
   </data>
   <data name="lManualTrain.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 7</value>
+    <value>2, 6</value>
+  </data>
+  <data name="lManualTrain.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="lManualTrain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>49, 25</value>
+    <value>32, 15</value>
   </data>
   <data name="lManualTrain.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2068,7 +2228,7 @@
     <value>lManualTrain</value>
   </data>
   <data name="&gt;&gt;lManualTrain.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lManualTrain.Parent" xml:space="preserve">
     <value>fieldTrain</value>
@@ -2080,13 +2240,16 @@
     <value>None</value>
   </data>
   <data name="cbManualTrain.Location" type="System.Drawing.Point, System.Drawing">
-    <value>58, 3</value>
+    <value>38, 2</value>
+  </data>
+  <data name="cbManualTrain.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="cbManualTrain.MaxLength" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
   <data name="cbManualTrain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 33</value>
+    <value>64, 23</value>
   </data>
   <data name="cbManualTrain.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -2095,7 +2258,7 @@
     <value>cbManualTrain</value>
   </data>
   <data name="&gt;&gt;cbManualTrain.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;cbManualTrain.Parent" xml:space="preserve">
     <value>fieldTrain</value>
@@ -2104,13 +2267,13 @@
     <value>1</value>
   </data>
   <data name="fieldTrain.Location" type="System.Drawing.Point, System.Drawing">
-    <value>433, 0</value>
+    <value>300, 0</value>
   </data>
   <data name="fieldTrain.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 12, 0</value>
+    <value>0, 0, 8, 0</value>
   </data>
   <data name="fieldTrain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>151, 39</value>
+    <value>104, 27</value>
   </data>
   <data name="fieldTrain.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -2122,7 +2285,7 @@
     <value>fieldTrain</value>
   </data>
   <data name="&gt;&gt;fieldTrain.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;fieldTrain.Parent" xml:space="preserve">
     <value>flowManual</value>
@@ -2143,10 +2306,13 @@
     <value>True</value>
   </data>
   <data name="lManualTime.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 6</value>
+    <value>2, 6</value>
+  </data>
+  <data name="lManualTime.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="lManualTime.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 25</value>
+    <value>29, 15</value>
   </data>
   <data name="lManualTime.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2158,7 +2324,7 @@
     <value>lManualTime</value>
   </data>
   <data name="&gt;&gt;lManualTime.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lManualTime.Parent" xml:space="preserve">
     <value>fieldTime</value>
@@ -2173,10 +2339,13 @@
     <value>dd.MM. HH:mm:ss</value>
   </data>
   <data name="dtpManualTime.Location" type="System.Drawing.Point, System.Drawing">
-    <value>53, 3</value>
+    <value>35, 2</value>
+  </data>
+  <data name="dtpManualTime.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="dtpManualTime.Size" type="System.Drawing.Size, System.Drawing">
-    <value>130, 31</value>
+    <value>92, 23</value>
   </data>
   <data name="dtpManualTime.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -2185,7 +2354,7 @@
     <value>dtpManualTime</value>
   </data>
   <data name="&gt;&gt;dtpManualTime.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;dtpManualTime.Parent" xml:space="preserve">
     <value>fieldTime</value>
@@ -2200,10 +2369,13 @@
     <value>True</value>
   </data>
   <data name="cbManualNow.Location" type="System.Drawing.Point, System.Drawing">
-    <value>189, 4</value>
+    <value>131, 4</value>
+  </data>
+  <data name="cbManualNow.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="cbManualNow.Size" type="System.Drawing.Size, System.Drawing">
-    <value>76, 29</value>
+    <value>51, 19</value>
   </data>
   <data name="cbManualNow.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -2215,7 +2387,7 @@
     <value>cbManualNow</value>
   </data>
   <data name="&gt;&gt;cbManualNow.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;cbManualNow.Parent" xml:space="preserve">
     <value>fieldTime</value>
@@ -2224,13 +2396,13 @@
     <value>2</value>
   </data>
   <data name="fieldTime.Location" type="System.Drawing.Point, System.Drawing">
-    <value>596, 0</value>
+    <value>412, 0</value>
   </data>
   <data name="fieldTime.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 12, 0</value>
+    <value>0, 0, 8, 0</value>
   </data>
   <data name="fieldTime.Size" type="System.Drawing.Size, System.Drawing">
-    <value>268, 37</value>
+    <value>184, 27</value>
   </data>
   <data name="fieldTime.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -2242,7 +2414,7 @@
     <value>fieldTime</value>
   </data>
   <data name="&gt;&gt;fieldTime.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;fieldTime.Parent" xml:space="preserve">
     <value>flowManual</value>
@@ -2263,10 +2435,13 @@
     <value>True</value>
   </data>
   <data name="lManualTrack.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 7</value>
+    <value>2, 6</value>
+  </data>
+  <data name="lManualTrack.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="lManualTrack.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 25</value>
+    <value>37, 15</value>
   </data>
   <data name="lManualTrack.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2278,7 +2453,7 @@
     <value>lManualTrack</value>
   </data>
   <data name="&gt;&gt;lManualTrack.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lManualTrack.Parent" xml:space="preserve">
     <value>fieldTrack</value>
@@ -2290,13 +2465,16 @@
     <value>None</value>
   </data>
   <data name="cbManualTrack.Location" type="System.Drawing.Point, System.Drawing">
-    <value>65, 3</value>
+    <value>43, 2</value>
+  </data>
+  <data name="cbManualTrack.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="cbManualTrack.MaxLength" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
   <data name="cbManualTrack.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 33</value>
+    <value>57, 23</value>
   </data>
   <data name="cbManualTrack.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -2305,7 +2483,7 @@
     <value>cbManualTrack</value>
   </data>
   <data name="&gt;&gt;cbManualTrack.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;cbManualTrack.Parent" xml:space="preserve">
     <value>fieldTrack</value>
@@ -2314,13 +2492,13 @@
     <value>1</value>
   </data>
   <data name="fieldTrack.Location" type="System.Drawing.Point, System.Drawing">
-    <value>876, 0</value>
+    <value>604, 0</value>
   </data>
   <data name="fieldTrack.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 12, 0</value>
+    <value>0, 0, 8, 0</value>
   </data>
   <data name="fieldTrack.Size" type="System.Drawing.Size, System.Drawing">
-    <value>148, 39</value>
+    <value>102, 27</value>
   </data>
   <data name="fieldTrack.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -2332,7 +2510,7 @@
     <value>fieldTrack</value>
   </data>
   <data name="&gt;&gt;fieldTrack.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;fieldTrack.Parent" xml:space="preserve">
     <value>flowManual</value>
@@ -2353,10 +2531,13 @@
     <value>True</value>
   </data>
   <data name="lManualSecondTrack.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 7</value>
+    <value>2, 6</value>
+  </data>
+  <data name="lManualSecondTrack.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="lManualSecondTrack.Size" type="System.Drawing.Size, System.Drawing">
-    <value>108, 25</value>
+    <value>71, 15</value>
   </data>
   <data name="lManualSecondTrack.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2368,7 +2549,7 @@
     <value>lManualSecondTrack</value>
   </data>
   <data name="&gt;&gt;lManualSecondTrack.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lManualSecondTrack.Parent" xml:space="preserve">
     <value>fieldSecondTrack</value>
@@ -2380,13 +2561,16 @@
     <value>None</value>
   </data>
   <data name="cbManualSecondTrack.Location" type="System.Drawing.Point, System.Drawing">
-    <value>117, 3</value>
+    <value>77, 2</value>
+  </data>
+  <data name="cbManualSecondTrack.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="cbManualSecondTrack.MaxLength" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
   <data name="cbManualSecondTrack.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 33</value>
+    <value>57, 23</value>
   </data>
   <data name="cbManualSecondTrack.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -2395,7 +2579,7 @@
     <value>cbManualSecondTrack</value>
   </data>
   <data name="&gt;&gt;cbManualSecondTrack.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;cbManualSecondTrack.Parent" xml:space="preserve">
     <value>fieldSecondTrack</value>
@@ -2404,13 +2588,13 @@
     <value>1</value>
   </data>
   <data name="fieldSecondTrack.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 39</value>
+    <value>714, 0</value>
   </data>
   <data name="fieldSecondTrack.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 12, 0</value>
+    <value>0, 0, 8, 0</value>
   </data>
   <data name="fieldSecondTrack.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 39</value>
+    <value>136, 27</value>
   </data>
   <data name="fieldSecondTrack.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -2422,7 +2606,7 @@
     <value>fieldSecondTrack</value>
   </data>
   <data name="&gt;&gt;fieldSecondTrack.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;fieldSecondTrack.Parent" xml:space="preserve">
     <value>flowManual</value>
@@ -2443,10 +2627,13 @@
     <value>True</value>
   </data>
   <data name="lManualRouteKind.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 7</value>
+    <value>2, 6</value>
+  </data>
+  <data name="lManualRouteKind.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="lManualRouteKind.Size" type="System.Drawing.Size, System.Drawing">
-    <value>123, 25</value>
+    <value>81, 15</value>
   </data>
   <data name="lManualRouteKind.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2458,7 +2645,7 @@
     <value>lManualRouteKind</value>
   </data>
   <data name="&gt;&gt;lManualRouteKind.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lManualRouteKind.Parent" xml:space="preserve">
     <value>fieldRouteKind</value>
@@ -2470,10 +2657,13 @@
     <value>None</value>
   </data>
   <data name="cbManualRouteKind.Location" type="System.Drawing.Point, System.Drawing">
-    <value>132, 3</value>
+    <value>87, 2</value>
+  </data>
+  <data name="cbManualRouteKind.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="cbManualRouteKind.Size" type="System.Drawing.Size, System.Drawing">
-    <value>210, 33</value>
+    <value>148, 23</value>
   </data>
   <data name="cbManualRouteKind.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -2482,7 +2672,7 @@
     <value>cbManualRouteKind</value>
   </data>
   <data name="&gt;&gt;cbManualRouteKind.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;cbManualRouteKind.Parent" xml:space="preserve">
     <value>fieldRouteKind</value>
@@ -2491,13 +2681,13 @@
     <value>1</value>
   </data>
   <data name="fieldRouteKind.Location" type="System.Drawing.Point, System.Drawing">
-    <value>212, 39</value>
+    <value>0, 27</value>
   </data>
   <data name="fieldRouteKind.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 12, 0</value>
+    <value>0, 0, 8, 0</value>
   </data>
   <data name="fieldRouteKind.Size" type="System.Drawing.Size, System.Drawing">
-    <value>345, 39</value>
+    <value>237, 27</value>
   </data>
   <data name="fieldRouteKind.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -2509,7 +2699,7 @@
     <value>fieldRouteKind</value>
   </data>
   <data name="&gt;&gt;fieldRouteKind.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;fieldRouteKind.Parent" xml:space="preserve">
     <value>flowManual</value>
@@ -2530,10 +2720,13 @@
     <value>True</value>
   </data>
   <data name="lManualDelayReason.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 7</value>
+    <value>2, 6</value>
+  </data>
+  <data name="lManualDelayReason.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="lManualDelayReason.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 25</value>
+    <value>98, 15</value>
   </data>
   <data name="lManualDelayReason.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2545,7 +2738,7 @@
     <value>lManualDelayReason</value>
   </data>
   <data name="&gt;&gt;lManualDelayReason.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lManualDelayReason.Parent" xml:space="preserve">
     <value>fieldDelayReason</value>
@@ -2557,10 +2750,13 @@
     <value>None</value>
   </data>
   <data name="cbManualDelayReason.Location" type="System.Drawing.Point, System.Drawing">
-    <value>159, 3</value>
+    <value>104, 2</value>
+  </data>
+  <data name="cbManualDelayReason.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="cbManualDelayReason.Size" type="System.Drawing.Size, System.Drawing">
-    <value>230, 33</value>
+    <value>162, 23</value>
   </data>
   <data name="cbManualDelayReason.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -2569,7 +2765,7 @@
     <value>cbManualDelayReason</value>
   </data>
   <data name="&gt;&gt;cbManualDelayReason.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;cbManualDelayReason.Parent" xml:space="preserve">
     <value>fieldDelayReason</value>
@@ -2578,13 +2774,13 @@
     <value>1</value>
   </data>
   <data name="fieldDelayReason.Location" type="System.Drawing.Point, System.Drawing">
-    <value>569, 39</value>
+    <value>245, 27</value>
   </data>
   <data name="fieldDelayReason.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 12, 0</value>
+    <value>0, 0, 8, 0</value>
   </data>
   <data name="fieldDelayReason.Size" type="System.Drawing.Size, System.Drawing">
-    <value>392, 39</value>
+    <value>268, 27</value>
   </data>
   <data name="fieldDelayReason.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -2596,7 +2792,7 @@
     <value>fieldDelayReason</value>
   </data>
   <data name="&gt;&gt;fieldDelayReason.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;fieldDelayReason.Parent" xml:space="preserve">
     <value>flowManual</value>
@@ -2617,10 +2813,13 @@
     <value>True</value>
   </data>
   <data name="lManualTransferKind.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 7</value>
+    <value>2, 6</value>
+  </data>
+  <data name="lManualTransferKind.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="lManualTransferKind.Size" type="System.Drawing.Size, System.Drawing">
-    <value>76, 25</value>
+    <value>50, 15</value>
   </data>
   <data name="lManualTransferKind.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2632,7 +2831,7 @@
     <value>lManualTransferKind</value>
   </data>
   <data name="&gt;&gt;lManualTransferKind.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lManualTransferKind.Parent" xml:space="preserve">
     <value>fieldTransferKind</value>
@@ -2644,10 +2843,13 @@
     <value>None</value>
   </data>
   <data name="cbManualTransferKind.Location" type="System.Drawing.Point, System.Drawing">
-    <value>85, 3</value>
+    <value>56, 2</value>
+  </data>
+  <data name="cbManualTransferKind.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="cbManualTransferKind.Size" type="System.Drawing.Size, System.Drawing">
-    <value>190, 33</value>
+    <value>134, 23</value>
   </data>
   <data name="cbManualTransferKind.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -2656,7 +2858,7 @@
     <value>cbManualTransferKind</value>
   </data>
   <data name="&gt;&gt;cbManualTransferKind.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;cbManualTransferKind.Parent" xml:space="preserve">
     <value>fieldTransferKind</value>
@@ -2665,13 +2867,13 @@
     <value>1</value>
   </data>
   <data name="fieldTransferKind.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 78</value>
+    <value>521, 27</value>
   </data>
   <data name="fieldTransferKind.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 12, 0</value>
+    <value>0, 0, 8, 0</value>
   </data>
   <data name="fieldTransferKind.Size" type="System.Drawing.Size, System.Drawing">
-    <value>278, 39</value>
+    <value>192, 27</value>
   </data>
   <data name="fieldTransferKind.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -2683,7 +2885,7 @@
     <value>fieldTransferKind</value>
   </data>
   <data name="&gt;&gt;fieldTransferKind.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;fieldTransferKind.Parent" xml:space="preserve">
     <value>flowManual</value>
@@ -2695,10 +2897,13 @@
     <value>Top</value>
   </data>
   <data name="flowManual.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 27</value>
+    <value>4, 18</value>
+  </data>
+  <data name="flowManual.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="flowManual.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1148, 117</value>
+    <value>888, 54</value>
   </data>
   <data name="flowManual.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2707,7 +2912,7 @@
     <value>flowManual</value>
   </data>
   <data name="&gt;&gt;flowManual.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;flowManual.Parent" xml:space="preserve">
     <value>gbManual</value>
@@ -2719,16 +2924,16 @@
     <value>Bottom</value>
   </data>
   <data name="gbManual.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 476</value>
+    <value>0, 363</value>
   </data>
   <data name="gbManual.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="gbManual.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 3, 6, 6</value>
+    <value>4, 2, 4, 4</value>
   </data>
   <data name="gbManual.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1160, 191</value>
+    <value>896, 105</value>
   </data>
   <data name="gbManual.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -2740,7 +2945,7 @@
     <value>gbManual</value>
   </data>
   <data name="&gt;&gt;gbManual.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;gbManual.Parent" xml:space="preserve">
     <value>$this</value>
@@ -2752,28 +2957,31 @@
     <value>115, 17</value>
   </metadata>
   <data name="slStation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 28</value>
+    <value>0, 18</value>
   </data>
   <data name="slPlan.Size" type="System.Drawing.Size, System.Drawing">
-    <value>4, 28</value>
+    <value>4, 18</value>
   </data>
   <data name="slSent.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1009, 28</value>
+    <value>756, 18</value>
   </data>
   <data name="slSent.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
   </data>
   <data name="slLanguage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>130, 33</value>
+    <value>92, 23</value>
   </data>
   <data name="slLanguage.ToolTipText" xml:space="preserve">
     <value>Jazyk:</value>
   </data>
   <data name="statusStrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 667</value>
+    <value>0, 468</value>
+  </data>
+  <data name="statusStrip.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 0, 10, 0</value>
   </data>
   <data name="statusStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1160, 33</value>
+    <value>896, 23</value>
   </data>
   <data name="statusStrip.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -2782,7 +2990,7 @@
     <value>statusStrip</value>
   </data>
   <data name="&gt;&gt;statusStrip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;statusStrip.Parent" xml:space="preserve">
     <value>$this</value>
@@ -2800,10 +3008,10 @@
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>10, 25</value>
+    <value>7, 15</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1160, 700</value>
+    <value>896, 491</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
@@ -6802,8 +7010,11 @@
         AAAAAAAAAAAA/w==
 </value>
   </data>
+  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>720, 520</value>
+    <value>509, 328</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>
@@ -6815,48 +7026,48 @@
     <value>slStation</value>
   </data>
   <data name="&gt;&gt;slStation.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;slPlan.Name" xml:space="preserve">
     <value>slPlan</value>
   </data>
   <data name="&gt;&gt;slPlan.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;slSent.Name" xml:space="preserve">
     <value>slSent</value>
   </data>
   <data name="&gt;&gt;slSent.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;slLanguage.Name" xml:space="preserve">
     <value>slLanguage</value>
   </data>
   <data name="&gt;&gt;slLanguage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;fbdGvd.Name" xml:space="preserve">
     <value>fbdGvd</value>
   </data>
   <data name="&gt;&gt;fbdGvd.Type" xml:space="preserve">
-    <value>ExControls.ExFolderBrowserDialog, ExControls, Version=1.1.9741.39078, Culture=neutral, PublicKeyToken=null</value>
+    <value>System.Windows.Forms.FolderBrowserDialog, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;ttMain.Name" xml:space="preserve">
     <value>ttMain</value>
   </data>
   <data name="&gt;&gt;ttMain.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tmrClock.Name" xml:space="preserve">
     <value>tmrClock</value>
   </data>
   <data name="&gt;&gt;tmrClock.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Timer, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>FMain</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

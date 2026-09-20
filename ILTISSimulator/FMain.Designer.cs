@@ -62,10 +62,10 @@ partial class FMain
         panelRun = new FlowLayoutPanel();
         fieldDay = new FlowLayoutPanel();
         lDay = new Label();
-        dtpDay = new DateTimePicker();
+        dtpDay = new ExControls.ExDateTimePicker();
         fieldFrom = new FlowLayoutPanel();
         lFrom = new Label();
-        dtpFrom = new DateTimePicker();
+        dtpFrom = new ExControls.ExDateTimePicker();
         bPlan = new Button();
         bStart = new Button();
         bPause = new Button();
@@ -91,7 +91,7 @@ partial class FMain
         cbManualTrain = new ComboBox();
         fieldTime = new FlowLayoutPanel();
         lManualTime = new Label();
-        dtpManualTime = new DateTimePicker();
+        dtpManualTime = new ExControls.ExDateTimePicker();
         cbManualNow = new CheckBox();
         fieldTrack = new FlowLayoutPanel();
         lManualTrack = new Label();
@@ -907,10 +907,10 @@ partial class FMain
     private System.Windows.Forms.FlowLayoutPanel panelRun;
     private System.Windows.Forms.FlowLayoutPanel fieldDay;
     private System.Windows.Forms.Label lDay;
-    private System.Windows.Forms.DateTimePicker dtpDay;
+    private ExControls.ExDateTimePicker dtpDay;
     private System.Windows.Forms.FlowLayoutPanel fieldFrom;
     private System.Windows.Forms.Label lFrom;
-    private System.Windows.Forms.DateTimePicker dtpFrom;
+    private ExControls.ExDateTimePicker dtpFrom;
     private System.Windows.Forms.Button bPlan;
     private System.Windows.Forms.Button bStart;
     private System.Windows.Forms.Button bPause;
@@ -939,7 +939,7 @@ partial class FMain
     private System.Windows.Forms.ComboBox cbManualTrain;
     private System.Windows.Forms.FlowLayoutPanel fieldTime;
     private System.Windows.Forms.Label lManualTime;
-    private System.Windows.Forms.DateTimePicker dtpManualTime;
+    private ExControls.ExDateTimePicker dtpManualTime;
     private System.Windows.Forms.CheckBox cbManualNow;
     private System.Windows.Forms.FlowLayoutPanel fieldTrack;
     private System.Windows.Forms.Label lManualTrack;

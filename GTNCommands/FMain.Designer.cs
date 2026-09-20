@@ -37,9 +37,9 @@ namespace GTNCommands
             this.cbStation = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.dtpDate = new System.Windows.Forms.DateTimePicker();
+            this.dtpDate = new ExControls.ExDateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
-            this.dtpTime = new System.Windows.Forms.DateTimePicker();
+            this.dtpTime = new ExControls.ExDateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.tbCommand = new System.Windows.Forms.TextBox();
@@ -464,9 +464,9 @@ namespace GTNCommands
         private System.Windows.Forms.ComboBox cbStation;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DateTimePicker dtpDate;
+        private ExControls.ExDateTimePicker dtpDate;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DateTimePicker dtpTime;
+        private ExControls.ExDateTimePicker dtpTime;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.MaskedTextBox mtbIP;

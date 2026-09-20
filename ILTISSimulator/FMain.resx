@@ -1388,7 +1388,7 @@
     <value>dtpDay</value>
   </data>
   <data name="&gt;&gt;dtpDay.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExDateTimePicker, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;dtpDay.Parent" xml:space="preserve">
     <value>fieldDay</value>
@@ -1484,7 +1484,7 @@
     <value>dtpFrom</value>
   </data>
   <data name="&gt;&gt;dtpFrom.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExDateTimePicker, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;dtpFrom.Parent" xml:space="preserve">
     <value>fieldFrom</value>
@@ -2354,7 +2354,7 @@
     <value>dtpManualTime</value>
   </data>
   <data name="&gt;&gt;dtpManualTime.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExDateTimePicker, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;dtpManualTime.Parent" xml:space="preserve">
     <value>fieldTime</value>

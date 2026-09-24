@@ -1,3 +1,4 @@
+using ExControls;
 using GVDEditor.Entities;
 using ILTISSimulator.Properties;
 using ILTISSimulator.Simulation;
@@ -70,7 +71,7 @@ internal partial class FTracks : Form
     {
         if (clbTracks.CheckedItems.Count == 0)
         {
-            MessageBox.Show(this, Resources.Tracks_NeedOne, Text, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            ExMessageBox.Show(this, Resources.Tracks_NeedOne, Text, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return;
         }
 

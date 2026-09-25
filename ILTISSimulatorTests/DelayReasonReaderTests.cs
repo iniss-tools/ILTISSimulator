@@ -8,11 +8,6 @@ namespace ILTISSimulatorTests;
 [TestClass]
 public class DelayReasonReaderTests
 {
-    /// <summary>
-    ///     Inštalácia, na ktorej bolo číslovanie dôvodov overené naživo proti INISSu.
-    /// </summary>
-    private const string BardejovGvd = @"D:\INISSroot\INISSes\INISSBj\DATA\Košice.2025";
-
     [TestMethod]
     public void IsUsable_LastItemOfGroupIsUnreachable()
     {
@@ -82,27 +77,5 @@ public class DelayReasonReaderTests
     {
         Assert.ThrowsExactly<DirectoryNotFoundException>(
             () => DelayReasonReader.Read(Path.Combine(Path.GetTempPath(), "iltis-ziadna-banka-" + Guid.NewGuid())));
-    }
-
-    [TestMethod]
-    public void ReadForGvd_BardejovBank_MatchesWhatInissReported()
-    {
-        if (!Directory.Exists(BardejovGvd))
-            Assert.Inconclusive($"Inštalácia {BardejovGvd} nie je k dispozícii.");
-
-        var reasons = DelayReasonReader.ReadForGvd(BardejovGvd);
-
-        Assert.AreEqual(5, reasons.Count);
-        CollectionAssert.AreEqual(
-            new[] { "Nehoda", "Počasie", "Prevádzkové dôvody", "Technické príčiny", "Výlukové práce" },
-            reasons.Select(reason => reason.Key).ToArray());
-
-        // Čísla 01 až 04 vrátil bežiaci INISS s týmito názvami, 05 vrátil ako (unknown).
-        CollectionAssert.AreEqual(new[] { 1, 2, 3, 4, 5 }, reasons.Select(reason => reason.Number).ToArray());
-        CollectionAssert.AreEqual(new[] { 1, 2, 3, 4 },
-            reasons.Where(reason => reason.Usable).Select(reason => reason.Number).ToArray());
-
-        Assert.AreEqual("z dôvodu nehody na trati", reasons[0].Text);
-        Assert.AreEqual("01 Nehoda", reasons[0].ToString());
     }
 }

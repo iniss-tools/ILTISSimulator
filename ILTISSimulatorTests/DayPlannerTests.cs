@@ -1,4 +1,4 @@
-using GVDEditor.Entities;
+using GVDEditor.Domain.Entities;
 using ILTISSimulator.Simulation;
 
 namespace ILTISSimulatorTests;

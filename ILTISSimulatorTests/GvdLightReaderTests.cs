@@ -1,5 +1,5 @@
 using System.Reflection;
-using GVDEditor.Entities;
+using GVDEditor.Domain.Entities;
 using ILTISSimulator.Data;
 using ILTISSimulator.Gtn;
 

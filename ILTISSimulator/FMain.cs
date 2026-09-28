@@ -1,6 +1,6 @@
 using System.ComponentModel;
 using ExControls;
-using GVDEditor.Entities;
+using GVDEditor.Domain.Entities;
 using ILTISSimulator.Data;
 using ILTISSimulator.Gtn;
 using ILTISSimulator.Net;

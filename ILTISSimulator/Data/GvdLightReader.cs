@@ -1,5 +1,5 @@
 using System.Text.RegularExpressions;
-using GVDEditor.Entities;
+using GVDEditor.Domain.Entities;
 using ILTISSimulator.Properties;
 using ILTISSimulator.Tools;
 using ToolsCore.Tools;

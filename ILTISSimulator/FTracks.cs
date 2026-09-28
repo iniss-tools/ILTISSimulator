@@ -1,5 +1,5 @@
 using ExControls;
-using GVDEditor.Entities;
+using GVDEditor.Domain.Entities;
 using ILTISSimulator.Properties;
 using ILTISSimulator.Simulation;
 using ILTISSimulator.Tools;

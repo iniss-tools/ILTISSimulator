@@ -68,11 +68,11 @@ public static class GvdLightReader
             Subcat = int.Parse(config.Get("SUBCAT", "0"), CultureInfo.InvariantCulture),
             ThisStation = new Station(id.ToString(CultureInfo.InvariantCulture), name),
             TrainCount = int.Parse(config.Get("TRAINCOUNT", "0"), CultureInfo.InvariantCulture),
-            StartValidTimeTable = ParseDateAlts(config.Get("START_VALID_TIMETABLE", "")),
-            EndValidTimeTable = ParseDateAlts(config.Get("END_VALID_TIMETABLE", "")),
-            StartValidData = ParseDateAlts(config.Get("START_VALID_DATA", "")),
-            EndValidData = ParseDateAlts(config.Get("END_VALID_DATA", "")),
-            CreateData = ParseDateAlts(config.Get("CREATE_DATA", ""))
+            StartValidTimeTable = ParseDateOnlyAlts(config.Get("START_VALID_TIMETABLE", "")),
+            EndValidTimeTable = ParseDateOnlyAlts(config.Get("END_VALID_TIMETABLE", "")),
+            StartValidData = ParseDateOnlyAlts(config.Get("START_VALID_DATA", "")),
+            EndValidData = ParseDateOnlyAlts(config.Get("END_VALID_DATA", "")),
+            CreateData = ParseDateOnlyAlts(config.Get("CREATE_DATA", ""))
         };
     }
 
@@ -192,8 +192,8 @@ public static class GvdLightReader
             if (train is null)
                 throw new FormatException(Texts.F(Resources.Error_UnknownTrainId, id, FILE_EXPORT3A));
 
-            train.ZaciatokPlatnosti = ParseDateAlts(row[1]);
-            train.KoniecPlatnosti = ParseDateAlts(row[2]);
+            train.ZaciatokPlatnosti = ParseDateOnlyAlts(row[1]);
+            train.KoniecPlatnosti = ParseDateOnlyAlts(row[2]);
 
             days[id] = StringToBitArray(row.ElementAtOrDefaultStr(3));
         });
@@ -232,8 +232,8 @@ public static class GvdLightReader
         return type;
     }
 
-    private static DateTime? ParseTimeOrNull(string text) =>
-        string.IsNullOrEmpty(text) ? (DateTime?)null : ParseTime(text);
+    private static TimeOnly? ParseTimeOrNull(string text) =>
+        string.IsNullOrEmpty(text) ? null : TimeOnly.FromDateTime(ParseTime(text));
 
     private static Station GetStation(string id) =>
         string.IsNullOrEmpty(id) || id == "-1" ? Station.None : new Station(id, id);

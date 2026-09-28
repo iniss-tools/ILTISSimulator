@@ -62,7 +62,7 @@ public sealed class GvdData
         if (!TrainDays.TryGetValue(train.ID, out var days))
             return false;
 
-        var index = (int)(day.Date - train.ZaciatokPlatnosti.Date).TotalDays;
+        var index = (int)(day.Date - train.ZaciatokPlatnosti.ToDateTime(TimeOnly.MinValue)).TotalDays;
         return index >= 0 && index < days.Length && days[index];
     }
 
@@ -84,7 +84,7 @@ public sealed class GvdData
         if (train is null)
             throw new ArgumentNullException(nameof(train));
 
-        return train.Arrival.HasValue ? day.Date + train.Arrival.Value.TimeOfDay : (DateTime?)null;
+        return train.Arrival.HasValue ? day.Date + train.Arrival.Value.ToTimeSpan() : (DateTime?)null;
     }
 
     /// <summary>
@@ -101,7 +101,7 @@ public sealed class GvdData
         if (!train.Departure.HasValue)
             return null;
 
-        var departure = day.Date + train.Departure.Value.TimeOfDay;
+        var departure = day.Date + train.Departure.Value.ToTimeSpan();
         var arrival = ArrivalOn(train, day);
 
         return arrival.HasValue && departure < arrival.Value ? departure.AddDays(1) : departure;

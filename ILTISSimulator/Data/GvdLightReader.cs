@@ -118,15 +118,21 @@ public static class GvdLightReader
     {
         var tracks = new List<Track> { Track.None };
 
-        ForEachRow(CombinePath(gvdDir, FILE_POZICE_A)!, (row, line) => tracks.Add(new Track
+        ForEachRow(CombinePath(gvdDir, FILE_POZICE_A)!, (row, line) =>
         {
-            Key = row[0],
-            Name = row[1],
-            FullName = row[2],
-            TrackName = row[4],
-            SoundName = row[6],
-            Platform = new Platform(row[5], row[3], row[7])
-        }));
+            if (row[0] == Track.None.Key)
+                return;
+
+            tracks.Add(new Track
+            {
+                Key = row[0],
+                Name = row[1],
+                FullName = row[2],
+                TrackName = row[4],
+                SoundName = row[6],
+                Platform = new Platform(row[5], row[3], row[7])
+            });
+        });
 
         return tracks;
     }

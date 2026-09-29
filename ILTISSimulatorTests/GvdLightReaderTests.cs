@@ -38,7 +38,7 @@ public class GvdLightReaderTests
     public void Read_LoadsTracksWithNoneFirst()
     {
         Assert.AreEqual(Track.None, _gvd.Tracks[0]);
-        CollectionAssert.AreEqual(new[] { "K", "N", "1A", "2", "3" }, _gvd.Tracks.Select(track => track.Key).ToArray());
+        CollectionAssert.AreEqual(new[] { "N", "1A", "2", "3" },_gvd.Tracks.Select(track => track.Key).ToArray());
 
         var track = _gvd.Tracks.Single(candidate => candidate.Key == "1A");
         Assert.AreEqual("Kolej 1A", track.FullName);

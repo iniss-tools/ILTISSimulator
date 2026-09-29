@@ -1,7 +1,7 @@
 using ILTISSimulator.Properties;
 using ILTISSimulator.Tools;
-using ToolsCore.Entities;
-using ToolsCore.Tools;
+using ToolsCore.Iniss.Entities;
+using ToolsCore.Iniss.Tools;
 
 namespace ILTISSimulator.Data;
 
@@ -51,7 +51,7 @@ public static class DelayReasonReader
         if (inissDir is null)
             return null;
 
-        var rawBank = Utils.CombinePath(inissDir, RawBankDirName);
+        var rawBank = PathUtils.CombinePath(inissDir, RawBankDirName);
 
         return Directory.Exists(rawBank) ? rawBank : null;
     }

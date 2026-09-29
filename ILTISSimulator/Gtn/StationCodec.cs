@@ -1,5 +1,5 @@
 using ILTISSimulator.Properties;
-using ToolsCore.Tools;
+using ToolsCore.Iniss.Tools;
 
 namespace ILTISSimulator.Gtn;
 

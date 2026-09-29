@@ -1,7 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using ILTISSimulator.Properties;
 using ILTISSimulator.Tools;
-using ToolsCore.Tools;
+using ToolsCore.Iniss.Tools;
 
 namespace ILTISSimulator.Gtn;
 

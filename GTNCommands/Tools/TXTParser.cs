@@ -1,5 +1,5 @@
 ﻿using GTNCommands.Entities;
-using ToolsCore.Tools;
+using ToolsCore.Iniss.Tools;
 
 namespace GTNCommands.Tools;
 
@@ -17,13 +17,13 @@ internal static class TXTParser
         while (true)
         {
             var status = staniceF.ReadRow(row);
-            if (ToolsCore.Tools.Utils.LineIsEmpty(status))
+            if (ParseUtils.LineIsEmpty(status))
             {
                 riadok++;
                 continue;
             }
 
-            if (ToolsCore.Tools.Utils.LineIsEOF(status))
+            if (ParseUtils.LineIsEOF(status))
                 break;
 
             try

@@ -5,7 +5,7 @@ using System.Text;
 using ExControls;
 using GTNCommands.Entities;
 using GTNCommands.Tools;
-using ToolsCore.Tools;
+using ToolsCore.Iniss.Tools;
 using Utils = GTNCommands.Tools.Utils;
 
 namespace GTNCommands;

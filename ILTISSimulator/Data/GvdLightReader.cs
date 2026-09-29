@@ -2,8 +2,9 @@ using System.Text.RegularExpressions;
 using GVDEditor.Domain.Entities;
 using ILTISSimulator.Properties;
 using ILTISSimulator.Tools;
-using ToolsCore.Tools;
-using static ToolsCore.Tools.Utils;
+using ToolsCore.Iniss.Tools;
+using static ToolsCore.Iniss.Tools.ParseUtils;
+using static ToolsCore.Iniss.Tools.PathUtils;
 
 namespace ILTISSimulator.Data;
 

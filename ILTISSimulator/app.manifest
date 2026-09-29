@@ -24,6 +24,5 @@
     </application>
   </compatibility>
 
-  <!-- Vedomie o DPI sa zámerne nenastavuje tu, ale v App.config cez
-       System.Windows.Forms.ApplicationConfigurationSection - inak by o ňom Windows Forms nevedeli. -->
+  <!-- Vedomie o DPI (PerMonitorV2) nastavuje Program cez Application.SetHighDpiMode - nie manifest (WFO0003). -->
 </assembly>

@@ -296,8 +296,7 @@ public sealed class SimulationEngine : IDisposable
 
     private void ThrowIfDisposed()
     {
-        if (_disposed)
-            throw new ObjectDisposedException(nameof(SimulationEngine));
+        ObjectDisposedException.ThrowIf(_disposed, this);
     }
 }
 

@@ -89,7 +89,7 @@ public sealed class DayPlanner
         return runs;
     }
 
-    private void AssignDelays(TrainRun run, DelayModel delays)
+    private static void AssignDelays(TrainRun run, DelayModel delays)
     {
         if (run.PlannedArrival.HasValue)
         {

@@ -10,7 +10,7 @@ using Utils = GTNCommands.Tools.Utils;
 
 namespace GTNCommands;
 
-internal partial class FMain : Form
+internal sealed partial class FMain : Form
 {
     private TcpClient? _connection;
     private string? _command;
@@ -36,7 +36,7 @@ internal partial class FMain : Form
     {
         try
         {
-            _stations = TXTParser.GetStations(path);
+            _stations = TxtParser.GetStations(path);
         }
         catch (Exception e)
         {
@@ -49,7 +49,7 @@ internal partial class FMain : Form
         var autocom = new AutoCompleteStringCollection();
         foreach (var station in _stations!)
         {
-            autocom.Add(station.ID.ToString());
+            autocom.Add(station.ID.ToString(CultureInfo.CurrentCulture));
             autocom.Add(station.Name);
         }
 
@@ -62,7 +62,7 @@ internal partial class FMain : Form
 
     private async void bConnect_Click(object sender, EventArgs e)
     {
-        if (Utils.CheckIP(mtbIP.Text))
+        if (Utils.CheckIp(mtbIP.Text))
             try
             {
                 lConnecting.Visible = true;
@@ -221,11 +221,11 @@ internal partial class FMain : Form
         var hour = dtpTime.Value.Hour.PadZeros(2);
         var min = dtpTime.Value.Minute.PadZeros(2);
         var sec = dtpTime.Value.Second.PadZeros(2);
-        var track = decimal.ToInt32(nudTrack.Value).ToString();
+        var track = decimal.ToInt32(nudTrack.Value).ToString(CultureInfo.CurrentCulture);
 
         var selected = (CommandType)cbCommand.SelectedItem!;
 
-        if (selected == CommandType.VVC)
+        if (selected == CommandType.Vvc)
         {
             builder.Append("0804");
             builder.Append(stationid);
@@ -240,7 +240,7 @@ internal partial class FMain : Form
             builder.Append('0');
             builder.Append(track);
         }
-        else if (selected == CommandType.OVC)
+        else if (selected == CommandType.Ovc)
         {
             builder.Append("0804");
             builder.Append(stationid);

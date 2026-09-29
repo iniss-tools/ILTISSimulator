@@ -219,7 +219,7 @@ public class GtnEncoderTests
 
         Assert.IsTrue(GtnEncoder.TryDecode(GtnEncoder.Encode(original), reference, out var decoded, out var error), error);
 
-        Assert.AreEqual(original.Type, decoded.Type);
+        Assert.AreEqual(original.Type, decoded!.Type);
         Assert.AreEqual(original.StationField, decoded.StationField);
         Assert.AreEqual(original.TrainNumber, decoded.TrainNumber);
         Assert.AreEqual(original.Time, decoded.Time);
@@ -250,7 +250,7 @@ public class GtnEncoderTests
 
         Assert.AreEqual(2, parts.Length);
         Assert.IsTrue(GtnEncoder.TryDecode(parts[1], reference, out var second, out var error), error);
-        Assert.AreEqual(GtnMessageType.Arrival, second.Type);
+        Assert.AreEqual(GtnMessageType.Arrival, second!.Type);
         Assert.AreEqual(new DateTime(2024, 8, 29, 20, 15, 0), second.Time);
     }
 
@@ -335,15 +335,15 @@ public class GtnEncoderTests
         var reference = new DateTime(2026, 8, 31, 14, 0, 0);
 
         Assert.IsTrue(GtnEncoder.TryDecode("0805136000241   083114120004", reference, out var reason, out var error), error);
-        Assert.AreEqual(GtnMessageType.DelayReason, reason.Type);
+        Assert.AreEqual(GtnMessageType.DelayReason, reason!.Type);
         Assert.AreEqual("04", reason.DelayReason);
 
         Assert.IsTrue(GtnEncoder.TryDecode("0806136000241   08311435351", reference, out var transfer, out error), error);
-        Assert.AreEqual(GtnMessageType.Transfer, transfer.Type);
+        Assert.AreEqual(GtnMessageType.Transfer, transfer!.Type);
         Assert.AreEqual(GtnTransferKind.Express, transfer.TransferKind);
 
         Assert.IsTrue(GtnEncoder.TryDecode("0806136000186   08311435380", reference, out var normal, out error), error);
-        Assert.AreEqual(GtnTransferKind.Normal, normal.TransferKind);
+        Assert.AreEqual(GtnTransferKind.Normal, normal!.TransferKind);
     }
 
     [TestMethod]

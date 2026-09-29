@@ -13,7 +13,7 @@ namespace ILTISSimulator;
 /// <summary>
 ///     Hlavné okno simulátora ILTISu.
 /// </summary>
-internal partial class FMain : Form
+internal sealed partial class FMain : Form
 {
     private readonly Dictionary<TrainRun, int> _rowByRun = new();
     private ISet<string> _excludedTracks = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
@@ -113,14 +113,14 @@ internal partial class FMain : Form
         
         var resources = new ComponentResourceManager(typeof(FMain));
 
-        if (resources.GetString("$this.Text") is { Length: > 0 } title)
+        if (resources.GetString("$this.Text", CultureInfo.CurrentUICulture) is { Length: > 0 } title)
             Text = title;
 
         ApplyControlTexts(resources, this);
 
-        ttMain.SetToolTip(bBrowseGvd, resources.GetString("bBrowseGvd.ToolTip"));
-        ttMain.SetToolTip(tbManual, resources.GetString("tbManual.ToolTip"));
-        slLanguage.ToolTipText = resources.GetString("slLanguage.ToolTipText");
+        ttMain.SetToolTip(bBrowseGvd, resources.GetString("bBrowseGvd.ToolTip", CultureInfo.CurrentUICulture));
+        ttMain.SetToolTip(tbManual, resources.GetString("tbManual.ToolTip", CultureInfo.CurrentUICulture));
+        slLanguage.ToolTipText = resources.GetString("slLanguage.ToolTipText", CultureInfo.CurrentUICulture);
         fbdGvd.Description = Resources.Main_ChooseGvdDir;
 
         FillLanguages();
@@ -158,7 +158,7 @@ internal partial class FMain : Form
         foreach (Control child in parent.Controls)
         {
             if (!string.IsNullOrEmpty(child.Name) &&
-                resources.GetString(child.Name + ".Text") is { Length: > 0 } text)
+                resources.GetString(child.Name + ".Text", CultureInfo.CurrentUICulture) is { Length: > 0 } text)
                 child.Text = text;
 
             ApplyControlTexts(resources, child);
@@ -167,7 +167,7 @@ internal partial class FMain : Form
 
     private void FillLanguages()
     {
-        Refill(slLanguage.ComboBox, Enum.GetValues(typeof(AppLanguage)).Cast<AppLanguage>(), Of);
+        Refill(slLanguage.ComboBox, Enum.GetValues<AppLanguage>().Cast<AppLanguage>(), Of);
         Select(slLanguage.ComboBox, AppSettings.Language);
     }
 
@@ -323,7 +323,7 @@ internal partial class FMain : Form
         }
     }
 
-    private static string Time(DateTime? time) => time?.ToString("HH:mm") ?? "";
+    private static string Time(DateTime? time) => time?.ToString("HH:mm", CultureInfo.CurrentCulture) ?? "";
 
     private static string Delay(DateTime? time, TimeSpan delay) =>
         time is null || delay == TimeSpan.Zero ? "" : $"+{delay.TotalMinutes:0}";
@@ -404,8 +404,8 @@ internal partial class FMain : Form
 
         foreach (var reason in _delayReasons)
             AppendLog(LogKind.Info, reason.Usable
-                ? Texts.F(Resources.Log_Reason, reason.Number.ToString("00"), reason.Key, reason.Text)
-                : Texts.F(Resources.Log_ReasonUnusable, reason.Number.ToString("00"), reason.Key));
+                ? Texts.F(Resources.Log_Reason, reason.Number.ToString("00", CultureInfo.CurrentCulture), reason.Key, reason.Text)
+                : Texts.F(Resources.Log_ReasonUnusable, reason.Number.ToString("00", CultureInfo.CurrentCulture), reason.Key));
     }
 
     private string ReasonText(int number)
@@ -415,7 +415,7 @@ internal partial class FMain : Form
 
         var reason = _delayReasons.FirstOrDefault(candidate => candidate.Number == number);
 
-        return reason is null ? number.ToString("00") : reason.ToString();
+        return reason is null ? number.ToString("00", CultureInfo.CurrentCulture) : reason.ToString();
     }
 
     private void UpdateGvdInfo()
@@ -585,7 +585,7 @@ internal partial class FMain : Form
         if (_engine?.Timeline is null)
             return;
 
-        lVirtualTime.Text = _engine.VirtualTime.ToString("dd.MM. HH:mm:ss");
+        lVirtualTime.Text = _engine.VirtualTime.ToString("dd.MM. HH:mm:ss", CultureInfo.CurrentCulture);
         UpdateStatus();
     }
 
@@ -623,8 +623,8 @@ internal partial class FMain : Form
     private void FillManualChoices()
     {
         Refill(cbManualType, GtnMessageType.GetValues(), Of);
-        Refill(cbManualRouteKind, Enum.GetValues(typeof(GtnRouteKind)).Cast<GtnRouteKind>(), Of);
-        Refill(cbManualTransferKind, Enum.GetValues(typeof(GtnTransferKind)).Cast<GtnTransferKind>(), Of);
+        Refill(cbManualRouteKind, Enum.GetValues<GtnRouteKind>().Cast<GtnRouteKind>(), Of);
+        Refill(cbManualTransferKind, Enum.GetValues<GtnTransferKind>().Cast<GtnTransferKind>(), Of);
 
         var reasons = new List<int> { 0 };
         reasons.AddRange(UsableReasons().Select(reason => reason.Number));
@@ -638,7 +638,7 @@ internal partial class FMain : Form
 
         var reason = _delayReasons.FirstOrDefault(candidate => candidate.Number == number);
 
-        return reason is null ? number.ToString("00") : $"{reason.Number:00} - {reason.Text}";
+        return reason is null ? number.ToString("00", CultureInfo.CurrentCulture) : $"{reason.Number:00} - {reason.Text}";
     }
 
     /// <summary>

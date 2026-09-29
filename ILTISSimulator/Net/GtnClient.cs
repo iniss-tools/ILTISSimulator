@@ -75,8 +75,7 @@ public sealed class GtnClient : IDisposable
     /// <param name="message">Správa.</param>
     public void Send(GtnMessage message)
     {
-        if (message is null)
-            throw new ArgumentNullException(nameof(message));
+        ArgumentNullException.ThrowIfNull(message);
 
         Write(GtnEncoder.EncodeLine(message));
     }
@@ -87,8 +86,7 @@ public sealed class GtnClient : IDisposable
     /// <param name="messages">Správy.</param>
     public void Send(IEnumerable<GtnMessage> messages)
     {
-        if (messages is null)
-            throw new ArgumentNullException(nameof(messages));
+        ArgumentNullException.ThrowIfNull(messages);
 
         var payload = GtnEncoder.EncodeBatch(messages);
         if (payload.Length != 0)
@@ -102,10 +100,9 @@ public sealed class GtnClient : IDisposable
     /// <param name="text">Text správy. Ak nekončí CR ani LF, ukončenie sa doplní.</param>
     public void SendRaw(string text)
     {
-        if (text is null)
-            throw new ArgumentNullException(nameof(text));
+        ArgumentNullException.ThrowIfNull(text);
 
-        var payload = text.EndsWith("\r") || text.EndsWith("\n") ? text : text + GtnEncoder.Terminator;
+        var payload = text.EndsWith('\r') || text.EndsWith('\n') ? text : text + GtnEncoder.Terminator;
         Write(payload);
     }
 
@@ -190,7 +187,6 @@ public sealed class GtnClient : IDisposable
 
     private void ThrowIfDisposed()
     {
-        if (_disposed)
-            throw new ObjectDisposedException(nameof(GtnClient));
+        ObjectDisposedException.ThrowIf(_disposed, this);
     }
 }

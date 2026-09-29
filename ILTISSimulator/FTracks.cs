@@ -9,7 +9,7 @@ namespace ILTISSimulator;
 /// <summary>
 ///     Výber koľají, na ktoré smie simulátor stavať vlaky.
 /// </summary>
-internal partial class FTracks : Form
+internal sealed partial class FTracks : Form
 {
     /// <summary>
     ///     Šírka vnútra okna podľa návrhu - viď <see cref="DpiTools.ScaleToDpi" />.

@@ -141,8 +141,7 @@ public static class GtnEncoder
     /// <exception cref="ArgumentException">Ak sa niektoré pole nezmestí do svojej pevnej dĺžky.</exception>
     public static string Encode(GtnMessage message)
     {
-        if (message is null)
-            throw new ArgumentNullException(nameof(message));
+        ArgumentNullException.ThrowIfNull(message);
         if (message.Type is null)
             throw new ArgumentNullException(nameof(message), Resources.Error_MessageTypeNull);
 
@@ -190,8 +189,7 @@ public static class GtnEncoder
     /// <returns>Text všetkých správ, každá ukončená <see cref="Terminator" />.</returns>
     public static string EncodeBatch(IEnumerable<GtnMessage> messages)
     {
-        if (messages is null)
-            throw new ArgumentNullException(nameof(messages));
+        ArgumentNullException.ThrowIfNull(messages);
 
         var builder = new StringBuilder();
         foreach (var message in messages)
@@ -225,8 +223,7 @@ public static class GtnEncoder
         message = null;
         error = null;
 
-        if (text is null)
-            throw new ArgumentNullException(nameof(text));
+        ArgumentNullException.ThrowIfNull(text);
 
         var type = GtnMessageType.FromCode(Field(text, PosType, LenType));
         if (type is null)
@@ -380,7 +377,7 @@ public static class GtnEncoder
 
         var parts = new int[LenTime / 2];
         for (var i = 0; i < parts.Length; i++)
-            if (!int.TryParse(field.Substring(i * 2, 2), NumberStyles.AllowLeadingWhite, CultureInfo.InvariantCulture,
+            if (!int.TryParse(field.AsSpan(i * 2, 2), NumberStyles.AllowLeadingWhite, CultureInfo.InvariantCulture,
                     out parts[i]))
             {
                 error = "unrecognized date/time format";

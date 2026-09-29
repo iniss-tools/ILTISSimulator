@@ -20,8 +20,7 @@ public sealed class TrackAllocator
     /// <param name="excludedKeys">Kľúče koľají, ktoré simulátor nemá prideľovať, hoci ohlásiť by sa dali.</param>
     public TrackAllocator(IEnumerable<Track> tracks, IEnumerable<string>? excludedKeys = null)
     {
-        if (tracks is null)
-            throw new ArgumentNullException(nameof(tracks));
+        ArgumentNullException.ThrowIfNull(tracks);
 
         var excluded = new HashSet<string>(excludedKeys ?? Array.Empty<string>(), StringComparer.OrdinalIgnoreCase);
 
@@ -96,8 +95,7 @@ public sealed class TrackAllocator
     /// <returns>Zarezervovaná koľaj, alebo <see langword="null" />, ak žiadna voľná nie je.</returns>
     public Track? ReserveAny(DateTime from, DateTime to, Random random, Track? preferPlatformOf = null, Track? except = null)
     {
-        if (random is null)
-            throw new ArgumentNullException(nameof(random));
+        ArgumentNullException.ThrowIfNull(random);
 
         var free = _tracks
             .Where(track => (except is null || track.Key != except.Key) && IsFree(track, from, to))

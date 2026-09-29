@@ -9,8 +9,6 @@
 		<StartupObject>GTNCommands.Program</StartupObject>
 		<ApplicationIcon>gtn.ico</ApplicationIcon>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
-		<!-- Zodpovedá pôvodnému app.manifest dpiAware=true (system-aware) -->
-		<ApplicationHighDpiMode>SystemAware</ApplicationHighDpiMode>
 		<LangVersion>default</LangVersion>
 	</PropertyGroup>
 	<ItemGroup>

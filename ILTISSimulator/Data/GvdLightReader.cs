@@ -23,8 +23,8 @@ public static class GvdLightReader
     private const string FILE_TRTYPES = "TRTYPES.txt";
     private const string FILE_POZICE_A = "POZICE_A.txt";
     private const string FILE_POZICE = "POZICE.txt";
-    private const string FILE_EXPORT3A = "EXPORT3A.txt";
-    private const string FILE_EXPORT3B = "EXPORT3B.txt";
+    private const string FileExport3A = "EXPORT3A.txt";
+    private const string FileExport3B = "EXPORT3B.txt";
 
     /// <summary>
     ///     Načíta grafikon z priečinka.
@@ -135,7 +135,7 @@ public static class GvdLightReader
     {
         var trains = new List<Train>();
 
-        ForEachRow(CombinePath(gvdDir, FILE_EXPORT3A)!, (row, line) =>
+        ForEachRow(CombinePath(gvdDir, FileExport3A)!, (row, line) =>
         {
             var routing = Routing.Parse(row[5]);
             if (routing is null)
@@ -151,12 +151,12 @@ public static class GvdLightReader
                 Type = GetOrAddTrainType(trainTypes, row[3]),
                 Variant = int.Parse(row[4], CultureInfo.InvariantCulture),
                 Routing = routing,
-                IsMedzistatny = flags.Contains("M"),
-                IsMiestenkovy = flags.Contains("R"),
-                IsMimoriadny = flags.Contains("X"),
-                IsDialkovy = flags.Contains("D"),
-                IsIbaLozkovy = flags.Contains("L"),
-                IsNizkopodlazny = flags.Contains("N"),
+                IsMedzistatny = flags.Contains('M'),
+                IsMiestenkovy = flags.Contains('R'),
+                IsMimoriadny = flags.Contains('X'),
+                IsDialkovy = flags.Contains('D'),
+                IsIbaLozkovy = flags.Contains('L'),
+                IsNizkopodlazny = flags.Contains('N'),
                 LineArrival = row.ElementAtOrDefaultStr(13),
                 LineDeparture = row.ElementAtOrDefaultStr(14)
             };
@@ -185,13 +185,13 @@ public static class GvdLightReader
     {
         var days = new Dictionary<int, BitArray>();
 
-        ForEachRow(CombinePath(gvdDir, FILE_EXPORT3B)!, (row, line) =>
+        ForEachRow(CombinePath(gvdDir, FileExport3B)!, (row, line) =>
         {
             var id = int.Parse(row[0], CultureInfo.InvariantCulture);
 
             var train = trains.FirstOrDefault(candidate => candidate.ID == id);
             if (train is null)
-                throw new FormatException(Texts.F(Resources.Error_UnknownTrainId, id, FILE_EXPORT3A));
+                throw new FormatException(Texts.F(Resources.Error_UnknownTrainId, id, FileExport3A));
 
             train.ZaciatokPlatnosti = ParseDateOnlyAlts(row[1]);
             train.KoniecPlatnosti = ParseDateOnlyAlts(row[2]);
@@ -214,7 +214,7 @@ public static class GvdLightReader
 
             var train = trains.FirstOrDefault(candidate => candidate.ID == id);
             if (train is null)
-                throw new FormatException(Texts.F(Resources.Error_UnknownTrainId, id, FILE_EXPORT3A));
+                throw new FormatException(Texts.F(Resources.Error_UnknownTrainId, id, FileExport3A));
 
             train.Track = Track.GetFromID(tracks, row[1]) ?? Track.None;
         });
@@ -240,7 +240,7 @@ public static class GvdLightReader
         string.IsNullOrEmpty(id) || id == "-1" ? Station.None : new Station(id, id);
 
     private static string? Unquote(string? text) =>
-        text is not null && text.Length > 1 && text.StartsWith("\"") && text.EndsWith("\"")
+        text is not null && text.Length > 1 && text.StartsWith('"') && text.EndsWith('"')
             ? text.Substring(1, text.Length - 2)
             : text;
 
@@ -261,7 +261,7 @@ public static class GvdLightReader
                 continue;
             }
 
-            if (LineIsEOF(status))
+            if (LineIsEof(status))
                 break;
 
             try

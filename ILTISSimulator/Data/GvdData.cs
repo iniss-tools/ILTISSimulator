@@ -56,8 +56,7 @@ public sealed class GvdData
     /// <returns><see langword="true" />, ak vlak v ten deň ide.</returns>
     public bool RunsOn(Train train, DateTime day)
     {
-        if (train is null)
-            throw new ArgumentNullException(nameof(train));
+        ArgumentNullException.ThrowIfNull(train);
 
         if (!TrainDays.TryGetValue(train.ID, out var days))
             return false;
@@ -81,8 +80,7 @@ public sealed class GvdData
     /// <returns>Čas príchodu, alebo <see langword="null" /> pri východzom vlaku.</returns>
     public static DateTime? ArrivalOn(Train train, DateTime day)
     {
-        if (train is null)
-            throw new ArgumentNullException(nameof(train));
+        ArgumentNullException.ThrowIfNull(train);
 
         return train.Arrival.HasValue ? day.Date + train.Arrival.Value.ToTimeSpan() : (DateTime?)null;
     }
@@ -95,8 +93,7 @@ public sealed class GvdData
     /// <returns>Čas odchodu, alebo <see langword="null" /> pri končiacom vlaku.</returns>
     public static DateTime? DepartureOn(Train train, DateTime day)
     {
-        if (train is null)
-            throw new ArgumentNullException(nameof(train));
+        ArgumentNullException.ThrowIfNull(train);
 
         if (!train.Departure.HasValue)
             return null;
@@ -115,8 +112,7 @@ public sealed class GvdData
     /// <returns><see langword="true" />, ak má vlak priradenú skutočnú koľaj.</returns>
     public static bool HasRealTrack(Train train)
     {
-        if (train is null)
-            throw new ArgumentNullException(nameof(train));
+        ArgumentNullException.ThrowIfNull(train);
 
         return train.Track is not null && train.Track != Track.None && !string.IsNullOrWhiteSpace(train.Track.TrackName);
     }

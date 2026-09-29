@@ -140,7 +140,7 @@ public class GvdLightReaderTests
 
         Assert.IsTrue(GtnEncoder.TryDecode(GtnEncoder.Encode(message), arrival, out var decoded, out var error), error);
 
-        Assert.AreEqual("613600", decoded.StationField);
+        Assert.AreEqual("613600", decoded!.StationField);
         Assert.AreEqual("2005", decoded.TrainNumber);
         Assert.AreEqual("2", decoded.Track);
         Assert.AreEqual(TimeSpan.FromMinutes(12), decoded.Time - arrival);

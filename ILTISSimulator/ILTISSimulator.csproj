@@ -9,11 +9,9 @@
 		<StartupObject>ILTISSimulator.Program</StartupObject>
 		<ApplicationIcon>gtn.ico</ApplicationIcon>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
-		<!-- Zodpovedá pôvodnému App.config System.Windows.Forms.ApplicationConfigurationSection
-		     (DpiAwareness=PerMonitorV2 + EnableWindowsFormsHighDpiAutoResizing=true). Pozri [[winforms-permonitorv2-scaling]] -
-		     rozloženie sa neškáluje samo, aplikácia už má na to vlastnú logiku v Tools\DpiTools.cs. -->
-		<ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
 		<LangVersion>default</LangVersion>
+		<!-- referencuje GVDEditor, ktory je pripnuty na win-x64 (MSB3270) -->
+		<PlatformTarget>x64</PlatformTarget>
 	</PropertyGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\..\ExControls\ExControls\ExControls.csproj" />

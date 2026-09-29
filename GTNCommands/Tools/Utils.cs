@@ -1,18 +1,19 @@
-﻿using System.Net;
+﻿using System.Globalization;
+using System.Net;
 using Microsoft.Win32;
 
 namespace GTNCommands.Tools;
 
 internal static class Utils
 {
-    public const string REG_RECENT_DIRS = "RecentDirs";
-    public const string REG_LAST_IP = "LastIP";
-    public const string REG_LAST_PORT = "LastPort";
+    public const string RegRecentDirs = "RecentDirs";
+    public const string RegLastIp = "LastIP";
+    public const string RegLastPort = "LastPort";
 
     public static string GetRecentPath()
     {
         var key = Registry.CurrentUser.OpenSubKey($"SOFTWARE\\{Application.ProductName}");
-        var val = key?.GetValue(REG_RECENT_DIRS);
+        var val = key?.GetValue(RegRecentDirs);
         return val != null ? val.ToString() ?? "" : "";
     }
 
@@ -20,7 +21,7 @@ internal static class Utils
     {
         var key = Registry.CurrentUser.CreateSubKey($"SOFTWARE\\{Application.ProductName}");
 
-        key?.SetValue(REG_RECENT_DIRS, path);
+        key?.SetValue(RegRecentDirs, path);
     }
 
     public static void GetLastConnection(out string ip, out int port)
@@ -29,11 +30,11 @@ internal static class Utils
 
         if (key != null)
         {
-            var ipO = key.GetValue(REG_LAST_IP);
-            var portO = key.GetValue(REG_LAST_PORT);
+            var ipO = key.GetValue(RegLastIp);
+            var portO = key.GetValue(RegLastPort);
 
             ip = ipO == null ? "" : ipO.ToString() ?? "";
-            port = portO == null ? 0 : int.Parse(portO.ToString() ?? "0");
+            port = portO == null ? 0 : int.Parse(portO.ToString() ?? "0", CultureInfo.InvariantCulture);
             return;
         }
 
@@ -45,9 +46,9 @@ internal static class Utils
     {
         var key = Registry.CurrentUser.CreateSubKey($"SOFTWARE\\{Application.ProductName}");
 
-        key?.SetValue(REG_LAST_IP, ip);
-        key?.SetValue(REG_LAST_PORT, port);
+        key?.SetValue(RegLastIp, ip);
+        key?.SetValue(RegLastPort, port);
     }
 
-    public static bool CheckIP(string ipstr) => IPAddress.TryParse(ipstr, out _);
+    public static bool CheckIp(string ipstr) => IPAddress.TryParse(ipstr, out _);
 }

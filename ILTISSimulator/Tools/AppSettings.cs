@@ -122,7 +122,7 @@ internal static class AppSettings
         using var key = Registry.CurrentUser.OpenSubKey(KeyPath);
         var value = key?.GetValue(ExcludedTracksName(stationId))?.ToString() ?? "";
 
-        return new HashSet<string>(value.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries),
+        return new HashSet<string>(value.Split(',', StringSplitOptions.RemoveEmptyEntries),
             StringComparer.OrdinalIgnoreCase);
     }
 

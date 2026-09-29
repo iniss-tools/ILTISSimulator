@@ -15,8 +15,7 @@ public sealed class SimulationTimeline
     /// <param name="runs">Jazdy vlakov.</param>
     public SimulationTimeline(IEnumerable<TrainRun> runs)
     {
-        if (runs is null)
-            throw new ArgumentNullException(nameof(runs));
+        ArgumentNullException.ThrowIfNull(runs);
 
         _events = runs
             .Where(run => !run.Cancelled)

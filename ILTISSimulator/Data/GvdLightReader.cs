@@ -1,9 +1,10 @@
 using System.Text.RegularExpressions;
-using GVDEditor.Entities;
+using GVDEditor.Domain.Entities;
 using ILTISSimulator.Properties;
 using ILTISSimulator.Tools;
-using ToolsCore.Tools;
-using static ToolsCore.Tools.Utils;
+using ToolsCore.Iniss.Tools;
+using static ToolsCore.Iniss.Tools.ParseUtils;
+using static ToolsCore.Iniss.Tools.PathUtils;
 
 namespace ILTISSimulator.Data;
 
@@ -22,8 +23,8 @@ public static class GvdLightReader
     private const string FILE_TRTYPES = "TRTYPES.txt";
     private const string FILE_POZICE_A = "POZICE_A.txt";
     private const string FILE_POZICE = "POZICE.txt";
-    private const string FILE_EXPORT3A = "EXPORT3A.txt";
-    private const string FILE_EXPORT3B = "EXPORT3B.txt";
+    private const string FileExport3A = "EXPORT3A.txt";
+    private const string FileExport3B = "EXPORT3B.txt";
 
     /// <summary>
     ///     Načíta grafikon z priečinka.
@@ -68,11 +69,11 @@ public static class GvdLightReader
             Subcat = int.Parse(config.Get("SUBCAT", "0"), CultureInfo.InvariantCulture),
             ThisStation = new Station(id.ToString(CultureInfo.InvariantCulture), name),
             TrainCount = int.Parse(config.Get("TRAINCOUNT", "0"), CultureInfo.InvariantCulture),
-            StartValidTimeTable = ParseDateAlts(config.Get("START_VALID_TIMETABLE", "")),
-            EndValidTimeTable = ParseDateAlts(config.Get("END_VALID_TIMETABLE", "")),
-            StartValidData = ParseDateAlts(config.Get("START_VALID_DATA", "")),
-            EndValidData = ParseDateAlts(config.Get("END_VALID_DATA", "")),
-            CreateData = ParseDateAlts(config.Get("CREATE_DATA", ""))
+            StartValidTimeTable = ParseDateOnlyAlts(config.Get("START_VALID_TIMETABLE", "")),
+            EndValidTimeTable = ParseDateOnlyAlts(config.Get("END_VALID_TIMETABLE", "")),
+            StartValidData = ParseDateOnlyAlts(config.Get("START_VALID_DATA", "")),
+            EndValidData = ParseDateOnlyAlts(config.Get("END_VALID_DATA", "")),
+            CreateData = ParseDateOnlyAlts(config.Get("CREATE_DATA", ""))
         };
     }
 
@@ -117,15 +118,21 @@ public static class GvdLightReader
     {
         var tracks = new List<Track> { Track.None };
 
-        ForEachRow(CombinePath(gvdDir, FILE_POZICE_A)!, (row, line) => tracks.Add(new Track
+        ForEachRow(CombinePath(gvdDir, FILE_POZICE_A)!, (row, line) =>
         {
-            Key = row[0],
-            Name = row[1],
-            FullName = row[2],
-            TrackName = row[4],
-            SoundName = row[6],
-            Platform = new Platform(row[5], row[3], row[7])
-        }));
+            if (row[0] == Track.None.Key)
+                return;
+
+            tracks.Add(new Track
+            {
+                Key = row[0],
+                Name = row[1],
+                FullName = row[2],
+                TrackName = row[4],
+                SoundName = row[6],
+                Platform = new Platform(row[5], row[3], row[7])
+            });
+        });
 
         return tracks;
     }
@@ -134,7 +141,7 @@ public static class GvdLightReader
     {
         var trains = new List<Train>();
 
-        ForEachRow(CombinePath(gvdDir, FILE_EXPORT3A)!, (row, line) =>
+        ForEachRow(CombinePath(gvdDir, FileExport3A)!, (row, line) =>
         {
             var routing = Routing.Parse(row[5]);
             if (routing is null)
@@ -150,12 +157,12 @@ public static class GvdLightReader
                 Type = GetOrAddTrainType(trainTypes, row[3]),
                 Variant = int.Parse(row[4], CultureInfo.InvariantCulture),
                 Routing = routing,
-                IsMedzistatny = flags.Contains("M"),
-                IsMiestenkovy = flags.Contains("R"),
-                IsMimoriadny = flags.Contains("X"),
-                IsDialkovy = flags.Contains("D"),
-                IsIbaLozkovy = flags.Contains("L"),
-                IsNizkopodlazny = flags.Contains("N"),
+                IsMedzistatny = flags.Contains('M'),
+                IsMiestenkovy = flags.Contains('R'),
+                IsMimoriadny = flags.Contains('X'),
+                IsDialkovy = flags.Contains('D'),
+                IsIbaLozkovy = flags.Contains('L'),
+                IsNizkopodlazny = flags.Contains('N'),
                 LineArrival = row.ElementAtOrDefaultStr(13),
                 LineDeparture = row.ElementAtOrDefaultStr(14)
             };
@@ -184,16 +191,16 @@ public static class GvdLightReader
     {
         var days = new Dictionary<int, BitArray>();
 
-        ForEachRow(CombinePath(gvdDir, FILE_EXPORT3B)!, (row, line) =>
+        ForEachRow(CombinePath(gvdDir, FileExport3B)!, (row, line) =>
         {
             var id = int.Parse(row[0], CultureInfo.InvariantCulture);
 
             var train = trains.FirstOrDefault(candidate => candidate.ID == id);
             if (train is null)
-                throw new FormatException(Texts.F(Resources.Error_UnknownTrainId, id, FILE_EXPORT3A));
+                throw new FormatException(Texts.F(Resources.Error_UnknownTrainId, id, FileExport3A));
 
-            train.ZaciatokPlatnosti = ParseDateAlts(row[1]);
-            train.KoniecPlatnosti = ParseDateAlts(row[2]);
+            train.ZaciatokPlatnosti = ParseDateOnlyAlts(row[1]);
+            train.KoniecPlatnosti = ParseDateOnlyAlts(row[2]);
 
             days[id] = StringToBitArray(row.ElementAtOrDefaultStr(3));
         });
@@ -213,7 +220,7 @@ public static class GvdLightReader
 
             var train = trains.FirstOrDefault(candidate => candidate.ID == id);
             if (train is null)
-                throw new FormatException(Texts.F(Resources.Error_UnknownTrainId, id, FILE_EXPORT3A));
+                throw new FormatException(Texts.F(Resources.Error_UnknownTrainId, id, FileExport3A));
 
             train.Track = Track.GetFromID(tracks, row[1]) ?? Track.None;
         });
@@ -232,14 +239,14 @@ public static class GvdLightReader
         return type;
     }
 
-    private static DateTime? ParseTimeOrNull(string text) =>
-        string.IsNullOrEmpty(text) ? (DateTime?)null : ParseTime(text);
+    private static TimeOnly? ParseTimeOrNull(string text) =>
+        string.IsNullOrEmpty(text) ? null : TimeOnly.FromDateTime(ParseTime(text));
 
     private static Station GetStation(string id) =>
         string.IsNullOrEmpty(id) || id == "-1" ? Station.None : new Station(id, id);
 
     private static string? Unquote(string? text) =>
-        text is not null && text.Length > 1 && text.StartsWith("\"") && text.EndsWith("\"")
+        text is not null && text.Length > 1 && text.StartsWith('"') && text.EndsWith('"')
             ? text.Substring(1, text.Length - 2)
             : text;
 
@@ -260,7 +267,7 @@ public static class GvdLightReader
                 continue;
             }
 
-            if (LineIsEOF(status))
+            if (LineIsEof(status))
                 break;
 
             try

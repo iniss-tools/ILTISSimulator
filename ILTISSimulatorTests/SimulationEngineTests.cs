@@ -149,7 +149,7 @@ public class SimulationEngineTests
             var wire = GtnEncoder.Encode(pair.Message);
 
             Assert.IsTrue(GtnEncoder.TryDecode(wire, pair.SimEvent.Time, out var decoded, out var error), error);
-            Assert.AreEqual(pair.SimEvent.Run.Train.Number, decoded.TrainNumber);
+            Assert.AreEqual(pair.SimEvent.Run.Train.Number, decoded!.TrainNumber);
             Assert.AreEqual(pair.SimEvent.Time, decoded.Time);
             Assert.IsTrue(StationCodec.Matches(decoded.StationField, SimulationFixture.Gvd.StationId));
 

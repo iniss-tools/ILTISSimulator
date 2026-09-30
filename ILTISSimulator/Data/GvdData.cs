@@ -1,4 +1,4 @@
-using GVDEditor.Entities;
+using GVDEditor.Domain.Entities;
 
 namespace ILTISSimulator.Data;
 
@@ -56,13 +56,12 @@ public sealed class GvdData
     /// <returns><see langword="true" />, ak vlak v ten deň ide.</returns>
     public bool RunsOn(Train train, DateTime day)
     {
-        if (train is null)
-            throw new ArgumentNullException(nameof(train));
+        ArgumentNullException.ThrowIfNull(train);
 
         if (!TrainDays.TryGetValue(train.ID, out var days))
             return false;
 
-        var index = (int)(day.Date - train.ZaciatokPlatnosti.Date).TotalDays;
+        var index = (int)(day.Date - train.ZaciatokPlatnosti.ToDateTime(TimeOnly.MinValue)).TotalDays;
         return index >= 0 && index < days.Length && days[index];
     }
 
@@ -81,10 +80,9 @@ public sealed class GvdData
     /// <returns>Čas príchodu, alebo <see langword="null" /> pri východzom vlaku.</returns>
     public static DateTime? ArrivalOn(Train train, DateTime day)
     {
-        if (train is null)
-            throw new ArgumentNullException(nameof(train));
+        ArgumentNullException.ThrowIfNull(train);
 
-        return train.Arrival.HasValue ? day.Date + train.Arrival.Value.TimeOfDay : (DateTime?)null;
+        return train.Arrival.HasValue ? day.Date + train.Arrival.Value.ToTimeSpan() : (DateTime?)null;
     }
 
     /// <summary>
@@ -95,13 +93,12 @@ public sealed class GvdData
     /// <returns>Čas odchodu, alebo <see langword="null" /> pri končiacom vlaku.</returns>
     public static DateTime? DepartureOn(Train train, DateTime day)
     {
-        if (train is null)
-            throw new ArgumentNullException(nameof(train));
+        ArgumentNullException.ThrowIfNull(train);
 
         if (!train.Departure.HasValue)
             return null;
 
-        var departure = day.Date + train.Departure.Value.TimeOfDay;
+        var departure = day.Date + train.Departure.Value.ToTimeSpan();
         var arrival = ArrivalOn(train, day);
 
         return arrival.HasValue && departure < arrival.Value ? departure.AddDays(1) : departure;
@@ -115,8 +112,7 @@ public sealed class GvdData
     /// <returns><see langword="true" />, ak má vlak priradenú skutočnú koľaj.</returns>
     public static bool HasRealTrack(Train train)
     {
-        if (train is null)
-            throw new ArgumentNullException(nameof(train));
+        ArgumentNullException.ThrowIfNull(train);
 
         return train.Track is not null && train.Track != Track.None && !string.IsNullOrWhiteSpace(train.Track.TrackName);
     }

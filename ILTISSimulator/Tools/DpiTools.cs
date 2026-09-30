@@ -25,8 +25,7 @@ internal static class DpiTools
     ///     rozmery preškálovali Windows Forms samy a druhýkrát sa škálovať nesmie.</param>
     public static void ScaleToDpi(Form form, int designClientWidth)
     {
-        if (form is null)
-            throw new ArgumentNullException(nameof(form));
+        ArgumentNullException.ThrowIfNull(form);
 
         var factor = form.DeviceDpi / DesignDpi;
 
@@ -45,8 +44,7 @@ internal static class DpiTools
     /// <returns>Prepočítaný rozmer.</returns>
     public static int Scaled(Control control, int designValue)
     {
-        if (control is null)
-            throw new ArgumentNullException(nameof(control));
+        ArgumentNullException.ThrowIfNull(control);
 
         return (int)Math.Round(designValue * control.DeviceDpi / DesignDpi);
     }
@@ -57,8 +55,7 @@ internal static class DpiTools
     /// <param name="form">Okno.</param>
     public static void FitToScreen(Form form)
     {
-        if (form is null)
-            throw new ArgumentNullException(nameof(form));
+        ArgumentNullException.ThrowIfNull(form);
 
         // Cez obdĺžnik, nie cez okno - inak by sa okno muselo vytvoriť skôr, než ho zobrazíme.
         var work = Screen.FromRectangle(form.Bounds).WorkingArea;

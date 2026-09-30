@@ -1,11 +1,11 @@
-﻿using ToolsCore.Tools;
+﻿using ToolsCore.Iniss.Tools;
 
 namespace GTNCommands.Entities;
 
-internal class CommandType : Enumeration<CommandType>
+internal sealed class CommandType : Enumeration<CommandType>
 {
-    public static readonly CommandType VVC = new("VVC", "vjazdová vlaková cesta");
-    public static readonly CommandType OVC = new("OVC", "odchodová vlaková cesta");
+    public static readonly CommandType Vvc = new("VVC", "vjazdová vlaková cesta");
+    public static readonly CommandType Ovc = new("OVC", "odchodová vlaková cesta");
     public static readonly CommandType Od =  new("Od ", "odchod vlaku");
     public static readonly CommandType Vj =  new("Vj ", "vjazd vlaku");
 

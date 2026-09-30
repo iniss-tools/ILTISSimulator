@@ -1,4 +1,4 @@
-using GVDEditor.Entities;
+using GVDEditor.Domain.Entities;
 using ILTISSimulator.Simulation;
 
 namespace ILTISSimulatorTests;
@@ -59,8 +59,6 @@ public class DayPlannerTests
     [TestMethod]
     public void Plan_DifferentSeedsEventuallyDiffer()
     {
-        // ExControls injektuje vlastnú System.Linq.Enumerable (rovnaký plne kvalifikovaný názov ako BCL) -
-        // Enumerable.Range je preto nejednoznačný (CS0433) a nedá sa vyriešiť kvalifikáciou, iba obídením.
         var seedSignatures = new HashSet<string>();
         for (var seed = 1; seed <= 20; seed++)
             seedSignatures.Add(string.Join(";", Plan(Options(seed)).Select(run => $"{run.ArrivalDelay}|{run.Track.Key}")));

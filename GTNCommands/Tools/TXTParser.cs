@@ -1,9 +1,10 @@
-﻿using GTNCommands.Entities;
-using ToolsCore.Tools;
+﻿using System.Globalization;
+using GTNCommands.Entities;
+using ToolsCore.Iniss.Tools;
 
 namespace GTNCommands.Tools;
 
-internal static class TXTParser
+internal static class TxtParser
 {
     private const string FORMAT_EX = "Chyba v súbore {0} na riadku {1}. ";
 
@@ -17,30 +18,30 @@ internal static class TXTParser
         while (true)
         {
             var status = staniceF.ReadRow(row);
-            if (ToolsCore.Tools.Utils.LineIsEmpty(status))
+            if (ParseUtils.LineIsEmpty(status))
             {
                 riadok++;
                 continue;
             }
 
-            if (ToolsCore.Tools.Utils.LineIsEOF(status))
+            if (ParseUtils.LineIsEof(status))
                 break;
 
             try
             {
-                var id = int.Parse(row[0]);
-                var idstr = id.ToString();
+                var id = int.Parse(row[0], CultureInfo.InvariantCulture);
+                var idstr = id.ToString(CultureInfo.InvariantCulture);
                 idstr = idstr.Substring(1);
-                id = int.Parse(idstr);
+                id = int.Parse(idstr, CultureInfo.InvariantCulture);
 
-                var name = row[1].ANSItoUTF();
+                var name = row[1].AnsiToUTF();
                 var stanica = new Station(id, name);
 
                 stanice.Add(stanica);
             }
             catch (Exception e)
             {
-                throw new FormatException(string.Format(FORMAT_EX, Path.GetFileName(path), riadok) + e.Message, e);
+                throw new FormatException(string.Format(CultureInfo.InvariantCulture, FORMAT_EX, Path.GetFileName(path), riadok) + e.Message, e);
             }
 
             riadok++;

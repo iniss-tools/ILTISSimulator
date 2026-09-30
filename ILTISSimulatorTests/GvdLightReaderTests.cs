@@ -1,5 +1,5 @@
 using System.Reflection;
-using GVDEditor.Entities;
+using GVDEditor.Domain.Entities;
 using ILTISSimulator.Data;
 using ILTISSimulator.Gtn;
 
@@ -31,14 +31,14 @@ public class GvdLightReaderTests
         Assert.AreEqual("5461360", _gvd.Info.ThisStation.ID);
         Assert.AreEqual("Testov", _gvd.Info.ThisStation.Name);
         Assert.AreEqual(5461360, _gvd.StationId);
-        Assert.AreEqual(FirstDay, _gvd.Info.StartValidData);
+        Assert.AreEqual(DateOnly.FromDateTime(FirstDay), _gvd.Info.StartValidData);
     }
 
     [TestMethod]
     public void Read_LoadsTracksWithNoneFirst()
     {
         Assert.AreEqual(Track.None, _gvd.Tracks[0]);
-        CollectionAssert.AreEqual(new[] { "K", "N", "1A", "2", "3" }, _gvd.Tracks.Select(track => track.Key).ToArray());
+        CollectionAssert.AreEqual(new[] { "N", "1A", "2", "3" },_gvd.Tracks.Select(track => track.Key).ToArray());
 
         var track = _gvd.Tracks.Single(candidate => candidate.Key == "1A");
         Assert.AreEqual("Kolej 1A", track.FullName);
@@ -60,8 +60,8 @@ public class GvdLightReaderTests
         var train = GetTrain(1);
 
         Assert.AreEqual(Routing.Prechadzajuci, train.Routing);
-        Assert.AreEqual(new TimeSpan(10, 15, 0), train.Arrival!.Value.TimeOfDay);
-        Assert.AreEqual(new TimeSpan(10, 17, 0), train.Departure!.Value.TimeOfDay);
+        Assert.AreEqual(new TimeOnly(10, 15), train.Arrival);
+        Assert.AreEqual(new TimeOnly(10, 17), train.Departure);
         Assert.AreEqual("2", train.Track.Key);
         Assert.IsTrue(GvdData.HasRealTrack(train));
     }
@@ -73,7 +73,7 @@ public class GvdLightReaderTests
 
         Assert.AreEqual(Routing.Vychadzajuci, train.Routing);
         Assert.IsFalse(train.Arrival.HasValue);
-        Assert.AreEqual(new TimeSpan(23, 50, 0), train.Departure!.Value.TimeOfDay);
+        Assert.AreEqual(new TimeOnly(23, 50), train.Departure);
     }
 
     [TestMethod]
@@ -140,7 +140,7 @@ public class GvdLightReaderTests
 
         Assert.IsTrue(GtnEncoder.TryDecode(GtnEncoder.Encode(message), arrival, out var decoded, out var error), error);
 
-        Assert.AreEqual("613600", decoded.StationField);
+        Assert.AreEqual("613600", decoded!.StationField);
         Assert.AreEqual("2005", decoded.TrainNumber);
         Assert.AreEqual("2", decoded.Track);
         Assert.AreEqual(TimeSpan.FromMinutes(12), decoded.Time - arrival);

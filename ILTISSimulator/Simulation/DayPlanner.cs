@@ -1,4 +1,4 @@
-using GVDEditor.Entities;
+using GVDEditor.Domain.Entities;
 using ILTISSimulator.Data;
 using ILTISSimulator.Properties;
 
@@ -89,7 +89,7 @@ public sealed class DayPlanner
         return runs;
     }
 
-    private void AssignDelays(TrainRun run, DelayModel delays)
+    private static void AssignDelays(TrainRun run, DelayModel delays)
     {
         if (run.PlannedArrival.HasValue)
         {

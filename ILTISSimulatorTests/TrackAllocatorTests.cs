@@ -1,4 +1,4 @@
-using GVDEditor.Entities;
+using GVDEditor.Domain.Entities;
 using ILTISSimulator.Simulation;
 
 namespace ILTISSimulatorTests;
@@ -18,7 +18,7 @@ public class TrackAllocatorTests
     [TestMethod]
     public void Ctor_SkipsUndefinedTracks()
     {
-        // Track.None ani koľaj "N" bez názvu nie sú miesta, kam sa dá postaviť vlak.
+        // Track.None (riadok "N" v súbore) nie je miesto, kam sa dá postaviť vlak.
         CollectionAssert.AreEquivalent(new[] { "1A", "2", "3" },
             NewAllocator().Tracks.Select(track => track.Key).ToArray());
     }
@@ -64,8 +64,8 @@ public class TrackAllocatorTests
     public void CanUse_RejectsWhatCannotBeAnnounced()
     {
         Assert.IsFalse(TrackAllocator.CanUse(null));
-        Assert.IsFalse(TrackAllocator.CanUse(GVDEditor.Entities.Track.None));
-        Assert.IsFalse(TrackAllocator.CanUse(SimulationFixture.Gvd.Tracks.Single(track => track.Key == "N")));
+        Assert.IsFalse(TrackAllocator.CanUse(GVDEditor.Domain.Entities.Track.None));
+        Assert.IsFalse(TrackAllocator.CanUse(new Track("5", "5", "Kolej bez nazvu", Track("1A").Platform, "", "")));
         Assert.IsTrue(TrackAllocator.CanUse(Track("1A")));
     }
 

@@ -36,8 +36,7 @@ public sealed class GtnMessageBuilder
     /// <returns>Správa pripravená na odoslanie.</returns>
     public GtnMessage Build(SimEvent simEvent)
     {
-        if (simEvent is null)
-            throw new ArgumentNullException(nameof(simEvent));
+        ArgumentNullException.ThrowIfNull(simEvent);
 
         var message = new GtnMessage
         {

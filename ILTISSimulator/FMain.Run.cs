@@ -105,8 +105,8 @@ internal sealed partial class FMain
             return;
         }
 
-        var host = Config.Connection.Host.Trim();
-        var port = Config.Connection.Port;
+        var host = (_commandLine.Host ?? Config.Connection.Host).Trim();
+        var port = _commandLine.Port ?? Config.Connection.Port;
 
         try
         {
@@ -151,7 +151,7 @@ internal sealed partial class FMain
 
         return new SimulationOptions
         {
-            Seed = settings.Seed,
+            Seed = _commandLine.Seed ?? settings.Seed,
             TimeFactor = SelectedSpeed,
             OnTimeProbability = settings.OnTimePercent / 100.0,
             MeanDelayMinutes = settings.MeanDelayMinutes,
@@ -533,6 +533,29 @@ internal sealed partial class FMain
         var failed = _engine.Edit(runs, (run, context) => PlanEditing.AddDelay(run, extra, context));
         ReportFailures(failed);
         AppendLog(LogKind.Info, Texts.F(Resources.Log_DelayAdded, dialog.Minutes, runs.Count - failed.Count));
+    }
+
+    /// <summary>
+    ///     Výluka koľaje v intervale - vlaky, ktoré koľaj v tom čase držia, sa presunú na voľnú koľaj.
+    /// </summary>
+    private void CloseTrack()
+    {
+        if (_engine?.Runs is not { } runs || _gvd is null)
+            return;
+
+        using var dialog = new FTrackClosure(_gvd.Tracks, runs, _engine.VirtualTime, SelectedRuns().FirstOrDefault()?.Track);
+        if (dialog.ShowDialog(this) != DialogResult.OK || dialog.Track is not { } closed)
+            return;
+
+        var affected = dialog.Affected;
+        var candidates = TrackClosure.Candidates(_gvd.Tracks, closed, _excludedTracks);
+        var failed = _engine.Edit(affected, (run, context) => TrackClosure.MoveOff(run, runs, candidates, context));
+
+        foreach (var run in affected.Where(run => !failed.ContainsKey(run)))
+            AppendLog(LogKind.Info, Texts.F(Resources.Log_ClosureMoved, run.Train.Number, closed.Key, run.Track?.Key));
+        ReportFailures(failed);
+        AppendLog(LogKind.Info, Texts.F(Resources.Log_Closure, closed.Key, dialog.From, dialog.To, affected.Count - failed.Count,
+            affected.Count));
     }
 
     /// <summary>

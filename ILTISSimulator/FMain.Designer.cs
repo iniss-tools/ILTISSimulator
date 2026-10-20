@@ -52,6 +52,8 @@
             this.tsmimStop = new ToolsCore.Icons.IconToolStripMenuItem();
             this.tsmimJump = new ToolsCore.Icons.IconToolStripMenuItem();
             this.tsmimNow = new ToolsCore.Icons.IconToolStripMenuItem();
+            this.tssSim3 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmimTrackClosure = new ToolsCore.Icons.IconToolStripMenuItem();
             this.tssSim2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmimSendToIniss = new ToolsCore.Icons.IconToolStripMenuItem();
             this.tsmiTrain = new System.Windows.Forms.ToolStripMenuItem();
@@ -118,6 +120,7 @@
             this.tsmiSendNowExitRoute = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiSendNowDeparture = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbAddDelay = new ToolsCore.Icons.IconToolStripButton();
+            this.tsbTrackClosure = new ToolsCore.Icons.IconToolStripButton();
             this.tsbSuppress = new ToolsCore.Icons.IconToolStripButton();
             this.tsbRevert = new ToolsCore.Icons.IconToolStripButton();
             this.tssPlan2 = new System.Windows.Forms.ToolStripSeparator();
@@ -330,6 +333,8 @@
             this.tsmimStop,
             this.tsmimJump,
             this.tsmimNow,
+            this.tssSim3,
+            this.tsmimTrackClosure,
             this.tssSim2,
             this.tsmimSendToIniss});
             resources.ApplyResources(this.tsmiSimulation, "tsmiSimulation");
@@ -381,6 +386,17 @@
             resources.ApplyResources(this.tsmimNow, "tsmimNow");
             this.tsmimNow.IconName = "clock";
             this.tsmimNow.Name = "tsmimNow";
+            // 
+            // tssSim3
+            // 
+            resources.ApplyResources(this.tssSim3, "tssSim3");
+            this.tssSim3.Name = "tssSim3";
+            // 
+            // tsmimTrackClosure
+            // 
+            resources.ApplyResources(this.tsmimTrackClosure, "tsmimTrackClosure");
+            this.tsmimTrackClosure.IconName = "road-cone";
+            this.tsmimTrackClosure.Name = "tsmimTrackClosure";
             // 
             // tssSim2
             // 
@@ -754,6 +770,7 @@
             this.tssPlan1,
             this.tssbSendNow,
             this.tsbAddDelay,
+            this.tsbTrackClosure,
             this.tsbSuppress,
             this.tsbRevert,
             this.tssPlan2,
@@ -840,6 +857,13 @@
             this.tsbAddDelay.IconBadge = "add";
             this.tsbAddDelay.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.tsbAddDelay.Name = "tsbAddDelay";
+            // 
+            // tsbTrackClosure
+            // 
+            resources.ApplyResources(this.tsbTrackClosure, "tsbTrackClosure");
+            this.tsbTrackClosure.IconName = "road-cone";
+            this.tsbTrackClosure.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbTrackClosure.Name = "tsbTrackClosure";
             // 
             // tsbSuppress
             // 
@@ -1512,6 +1536,8 @@
         private ToolsCore.Icons.IconToolStripMenuItem tsmimStop;
         private ToolsCore.Icons.IconToolStripMenuItem tsmimJump;
         private ToolsCore.Icons.IconToolStripMenuItem tsmimNow;
+        private System.Windows.Forms.ToolStripSeparator tssSim3;
+        private ToolsCore.Icons.IconToolStripMenuItem tsmimTrackClosure;
         private System.Windows.Forms.ToolStripSeparator tssSim2;
         private ToolsCore.Icons.IconToolStripMenuItem tsmimSendToIniss;
         private System.Windows.Forms.ToolStripMenuItem tsmiTrain;
@@ -1578,6 +1604,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiSendNowExitRoute;
         private System.Windows.Forms.ToolStripMenuItem tsmiSendNowDeparture;
         private ToolsCore.Icons.IconToolStripButton tsbAddDelay;
+        private ToolsCore.Icons.IconToolStripButton tsbTrackClosure;
         private ToolsCore.Icons.IconToolStripButton tsbSuppress;
         private ToolsCore.Icons.IconToolStripButton tsbRevert;
         private System.Windows.Forms.ToolStripSeparator tssPlan2;

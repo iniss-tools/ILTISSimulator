@@ -1952,5 +1952,195 @@ namespace ILTISSimulator.Properties {
                 return ResourceManager.GetString("Main_ManualNowTip", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Výluka koľaje.
+        /// </summary>
+        internal static string Cmd_TrackClosure {
+            get {
+                return ResourceManager.GetString("Cmd_TrackClosure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Koľaj v tomto čase nedrží žiadny vlak..
+        /// </summary>
+        internal static string Closure_AffectedNone {
+            get {
+                return ResourceManager.GetString("Closure_AffectedNone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Koľaj v tomto čase drží vlak {1}..
+        /// </summary>
+        internal static string Closure_AffectedOne {
+            get {
+                return ResourceManager.GetString("Closure_AffectedOne", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Koľaj v tomto čase držia {0} vlaky: {1}..
+        /// </summary>
+        internal static string Closure_AffectedFew {
+            get {
+                return ResourceManager.GetString("Closure_AffectedFew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Koľaj v tomto čase drží {0} vlakov: {1}..
+        /// </summary>
+        internal static string Closure_AffectedMany {
+            get {
+                return ResourceManager.GetString("Closure_AffectedMany", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vlak už na vylúčenej koľaji stojí..
+        /// </summary>
+        internal static string EditError_StandingOnTrack {
+            get {
+                return ResourceManager.GetString("EditError_StandingOnTrack", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Žiadna iná koľaj nie je v tom čase voľná..
+        /// </summary>
+        internal static string EditError_NoFreeTrack {
+            get {
+                return ResourceManager.GetString("EditError_NoFreeTrack", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vlak {0} presunutý pre výluku z koľaje {1} na koľaj {2}..
+        /// </summary>
+        internal static string Log_ClosureMoved {
+            get {
+                return ResourceManager.GetString("Log_ClosureMoved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Výluka koľaje {0} od {1:HH:mm} do {2:HH:mm}: presunuté vlaky {3} z {4}..
+        /// </summary>
+        internal static string Log_Closure {
+            get {
+                return ResourceManager.GetString("Log_Closure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Neznámy argument {0}..
+        /// </summary>
+        internal static string Args_Unknown {
+            get {
+                return ResourceManager.GetString("Args_Unknown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prepínač {0} nemá hodnotu..
+        /// </summary>
+        internal static string Args_NoValue {
+            get {
+                return ResourceManager.GetString("Args_NoValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prepínaču {0} chýba hodnota..
+        /// </summary>
+        internal static string Args_MissingValue {
+            get {
+                return ResourceManager.GetString("Args_MissingValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Neplatná hodnota {1} prepínača {0}..
+        /// </summary>
+        internal static string Args_BadValue {
+            get {
+                return ResourceManager.GetString("Args_BadValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nadbytočná cesta {0}, zadať sa dá jeden grafikon a jeden scenár..
+        /// </summary>
+        internal static string Args_TwoPaths {
+            get {
+                return ResourceManager.GetString("Args_TwoPaths", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prepínač {0} sa nedá kombinovať so scenárom, dňom a časom..
+        /// </summary>
+        internal static string Args_NowConflict {
+            get {
+                return ResourceManager.GetString("Args_NowConflict", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Niektoré argumenty príkazového riadka sa vynechali:
+        ///
+        ///{0}
+        ///
+        ///Pomoc: ILTISSimulator --help.
+        /// </summary>
+        internal static string Args_Errors {
+            get {
+                return ResourceManager.GetString("Args_Errors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ILTISSimulator [grafikon] [scenár.iltis] [prepínače]
+        ///
+        ///grafikon: priečinok grafikonu stanice
+        ///scenár.iltis: scenár dňa, ktorý sa otvorí po grafikone
+        ///--day dátum: deň simulácie (2026-10-20 alebo 20.10.2026)
+        ///--from čas: čas, od ktorého sa simuluje (14:30)
+        ///--speed n: zrýchlenie času (1 až 600)
+        ///--seed n: seed náhody namiesto seedu z nastavení
+        ///--host adresa: adresa INISSu namiesto adresy z nastavení
+        ///--port n: port INISSu namiesto portu z nastavení
+        ///--connect: pripojiť sa k INISSu
+        ///--plan: naplánovať deň
+        ///--start: naplánovať deň a spustiť simuláciu
+        ///--now: dnešný deň od aktuálneho času v reálnom čase
+        ///
+        ///Hodnoty z príkazového riadka platia do zatvorenia programu, nastavenia sa nemenia..
+        /// </summary>
+        internal static string Args_Help {
+            get {
+                return ResourceManager.GetString("Args_Help", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scenár {0} sa neotvoril, nie je načítaný grafikon..
+        /// </summary>
+        internal static string Args_NoGvd {
+            get {
+                return ResourceManager.GetString("Args_NoGvd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Priečinok grafikonu {0} neexistuje..
+        /// </summary>
+        internal static string Args_GvdMissing {
+            get {
+                return ResourceManager.GetString("Args_GvdMissing", resourceCulture);
+            }
+        }
     }
 }

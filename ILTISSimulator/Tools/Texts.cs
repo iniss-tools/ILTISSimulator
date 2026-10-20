@@ -1,4 +1,5 @@
-﻿using ILTISSimulator.Properties;
+﻿using GVDEditor.Domain.Entities;
+using ILTISSimulator.Properties;
 using ILTISSimulator.Simulation;
 
 namespace ILTISSimulator.Tools;
@@ -41,6 +42,22 @@ internal static class Texts
     };
 
     /// <summary>
+    ///     Koľaj v zozname na výber - kľúč, názov a nástupište.
+    /// </summary>
+    /// <param name="track">Koľaj.</param>
+    /// <returns>Text položky.</returns>
+    public static string Of(Track track)
+    {
+        ArgumentNullException.ThrowIfNull(track);
+
+        var platform = track.Platform is null || string.IsNullOrWhiteSpace(track.Platform.Key) || track.Platform.Key == "N"
+            ? Resources.Tracks_NoPlatform
+            : F(Resources.Tracks_WithPlatform, track.Platform.Key);
+
+        return F(Resources.Tracks_ItemFormat, track.Key, track.FullName, platform);
+    }
+
+    /// <summary>
     ///     Vysvetlenie, prečo sa zmena jazdy nedala urobiť.
     /// </summary>
     /// <param name="error">Dôvod.</param>
@@ -57,6 +74,8 @@ internal static class Texts
         PlanEditError.TrackUnusable => Resources.EditError_TrackUnusable,
         PlanEditError.ReasonOutOfRange => Resources.EditError_ReasonOutOfRange,
         PlanEditError.NotPending => Resources.EditError_NotPending,
+        PlanEditError.StandingOnTrack => Resources.EditError_StandingOnTrack,
+        PlanEditError.NoFreeTrack => Resources.EditError_NoFreeTrack,
         _ => ""
     };
 

@@ -691,4 +691,80 @@ Platnosť {2:dd.MM.yyyy} - {3:dd.MM.yyyy}</value>
   <data name="Main_ManualNowTip" xml:space="preserve">
     <value>Virtuálny čas simulácie, bez plánu skutočný. Prestup ide vždy so skutočným časom - INISS ho porovnáva so svojimi hodinami.</value>
   </data>
+  <data name="Cmd_TrackClosure" xml:space="preserve">
+    <value>Výluka koľaje</value>
+  </data>
+  <data name="Closure_AffectedNone" xml:space="preserve">
+    <value>Koľaj v tomto čase nedrží žiadny vlak.</value>
+  </data>
+  <data name="Closure_AffectedOne" xml:space="preserve">
+    <value>Koľaj v tomto čase drží vlak {1}.</value>
+  </data>
+  <data name="Closure_AffectedFew" xml:space="preserve">
+    <value>Koľaj v tomto čase držia {0} vlaky: {1}.</value>
+  </data>
+  <data name="Closure_AffectedMany" xml:space="preserve">
+    <value>Koľaj v tomto čase drží {0} vlakov: {1}.</value>
+  </data>
+  <data name="EditError_StandingOnTrack" xml:space="preserve">
+    <value>Vlak už na vylúčenej koľaji stojí.</value>
+  </data>
+  <data name="EditError_NoFreeTrack" xml:space="preserve">
+    <value>Žiadna iná koľaj nie je v tom čase voľná.</value>
+  </data>
+  <data name="Log_ClosureMoved" xml:space="preserve">
+    <value>Vlak {0} presunutý pre výluku z koľaje {1} na koľaj {2}.</value>
+  </data>
+  <data name="Log_Closure" xml:space="preserve">
+    <value>Výluka koľaje {0} od {1:HH:mm} do {2:HH:mm}: presunuté vlaky {3} z {4}.</value>
+  </data>
+  <data name="Args_Unknown" xml:space="preserve">
+    <value>Neznámy argument {0}.</value>
+  </data>
+  <data name="Args_NoValue" xml:space="preserve">
+    <value>Prepínač {0} nemá hodnotu.</value>
+  </data>
+  <data name="Args_MissingValue" xml:space="preserve">
+    <value>Prepínaču {0} chýba hodnota.</value>
+  </data>
+  <data name="Args_BadValue" xml:space="preserve">
+    <value>Neplatná hodnota {1} prepínača {0}.</value>
+  </data>
+  <data name="Args_TwoPaths" xml:space="preserve">
+    <value>Nadbytočná cesta {0}, zadať sa dá jeden grafikon a jeden scenár.</value>
+  </data>
+  <data name="Args_NowConflict" xml:space="preserve">
+    <value>Prepínač {0} sa nedá kombinovať so scenárom, dňom a časom.</value>
+  </data>
+  <data name="Args_Errors" xml:space="preserve">
+    <value>Niektoré argumenty príkazového riadka sa vynechali:
+
+{0}
+
+Pomoc: ILTISSimulator --help</value>
+  </data>
+  <data name="Args_Help" xml:space="preserve">
+    <value>ILTISSimulator [grafikon] [scenár.iltis] [prepínače]
+
+grafikon: priečinok grafikonu stanice
+scenár.iltis: scenár dňa, ktorý sa otvorí po grafikone
+--day dátum: deň simulácie (2026-10-20 alebo 20.10.2026)
+--from čas: čas, od ktorého sa simuluje (14:30)
+--speed n: zrýchlenie času (1 až 600)
+--seed n: seed náhody namiesto seedu z nastavení
+--host adresa: adresa INISSu namiesto adresy z nastavení
+--port n: port INISSu namiesto portu z nastavení
+--connect: pripojiť sa k INISSu
+--plan: naplánovať deň
+--start: naplánovať deň a spustiť simuláciu
+--now: dnešný deň od aktuálneho času v reálnom čase
+
+Hodnoty z príkazového riadka platia do zatvorenia programu, nastavenia sa nemenia.</value>
+  </data>
+  <data name="Args_NoGvd" xml:space="preserve">
+    <value>Scenár {0} sa neotvoril, nie je načítaný grafikon.</value>
+  </data>
+  <data name="Args_GvdMissing" xml:space="preserve">
+    <value>Priečinok grafikonu {0} neexistuje.</value>
+  </data>
 </root>

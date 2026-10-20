@@ -40,10 +40,22 @@ internal sealed partial class FMain
         if (ofdScenario.ShowDialog(this) != DialogResult.OK || !ConfirmDiscardChanges())
             return;
 
+        OpenScenario(ofdScenario.FileName);
+    }
+
+    /// <summary>
+    ///     Otvorí scenár dňa zo súboru - naplánuje jeho deň a použije ručné zmeny.
+    /// </summary>
+    /// <param name="path">Súbor scenára.</param>
+    private void OpenScenario(string path)
+    {
+        if (_gvd is null)
+            return;
+
         DayScenario scenario;
         try
         {
-            scenario = ScenarioFile.Read(ofdScenario.FileName);
+            scenario = ScenarioFile.Read(path);
         }
         catch (Exception e) when (e is IOException or UnauthorizedAccessException or JsonException or NotSupportedException)
         {
@@ -70,6 +82,6 @@ internal sealed partial class FMain
             AppendLog(LogKind.Warning, Texts.F(Resources.Log_EditFailed, change.Train,
                 error == PlanEditError.NotPending ? Resources.Log_ScenarioTrainMissing : Texts.Of(error)));
 
-        AppendLog(LogKind.Info, Texts.F(Resources.Log_ScenarioOpened, ofdScenario.FileName, scenario.Changes.Count - failed.Count));
+        AppendLog(LogKind.Info, Texts.F(Resources.Log_ScenarioOpened, path, scenario.Changes.Count - failed.Count));
     }
 }

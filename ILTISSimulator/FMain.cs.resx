@@ -162,6 +162,9 @@
   <data name="tsmimNow.Text" xml:space="preserve">
     <value>&amp;Teď (skutečný čas)</value>
   </data>
+  <data name="tsmimTrackClosure.Text" xml:space="preserve">
+    <value>&amp;Výluka koleje…</value>
+  </data>
   <data name="tsmimSendToIniss.Text" xml:space="preserve">
     <value>Posílat do &amp;INISSu</value>
   </data>
@@ -368,6 +371,12 @@
   </data>
   <data name="tsbAddDelay.ToolTipText" xml:space="preserve">
     <value>Přidat zpoždění vybraným vlakům</value>
+  </data>
+  <data name="tsbTrackClosure.Text" xml:space="preserve">
+    <value>Výluka koleje v intervalu</value>
+  </data>
+  <data name="tsbTrackClosure.ToolTipText" xml:space="preserve">
+    <value>Výluka koleje v intervalu</value>
   </data>
   <data name="tsbSuppress.Text" xml:space="preserve">
     <value>Neposílat zprávy o vybraných vlacích</value>

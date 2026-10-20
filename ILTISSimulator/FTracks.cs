@@ -90,14 +90,6 @@ internal sealed partial class FTracks : ExForm
 
         public Track Track { get; }
 
-        public override string ToString()
-        {
-            var platform = Track.Platform is null || string.IsNullOrWhiteSpace(Track.Platform.Key) ||
-                           Track.Platform.Key == "N"
-                ? Resources.Tracks_NoPlatform
-                : Texts.F(Resources.Tracks_WithPlatform, Track.Platform.Key);
-
-            return Texts.F(Resources.Tracks_ItemFormat, Track.Key, Track.FullName, platform);
-        }
+        public override string ToString() => Texts.Of(Track);
     }
 }

@@ -4417,6 +4417,27 @@
   <data name="&gt;&gt;tsmimNow.Type" xml:space="preserve">
     <value>ToolsCore.Icons.IconToolStripMenuItem, ToolsCore, Culture=neutral, PublicKeyToken=null</value>
   </data>
+  <data name="tssSim3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 27</value>
+  </data>
+  <data name="&gt;&gt;tssSim3.Name" xml:space="preserve">
+    <value>tssSim3</value>
+  </data>
+  <data name="&gt;&gt;tssSim3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="tsmimTrackClosure.Size" type="System.Drawing.Size, System.Drawing">
+    <value>260, 26</value>
+  </data>
+  <data name="tsmimTrackClosure.Text" xml:space="preserve">
+    <value>&amp;Výluka koľaje…</value>
+  </data>
+  <data name="&gt;&gt;tsmimTrackClosure.Name" xml:space="preserve">
+    <value>tsmimTrackClosure</value>
+  </data>
+  <data name="&gt;&gt;tsmimTrackClosure.Type" xml:space="preserve">
+    <value>ToolsCore.Icons.IconToolStripMenuItem, ToolsCore, Culture=neutral, PublicKeyToken=null</value>
+  </data>
   <data name="tssSim2.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 27</value>
   </data>
@@ -5258,6 +5279,21 @@
     <value>tsbAddDelay</value>
   </data>
   <data name="&gt;&gt;tsbAddDelay.Type" xml:space="preserve">
+    <value>ToolsCore.Icons.IconToolStripButton, ToolsCore, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="tsbTrackClosure.Size" type="System.Drawing.Size, System.Drawing">
+    <value>28, 28</value>
+  </data>
+  <data name="tsbTrackClosure.Text" xml:space="preserve">
+    <value>Výluka koľaje v intervale</value>
+  </data>
+  <data name="tsbTrackClosure.ToolTipText" xml:space="preserve">
+    <value>Výluka koľaje v intervale</value>
+  </data>
+  <data name="&gt;&gt;tsbTrackClosure.Name" xml:space="preserve">
+    <value>tsbTrackClosure</value>
+  </data>
+  <data name="&gt;&gt;tsbTrackClosure.Type" xml:space="preserve">
     <value>ToolsCore.Icons.IconToolStripButton, ToolsCore, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="tsbSuppress.Size" type="System.Drawing.Size, System.Drawing">

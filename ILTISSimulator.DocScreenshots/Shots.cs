@@ -43,6 +43,7 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
             Dialog($"nastavenia-programu/{slug}", () => MainWindow.CreateSettings(panel));
         Dialog("plan/pridat-meskanie", () => MainWindow.CreateDialog("ILTISSimulator.FAddDelay", 2, Day.AddHours(9).AddMinutes(15)));
         Dialog("plan/kolaje", main.CreateTracks);
+        Dialog("plan/vyluka-kolaje", () => main.CreateTrackClosure(Day));
 
         return _count;
     }
@@ -189,6 +190,22 @@ internal sealed class MainWindow : IDisposable
     private static readonly string[] ExcludedTrack = ["4"];
 
     public Form CreateTracks() => CreateDialog("ILTISSimulator.FTracks", Gvd.Tracks, ExcludedTrack);
+
+    /// <summary>
+    ///     Výluka koľaje, ktorú od 9:15 do 11:15 drží najviac vlakov.
+    /// </summary>
+    public Form CreateTrackClosure(DateTime day)
+    {
+        if (Engine?.Runs is null)
+            PrepareRunningDay(day);
+
+        var runs = Engine!.Runs!;
+        var from = day.AddHours(9).AddMinutes(15);
+        var closed = Gvd.Tracks.Where(TrackAllocator.CanUse)
+            .MaxBy(track => TrackClosure.Affected(runs, track, from, from.AddHours(2)).Count)!;
+
+        return CreateDialog("ILTISSimulator.FTrackClosure", Gvd.Tracks, runs, from, closed);
+    }
 
     public static Form CreateDialog(string type, params object[] args) =>
         (Form)Activator.CreateInstance(typeof(SimulationEngine).Assembly.GetType(type, true)!, args)!;

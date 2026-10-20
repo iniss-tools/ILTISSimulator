@@ -53,5 +53,15 @@ public enum PlanEditError
     /// <summary>
     ///     Udalosť nečaká - už prebehla, alebo jazda takú nemá.
     /// </summary>
-    NotPending
+    NotPending,
+
+    /// <summary>
+    ///     Vlak už na koľaji stojí - pri výluke koľaje sa nepresúva.
+    /// </summary>
+    StandingOnTrack,
+
+    /// <summary>
+    ///     Počas obsadenia koľaje nie je voľná žiadna iná koľaj.
+    /// </summary>
+    NoFreeTrack
 }

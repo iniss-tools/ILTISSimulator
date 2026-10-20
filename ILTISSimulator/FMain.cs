@@ -25,15 +25,26 @@ internal sealed partial class FMain : ExForm
     private const string DocsLink = "http://iniss.6f.sk/docs/iltissimulator/";
 
     private readonly AppSession<IltisConfig, IltisStyle> _session;
+    private readonly CommandLine _commandLine;
     private readonly CommandSet _commands = new();
+
+    /// <summary>
+    ///     Vytvorí hlavné okno bez argumentov príkazového riadka.
+    /// </summary>
+    /// <param name="session">Nastavenia programu.</param>
+    public FMain(AppSession<IltisConfig, IltisStyle> session) : this(session, CommandLine.Empty)
+    {
+    }
 
     /// <summary>
     ///     Vytvorí hlavné okno.
     /// </summary>
     /// <param name="session">Nastavenia programu.</param>
-    public FMain(AppSession<IltisConfig, IltisStyle> session)
+    /// <param name="commandLine">Argumenty príkazového riadka - vykonajú sa po zobrazení okna.</param>
+    public FMain(AppSession<IltisConfig, IltisStyle> session, CommandLine commandLine)
     {
         _session = session ?? throw new ArgumentNullException(nameof(session));
+        _commandLine = commandLine ?? throw new ArgumentNullException(nameof(commandLine));
 
         InitializeComponent();
         InitToolbar();
@@ -100,6 +111,7 @@ internal sealed partial class FMain : ExForm
         _commands.Add(IltisCommands.ExpressTransfer, () => SendTransfer(GtnTransferKind.Express), selection)
             .Bind(tsmimExpressTransfer, cmimExpressTransfer);
         _commands.Add(IltisCommands.AddDelay, AddDelay, plan).Bind(tsmimAddDelay, cmimAddDelay, tsbAddDelay);
+        _commands.Add(IltisCommands.TrackClosure, CloseTrack, plan).Bind(tsmimTrackClosure, tsbTrackClosure);
         _commands.Add(IltisCommands.Suppress, ToggleSuppressed, selection).Bind(tsmimSuppress, cmimSuppress, tsbSuppress);
         _commands.Add(IltisCommands.Revert, RevertSelected, selection).Bind(tsmimRevert, cmimRevert, tsbRevert);
 
@@ -337,7 +349,7 @@ internal sealed partial class FMain : ExForm
         SetRecentGvd();
 
         // grafikon zadany ako argument ma prednost pred naposledy otvorenym
-        var path = Utils.GetProjectPathFromArgs();
+        var path = _commandLine.Gvd;
         if (path is null && Config.Startup == StartupType.LastProject)
             path = AppRegistry.GetLastProject();
 
@@ -346,6 +358,58 @@ internal sealed partial class FMain : ExForm
 
         if (splitMain.Height > splitMain.Panel1MinSize + splitMain.Panel2MinSize + splitMain.SplitterWidth)
             splitMain.SplitterDistance = splitMain.Height * 65 / 100;
+
+        // az ked je okno zobrazene - hlasenia o chybnych argumentoch a zaznam behu maju byt vidno
+        BeginInvoke(new Action(RunCommandLine));
+    }
+
+    /// <summary>
+    ///     Vykoná argumenty príkazového riadka - deň, čas a rýchlosť, pripojenie, scenár a spustenie.
+    /// </summary>
+    private void RunCommandLine()
+    {
+        var args = _commandLine;
+        var errors = args.Errors.ToList();
+        if (args.Gvd is { } gvd && !Directory.Exists(gvd))
+            errors.Add(Texts.F(Resources.Args_GvdMissing, gvd));
+        if (errors.Count > 0)
+            Utils.ShowWarning(Texts.F(Resources.Args_Errors, string.Join(Environment.NewLine, errors)));
+
+        if (args.Speed is { } speed)
+        {
+            // len pre tento beh - rychlost z nastaveni sa nemeni
+            _speedUpdating = true;
+            SelectSpeed(speed);
+            _speedUpdating = false;
+            _engine?.SetTimeFactor(SelectedSpeed);
+        }
+
+        if (args.Day is { } day)
+            dtpDay.Value = day.ToDateTime(TimeOnly.MinValue);
+        if (args.From is { } from)
+            dtpFrom.Value = dtpDay.Value.Date + from.ToTimeSpan();
+
+        if (args.Connect && _client is not { IsConnected: true })
+            ToggleConnection();
+
+        if (args.Scenario is { } scenario)
+        {
+            if (_gvd is null)
+                AppendLog(LogKind.Warning, Texts.F(Resources.Args_NoGvd, scenario));
+            else
+                OpenScenario(scenario);
+        }
+        else if (args.Now)
+        {
+            RunNow();
+        }
+        else if (args.Plan || args.Start)
+        {
+            PlanDay();
+        }
+
+        if (args.Start && _engine is { IsRunning: false })
+            StartRun();
     }
 
     private void FMain_FormClosing(object? sender, FormClosingEventArgs e)

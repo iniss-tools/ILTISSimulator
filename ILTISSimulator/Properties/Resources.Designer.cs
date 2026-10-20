@@ -2142,5 +2142,86 @@ namespace ILTISSimulator.Properties {
                 return ResourceManager.GetString("Args_GvdMissing", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Koľajový diagram.
+        /// </summary>
+        internal static string Cmd_TrackDiagram {
+            get {
+                return ResourceManager.GetString("Cmd_TrackDiagram", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Po naplánovaní dňa tu budú koľaje a vlaky na nich..
+        /// </summary>
+        internal static string Diagram_Empty {
+            get {
+                return ResourceManager.GetString("Diagram_Empty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vynechaná z plánovania..
+        /// </summary>
+        internal static string Diagram_TipExcluded {
+            get {
+                return ResourceManager.GetString("Diagram_TipExcluded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Príchod {0}, odchod {1}.
+        /// </summary>
+        internal static string Diagram_TipTimes {
+            get {
+                return ResourceManager.GetString("Diagram_TipTimes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Koľaj {0} ({1}), drží ju {2:HH:mm} až {3:HH:mm}.
+        /// </summary>
+        internal static string Diagram_TipTrack {
+            get {
+                return ResourceManager.GetString("Diagram_TipTrack", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Súbeh s iným vlakom na koľaji..
+        /// </summary>
+        internal static string Diagram_TipConflict {
+            get {
+                return ResourceManager.GetString("Diagram_TipConflict", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Správy o vlaku sa neposielajú..
+        /// </summary>
+        internal static string Diagram_TipSuppressed {
+            get {
+                return ResourceManager.GetString("Diagram_TipSuppressed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ťahaním zmeníte koľaj alebo meškanie..
+        /// </summary>
+        internal static string Diagram_TipDrag {
+            get {
+                return ResourceManager.GetString("Diagram_TipDrag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Koľaj {0}, {1:+0;-0;0} min.
+        /// </summary>
+        internal static string Diagram_DragInfo {
+            get {
+                return ResourceManager.GetString("Diagram_DragInfo", resourceCulture);
+            }
+        }
     }
 }

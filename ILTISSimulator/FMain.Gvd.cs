@@ -164,6 +164,7 @@ internal sealed partial class FMain
         _excludedTracks = dialog.ExcludedKeys;
         Config.ExcludedTracks.Set(_gvd.StationId, _excludedTracks);
         SaveConfig();
+        trackDiagram.SetExcluded(_excludedTracks.ToList());
 
         UpdateStatus();
         AppendLog(LogKind.Info, _excludedTracks.Count == 0

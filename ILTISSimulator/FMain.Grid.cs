@@ -134,6 +134,7 @@ internal sealed partial class FMain
         {
             dgvPlan.ResumeLayout();
             _refreshing = false;
+            ResetDiagram();
         }
 
         ApplyFilter();
@@ -253,12 +254,15 @@ internal sealed partial class FMain
         }
 
         ApplyFilter(row);
+        trackDiagram.Invalidate();
     }
 
     private void RefreshAllRows()
     {
         foreach (var run in _rowByRun.Keys)
             RefreshRow(run);
+
+        RefreshDiagram();
     }
 
     private void UpdateConflicts() =>
@@ -391,6 +395,7 @@ internal sealed partial class FMain
     {
         UpdateCommandStates();
         FillManualFromSelection();
+        SyncDiagramSelection();
     }
 
     private void dgvPlan_CellMouseDown(object? sender, DataGridViewCellMouseEventArgs e)

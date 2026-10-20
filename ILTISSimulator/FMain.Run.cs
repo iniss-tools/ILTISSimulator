@@ -305,6 +305,7 @@ internal sealed partial class FMain
         if (_engine?.Timeline is null)
         {
             tslClock.Text = @"--:--:--";
+            UpdateDiagramClock();
             return;
         }
 
@@ -315,6 +316,7 @@ internal sealed partial class FMain
         tslClock.ForeColor = _engine.IsRunning
             ? Palette.Of(PaletteColor.Green, toolStripMain.BackColor)
             : toolStripMain.ForeColor;
+        UpdateDiagramClock();
     }
 
     private void UpdateStatus()

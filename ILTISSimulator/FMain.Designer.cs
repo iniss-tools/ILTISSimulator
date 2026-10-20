@@ -73,6 +73,7 @@
             this.tsmimRevert = new ToolsCore.Icons.IconToolStripMenuItem();
             this.tsmiView = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmimManualMessage = new ToolsCore.Icons.IconToolStripMenuItem();
+            this.tsmimTrackDiagram = new ToolsCore.Icons.IconToolStripMenuItem();
             this.tsmimHideFinished = new ToolsCore.Icons.IconToolStripMenuItem();
             this.tsmimFollow = new ToolsCore.Icons.IconToolStripMenuItem();
             this.tsmimFind = new ToolsCore.Icons.IconToolStripMenuItem();
@@ -106,6 +107,7 @@
             this.tssMain4 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbSendToIniss = new ToolsCore.Icons.IconToolStripButton();
             this.tsbManualMessage = new ToolsCore.Icons.IconToolStripButton();
+            this.tsbTrackDiagram = new ToolsCore.Icons.IconToolStripButton();
             this.tsbAppSettings = new ToolsCore.Icons.IconToolStripButton();
             this.toolStripPlan = new System.Windows.Forms.ToolStrip();
             this.tslSearch = new ToolsCore.Icons.IconToolStripLabel();
@@ -127,6 +129,8 @@
             this.tsbOpenScenario = new ToolsCore.Icons.IconToolStripButton();
             this.tsbSaveScenario = new ToolsCore.Icons.IconToolStripButton();
             this.splitMain = new System.Windows.Forms.SplitContainer();
+            this.splitPlan = new System.Windows.Forms.SplitContainer();
+            this.trackDiagram = new ILTISSimulator.Diagram.TrackDiagram();
             this.dgvPlan = new System.Windows.Forms.DataGridView();
             this.cState = new System.Windows.Forms.DataGridViewImageColumn();
             this.cTrain = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -211,6 +215,10 @@
             this.splitMain.Panel1.SuspendLayout();
             this.splitMain.Panel2.SuspendLayout();
             this.splitMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitPlan)).BeginInit();
+            this.splitPlan.Panel1.SuspendLayout();
+            this.splitPlan.Panel2.SuspendLayout();
+            this.splitPlan.SuspendLayout();
             this.pManual.SuspendLayout();
             this.tlpManualSend.SuspendLayout();
             this.flowManual.SuspendLayout();
@@ -510,6 +518,7 @@
             // 
             this.tsmiView.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmimManualMessage,
+            this.tsmimTrackDiagram,
             this.tsmimHideFinished,
             this.tsmimFollow,
             this.tsmimFind,
@@ -523,6 +532,12 @@
             resources.ApplyResources(this.tsmimManualMessage, "tsmimManualMessage");
             this.tsmimManualMessage.IconName = "code";
             this.tsmimManualMessage.Name = "tsmimManualMessage";
+            // 
+            // tsmimTrackDiagram
+            // 
+            resources.ApplyResources(this.tsmimTrackDiagram, "tsmimTrackDiagram");
+            this.tsmimTrackDiagram.IconName = "gantt-chart";
+            this.tsmimTrackDiagram.Name = "tsmimTrackDiagram";
             // 
             // tsmimHideFinished
             // 
@@ -611,6 +626,7 @@
             this.tssMain4,
             this.tsbSendToIniss,
             this.tsbManualMessage,
+            this.tsbTrackDiagram,
             this.tsbAppSettings});
             resources.ApplyResources(this.toolStripMain, "toolStripMain");
             this.toolStripMain.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
@@ -752,6 +768,13 @@
             this.tsbManualMessage.IconName = "code";
             this.tsbManualMessage.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.tsbManualMessage.Name = "tsbManualMessage";
+            // 
+            // tsbTrackDiagram
+            // 
+            resources.ApplyResources(this.tsbTrackDiagram, "tsbTrackDiagram");
+            this.tsbTrackDiagram.IconName = "gantt-chart";
+            this.tsbTrackDiagram.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbTrackDiagram.Name = "tsbTrackDiagram";
             // 
             // tsbAppSettings
             // 
@@ -904,7 +927,7 @@
             // 
             // splitMain.Panel1
             // 
-            this.splitMain.Panel1.Controls.Add(this.dgvPlan);
+            this.splitMain.Panel1.Controls.Add(this.splitPlan);
             resources.ApplyResources(this.splitMain.Panel1, "splitMain.Panel1");
             // 
             // splitMain.Panel2
@@ -914,6 +937,32 @@
             resources.ApplyResources(this.splitMain, "splitMain");
             this.splitMain.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
             this.splitMain.Name = "splitMain";
+            // 
+            // splitPlan
+            // 
+            // 
+            // splitPlan.Panel1
+            // 
+            this.splitPlan.Panel1.Controls.Add(this.dgvPlan);
+            resources.ApplyResources(this.splitPlan.Panel1, "splitPlan.Panel1");
+            // 
+            // splitPlan.Panel2
+            // 
+            this.splitPlan.Panel2.Controls.Add(this.trackDiagram);
+            resources.ApplyResources(this.splitPlan.Panel2, "splitPlan.Panel2");
+            resources.ApplyResources(this.splitPlan, "splitPlan");
+            this.splitPlan.Panel2Collapsed = true;
+            this.splitPlan.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitPlan_SplitterMoved);
+            this.splitPlan.Name = "splitPlan";
+            // 
+            // trackDiagram
+            // 
+            resources.ApplyResources(this.trackDiagram, "trackDiagram");
+            this.trackDiagram.ContextMenuStrip = this.cmsPlan;
+            this.trackDiagram.SelectionChanged += new System.EventHandler(this.trackDiagram_SelectionChanged);
+            this.trackDiagram.RunMoved += new System.EventHandler<ILTISSimulator.Diagram.DiagramMoveEventArgs>(this.trackDiagram_RunMoved);
+            this.trackDiagram.HourWidthChanged += new System.EventHandler(this.trackDiagram_HourWidthChanged);
+            this.trackDiagram.Name = "trackDiagram";
             // 
             // dgvPlan
             // 
@@ -1494,6 +1543,10 @@
             this.tlpManualSend.PerformLayout();
             this.pManual.ResumeLayout(false);
             this.pManual.PerformLayout();
+            this.splitPlan.Panel1.ResumeLayout(false);
+            this.splitPlan.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitPlan)).EndInit();
+            this.splitPlan.ResumeLayout(false);
             this.splitMain.Panel1.ResumeLayout(false);
             this.splitMain.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitMain)).EndInit();
@@ -1557,6 +1610,7 @@
         private ToolsCore.Icons.IconToolStripMenuItem tsmimRevert;
         private System.Windows.Forms.ToolStripMenuItem tsmiView;
         private ToolsCore.Icons.IconToolStripMenuItem tsmimManualMessage;
+        private ToolsCore.Icons.IconToolStripMenuItem tsmimTrackDiagram;
         private ToolsCore.Icons.IconToolStripMenuItem tsmimHideFinished;
         private ToolsCore.Icons.IconToolStripMenuItem tsmimFollow;
         private ToolsCore.Icons.IconToolStripMenuItem tsmimFind;
@@ -1590,6 +1644,7 @@
         private System.Windows.Forms.ToolStripSeparator tssMain4;
         private ToolsCore.Icons.IconToolStripButton tsbSendToIniss;
         private ToolsCore.Icons.IconToolStripButton tsbManualMessage;
+        private ToolsCore.Icons.IconToolStripButton tsbTrackDiagram;
         private ToolsCore.Icons.IconToolStripButton tsbAppSettings;
         private System.Windows.Forms.ToolStrip toolStripPlan;
         private ToolsCore.Icons.IconToolStripLabel tslSearch;
@@ -1611,6 +1666,8 @@
         private ToolsCore.Icons.IconToolStripButton tsbOpenScenario;
         private ToolsCore.Icons.IconToolStripButton tsbSaveScenario;
         private System.Windows.Forms.SplitContainer splitMain;
+        private System.Windows.Forms.SplitContainer splitPlan;
+        private ILTISSimulator.Diagram.TrackDiagram trackDiagram;
         private System.Windows.Forms.DataGridView dgvPlan;
         private System.Windows.Forms.DataGridViewImageColumn cState;
         private System.Windows.Forms.DataGridViewTextBoxColumn cTrain;

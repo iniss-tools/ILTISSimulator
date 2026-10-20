@@ -1,3 +1,4 @@
+using ILTISSimulator.Diagram;
 using System.ComponentModel;
 using System.Xml.Serialization;
 using ToolsCore.XML;
@@ -194,4 +195,22 @@ public record ViewSettings
     /// </summary>
     [XmlElement("TopMost"), DefaultValue(false)]
     public bool TopMost { get; set; }
+
+    /// <summary>
+    ///     Zobraziť koľajový diagram pod tabuľkou plánu.
+    /// </summary>
+    [XmlElement("TrackDiagram"), DefaultValue(false)]
+    public bool TrackDiagram { get; set; }
+
+    /// <summary>
+    ///     Mierka koľajového diagramu - šírka hodiny v bodoch pri 96 DPI.
+    /// </summary>
+    [XmlElement("DiagramHourWidth"), DefaultValue(DiagramScale.DefaultHourWidth)]
+    public int DiagramHourWidth { get; set; } = DiagramScale.DefaultHourWidth;
+
+    /// <summary>
+    ///     Podiel výšky tabuľky plánu v percentách, keď je pod ňou koľajový diagram.
+    /// </summary>
+    [XmlElement("DiagramSplit"), DefaultValue(55)]
+    public int DiagramSplit { get; set; } = 55;
 }

@@ -764,4 +764,31 @@ Hodnoty z příkazového řádku platí do zavření programu, nastavení se nem
   <data name="Args_GvdMissing" xml:space="preserve">
     <value>Složka grafikonu {0} neexistuje.</value>
   </data>
+  <data name="Cmd_TrackDiagram" xml:space="preserve">
+    <value>Kolejový diagram</value>
+  </data>
+  <data name="Diagram_Empty" xml:space="preserve">
+    <value>Po naplánování dne zde budou koleje a vlaky na nich.</value>
+  </data>
+  <data name="Diagram_TipExcluded" xml:space="preserve">
+    <value>Vynechaná z plánování.</value>
+  </data>
+  <data name="Diagram_TipTimes" xml:space="preserve">
+    <value>Příjezd {0}, odjezd {1}</value>
+  </data>
+  <data name="Diagram_TipTrack" xml:space="preserve">
+    <value>Kolej {0} ({1}), drží ji {2:HH:mm} až {3:HH:mm}</value>
+  </data>
+  <data name="Diagram_TipConflict" xml:space="preserve">
+    <value>Souběh s jiným vlakem na koleji.</value>
+  </data>
+  <data name="Diagram_TipSuppressed" xml:space="preserve">
+    <value>Zprávy o vlaku se neposílají.</value>
+  </data>
+  <data name="Diagram_TipDrag" xml:space="preserve">
+    <value>Tažením změníte kolej nebo zpoždění.</value>
+  </data>
+  <data name="Diagram_DragInfo" xml:space="preserve">
+    <value>Kolej {0}, {1:+0;-0;0} min</value>
+  </data>
 </root>

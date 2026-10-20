@@ -21,9 +21,14 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
 
         Shot("hlavne-okno/hlavne-okno", main.Form, () => main.PrepareRunningDay(Day));
         if (options.Check)
+        {
             main.CheckEditing(log);
+            main.CheckDiagram(log, Day);
+        }
         Shot("hlavne-okno/rucna-sprava", main.Form, () => main.ShowManualMessage(true));
         main.ShowManualMessage(false);
+        Shot("plan/kolajovy-diagram", main.Form, () => main.ShowTrackDiagram(true, Day));
+        main.ShowTrackDiagram(false, Day);
 
         // v nastaveniach ma byt predvolene spojenie, nie port falosneho INISSu
         Program.Session.Config.Connection.Port = 4000;
@@ -180,6 +185,34 @@ internal sealed class MainWindow : IDisposable
         Pump.Events();
     }
 
+    /// <summary>
+    ///     Koľajový diagram pod tabuľkou s mierkou, pri ktorej je vidno väčšinu dňa, a vybraným vlakom.
+    /// </summary>
+    public void ShowTrackDiagram(bool visible, DateTime day)
+    {
+        Invoke("SetTrackDiagramVisible", visible);
+        if (!visible)
+            return;
+
+        if (Engine?.Runs is null)
+            PrepareRunningDay(day);
+
+        var diagram = (Control)Field("trackDiagram")!;
+        diagram.GetType().GetProperty("HourWidth")!.SetValue(diagram, diagram.LogicalToDeviceUnits(150));
+        Invoke("ResetDiagram");
+        ShowManualMessage(false);
+
+        var grid = (DataGridView)Field("dgvPlan")!;
+        var row = grid.Rows.Cast<DataGridViewRow>().FirstOrDefault(r => r.Tag is TrainRun { IsFinished: false, Suppressed: false });
+        if (row is not null)
+        {
+            grid.CurrentCell = row.Cells[1];
+            row.Selected = true;
+        }
+
+        Pump.Events();
+    }
+
     public static Form CreateSettings(string page)
     {
         var form = CreateDialog("ILTISSimulator.FAppSettings", Program.Session);
@@ -245,6 +278,77 @@ internal sealed class MainWindow : IDisposable
         Invoke("RevertSelected");
         Pump.Events();
         Check("vrátiť", !run.IsChanged);
+    }
+
+    /// <summary>
+    ///     Kontrola koľajového diagramu bez klikania - vlak potiahnutý myšou na inú koľaj a o 10 minút neskôr.
+    /// </summary>
+    public void CheckDiagram(List<string> log, DateTime day)
+    {
+        void Check(string what, bool ok) => log.Add($"kontrola {what}: {(ok ? "OK" : "CHYBA")}");
+
+        ShowTrackDiagram(true, day);
+        var diagram = (Control)Field("trackDiagram")!;
+        var type = diagram.GetType();
+        var hitBar = type.GetMethod("HitBar", Program.Any)!;
+        var laneAt = type.GetMethod("LaneAt", Program.Any)!;
+        var lanes = (System.Collections.IList)type.GetField("_lanes", Program.Any)!.GetValue(diagram)!;
+
+        TrainRun? run = null;
+        var at = Point.Empty;
+        for (var y = 0; y < diagram.Height && run is null; y += 2)
+            for (var x = 0; x < diagram.Width; x += 2)
+            {
+                if (hitBar.Invoke(diagram, [new Point(x, y)]) is not { } result)
+                    continue;
+
+                var bar = result.GetType().GetField("Item1")!.GetValue(result)!;
+                var candidate = (TrainRun)bar.GetType().GetProperty("Run")!.GetValue(bar)!;
+                if (candidate is { IsFinished: false, Suppressed: false, PlannedArrival: not null } && !candidate.IsDone(SimEventKind.Arrival))
+                {
+                    run = candidate;
+                    at = new Point(x, y);
+                    break;
+                }
+            }
+
+        if (run is null)
+        {
+            Check("diagram - vlak na ťahanie", false);
+            return;
+        }
+
+        var lane = (int)laneAt.Invoke(diagram, [at.Y])!;
+        var targetY = Enumerable.Range(0, diagram.Height).FirstOrDefault(y =>
+            (int)laneAt.Invoke(diagram, [y])! is var other && other >= 0 && other != lane &&
+            TrackAllocator.CanUse((GVDEditor.Domain.Entities.Track)lanes[other]!.GetType().GetProperty("Track")!.GetValue(lanes[other])!), -1);
+        var target = (GVDEditor.Domain.Entities.Track)lanes[(int)laneAt.Invoke(diagram, [targetY])!]!.GetType().GetProperty("Track")!.GetValue(
+            lanes[(int)laneAt.Invoke(diagram, [targetY])!])!;
+        var hourWidth = (int)type.GetProperty("HourWidth")!.GetValue(diagram)!;
+        var delay = run.ArrivalDelay;
+
+        void Mouse(string name, int x, int y) =>
+            type.GetMethod(name, Program.Any, [typeof(MouseEventArgs)])!.Invoke(diagram, [new MouseEventArgs(MouseButtons.Left, 1, x, y, 0)]);
+
+        Mouse("OnMouseDown", at.X, at.Y);
+        Pump.Events();
+        var selected = (System.Collections.Generic.List<TrainRun>)Invoke("SelectedRuns")!;
+        Check("diagram - výber v tabuľke", selected.Count == 1 && selected[0] == run);
+
+        var dx = (int)Math.Round(10 * hourWidth / 60.0);
+        Mouse("OnMouseMove", at.X + dx / 2, targetY);
+        Mouse("OnMouseMove", at.X + dx, targetY);
+        Mouse("OnMouseUp", at.X + dx, targetY);
+        Pump.Events();
+
+        Check("diagram - koľaj ťahaním", run.Track.Key == target.Key && run.TrackSource == TrackSource.Manual);
+        Check("diagram - meškanie ťahaním", run.ArrivalDelay == delay + TimeSpan.FromMinutes(10));
+
+        Invoke("RevertSelected");
+        Pump.Events();
+        Check("diagram - vrátiť", !run.IsChanged);
+
+        ShowTrackDiagram(false, day);
     }
 
     private DateTime? Planned(string number, GtnMessageType type)

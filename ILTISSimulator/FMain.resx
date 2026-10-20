@@ -4657,6 +4657,18 @@
   <data name="&gt;&gt;tsmimManualMessage.Type" xml:space="preserve">
     <value>ToolsCore.Icons.IconToolStripMenuItem, ToolsCore, Culture=neutral, PublicKeyToken=null</value>
   </data>
+  <data name="tsmimTrackDiagram.Size" type="System.Drawing.Size, System.Drawing">
+    <value>260, 26</value>
+  </data>
+  <data name="tsmimTrackDiagram.Text" xml:space="preserve">
+    <value>Koľajový &amp;diagram</value>
+  </data>
+  <data name="&gt;&gt;tsmimTrackDiagram.Name" xml:space="preserve">
+    <value>tsmimTrackDiagram</value>
+  </data>
+  <data name="&gt;&gt;tsmimTrackDiagram.Type" xml:space="preserve">
+    <value>ToolsCore.Icons.IconToolStripMenuItem, ToolsCore, Culture=neutral, PublicKeyToken=null</value>
+  </data>
   <data name="tsmimHideFinished.Size" type="System.Drawing.Size, System.Drawing">
     <value>260, 26</value>
   </data>
@@ -5089,6 +5101,21 @@
   <data name="&gt;&gt;tsbManualMessage.Type" xml:space="preserve">
     <value>ToolsCore.Icons.IconToolStripButton, ToolsCore, Culture=neutral, PublicKeyToken=null</value>
   </data>
+  <data name="tsbTrackDiagram.Size" type="System.Drawing.Size, System.Drawing">
+    <value>28, 28</value>
+  </data>
+  <data name="tsbTrackDiagram.Text" xml:space="preserve">
+    <value>Koľajový diagram</value>
+  </data>
+  <data name="tsbTrackDiagram.ToolTipText" xml:space="preserve">
+    <value>Koľajový diagram</value>
+  </data>
+  <data name="&gt;&gt;tsbTrackDiagram.Name" xml:space="preserve">
+    <value>tsbTrackDiagram</value>
+  </data>
+  <data name="&gt;&gt;tsbTrackDiagram.Type" xml:space="preserve">
+    <value>ToolsCore.Icons.IconToolStripButton, ToolsCore, Culture=neutral, PublicKeyToken=null</value>
+  </data>
   <data name="tsbAppSettings.Size" type="System.Drawing.Size, System.Drawing">
     <value>28, 28</value>
   </data>
@@ -5419,6 +5446,84 @@
   <data name="&gt;&gt;splitMain.Panel2.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="splitPlan.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="splitPlan.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="splitPlan.Orientation" type="System.Windows.Forms.Orientation, System.Windows.Forms">
+    <value>Horizontal</value>
+  </data>
+  <data name="splitPlan.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1180, 330</value>
+  </data>
+  <data name="splitPlan.SplitterDistance" type="System.Int32, mscorlib">
+    <value>180</value>
+  </data>
+  <data name="splitPlan.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;splitPlan.Name" xml:space="preserve">
+    <value>splitPlan</value>
+  </data>
+  <data name="&gt;&gt;splitPlan.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitPlan.Parent" xml:space="preserve">
+    <value>splitMain.Panel1</value>
+  </data>
+  <data name="&gt;&gt;splitPlan.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;splitPlan.Panel1.Name" xml:space="preserve">
+    <value>splitPlan.Panel1</value>
+  </data>
+  <data name="&gt;&gt;splitPlan.Panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitPlan.Panel1.Parent" xml:space="preserve">
+    <value>splitPlan</value>
+  </data>
+  <data name="&gt;&gt;splitPlan.Panel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;splitPlan.Panel2.Name" xml:space="preserve">
+    <value>splitPlan.Panel2</value>
+  </data>
+  <data name="&gt;&gt;splitPlan.Panel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitPlan.Panel2.Parent" xml:space="preserve">
+    <value>splitPlan</value>
+  </data>
+  <data name="&gt;&gt;splitPlan.Panel2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="trackDiagram.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="trackDiagram.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="trackDiagram.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1180, 146</value>
+  </data>
+  <data name="trackDiagram.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;trackDiagram.Name" xml:space="preserve">
+    <value>trackDiagram</value>
+  </data>
+  <data name="&gt;&gt;trackDiagram.Type" xml:space="preserve">
+    <value>ILTISSimulator.Diagram.TrackDiagram, ILTISSimulator, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;trackDiagram.Parent" xml:space="preserve">
+    <value>splitPlan.Panel2</value>
+  </data>
+  <data name="&gt;&gt;trackDiagram.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="dgvPlan.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -5426,7 +5531,7 @@
     <value>0, 0</value>
   </data>
   <data name="dgvPlan.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1180, 330</value>
+    <value>1180, 180</value>
   </data>
   <data name="dgvPlan.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -5438,7 +5543,7 @@
     <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;dgvPlan.Parent" xml:space="preserve">
-    <value>splitMain.Panel1</value>
+    <value>splitPlan.Panel1</value>
   </data>
   <data name="&gt;&gt;dgvPlan.ZOrder" xml:space="preserve">
     <value>0</value>

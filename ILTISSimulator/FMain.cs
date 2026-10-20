@@ -116,6 +116,7 @@ internal sealed partial class FMain : ExForm
         _commands.Add(IltisCommands.Revert, RevertSelected, selection).Bind(tsmimRevert, cmimRevert, tsbRevert);
 
         _commands.Add(IltisCommands.ManualMessage, () => SetManualVisible(!Config.View.ManualMessage)).Bind(tsmimManualMessage, tsbManualMessage);
+        _commands.Add(IltisCommands.TrackDiagram, () => SetTrackDiagramVisible(!Config.View.TrackDiagram)).Bind(tsmimTrackDiagram, tsbTrackDiagram);
         _commands.Add(IltisCommands.HideFinished, () => SetHideFinished(!Config.View.HideFinished)).Bind(tsmimHideFinished, tsbHideFinished);
         _commands.Add(IltisCommands.Follow, () => SetFollow(!Config.View.FollowCurrent)).Bind(tsmimFollow, tsbFollow);
         _commands.Add(IltisCommands.Find, FocusSearch).Bind(tsmimFind);
@@ -141,6 +142,7 @@ internal sealed partial class FMain : ExForm
 
         SetChecked(IltisCommands.SendToIniss, _sendToIniss);
         SetChecked(IltisCommands.ManualMessage, Config.View.ManualMessage);
+        SetChecked(IltisCommands.TrackDiagram, Config.View.TrackDiagram);
         SetChecked(IltisCommands.HideFinished, Config.View.HideFinished);
         SetChecked(IltisCommands.Follow, Config.View.FollowCurrent);
         SetChecked(IltisCommands.TopMost, Config.View.TopMost);
@@ -289,6 +291,7 @@ internal sealed partial class FMain : ExForm
         _sendToIniss = Config.View.SendToIniss;
         pManual.Visible = Config.View.ManualMessage;
         TopMost = Config.View.TopMost;
+        InitDiagram();
     }
 
     private void SetSendToIniss(bool value)
@@ -358,6 +361,7 @@ internal sealed partial class FMain : ExForm
 
         if (splitMain.Height > splitMain.Panel1MinSize + splitMain.Panel2MinSize + splitMain.SplitterWidth)
             splitMain.SplitterDistance = splitMain.Height * 65 / 100;
+        ApplyDiagramVisible();
 
         // az ked je okno zobrazene - hlasenia o chybnych argumentoch a zaznam behu maju byt vidno
         BeginInvoke(new Action(RunCommandLine));

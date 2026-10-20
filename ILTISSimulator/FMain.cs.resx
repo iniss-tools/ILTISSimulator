@@ -210,6 +210,9 @@
   <data name="tsmimManualMessage.Text" xml:space="preserve">
     <value>&amp;Ruční zpráva</value>
   </data>
+  <data name="tsmimTrackDiagram.Text" xml:space="preserve">
+    <value>Kolejový &amp;diagram</value>
+  </data>
   <data name="tsmimHideFinished.Text" xml:space="preserve">
     <value>&amp;Skrýt proběhlé vlaky</value>
   </data>
@@ -320,6 +323,12 @@
   </data>
   <data name="tsbManualMessage.ToolTipText" xml:space="preserve">
     <value>Ruční zpráva</value>
+  </data>
+  <data name="tsbTrackDiagram.Text" xml:space="preserve">
+    <value>Kolejový diagram</value>
+  </data>
+  <data name="tsbTrackDiagram.ToolTipText" xml:space="preserve">
+    <value>Kolejový diagram</value>
   </data>
   <data name="tsbAppSettings.Text" xml:space="preserve">
     <value>Nastavení programu</value>

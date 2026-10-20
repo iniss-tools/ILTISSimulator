@@ -35,6 +35,7 @@ internal static class IltisCommands
     public static CommandInfo Suppress => new("Suppress", Resources.Cmd_Suppress, Shortcut.CtrlDel);
     public static CommandInfo Revert => new("Revert", Resources.Cmd_Revert, Shortcut.CtrlShiftZ);
     public static CommandInfo ManualMessage => new("ManualMessage", Resources.Cmd_ManualMessage, Shortcut.CtrlM);
+    public static CommandInfo TrackDiagram => new("TrackDiagram", Resources.Cmd_TrackDiagram, Shortcut.CtrlG);
     public static CommandInfo HideFinished => new("HideFinished", Resources.Cmd_HideFinished, Shortcut.CtrlH);
     public static CommandInfo Follow => new("Follow", Resources.Cmd_Follow, Shortcut.None);
     public static CommandInfo Find => new("Find", Resources.Cmd_Find, Shortcut.CtrlF);
@@ -53,6 +54,6 @@ internal static class IltisCommands
     [
         OpenGvd, ReloadGvd, OpenScenario, SaveScenario, Tracks, Connect, Plan, Start, Pause, Stop, Jump, Now, SendToIniss,
         SendNext, SendEntryRoute, SendReason, SendArrival, SendExitRoute, SendDeparture, Transfer, ExpressTransfer,
-        AddDelay, TrackClosure, Suppress, Revert, ManualMessage, HideFinished, Follow, Find, TopMost, AppSettings, Docs
+        AddDelay, TrackClosure, Suppress, Revert, ManualMessage, TrackDiagram, HideFinished, Follow, Find, TopMost, AppSettings, Docs
     ];
 }

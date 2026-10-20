@@ -767,4 +767,31 @@ Hodnoty z príkazového riadka platia do zatvorenia programu, nastavenia sa neme
   <data name="Args_GvdMissing" xml:space="preserve">
     <value>Priečinok grafikonu {0} neexistuje.</value>
   </data>
+  <data name="Cmd_TrackDiagram" xml:space="preserve">
+    <value>Koľajový diagram</value>
+  </data>
+  <data name="Diagram_Empty" xml:space="preserve">
+    <value>Po naplánovaní dňa tu budú koľaje a vlaky na nich.</value>
+  </data>
+  <data name="Diagram_TipExcluded" xml:space="preserve">
+    <value>Vynechaná z plánovania.</value>
+  </data>
+  <data name="Diagram_TipTimes" xml:space="preserve">
+    <value>Príchod {0}, odchod {1}</value>
+  </data>
+  <data name="Diagram_TipTrack" xml:space="preserve">
+    <value>Koľaj {0} ({1}), drží ju {2:HH:mm} až {3:HH:mm}</value>
+  </data>
+  <data name="Diagram_TipConflict" xml:space="preserve">
+    <value>Súbeh s iným vlakom na koľaji.</value>
+  </data>
+  <data name="Diagram_TipSuppressed" xml:space="preserve">
+    <value>Správy o vlaku sa neposielajú.</value>
+  </data>
+  <data name="Diagram_TipDrag" xml:space="preserve">
+    <value>Ťahaním zmeníte koľaj alebo meškanie.</value>
+  </data>
+  <data name="Diagram_DragInfo" xml:space="preserve">
+    <value>Koľaj {0}, {1:+0;-0;0} min</value>
+  </data>
 </root>

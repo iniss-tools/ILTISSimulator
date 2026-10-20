@@ -1,4 +1,4 @@
-using System.Reflection;
+﻿using System.Reflection;
 using System.Resources;
 using System.Runtime.InteropServices;
 using System.Runtime.Versioning;
@@ -15,5 +15,5 @@ using System.Runtime.Versioning;
 [assembly: NeutralResourcesLanguage("sk")]
 [assembly: ComVisible(false)]
 [assembly: Guid("5ecebf23-056c-4ad9-8be8-2914dc02fb16")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("1.1.0.0")]
+[assembly: AssemblyFileVersion("1.1.0.0")]

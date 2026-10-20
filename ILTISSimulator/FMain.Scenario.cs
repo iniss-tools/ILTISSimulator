@@ -1,0 +1,75 @@
+using System.Text.Json;
+using ILTISSimulator.Data;
+using ILTISSimulator.Properties;
+using ILTISSimulator.Simulation;
+using ILTISSimulator.Tools;
+
+namespace ILTISSimulator;
+
+internal sealed partial class FMain
+{
+    private void SaveScenario()
+    {
+        if (_gvd is null || _engine?.Runs is null)
+            return;
+
+        sfdScenario.Filter = Resources.Main_ScenarioFilter;
+        sfdScenario.FileName = Texts.F(Resources.Main_ScenarioFileName, _gvd.Info.ThisStation.Name, _engine.Day);
+        if (sfdScenario.ShowDialog(this) != DialogResult.OK)
+            return;
+
+        var scenario = DayScenario.Capture(_gvd.StationId, _engine.Day, _engine.PlannedFrom, _engine.Options, _engine.Runs);
+
+        try
+        {
+            ScenarioFile.Write(sfdScenario.FileName, scenario);
+            AppendLog(LogKind.Info, Texts.F(Resources.Log_ScenarioSaved, sfdScenario.FileName, scenario.Changes.Count));
+        }
+        catch (Exception e) when (e is IOException or UnauthorizedAccessException)
+        {
+            AppendLog(LogKind.Error, Texts.F(Resources.Log_ScenarioFailed, e.Message));
+        }
+    }
+
+    private void OpenScenario()
+    {
+        if (_gvd is null)
+            return;
+
+        ofdScenario.Filter = Resources.Main_ScenarioFilter;
+        if (ofdScenario.ShowDialog(this) != DialogResult.OK || !ConfirmDiscardChanges())
+            return;
+
+        DayScenario scenario;
+        try
+        {
+            scenario = ScenarioFile.Read(ofdScenario.FileName);
+        }
+        catch (Exception e) when (e is IOException or UnauthorizedAccessException or JsonException or NotSupportedException)
+        {
+            AppendLog(LogKind.Error, Texts.F(Resources.Log_ScenarioFailed, e.Message));
+            return;
+        }
+
+        if (scenario.StationId != _gvd.StationId)
+            AppendLog(LogKind.Warning, Texts.F(Resources.Log_ScenarioOtherStation, scenario.StationId, _gvd.StationId));
+
+        var day = scenario.Day.ToDateTime(TimeOnly.MinValue);
+        var from = day + scenario.From.ToTimeSpan();
+        var options = scenario.ToOptions(UsableReasons().Select(reason => reason.Number), SelectedSpeed);
+        options.SendSecondTrack = Config.Simulation.SendSecondTrack;
+
+        var failed = new List<(RunChange Change, PlanEditError Error)>();
+        if (!Plan(day, from, options, (runs, context) => failed.AddRange(scenario.Apply(runs, _gvd.Tracks, context))))
+            return;
+
+        dtpDay.Value = day;
+        dtpFrom.Value = from;
+
+        foreach (var (change, error) in failed)
+            AppendLog(LogKind.Warning, Texts.F(Resources.Log_EditFailed, change.Train,
+                error == PlanEditError.NotPending ? Resources.Log_ScenarioTrainMissing : Texts.Of(error)));
+
+        AppendLog(LogKind.Info, Texts.F(Resources.Log_ScenarioOpened, ofdScenario.FileName, scenario.Changes.Count - failed.Count));
+    }
+}

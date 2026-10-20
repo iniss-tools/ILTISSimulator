@@ -1,139 +1,145 @@
-namespace ILTISSimulator;
-
-partial class FTracks
+﻿namespace ILTISSimulator
 {
-    private System.ComponentModel.IContainer components = null;
-
-    protected override void Dispose(bool disposing)
+    partial class FTracks
     {
-        if (disposing && components is not null)
-            components.Dispose();
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
 
-        base.Dispose(disposing);
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FTracks));
+            this.lHint = new System.Windows.Forms.Label();
+            this.clbTracks = new ExControls.ExCheckedListBox();
+            this.flowSelect = new System.Windows.Forms.FlowLayoutPanel();
+            this.bAll = new ExControls.ExButton();
+            this.bNone = new ExControls.ExButton();
+            this.lCount = new System.Windows.Forms.Label();
+            this.flowButtons = new System.Windows.Forms.FlowLayoutPanel();
+            this.bCancel = new ExControls.ExButton();
+            this.bOk = new ExControls.ExButton();
+            this.flowSelect.SuspendLayout();
+            this.flowButtons.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // lHint
+            // 
+            resources.ApplyResources(this.lHint, "lHint");
+            this.lHint.Name = "lHint";
+            // 
+            // clbTracks
+            // 
+            resources.ApplyResources(this.clbTracks, "clbTracks");
+            this.clbTracks.CheckOnClick = true;
+            this.clbTracks.IntegralHeight = false;
+            this.clbTracks.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.clbTracks_ItemCheck);
+            this.clbTracks.Name = "clbTracks";
+            // 
+            // flowSelect
+            // 
+            this.flowSelect.Controls.Add(this.bAll);
+            this.flowSelect.Controls.Add(this.bNone);
+            this.flowSelect.Controls.Add(this.lCount);
+            resources.ApplyResources(this.flowSelect, "flowSelect");
+            this.flowSelect.Name = "flowSelect";
+            // 
+            // bAll
+            // 
+            resources.ApplyResources(this.bAll, "bAll");
+            this.bAll.UseVisualStyleBackColor = true;
+            this.bAll.Click += new System.EventHandler(this.bAll_Click);
+            this.bAll.Name = "bAll";
+            // 
+            // bNone
+            // 
+            resources.ApplyResources(this.bNone, "bNone");
+            this.bNone.UseVisualStyleBackColor = true;
+            this.bNone.Click += new System.EventHandler(this.bNone_Click);
+            this.bNone.Name = "bNone";
+            // 
+            // lCount
+            // 
+            resources.ApplyResources(this.lCount, "lCount");
+            this.lCount.Name = "lCount";
+            // 
+            // flowButtons
+            // 
+            this.flowButtons.Controls.Add(this.bCancel);
+            this.flowButtons.Controls.Add(this.bOk);
+            resources.ApplyResources(this.flowButtons, "flowButtons");
+            this.flowButtons.Name = "flowButtons";
+            // 
+            // bCancel
+            // 
+            resources.ApplyResources(this.bCancel, "bCancel");
+            this.bCancel.UseVisualStyleBackColor = true;
+            this.bCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.bCancel.Name = "bCancel";
+            // 
+            // bOk
+            // 
+            resources.ApplyResources(this.bOk, "bOk");
+            this.bOk.UseVisualStyleBackColor = true;
+            this.bOk.Click += new System.EventHandler(this.bOk_Click);
+            this.bOk.Name = "bOk";
+            // 
+            // FTracks
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.clbTracks);
+            this.Controls.Add(this.flowSelect);
+            this.Controls.Add(this.flowButtons);
+            this.Controls.Add(this.lHint);
+            this.AcceptButton = this.bOk;
+            this.CancelButton = this.bCancel;
+            this.Name = "FTracks";
+            this.flowButtons.ResumeLayout(false);
+            this.flowButtons.PerformLayout();
+            this.flowSelect.ResumeLayout(false);
+            this.flowSelect.PerformLayout();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.Label lHint;
+        private ExControls.ExCheckedListBox clbTracks;
+        private System.Windows.Forms.FlowLayoutPanel flowSelect;
+        private ExControls.ExButton bAll;
+        private ExControls.ExButton bNone;
+        private System.Windows.Forms.Label lCount;
+        private System.Windows.Forms.FlowLayoutPanel flowButtons;
+        private ExControls.ExButton bCancel;
+        private ExControls.ExButton bOk;
     }
-
-    /// <summary>
-    /// Required method for Designer support - do not modify
-    /// the contents of this method with the code editor.
-    /// </summary>
-    private void InitializeComponent()
-    {
-        System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FTracks));
-        clbTracks = new CheckedListBox();
-        lHint = new Label();
-        tlpBottom = new TableLayoutPanel();
-        lCount = new Label();
-        flowSelect = new FlowLayoutPanel();
-        bAll = new Button();
-        bNone = new Button();
-        flowDialog = new FlowLayoutPanel();
-        bCancel = new Button();
-        bOk = new Button();
-        tlpBottom.SuspendLayout();
-        flowSelect.SuspendLayout();
-        flowDialog.SuspendLayout();
-        SuspendLayout();
-        // 
-        // clbTracks
-        // 
-        clbTracks.CheckOnClick = true;
-        resources.ApplyResources(clbTracks, "clbTracks");
-        clbTracks.Name = "clbTracks";
-        clbTracks.ItemCheck += clbTracks_ItemCheck;
-        // 
-        // lHint
-        // 
-        resources.ApplyResources(lHint, "lHint");
-        lHint.Name = "lHint";
-        // 
-        // tlpBottom
-        // 
-        resources.ApplyResources(tlpBottom, "tlpBottom");
-        tlpBottom.Controls.Add(lCount, 0, 0);
-        tlpBottom.Controls.Add(flowSelect, 0, 1);
-        tlpBottom.Controls.Add(flowDialog, 1, 1);
-        tlpBottom.Name = "tlpBottom";
-        // 
-        // lCount
-        // 
-        resources.ApplyResources(lCount, "lCount");
-        tlpBottom.SetColumnSpan(lCount, 2);
-        lCount.Name = "lCount";
-        // 
-        // flowSelect
-        // 
-        resources.ApplyResources(flowSelect, "flowSelect");
-        flowSelect.Controls.Add(bAll);
-        flowSelect.Controls.Add(bNone);
-        flowSelect.Name = "flowSelect";
-        // 
-        // bAll
-        // 
-        resources.ApplyResources(bAll, "bAll");
-        bAll.Name = "bAll";
-        bAll.UseVisualStyleBackColor = true;
-        bAll.Click += bAll_Click;
-        // 
-        // bNone
-        // 
-        resources.ApplyResources(bNone, "bNone");
-        bNone.Name = "bNone";
-        bNone.UseVisualStyleBackColor = true;
-        bNone.Click += bNone_Click;
-        // 
-        // flowDialog
-        // 
-        resources.ApplyResources(flowDialog, "flowDialog");
-        flowDialog.Controls.Add(bCancel);
-        flowDialog.Controls.Add(bOk);
-        flowDialog.Name = "flowDialog";
-        // 
-        // bCancel
-        // 
-        resources.ApplyResources(bCancel, "bCancel");
-        bCancel.DialogResult = DialogResult.Cancel;
-        bCancel.Name = "bCancel";
-        bCancel.UseVisualStyleBackColor = true;
-        // 
-        // bOk
-        // 
-        resources.ApplyResources(bOk, "bOk");
-        bOk.Name = "bOk";
-        bOk.UseVisualStyleBackColor = true;
-        bOk.Click += bOk_Click;
-        // 
-        // FTracks
-        // 
-        AcceptButton = bOk;
-        resources.ApplyResources(this, "$this");
-        AutoScaleMode = AutoScaleMode.Font;
-        CancelButton = bCancel;
-        Controls.Add(clbTracks);
-        Controls.Add(lHint);
-        Controls.Add(tlpBottom);
-        MaximizeBox = false;
-        MinimizeBox = false;
-        Name = "FTracks";
-        ShowIcon = false;
-        ShowInTaskbar = false;
-        tlpBottom.ResumeLayout(false);
-        tlpBottom.PerformLayout();
-        flowSelect.ResumeLayout(false);
-        flowSelect.PerformLayout();
-        flowDialog.ResumeLayout(false);
-        flowDialog.PerformLayout();
-        ResumeLayout(false);
-        PerformLayout();
-    }
-
-    private System.Windows.Forms.Label lHint;
-    private System.Windows.Forms.CheckedListBox clbTracks;
-    private System.Windows.Forms.TableLayoutPanel tlpBottom;
-    private System.Windows.Forms.Label lCount;
-    private System.Windows.Forms.FlowLayoutPanel flowSelect;
-    private System.Windows.Forms.Button bAll;
-    private System.Windows.Forms.Button bNone;
-    private System.Windows.Forms.FlowLayoutPanel flowDialog;
-    private System.Windows.Forms.Button bOk;
-    private System.Windows.Forms.Button bCancel;
 }

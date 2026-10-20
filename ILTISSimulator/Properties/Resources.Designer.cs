@@ -60,42 +60,6 @@ namespace ILTISSimulator.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Grafikon nie je načítaný..
-        /// </summary>
-        internal static string Main_GvdNotLoaded {
-            get {
-                return ResourceManager.GetString("Main_GvdNotLoaded", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {0} ({1}), pole správy {2}.
-        /// </summary>
-        internal static string Main_GvdInfoStation {
-            get {
-                return ResourceManager.GetString("Main_GvdInfoStation", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {0} vlakov, {1} z {2} koľají, {3}.
-        /// </summary>
-        internal static string Main_GvdInfoContent {
-            get {
-                return ResourceManager.GetString("Main_GvdInfoContent", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to platnosť {0:dd.MM.yyyy} - {1:dd.MM.yyyy}.
-        /// </summary>
-        internal static string Main_GvdInfoValid {
-            get {
-                return ResourceManager.GetString("Main_GvdInfoValid", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to 1 dôvod meškania.
         /// </summary>
         internal static string Main_ReasonCountOne {
@@ -123,38 +87,11 @@ namespace ILTISSimulator.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to pripojené.
-        /// </summary>
-        internal static string Main_Connected {
-            get {
-                return ResourceManager.GetString("Main_Connected", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to nepripojené.
         /// </summary>
         internal static string Main_Disconnected {
             get {
                 return ResourceManager.GetString("Main_Disconnected", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Slovenčina.
-        /// </summary>
-        internal static string Main_LanguageSlovak {
-            get {
-                return ResourceManager.GetString("Main_LanguageSlovak", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Čeština.
-        /// </summary>
-        internal static string Main_LanguageCzech {
-            get {
-                return ResourceManager.GetString("Main_LanguageCzech", resourceCulture);
             }
         }
         
@@ -204,7 +141,7 @@ namespace ILTISSimulator.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Typ.
+        ///   Looks up a localized string similar to Druh.
         /// </summary>
         internal static string Grid_Type {
             get {
@@ -231,7 +168,7 @@ namespace ILTISSimulator.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Meš. pr..
+        ///   Looks up a localized string similar to Meš. príchod.
         /// </summary>
         internal static string Grid_ArrivalDelay {
             get {
@@ -249,7 +186,7 @@ namespace ILTISSimulator.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Meš. od..
+        ///   Looks up a localized string similar to Meš. odchod.
         /// </summary>
         internal static string Grid_DepartureDelay {
             get {
@@ -285,15 +222,6 @@ namespace ILTISSimulator.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Udalostí.
-        /// </summary>
-        internal static string Grid_Events {
-            get {
-                return ResourceManager.GetString("Grid_Events", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Názov.
         /// </summary>
         internal static string Grid_Name {
@@ -312,15 +240,6 @@ namespace ILTISSimulator.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to odklon.
-        /// </summary>
-        internal static string Source_Diverted {
-            get {
-                return ResourceManager.GetString("Source_Diverted", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to vybraná.
         /// </summary>
         internal static string Source_Assigned {
@@ -335,15 +254,6 @@ namespace ILTISSimulator.Properties {
         internal static string Source_Conflict {
             get {
                 return ResourceManager.GetString("Source_Conflict", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to zrušený.
-        /// </summary>
-        internal static string Source_Cancelled {
-            get {
-                return ResourceManager.GetString("Source_Cancelled", resourceCulture);
             }
         }
         
@@ -519,15 +429,6 @@ namespace ILTISSimulator.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to  ZRUŠENÝ.
-        /// </summary>
-        internal static string Run_Cancelled {
-            get {
-                return ResourceManager.GetString("Run_Cancelled", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Grafikon sa nepodarilo načítať: {0}.
         /// </summary>
         internal static string Log_GvdLoadFailed {
@@ -609,7 +510,7 @@ namespace ILTISSimulator.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Pripojenie zlyhalo: {0}.
+        ///   Looks up a localized string similar to Pripojenie na {0}:{1} zlyhalo: {2}.
         /// </summary>
         internal static string Log_ConnectFailed {
             get {
@@ -623,15 +524,6 @@ namespace ILTISSimulator.Properties {
         internal static string Log_PlanFailed {
             get {
                 return ResourceManager.GetString("Log_PlanFailed", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Naplánovaných {0} jázd, {1} udalostí..
-        /// </summary>
-        internal static string Log_Planned {
-            get {
-                return ResourceManager.GetString("Log_Planned", resourceCulture);
             }
         }
         
@@ -1095,11 +987,969 @@ namespace ILTISSimulator.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vyberte priečinok s grafikonom (napr. DATA\Košice.2025).
+        ///   Looks up a localized string similar to Vyberte priečinok s grafikonom v priečinku DATA INISSu.
         /// </summary>
         internal static string Main_ChooseGvdDir {
             get {
                 return ResourceManager.GetString("Main_ChooseGvdDir", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to zmena.
+        /// </summary>
+        internal static string Source_Changed {
+            get {
+                return ResourceManager.GetString("Source_Changed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ručne.
+        /// </summary>
+        internal static string Source_Manual {
+            get {
+                return ResourceManager.GetString("Source_Manual", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to  BEZ SPRÁV.
+        /// </summary>
+        internal static string Run_Suppressed {
+            get {
+                return ResourceManager.GetString("Run_Suppressed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to  dôvod {0:00}.
+        /// </summary>
+        internal static string Event_Reason {
+            get {
+                return ResourceManager.GetString("Event_Reason", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vlak už v stanici skončil, jeho jazdu nemá zmysel meniť..
+        /// </summary>
+        internal static string EditError_Finished {
+            get {
+                return ResourceManager.GetString("EditError_Finished", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Príchod už bol ohlásený..
+        /// </summary>
+        internal static string EditError_ArrivalSent {
+            get {
+                return ResourceManager.GetString("EditError_ArrivalSent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Východzí vlak nemá príchod..
+        /// </summary>
+        internal static string EditError_NoArrival {
+            get {
+                return ResourceManager.GetString("EditError_NoArrival", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Končiaci vlak nemá odchod..
+        /// </summary>
+        internal static string EditError_NoDeparture {
+            get {
+                return ResourceManager.GetString("EditError_NoDeparture", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Meškanie musí byť od {0:0} do {1:0} minút..
+        /// </summary>
+        internal static string EditError_DelayOutOfRange {
+            get {
+                return ResourceManager.GetString("EditError_DelayOutOfRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vlak by odišiel skôr, než v stanici pobudne minútu..
+        /// </summary>
+        internal static string EditError_DepartureTooEarly {
+            get {
+                return ResourceManager.GetString("EditError_DepartureTooEarly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Túto koľaj INISSu ohlásiť nejde..
+        /// </summary>
+        internal static string EditError_TrackUnusable {
+            get {
+                return ResourceManager.GetString("EditError_TrackUnusable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Číslo dôvodu meškania musí byť od 0 do 99..
+        /// </summary>
+        internal static string EditError_ReasonOutOfRange {
+            get {
+                return ResourceManager.GetString("EditError_ReasonOutOfRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Táto udalosť už prebehla alebo sa o vlaku správy neposielajú..
+        /// </summary>
+        internal static string EditError_NotPending {
+            get {
+                return ResourceManager.GetString("EditError_NotPending", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Simulátor nadradeného systému ILTIS: posiela INISSu správy o vlakových cestách, príchodoch a odchodoch vlakov podľa grafikonu s náhodným aj ručne zadaným meškaním..
+        /// </summary>
+        internal static string AboutAppDescription {
+            get {
+                return ResourceManager.GetString("AboutAppDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to vybraným vlakom ({0}).
+        /// </summary>
+        internal static string AddDelay_Selected {
+            get {
+                return ResourceManager.GetString("AddDelay_Selected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Otvoriť grafikon.
+        /// </summary>
+        internal static string Cmd_OpenGvd {
+            get {
+                return ResourceManager.GetString("Cmd_OpenGvd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Načítať grafikon znova.
+        /// </summary>
+        internal static string Cmd_ReloadGvd {
+            get {
+                return ResourceManager.GetString("Cmd_ReloadGvd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Otvoriť scenár.
+        /// </summary>
+        internal static string Cmd_OpenScenario {
+            get {
+                return ResourceManager.GetString("Cmd_OpenScenario", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uložiť scenár.
+        /// </summary>
+        internal static string Cmd_SaveScenario {
+            get {
+                return ResourceManager.GetString("Cmd_SaveScenario", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Koľaje.
+        /// </summary>
+        internal static string Cmd_Tracks {
+            get {
+                return ResourceManager.GetString("Cmd_Tracks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pripojiť / odpojiť INISS.
+        /// </summary>
+        internal static string Cmd_Connect {
+            get {
+                return ResourceManager.GetString("Cmd_Connect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Naplánovať deň.
+        /// </summary>
+        internal static string Cmd_Plan {
+            get {
+                return ResourceManager.GetString("Cmd_Plan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Spustiť.
+        /// </summary>
+        internal static string Cmd_Start {
+            get {
+                return ResourceManager.GetString("Cmd_Start", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pozastaviť.
+        /// </summary>
+        internal static string Cmd_Pause {
+            get {
+                return ResourceManager.GetString("Cmd_Pause", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zastaviť.
+        /// </summary>
+        internal static string Cmd_Stop {
+            get {
+                return ResourceManager.GetString("Cmd_Stop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Skok na čas.
+        /// </summary>
+        internal static string Cmd_Jump {
+            get {
+                return ResourceManager.GetString("Cmd_Jump", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Teraz (reálny čas).
+        /// </summary>
+        internal static string Cmd_Now {
+            get {
+                return ResourceManager.GetString("Cmd_Now", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Posielať do INISSu.
+        /// </summary>
+        internal static string Cmd_SendToIniss {
+            get {
+                return ResourceManager.GetString("Cmd_SendToIniss", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Poslať ďalšiu udalosť teraz.
+        /// </summary>
+        internal static string Cmd_SendNext {
+            get {
+                return ResourceManager.GetString("Cmd_SendNext", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Poslať vchodovú cestu teraz.
+        /// </summary>
+        internal static string Cmd_SendEntryRoute {
+            get {
+                return ResourceManager.GetString("Cmd_SendEntryRoute", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Poslať dôvod meškania teraz.
+        /// </summary>
+        internal static string Cmd_SendReason {
+            get {
+                return ResourceManager.GetString("Cmd_SendReason", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Poslať príchod teraz.
+        /// </summary>
+        internal static string Cmd_SendArrival {
+            get {
+                return ResourceManager.GetString("Cmd_SendArrival", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Poslať odchodovú cestu teraz.
+        /// </summary>
+        internal static string Cmd_SendExitRoute {
+            get {
+                return ResourceManager.GetString("Cmd_SendExitRoute", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Poslať odchod teraz.
+        /// </summary>
+        internal static string Cmd_SendDeparture {
+            get {
+                return ResourceManager.GetString("Cmd_SendDeparture", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prestup.
+        /// </summary>
+        internal static string Cmd_Transfer {
+            get {
+                return ResourceManager.GetString("Cmd_Transfer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Urýchlený prestup.
+        /// </summary>
+        internal static string Cmd_ExpressTransfer {
+            get {
+                return ResourceManager.GetString("Cmd_ExpressTransfer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pridať meškanie.
+        /// </summary>
+        internal static string Cmd_AddDelay {
+            get {
+                return ResourceManager.GetString("Cmd_AddDelay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Neposielať správy.
+        /// </summary>
+        internal static string Cmd_Suppress {
+            get {
+                return ResourceManager.GetString("Cmd_Suppress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vrátiť vylosované hodnoty.
+        /// </summary>
+        internal static string Cmd_Revert {
+            get {
+                return ResourceManager.GetString("Cmd_Revert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ručná správa.
+        /// </summary>
+        internal static string Cmd_ManualMessage {
+            get {
+                return ResourceManager.GetString("Cmd_ManualMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Skryť prebehnuté vlaky.
+        /// </summary>
+        internal static string Cmd_HideFinished {
+            get {
+                return ResourceManager.GetString("Cmd_HideFinished", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sledovať aktuálny vlak.
+        /// </summary>
+        internal static string Cmd_Follow {
+            get {
+                return ResourceManager.GetString("Cmd_Follow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hľadať vlak.
+        /// </summary>
+        internal static string Cmd_Find {
+            get {
+                return ResourceManager.GetString("Cmd_Find", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Navrchu.
+        /// </summary>
+        internal static string Cmd_TopMost {
+            get {
+                return ResourceManager.GetString("Cmd_TopMost", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nastavenia programu.
+        /// </summary>
+        internal static string Cmd_AppSettings {
+            get {
+                return ResourceManager.GetString("Cmd_AppSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dokumentácia.
+        /// </summary>
+        internal static string Cmd_Docs {
+            get {
+                return ResourceManager.GetString("Cmd_Docs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stav.
+        /// </summary>
+        internal static string Grid_State {
+            get {
+                return ResourceManager.GetString("Grid_State", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ďalšia udalosť.
+        /// </summary>
+        internal static string Grid_Next {
+            get {
+                return ResourceManager.GetString("Grid_Next", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Odpoveď INISSu.
+        /// </summary>
+        internal static string Grid_Response {
+            get {
+                return ResourceManager.GetString("Grid_Response", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0:HH:mm:ss} {1}.
+        /// </summary>
+        internal static string Grid_NextFormat {
+            get {
+                return ResourceManager.GetString("Grid_NextFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to  (oprava).
+        /// </summary>
+        internal static string Grid_NextCorrection {
+            get {
+                return ResourceManager.GetString("Grid_NextCorrection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to hotovo.
+        /// </summary>
+        internal static string Grid_NextDone {
+            get {
+                return ResourceManager.GetString("Grid_NextDone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to bez správ.
+        /// </summary>
+        internal static string Grid_NextSuppressed {
+            get {
+                return ResourceManager.GetString("Grid_NextSuppressed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to dvojité číslo - neposiela sa.
+        /// </summary>
+        internal static string Grid_Duplicate {
+            get {
+                return ResourceManager.GetString("Grid_Duplicate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to V ten deň ide viac vlakov s týmto číslom. INISS páruje správy len podľa čísla, preto sa posiela iba prvý z nich..
+        /// </summary>
+        internal static string Grid_DuplicateTip {
+            get {
+                return ResourceManager.GetString("Grid_DuplicateTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Čaká na prvú udalosť.
+        /// </summary>
+        internal static string Grid_StateWaiting {
+            get {
+                return ResourceManager.GetString("Grid_StateWaiting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vlak je v stanici alebo k nej má postavenú cestu.
+        /// </summary>
+        internal static string Grid_StateRunning {
+            get {
+                return ResourceManager.GetString("Grid_StateRunning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Všetky udalosti vlaku prebehli.
+        /// </summary>
+        internal static string Grid_StateFinished {
+            get {
+                return ResourceManager.GetString("Grid_StateFinished", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O vlaku sa neposielajú správy - INISS sa o ňom od ILTISu nič nedozvie.
+        /// </summary>
+        internal static string Grid_StateSuppressed {
+            get {
+                return ResourceManager.GetString("Grid_StateSuppressed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Koľaj {0} drží v rovnakom čase aj: {1}.
+        /// </summary>
+        internal static string Grid_ConflictTip {
+            get {
+                return ResourceManager.GetString("Grid_ConflictTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} ({1:HH:mm}-{2:HH:mm}).
+        /// </summary>
+        internal static string Grid_ConflictWith {
+            get {
+                return ResourceManager.GetString("Grid_ConflictWith", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Meškanie zadajte v minútach, napríklad 5, -3 alebo 5:30..
+        /// </summary>
+        internal static string Grid_DelayFormat {
+            get {
+                return ResourceManager.GetString("Grid_DelayFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to INISS {0:HH:mm:ss}: {2}
+        ///"{1}".
+        /// </summary>
+        internal static string Grid_ResponseTip {
+            get {
+                return ResourceManager.GetString("Grid_ResponseTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Virtuálny čas {0:HH:mm:ss} je pred skutočným, beh pokračuje bez skoku..
+        /// </summary>
+        internal static string Log_AheadOfNow {
+            get {
+                return ResourceManager.GetString("Log_AheadOfNow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nastavenia sa nepodarilo uložiť: {0}.
+        /// </summary>
+        internal static string Log_ConfigSaveFailed {
+            get {
+                return ResourceManager.GetString("Log_ConfigSaveFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Meškanie {0:+0;-0} min pridané {1} vlakom..
+        /// </summary>
+        internal static string Log_DelayAdded {
+            get {
+                return ResourceManager.GetString("Log_DelayAdded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Odpojené od INISSu..
+        /// </summary>
+        internal static string Log_Disconnected {
+            get {
+                return ResourceManager.GetString("Log_Disconnected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vlak {0}: {1}.
+        /// </summary>
+        internal static string Log_EditFailed {
+            get {
+                return ResourceManager.GetString("Log_EditFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sleduje sa log INISSu {0}..
+        /// </summary>
+        internal static string Log_GtnLogWatching {
+            get {
+                return ResourceManager.GetString("Log_GtnLogWatching", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Priečinok {0} už neexistuje..
+        /// </summary>
+        internal static string Log_GvdMissing {
+            get {
+                return ResourceManager.GetString("Log_GvdMissing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to INISS neprijal správu o vlaku {0}: {1} ("{2}").
+        /// </summary>
+        internal static string Log_InissRejected {
+            get {
+                return ResourceManager.GetString("Log_InissRejected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to INISS neprijal správu: {0} ("{1}").
+        /// </summary>
+        internal static string Log_InissRejectedOther {
+            get {
+                return ResourceManager.GetString("Log_InissRejectedOther", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scenár sa nepodarilo uložiť alebo načítať: {0}.
+        /// </summary>
+        internal static string Log_ScenarioFailed {
+            get {
+                return ResourceManager.GetString("Log_ScenarioFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Otvorený scenár {0}, ručných zmien: {1}..
+        /// </summary>
+        internal static string Log_ScenarioOpened {
+            get {
+                return ResourceManager.GetString("Log_ScenarioOpened", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scenár patrí stanici {0}, načítaný grafikon je stanice {1}..
+        /// </summary>
+        internal static string Log_ScenarioOtherStation {
+            get {
+                return ResourceManager.GetString("Log_ScenarioOtherStation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scenár uložený do {0}, ručných zmien: {1}..
+        /// </summary>
+        internal static string Log_ScenarioSaved {
+            get {
+                return ResourceManager.GetString("Log_ScenarioSaved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to vlak v tento deň nejde.
+        /// </summary>
+        internal static string Log_ScenarioTrainMissing {
+            get {
+                return ResourceManager.GetString("Log_ScenarioTrainMissing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Udalosti sa do INISSu neposielajú, len sa zapisujú sem..
+        /// </summary>
+        internal static string Log_SendOff {
+            get {
+                return ResourceManager.GetString("Log_SendOff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Udalosti sa posielajú do INISSu..
+        /// </summary>
+        internal static string Log_SendOn {
+            get {
+                return ResourceManager.GetString("Log_SendOn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nastavenia uložené. Model náhody platí od ďalšieho plánovania, spojenie od ďalšieho pripojenia..
+        /// </summary>
+        internal static string Log_SettingsChanged {
+            get {
+                return ResourceManager.GetString("Log_SettingsChanged", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pripojiť.
+        /// </summary>
+        internal static string Main_Connect {
+            get {
+                return ResourceManager.GetString("Main_Connect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Pripojiť k INISSu.
+        /// </summary>
+        internal static string Main_ConnectMenu {
+            get {
+                return ResourceManager.GetString("Main_ConnectMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pripojiť k INISSu (adresa a port v nastaveniach).
+        /// </summary>
+        internal static string Main_ConnectTip {
+            get {
+                return ResourceManager.GetString("Main_ConnectTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to pripojené k {0}:{1}.
+        /// </summary>
+        internal static string Main_ConnectedTo {
+            get {
+                return ResourceManager.GetString("Main_ConnectedTo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Odpojiť.
+        /// </summary>
+        internal static string Main_Disconnect {
+            get {
+                return ResourceManager.GetString("Main_Disconnect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Odpojiť od INISSu.
+        /// </summary>
+        internal static string Main_DisconnectMenu {
+            get {
+                return ResourceManager.GetString("Main_DisconnectMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Odpojiť od INISSu.
+        /// </summary>
+        internal static string Main_DisconnectTip {
+            get {
+                return ResourceManager.GetString("Main_DisconnectTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Plán má ručné zmeny. Nový plán ich zahodí - pokračovať?.
+        /// </summary>
+        internal static string Main_DiscardChanges {
+            get {
+                return ResourceManager.GetString("Main_DiscardChanges", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to log INISSu zatiaľ neexistuje.
+        /// </summary>
+        internal static string Main_GtnLogMissing {
+            get {
+                return ResourceManager.GetString("Main_GtnLogMissing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to log INISSu nenájdený.
+        /// </summary>
+        internal static string Main_GtnLogNotFound {
+            get {
+                return ResourceManager.GetString("Main_GtnLogNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Log rozhrania sa v inštalácii INISSu nenašiel. Zadajte ho v nastaveniach alebo ho zapnite v INISSe (Loging\GTNLogOn)..
+        /// </summary>
+        internal static string Main_GtnLogNotFoundTip {
+            get {
+                return ResourceManager.GetString("Main_GtnLogNotFoundTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to log INISSu.
+        /// </summary>
+        internal static string Main_GtnLogWatching {
+            get {
+                return ResourceManager.GetString("Main_GtnLogWatching", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Text správy. Dá sa prepísať ručne - pošle sa presne to, čo je tu..
+        /// </summary>
+        internal static string Main_ManualTip {
+            get {
+                return ResourceManager.GetString("Main_ManualTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} {1:yyyy-MM-dd}.iltis.
+        /// </summary>
+        internal static string Main_ScenarioFileName {
+            get {
+                return ResourceManager.GetString("Main_ScenarioFileName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scenár dňa (*.iltis)|*.iltis|Všetky súbory (*.*)|*.*.
+        /// </summary>
+        internal static string Main_ScenarioFilter {
+            get {
+                return ResourceManager.GetString("Main_ScenarioFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0}×.
+        /// </summary>
+        internal static string Main_Speed {
+            get {
+                return ResourceManager.GetString("Main_Speed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to všetky udalosti dňa prebehli.
+        /// </summary>
+        internal static string Main_StatusDayDone {
+            get {
+                return ResourceManager.GetString("Main_StatusDayDone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} ({1}) · {2} vlakov · {3} z {4} koľají · {5}.
+        /// </summary>
+        internal static string Main_StatusGvd {
+            get {
+                return ResourceManager.GetString("Main_StatusGvd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0}
+        ///Pole stanice v správach: {1}
+        ///Platnosť {2:dd.MM.yyyy} - {3:dd.MM.yyyy}.
+        /// </summary>
+        internal static string Main_StatusGvdTip {
+            get {
+                return ResourceManager.GetString("Main_StatusGvdTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ďalšia {0:HH:mm:ss} {1} {2}.
+        /// </summary>
+        internal static string Main_StatusNext {
+            get {
+                return ResourceManager.GetString("Main_StatusNext", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Simulátor ILTIS.
+        /// </summary>
+        internal static string Main_Title {
+            get {
+                return ResourceManager.GetString("Main_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Simulátor ILTIS - {0} ({1}).
+        /// </summary>
+        internal static string Main_TitleStation {
+            get {
+                return ResourceManager.GetString("Main_TitleStation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Log rozhrania (GTN.LOG)|GTN.LOG|Všetky súbory (*.*)|*.*.
+        /// </summary>
+        internal static string Settings_GtnLogFilter {
+            get {
+                return ResourceManager.GetString("Settings_GtnLogFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zadajte adresu počítača s INISSom..
+        /// </summary>
+        internal static string Settings_HostEmpty {
+            get {
+                return ResourceManager.GetString("Settings_HostEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap gtn {
+            get {
+                object obj = ResourceManager.GetObject("gtn", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Virtuálny čas simulácie, bez plánu skutočný. Prestup ide vždy so skutočným časom - INISS ho porovnáva so svojimi hodinami..
+        /// </summary>
+        internal static string Main_ManualNowTip {
+            get {
+                return ResourceManager.GetString("Main_ManualNowTip", resourceCulture);
             }
         }
     }

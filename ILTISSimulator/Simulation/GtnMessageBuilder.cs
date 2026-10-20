@@ -1,4 +1,4 @@
-using ILTISSimulator.Gtn;
+﻿using ILTISSimulator.Gtn;
 using ILTISSimulator.Properties;
 using ILTISSimulator.Tools;
 
@@ -13,11 +13,19 @@ public sealed class GtnMessageBuilder
     ///     Vytvorí staviteľa správ pre stanicu.
     /// </summary>
     /// <param name="stationId">Identifikátor stanice z grafikonu (napr. 5613600).</param>
-    public GtnMessageBuilder(int stationId)
+    /// <param name="sendSecondTrack">Či v odchode posielať aj druhú koľaj - viď
+    ///     <see cref="SimulationOptions.SendSecondTrack" />.</param>
+    public GtnMessageBuilder(int stationId, bool sendSecondTrack = false)
     {
         StationId = stationId;
         StationField = StationCodec.Encode(stationId);
+        SendSecondTrack = sendSecondTrack;
     }
+
+    /// <summary>
+    ///     Či sa v odchode posiela aj druhá koľaj.
+    /// </summary>
+    public bool SendSecondTrack { get; }
 
     /// <summary>
     ///     Identifikátor stanice z grafikonu.
@@ -50,7 +58,7 @@ public sealed class GtnMessageBuilder
         {
             case SimEventKind.DelayReason:
                 message.Type = GtnMessageType.DelayReason;
-                message.DelayReason = GtnEncoder.FormatDelayReason(simEvent.Run.DelayReason);
+                message.DelayReason = GtnEncoder.FormatDelayReason(simEvent.DelayReason);
                 break;
             case SimEventKind.EntryRoute:
                 message.Type = GtnMessageType.Route;
@@ -65,6 +73,8 @@ public sealed class GtnMessageBuilder
                 break;
             case SimEventKind.Departure:
                 message.Type = GtnMessageType.Departure;
+                if (SendSecondTrack && message.Track.Length > 0)
+                    message.SecondTrack = message.Track;
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(simEvent), Texts.F(Resources.Error_UnknownEventKind, simEvent.Kind));

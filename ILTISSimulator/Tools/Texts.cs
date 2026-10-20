@@ -1,4 +1,4 @@
-using ILTISSimulator.Properties;
+﻿using ILTISSimulator.Properties;
 using ILTISSimulator.Simulation;
 
 namespace ILTISSimulator.Tools;
@@ -9,20 +9,6 @@ namespace ILTISSimulator.Tools;
 /// </summary>
 internal static class Texts
 {
-    /// <summary>
-    ///     Nastaví jazyk programu pre aktuálne aj novovzniknuté vlákna.
-    /// </summary>
-    /// <param name="language">Jazyk.</param>
-    public static void SetLanguage(AppLanguage language)
-    {
-        var culture = CultureInfo.CreateSpecificCulture(language == AppLanguage.Czech ? "cs" : "sk");
-
-        Thread.CurrentThread.CurrentCulture = culture;
-        Thread.CurrentThread.CurrentUICulture = culture;
-        CultureInfo.DefaultThreadCurrentCulture = culture;
-        CultureInfo.DefaultThreadCurrentUICulture = culture;
-    }
-
     /// <summary>
     ///     Názov druhu udalosti simulácie.
     /// </summary>
@@ -47,9 +33,30 @@ internal static class Texts
     public static string Of(TrackSource source) => source switch
     {
         TrackSource.Timetable => Resources.Source_Timetable,
-        TrackSource.Diverted => Resources.Source_Diverted,
+        TrackSource.Changed => Resources.Source_Changed,
         TrackSource.Assigned => Resources.Source_Assigned,
         TrackSource.Conflict => Resources.Source_Conflict,
+        TrackSource.Manual => Resources.Source_Manual,
+        _ => ""
+    };
+
+    /// <summary>
+    ///     Vysvetlenie, prečo sa zmena jazdy nedala urobiť.
+    /// </summary>
+    /// <param name="error">Dôvod.</param>
+    /// <returns>Text pre obsluhu.</returns>
+    public static string Of(PlanEditError error) => error switch
+    {
+        PlanEditError.Finished => Resources.EditError_Finished,
+        PlanEditError.ArrivalSent => Resources.EditError_ArrivalSent,
+        PlanEditError.NoArrival => Resources.EditError_NoArrival,
+        PlanEditError.NoDeparture => Resources.EditError_NoDeparture,
+        PlanEditError.DelayOutOfRange => F(Resources.EditError_DelayOutOfRange, PlanEditing.MinDelay.TotalMinutes,
+            SimulationOptions.DelayCeiling.TotalMinutes),
+        PlanEditError.DepartureTooEarly => Resources.EditError_DepartureTooEarly,
+        PlanEditError.TrackUnusable => Resources.EditError_TrackUnusable,
+        PlanEditError.ReasonOutOfRange => Resources.EditError_ReasonOutOfRange,
+        PlanEditError.NotPending => Resources.EditError_NotPending,
         _ => ""
     };
 

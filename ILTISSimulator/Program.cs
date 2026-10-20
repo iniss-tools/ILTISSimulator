@@ -1,24 +1,18 @@
-using ILTISSimulator.Tools;
+using ILTISSimulator.XML;
+using ToolsCore;
 
 namespace ILTISSimulator;
 
 internal static class Program
 {
     /// <summary>
-    ///     Vstupný bod aplikácie.
+    ///     Vstupný bod aplikácie - nastavenia programu sa načítajú tu a hlavné okno ich dostane v konštruktore.
     /// </summary>
     [STAThread]
     private static void Main()
     {
-        // PerMonitorV2 pred prvym oknom - povodne App.config (DpiAwareness=PerMonitorV2); rozmery z navrhu
-        // dopocitava Tools\DpiTools, ak ich Windows Forms nepreskaluju samy
-        Application.SetHighDpiMode(HighDpiMode.PerMonitorV2);
-        Application.EnableVisualStyles();
-        Application.SetCompatibleTextRenderingDefault(false);
+        var session = AppInit.Initialization<IltisConfig, IltisStyle>();
 
-        AppSettings.Load();
-        Texts.SetLanguage(AppSettings.Language);
-
-        Application.Run(new FMain());
+        AppInit.Run(session.Config, () => new FMain(session));
     }
 }

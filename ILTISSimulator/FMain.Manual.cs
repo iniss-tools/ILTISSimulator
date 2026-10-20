@@ -1,0 +1,288 @@
+using ILTISSimulator.Gtn;
+using ILTISSimulator.Properties;
+using ILTISSimulator.Simulation;
+using ILTISSimulator.Tools;
+
+namespace ILTISSimulator;
+
+internal sealed partial class FMain
+{
+    private bool _manualUpdating;
+    private string _manualGenerated = "";
+
+    private void InitManual()
+    {
+        _manualUpdating = true;
+        dtpManualTime.Value = DateTime.Now;
+        dtpManualTime.Enabled = !cbManualNow.Checked;
+        FillManualChoices();
+        _manualUpdating = false;
+
+        UpdateManualFields();
+        UpdateManualPreview();
+    }
+
+    /// <summary>
+    ///     Názov typu správy aj s jej kódom, napríklad <c>0802 - Príchod vlaku</c>.
+    /// </summary>
+    private static string Of(GtnMessageType type)
+    {
+        var name = type.Key switch
+        {
+            "0802" => Resources.MessageType_Arrival,
+            "0803" => Resources.MessageType_Departure,
+            "0804" => Resources.MessageType_Route,
+            "0805" => Resources.MessageType_DelayReason,
+            "0806" => Resources.MessageType_Transfer,
+            _ => type.Name
+        };
+
+        return $"{type.Key} - {name}";
+    }
+
+    private static string Of(GtnRouteKind kind) => kind switch
+    {
+        GtnRouteKind.Exit => Resources.RouteKind_Exit,
+        GtnRouteKind.TrainNumberSet => Resources.RouteKind_TrainNumberSet,
+        _ => Resources.RouteKind_Entry
+    };
+
+    private static string Of(GtnTransferKind kind) =>
+        kind == GtnTransferKind.Express ? Resources.TransferKind_Express : Resources.TransferKind_Normal;
+
+    private void FillManualChoices()
+    {
+        Refill(cbManualType, GtnMessageType.GetValues(), Of);
+        Refill(cbManualRouteKind, Enum.GetValues<GtnRouteKind>(), Of);
+        Refill(cbManualTransferKind, Enum.GetValues<GtnTransferKind>(), Of);
+
+        var reasons = new List<int> { 0 };
+        reasons.AddRange(UsableReasons().Select(reason => reason.Number));
+        Refill(cbManualDelayReason, reasons, number => number == 0 ? Resources.Manual_ReasonClear : ReasonText(number));
+    }
+
+    /// <summary>
+    ///     Naplní zoznam možnosťami a pokúsi sa zachovať doterajší výber.
+    /// </summary>
+    private static void Refill<T>(ComboBox box, IEnumerable<T> values, Func<T, string> text)
+    {
+        var selected = box.SelectedItem is Choice<T> choice ? choice.Value : default;
+
+        box.Items.Clear();
+        foreach (var value in values)
+            box.Items.Add(new Choice<T>(value, text(value)));
+
+        if (box.Items.Count == 0)
+            return;
+
+        for (var i = 0; i < box.Items.Count; i++)
+            if (box.Items[i] is Choice<T> item && Equals(item.Value, selected))
+            {
+                box.SelectedIndex = i;
+                return;
+            }
+
+        box.SelectedIndex = 0;
+    }
+
+    private static T SelectedValue<T>(ComboBox box) => box.SelectedItem is Choice<T> choice ? choice.Value : default!;
+
+    /// <summary>
+    ///     Doplní do ručnej správy hodnoty z načítaného grafikonu - stanicu, čísla vlakov a koľaje.
+    /// </summary>
+    private void FillManualFromGvd()
+    {
+        if (_gvd is null)
+            return;
+
+        _manualUpdating = true;
+
+        tbManualStation.Text = StationField;
+
+        var trains = _gvd.Trains.Select(train => train.Number).Distinct()
+            .OrderBy(number => number, StringComparer.OrdinalIgnoreCase).ToArray();
+        cbManualTrain.Items.Clear();
+        cbManualTrain.Items.AddRange(trains);
+        if (cbManualTrain.Text.Length == 0 && trains.Length != 0)
+            cbManualTrain.Text = trains[0];
+
+        var tracks = UsableTracks().Select(track => track.Key).ToArray();
+        foreach (var box in new[] { cbManualTrack, cbManualSecondTrack })
+        {
+            box.Items.Clear();
+            box.Items.Add("");
+            box.Items.AddRange(tracks);
+        }
+
+        if (cbManualTrack.Text.Length == 0 && tracks.Length != 0)
+            cbManualTrack.Text = tracks[0];
+
+        FillManualChoices();
+
+        _manualUpdating = false;
+        UpdateManualPreview();
+    }
+
+    /// <summary>
+    ///     Predvyplní ručnú správu vlakom vybraným v tabuľke.
+    /// </summary>
+    private void FillManualFromSelection()
+    {
+        if (!pManual.Visible || SelectedRuns() is not [var run, ..])
+            return;
+
+        _manualUpdating = true;
+        cbManualTrain.Text = run.Train.Number;
+        if (run.Track?.Key is { Length: > 0 } track)
+            cbManualTrack.Text = track;
+        _manualUpdating = false;
+
+        UpdateManualPreview();
+    }
+
+    /// <summary>
+    ///     Pri zapnutom „teraz“ obnoví čas a text správy - len kým text nie je ručne prepísaný.
+    /// </summary>
+    private void RefreshManualTime()
+    {
+        if (!pManual.Visible || !cbManualNow.Checked || tbManual.Text.Trim() != _manualGenerated.Trim())
+            return;
+
+        _manualUpdating = true;
+        dtpManualTime.Value = ManualNow(SelectedValue<GtnMessageType>(cbManualType));
+        _manualUpdating = false;
+
+        UpdateManualPreview();
+    }
+
+    private void Manual_Changed(object? sender, EventArgs e)
+    {
+        if (_manualUpdating)
+            return;
+
+        if (sender == cbManualType)
+            UpdateManualFields();
+
+        UpdateManualPreview();
+    }
+
+    private void cbManualNow_CheckedChanged(object? sender, EventArgs e)
+    {
+        dtpManualTime.Enabled = !cbManualNow.Checked;
+
+        if (cbManualNow.Checked)
+            dtpManualTime.Value = ManualNow(SelectedValue<GtnMessageType>(cbManualType));
+
+        Manual_Changed(sender, e);
+    }
+
+    /// <summary>
+    ///     Čas „teraz“ pre ručnú správu - virtuálny čas naplánovaného dňa, aby správa sedela s grafikonom
+    ///     simulovaného dňa. Hlásenie o prestupe INISS porovnáva so svojimi hodinami, preto ide so skutočným časom.
+    /// </summary>
+    private DateTime ManualNow(GtnMessageType? type) =>
+        type == GtnMessageType.Transfer || _engine?.Timeline is null ? DateTime.Now : _engine.VirtualTime;
+
+    /// <summary>
+    ///     Zobrazí iba tie polia, ktoré vybraný typ správy nesie.
+    /// </summary>
+    private void UpdateManualFields()
+    {
+        var type = SelectedValue<GtnMessageType>(cbManualType);
+
+        fieldTrack.Visible = type == GtnMessageType.Arrival || type == GtnMessageType.Departure || type == GtnMessageType.Route;
+        fieldSecondTrack.Visible = type == GtnMessageType.Departure;
+        fieldRouteKind.Visible = type == GtnMessageType.Route;
+        fieldDelayReason.Visible = type == GtnMessageType.DelayReason;
+        fieldTransferKind.Visible = type == GtnMessageType.Transfer;
+    }
+
+    /// <summary>
+    ///     Zloží správu z polí ručnej správy.
+    /// </summary>
+    /// <returns>Správa alebo <see langword="null" />, ak nie je vybraný typ.</returns>
+    private GtnMessage? BuildManualMessage()
+    {
+        var type = SelectedValue<GtnMessageType>(cbManualType);
+        if (type is null)
+            return null;
+
+        var message = new GtnMessage
+        {
+            Type = type,
+            StationField = tbManualStation.Text.Trim(),
+            TrainNumber = cbManualTrain.Text.Trim(),
+            Time = cbManualNow.Checked ? ManualNow(type) : dtpManualTime.Value
+        };
+
+        if (type == GtnMessageType.DelayReason)
+        {
+            message.DelayReason = GtnEncoder.FormatDelayReason(SelectedValue<int>(cbManualDelayReason));
+            return message;
+        }
+
+        if (type == GtnMessageType.Transfer)
+        {
+            message.TransferKind = SelectedValue<GtnTransferKind>(cbManualTransferKind);
+            return message;
+        }
+
+        message.Track = cbManualTrack.Text.Trim();
+
+        if (type == GtnMessageType.Route)
+            message.RouteKind = SelectedValue<GtnRouteKind>(cbManualRouteKind);
+
+        if (type == GtnMessageType.Departure)
+        {
+            var second = cbManualSecondTrack.Text.Trim();
+            message.SecondTrack = second.Length == 0 ? null : second;
+        }
+
+        return message;
+    }
+
+    private void UpdateManualPreview()
+    {
+        var message = BuildManualMessage();
+        if (message is null)
+            return;
+
+        try
+        {
+            _manualGenerated = GtnEncoder.Encode(message);
+        }
+        catch (ArgumentException)
+        {
+            // niektore pole je dlhsie, nez sa don zmesti - text sa necha tak, ako bol
+            return;
+        }
+
+        tbManual.Text = _manualGenerated;
+    }
+
+    private void bManualSend_Click(object? sender, EventArgs e)
+    {
+        // pri zapnutom "teraz" sa cas prepocita tesne pred odoslanim, aby ho INISS nezahodil ako stary;
+        // ak si pouzivatel text prepisal, posle sa presne to, co napisal
+        if (cbManualNow.Checked && tbManual.Text.Trim() == _manualGenerated.Trim())
+            UpdateManualPreview();
+
+        var text = tbManual.Text.Trim();
+        if (text.Length == 0)
+            return;
+
+        if (GtnEncoder.TryDecode(text, out var decoded, out var error))
+            AppendLog(LogKind.Info, Texts.F(Resources.Log_ManualDecoded, decoded));
+        else
+            AppendLog(LogKind.Warning, Texts.F(Resources.Log_ManualRejected, error));
+
+        SendRaw(text);
+    }
+
+    private sealed class Choice<T>(T value, string text)
+    {
+        public T Value { get; } = value;
+
+        public override string ToString() => text;
+    }
+}

@@ -1,4 +1,4 @@
-using GVDEditor.Domain.Entities;
+﻿using GVDEditor.Domain.Entities;
 using ILTISSimulator.Data;
 using ILTISSimulator.Properties;
 
@@ -72,18 +72,12 @@ public sealed class DayPlanner
 
         foreach (var run in runs)
         {
-            if (random.NextDouble() < _options.CancellationProbability)
-            {
-                run.Cancelled = true;
-                run.Track = run.Train.Track;
-                run.TrackSource = TrackSource.Timetable;
-                continue;
-            }
-
             AssignDelays(run, delays);
             AssignDelayReason(run, random);
             AssignTrack(run, allocator, random);
-            AddEvents(run);
+
+            run.Drawn = run.Current;
+            run.ResetEvents(RunEvents.Build(run, _options));
         }
 
         return runs;
@@ -123,11 +117,7 @@ public sealed class DayPlanner
 
     private void AssignTrack(TrainRun run, TrackAllocator allocator, Random random)
     {
-        var start = (run.ActualArrival ?? run.ActualDeparture)!.Value;
-        var end = (run.ActualDeparture ?? run.ActualArrival)!.Value;
-
-        run.OccupiedFrom = start - _options.EntryRouteLead;
-        run.OccupiedTo = end + _options.TrackReleaseMargin;
+        RunEvents.UpdateOccupancy(run, _options);
 
         var planned = GvdData.HasRealTrack(run.Train) && TrackAllocator.CanUse(run.Train.Track)
             ? run.Train.Track
@@ -149,13 +139,13 @@ public sealed class DayPlanner
             return;
         }
 
-        if (random.NextDouble() < _options.TrackDiversionProbability)
+        if (random.NextDouble() < _options.TrackChangeProbability)
         {
-            var diverted = allocator.ReserveAny(run.OccupiedFrom, run.OccupiedTo, random, planned, planned);
-            if (diverted is not null)
+            var changed = allocator.ReserveAny(run.OccupiedFrom, run.OccupiedTo, random, planned, planned);
+            if (changed is not null)
             {
-                run.Track = diverted;
-                run.TrackSource = TrackSource.Diverted;
+                run.Track = changed;
+                run.TrackSource = TrackSource.Changed;
                 return;
             }
         }
@@ -171,32 +161,6 @@ public sealed class DayPlanner
         var replacement = allocator.ReserveAny(run.OccupiedFrom, run.OccupiedTo, random, planned, planned);
 
         run.Track = replacement ?? planned;
-        run.TrackSource = replacement is null ? TrackSource.Conflict : TrackSource.Diverted;
-    }
-
-    private void AddEvents(TrainRun run)
-    {
-        if (run.PlannedArrival.HasValue)
-        {
-            run.AddEvent(SimEventKind.EntryRoute, run.PlannedArrival.Value - _options.EntryRouteLead,
-                run.ActualArrival!.Value - _options.EntryRouteLead);
-
-            if (run.DelayReason != 0)
-                run.AddEvent(SimEventKind.DelayReason, run.PlannedArrival.Value - _options.EntryRouteLead,
-                    run.ActualArrival.Value - _options.EntryRouteLead);
-
-            run.AddEvent(SimEventKind.Arrival, run.PlannedArrival.Value, run.ActualArrival.Value);
-        }
-
-        if (!run.PlannedDeparture.HasValue)
-            return;
-
-        if (run.DelayReason != 0 && !run.PlannedArrival.HasValue)
-            run.AddEvent(SimEventKind.DelayReason, run.PlannedDeparture.Value - _options.ExitRouteLead,
-                run.ActualDeparture!.Value - _options.ExitRouteLead);
-
-        run.AddEvent(SimEventKind.ExitRoute, run.PlannedDeparture.Value - _options.ExitRouteLead,
-            run.ActualDeparture!.Value - _options.ExitRouteLead);
-        run.AddEvent(SimEventKind.Departure, run.PlannedDeparture.Value, run.ActualDeparture.Value);
+        run.TrackSource = replacement is null ? TrackSource.Conflict : TrackSource.Changed;
     }
 }

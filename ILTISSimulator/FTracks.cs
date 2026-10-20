@@ -1,21 +1,18 @@
-using ExControls;
+﻿using ExControls;
 using GVDEditor.Domain.Entities;
 using ILTISSimulator.Properties;
 using ILTISSimulator.Simulation;
 using ILTISSimulator.Tools;
+using ToolsCore.Tools;
+using Utils = ToolsCore.Tools.Utils;
 
 namespace ILTISSimulator;
 
 /// <summary>
 ///     Výber koľají, na ktoré smie simulátor stavať vlaky.
 /// </summary>
-internal sealed partial class FTracks : Form
+internal sealed partial class FTracks : ExForm
 {
-    /// <summary>
-    ///     Šírka vnútra okna podľa návrhu - viď <see cref="DpiTools.ScaleToDpi" />.
-    /// </summary>
-    private const int DesignClientWidth = 480;
-
     /// <summary>
     ///     Vytvorí dialóg nad koľajami stanice.
     /// </summary>
@@ -24,9 +21,7 @@ internal sealed partial class FTracks : Form
     public FTracks(IEnumerable<Track> tracks, IEnumerable<string> excluded)
     {
         InitializeComponent();
-
-        DpiTools.ScaleToDpi(this, DesignClientWidth);
-        DpiTools.FitToScreen(this);
+        this.ApplyThemeAndFonts();
 
         var excludedKeys = new HashSet<string>(excluded ?? Array.Empty<string>(), StringComparer.OrdinalIgnoreCase);
 
@@ -71,7 +66,7 @@ internal sealed partial class FTracks : Form
     {
         if (clbTracks.CheckedItems.Count == 0)
         {
-            ExMessageBox.Show(this, Resources.Tracks_NeedOne, Text, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            Utils.ShowWarning(Resources.Tracks_NeedOne);
             return;
         }
 

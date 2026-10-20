@@ -1,4 +1,4 @@
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using ILTISSimulator.Data;
 using ILTISSimulator.Gtn;
 using ILTISSimulator.Properties;
@@ -35,7 +35,7 @@ public sealed class SimulationEngine : IDisposable
         Options = options ?? throw new ArgumentNullException(nameof(options));
         Options.Validate();
 
-        Messages = new GtnMessageBuilder(gvd.StationId);
+        Messages = new GtnMessageBuilder(gvd.StationId, Options.SendSecondTrack);
     }
 
     /// <summary>
@@ -62,6 +62,17 @@ public sealed class SimulationEngine : IDisposable
     ///     Deň, ktorý je naplánovaný.
     /// </summary>
     public DateTime Day { get; private set; }
+
+    /// <summary>
+    ///     Vlaky, ktoré plánovanie vynechalo, lebo v ten deň ide viac záznamov s rovnakým číslom - viď
+    ///     <see cref="DayPlanner.SkippedDuplicates" />.
+    /// </summary>
+    public IReadOnlyList<GVDEditor.Domain.Entities.Train> SkippedDuplicates { get; private set; } = [];
+
+    /// <summary>
+    ///     Od kedy sa deň simuluje - skoršie udalosti sa pri plánovaní preskočili.
+    /// </summary>
+    public DateTime PlannedFrom { get; private set; }
 
     /// <summary>
     ///     Či simulácia práve beží.
@@ -98,12 +109,19 @@ public sealed class SimulationEngine : IDisposable
     public event EventHandler<string>? Log;
 
     /// <summary>
+    ///     Jazdy, ktoré sa zmenili úpravou plánu. Volá sa z vlákna, ktoré úpravu urobilo.
+    /// </summary>
+    public event EventHandler<PlanChangedEventArgs>? PlanChanged;
+
+    /// <summary>
     ///     Naplánuje deň a nastaví virtuálne hodiny.
     /// </summary>
     /// <param name="day">Deň, ktorý sa má simulovať.</param>
     /// <param name="startAt">Čas, od ktorého sa má začať. Predvolene začiatok dňa; udalosti spred tohto času
     ///     sa preskočia, aby sa INISS nezaplavil dávno prešlými správami.</param>
-    public void PlanDay(DateTime day, DateTime? startAt = null)
+    /// <param name="prepare">Zmeny jázd ešte pred preskočením udalostí - napríklad ručné zmeny zo scenára dňa,
+    ///     ktoré tak platia, ako keby ich vylosoval plánovač.</param>
+    public void PlanDay(DateTime day, DateTime? startAt = null, Action<IReadOnlyList<TrainRun>, PlanEditContext>? prepare = null)
     {
         lock (_sync)
         {
@@ -114,14 +132,18 @@ public sealed class SimulationEngine : IDisposable
 
             var planner = new DayPlanner(_gvd, Options);
             Runs = planner.Plan(Day);
+            prepare?.Invoke(Runs, new PlanEditContext(Options, Day));
             Timeline = new SimulationTimeline(Runs);
 
             _virtualStart = startAt ?? Day;
+            PlannedFrom = _virtualStart;
             _clock.Reset();
 
             var skipped = Timeline.SeekTo(_virtualStart);
 
-            OnLog(Texts.F(Resources.Engine_Planned, Day, Runs.Count, Timeline.Events.Count, skipped, Options.Seed));
+            OnLog(Texts.F(Resources.Engine_Planned, Day, Runs.Count, Timeline.Total, skipped, Options.Seed));
+
+            SkippedDuplicates = planner.SkippedDuplicates;
 
             if (planner.SkippedDuplicates.Count > 0)
                 OnLog(Texts.F(Resources.Engine_SkippedDuplicates,
@@ -167,7 +189,9 @@ public sealed class SimulationEngine : IDisposable
     }
 
     /// <summary>
-    ///     Zastaví beh a vráti časovú os na začiatok dňa.
+    ///     Zastaví beh a vráti simuláciu na čas, od ktorého bol deň naplánovaný - udalosti pred ním sa znova
+    ///     preskočia. Úpravy plánu ostanú, dodatočné správy po nich sa zahodia - jazdy sa zostavia nanovo
+    ///     z aktuálnych hodnôt.
     /// </summary>
     public void Stop()
     {
@@ -176,11 +200,127 @@ public sealed class SimulationEngine : IDisposable
             StopTimer();
 
             _clock.Reset();
-            _virtualStart = Day;
-            Timeline?.Reset();
+            _virtualStart = PlannedFrom;
+
+            if (Runs is not null && Timeline is not null)
+            {
+                foreach (var run in Runs)
+                {
+                    run.ResetEvents(RunEvents.Build(run, Options));
+                    RunEvents.UpdateOccupancy(run, Options);
+                }
+
+                Timeline.Reload();
+                Timeline.SeekTo(PlannedFrom);
+            }
 
             OnLog(Resources.Engine_Stopped);
         }
+
+        if (Runs is not null)
+            OnPlanChanged(Runs);
+    }
+
+    /// <summary>
+    ///     Zmení jazdu vlaku. Zmena sa urobí pod zámkom jadra s aktuálnym virtuálnym časom a časová os
+    ///     sa hneď zosúladí, takže sa dá meniť aj počas behu.
+    /// </summary>
+    /// <param name="run">Jazda vlaku z <see cref="Runs" />.</param>
+    /// <param name="edit">Zmena, napríklad <see cref="PlanEditing.SetTrack" />.</param>
+    /// <returns>Dôvod, prečo sa zmena nedala urobiť, alebo <see cref="PlanEditError.None" />.</returns>
+    public PlanEditError Edit(TrainRun run, Func<TrainRun, PlanEditContext, PlanEditError> edit)
+    {
+        ArgumentNullException.ThrowIfNull(run);
+
+        var failed = Edit([run], edit);
+
+        return failed.TryGetValue(run, out var error) ? error : PlanEditError.None;
+    }
+
+    /// <summary>
+    ///     Zmení viac jázd naraz - napríklad hromadné meškanie.
+    /// </summary>
+    /// <param name="runs">Jazdy vlakov z <see cref="Runs" />.</param>
+    /// <param name="edit">Zmena jednej jazdy.</param>
+    /// <returns>Jazdy, ktoré sa zmeniť nedali, s dôvodom.</returns>
+    public IReadOnlyDictionary<TrainRun, PlanEditError> Edit(IEnumerable<TrainRun> runs,
+        Func<TrainRun, PlanEditContext, PlanEditError> edit)
+    {
+        ArgumentNullException.ThrowIfNull(runs);
+        ArgumentNullException.ThrowIfNull(edit);
+
+        var failed = new Dictionary<TrainRun, PlanEditError>();
+        var changed = new List<TrainRun>();
+
+        lock (_sync)
+        {
+            ThrowIfDisposed();
+
+            if (Timeline is null)
+                throw new InvalidOperationException(Resources.Error_PlanFirst);
+
+            var context = new PlanEditContext(Options, CurrentTime());
+
+            foreach (var run in runs.Distinct())
+            {
+                var error = edit(run, context);
+                if (error != PlanEditError.None)
+                {
+                    failed[run] = error;
+                    continue;
+                }
+
+                Timeline.Sync(run);
+                changed.Add(run);
+            }
+        }
+
+        if (changed.Count > 0)
+            OnPlanChanged(changed);
+
+        return failed;
+    }
+
+    /// <summary>
+    ///     Zmení zrýchlenie času tak, aby virtuálny čas neposkočil - ďalej plynie od svojej aktuálnej hodnoty.
+    /// </summary>
+    /// <param name="factor">Nové zrýchlenie.</param>
+    public void SetTimeFactor(double factor)
+    {
+        if (factor <= 0)
+            throw new ArgumentOutOfRangeException(nameof(factor), Resources.Error_TimeFactor);
+
+        lock (_sync)
+        {
+            _virtualStart = CurrentTime();
+
+            var running = _clock.IsRunning;
+            _clock.Reset();
+            if (running)
+                _clock.Start();
+
+            Options.TimeFactor = factor;
+        }
+    }
+
+    /// <summary>
+    ///     Najbližšia čakajúca udalosť dňa.
+    /// </summary>
+    /// <returns>Udalosť, alebo <see langword="null" />, ak už nič nečaká.</returns>
+    public SimEvent? NextEvent()
+    {
+        lock (_sync)
+            return Timeline?.Next;
+    }
+
+    /// <summary>
+    ///     Koľko udalostí dňa už prebehlo a koľko ich je spolu.
+    /// </summary>
+    /// <returns>Počet vydaných a preskočených udalostí a počet všetkých udalostí.</returns>
+    public (int Done, int Total) Progress()
+    {
+        lock (_sync)
+            return Timeline is null ? (0, 0) : (Timeline.Done, Timeline.Total);
     }
 
     /// <summary>
@@ -294,10 +434,25 @@ public sealed class SimulationEngine : IDisposable
 
     private void OnLog(string text) => Log?.Invoke(this, text);
 
+    private void OnPlanChanged(IReadOnlyList<TrainRun> runs) => PlanChanged?.Invoke(this, new PlanChangedEventArgs(runs));
+
     private void ThrowIfDisposed()
     {
         ObjectDisposedException.ThrowIf(_disposed, this);
     }
+}
+
+/// <summary>
+///     Údaje udalosti <see cref="SimulationEngine.PlanChanged" />.
+/// </summary>
+public sealed class PlanChangedEventArgs : EventArgs
+{
+    internal PlanChangedEventArgs(IReadOnlyList<TrainRun> runs) => Runs = runs;
+
+    /// <summary>
+    ///     Zmenené jazdy.
+    /// </summary>
+    public IReadOnlyList<TrainRun> Runs { get; }
 }
 
 /// <summary>

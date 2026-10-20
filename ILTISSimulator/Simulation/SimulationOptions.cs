@@ -1,4 +1,4 @@
-using ILTISSimulator.Properties;
+﻿using ILTISSimulator.Properties;
 using ILTISSimulator.Tools;
 
 namespace ILTISSimulator.Simulation;
@@ -75,12 +75,13 @@ public sealed class SimulationOptions
     /// <summary>
     ///     Pravdepodobnosť, že vlak pôjde na inú koľaj, než má v grafikone.
     /// </summary>
-    public double TrackDiversionProbability { get; set; } = 0.07;
+    public double TrackChangeProbability { get; set; } = 0.07;
 
     /// <summary>
-    ///     Pravdepodobnosť, že vlak bude zrušený a neohlási sa vôbec.
+    ///     Posielať v odchode 080-3 aj druhú koľaj (rovnakú ako prvú). INISS nastaví udalosť pre automatiku
+    ///     <c>Odj</c> len pri odchode s oboma koľajami.
     /// </summary>
-    public double CancellationProbability { get; set; } = 0.01;
+    public bool SendSecondTrack { get; set; } = true;
 
     /// <summary>
     ///     Ako dlho po odchode zostáva koľaj obsadená.
@@ -120,8 +121,7 @@ public sealed class SimulationOptions
         CheckProbability(OnTimeProbability, nameof(OnTimeProbability));
         CheckProbability(DelayGrowthProbability, nameof(DelayGrowthProbability));
         CheckProbability(DelayRecoveryProbability, nameof(DelayRecoveryProbability));
-        CheckProbability(TrackDiversionProbability, nameof(TrackDiversionProbability));
-        CheckProbability(CancellationProbability, nameof(CancellationProbability));
+        CheckProbability(TrackChangeProbability, nameof(TrackChangeProbability));
         CheckProbability(DelayReasonProbability, nameof(DelayReasonProbability));
 
         if (DelayReasons is null)

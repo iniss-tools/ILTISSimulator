@@ -1,0 +1,150 @@
+using ExControls;
+using ILTISSimulator.Properties;
+using ILTISSimulator.XML;
+using ToolsCore;
+using ToolsCore.Forms;
+using ToolsCore.Iniss.Tools;
+using ToolsCore.XML;
+
+namespace ILTISSimulator;
+
+/// <summary>
+///     Nastavenia programu - spoločné stránky ToolsCore a stránky Simulácia a Spojenie s INISSom.
+/// </summary>
+internal sealed partial class FAppSettings : FAppSettingsBase
+{
+    private readonly AppSession<IltisConfig, IltisStyle> _session;
+
+    /// <summary>
+    ///     Vytvorí okno nad kópiou nastavení - do programu sa prenesú až po uložení.
+    /// </summary>
+    /// <param name="session">Nastavenia programu.</param>
+    public FAppSettings(AppSession<IltisConfig, IltisStyle> session)
+        : base(session.Config, new Styles<IltisStyle>(session.Styles), session.UsingStyle, typeof(IltisStyle))
+    {
+        _session = session;
+        InitializeComponent();
+
+        Shortcuts = new ExBindingList<CmdShortcut>(Config.Shortcuts.ToRows(IltisCommands.All));
+        Columns = new ExBindingList<DesktopColumn>(Config.DesktopCols.GetValues());
+
+        dgvShortcuts.DataSource = Shortcuts;
+        dgvColumns.DataSource = Columns;
+    }
+
+    private new IltisConfig Config => (IltisConfig)base.Config;
+
+    private new Styles<IltisStyle> Styles => (Styles<IltisStyle>)base.Styles;
+
+    /// <inheritdoc />
+    protected override IList<CmdShortcut> DefaultShortcuts => ShortcutMap.DefaultRows(IltisCommands.All);
+
+    /// <inheritdoc />
+    protected override IList<DesktopColumn> DefaultColumns => new DesktopColumns().GetValues();
+
+    /// <inheritdoc />
+    protected override void OnLoad()
+    {
+        base.OnLoad();
+
+        var simulation = Config.Simulation;
+        SetValue(nudSeed, simulation.Seed);
+        SetValue(nudOnTime, simulation.OnTimePercent);
+        SetValue(nudMeanDelay, simulation.MeanDelayMinutes);
+        SetValue(nudTrackChange, simulation.TrackChangePercent);
+        SetValue(nudReason, simulation.DelayReasonPercent);
+        SetValue(nudEntryLead, simulation.EntryRouteLeadMinutes);
+        SetValue(nudExitLead, simulation.ExitRouteLeadMinutes);
+        cboxSecondTrack.Checked = simulation.SendSecondTrack;
+
+        var connection = Config.Connection;
+        tbHost.Text = connection.Host;
+        SetValue(nudPort, connection.Port);
+        cboxWatchGtnLog.Checked = connection.WatchGtnLog;
+        tbGtnLog.Text = connection.GtnLog;
+        UpdateGtnLogFields();
+    }
+
+    private static void SetValue(NumericUpDown box, int value) => box.Value = Math.Clamp(value, (int)box.Minimum, (int)box.Maximum);
+
+    /// <inheritdoc />
+    protected override bool OnSaving()
+    {
+        if (string.IsNullOrWhiteSpace(tbHost.Text))
+        {
+            ToolsCore.Tools.Utils.ShowWarning(Resources.Settings_HostEmpty);
+            optionsView.ShowPanel(pConnection.Name);
+            return false;
+        }
+
+        Config.Shortcuts.SetFromRows(Shortcuts);
+        Config.DesktopCols.SetValues(Columns);
+
+        Config.Simulation = Config.Simulation with
+        {
+            Seed = decimal.ToInt32(nudSeed.Value),
+            OnTimePercent = decimal.ToInt32(nudOnTime.Value),
+            MeanDelayMinutes = decimal.ToInt32(nudMeanDelay.Value),
+            TrackChangePercent = decimal.ToInt32(nudTrackChange.Value),
+            DelayReasonPercent = decimal.ToInt32(nudReason.Value),
+            EntryRouteLeadMinutes = decimal.ToInt32(nudEntryLead.Value),
+            ExitRouteLeadMinutes = decimal.ToInt32(nudExitLead.Value),
+            SendSecondTrack = cboxSecondTrack.Checked
+        };
+        Config.Connection = Config.Connection with
+        {
+            Host = tbHost.Text.Trim(),
+            Port = decimal.ToInt32(nudPort.Value),
+            WatchGtnLog = cboxWatchGtnLog.Checked,
+            GtnLog = tbGtnLog.Text.Trim()
+        };
+
+        return base.OnSaving();
+    }
+
+    /// <inheritdoc />
+    protected override void SaveData()
+    {
+        _session.Config = Config;
+        _session.Styles = Styles;
+        _session.UsingStyle = (IltisStyle)UsingStyle;
+
+        var dir = AppPaths.ConfigDir;
+        if (!Directory.Exists(dir))
+            Directory.CreateDirectory(dir);
+
+        Styles<IltisStyle>.WriteData(PathUtils.CombinePath(dir, FileConsts.FileStyles)!, _session.Styles);
+        XmlSerialization.WriteData(PathUtils.CombinePath(dir, FileConsts.FileConfig)!, _session.Config);
+    }
+
+    /// <inheritdoc />
+    protected override Style OnResetStyle(bool darkMode) => Styles<IltisStyle>.GetDefaultStyle(darkMode);
+
+    /// <inheritdoc />
+    protected override Style CreateStyleInstance(string name) => new IltisStyle { Name = name };
+
+    private void cboxWatchGtnLog_CheckedChanged(object? sender, EventArgs e) => UpdateGtnLogFields();
+
+    private void UpdateGtnLogFields()
+    {
+        tbGtnLog.Enabled = cboxWatchGtnLog.Checked;
+        bBrowseGtnLog.Enabled = cboxWatchGtnLog.Checked;
+    }
+
+    private void bBrowseGtnLog_Click(object? sender, EventArgs e)
+    {
+        using var dialog = new OpenFileDialog
+        {
+            Filter = Resources.Settings_GtnLogFilter,
+            FileName = Path.GetFileName(tbGtnLog.Text),
+            CheckFileExists = false
+        };
+
+        var dir = Path.GetDirectoryName(tbGtnLog.Text);
+        if (!string.IsNullOrEmpty(dir) && Directory.Exists(dir))
+            dialog.InitialDirectory = dir;
+
+        if (dialog.ShowDialog(this) == DialogResult.OK)
+            tbGtnLog.Text = dialog.FileName;
+    }
+}

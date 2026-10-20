@@ -58,18 +58,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Main_GvdNotLoaded" xml:space="preserve">
-    <value>Grafikon nie je načítaný.</value>
-  </data>
-  <data name="Main_GvdInfoStation" xml:space="preserve">
-    <value>{0} ({1}), pole správy {2}</value>
-  </data>
-  <data name="Main_GvdInfoContent" xml:space="preserve">
-    <value>{0} vlakov, {1} z {2} koľají, {3}</value>
-  </data>
-  <data name="Main_GvdInfoValid" xml:space="preserve">
-    <value>platnosť {0:dd.MM.yyyy} - {1:dd.MM.yyyy}</value>
-  </data>
   <data name="Main_ReasonCountOne" xml:space="preserve">
     <value>1 dôvod meškania</value>
   </data>
@@ -79,17 +67,8 @@
   <data name="Main_ReasonCountMany" xml:space="preserve">
     <value>{0} dôvodov meškania</value>
   </data>
-  <data name="Main_Connected" xml:space="preserve">
-    <value>pripojené</value>
-  </data>
   <data name="Main_Disconnected" xml:space="preserve">
     <value>nepripojené</value>
-  </data>
-  <data name="Main_LanguageSlovak" xml:space="preserve">
-    <value>Slovenčina</value>
-  </data>
-  <data name="Main_LanguageCzech" xml:space="preserve">
-    <value>Čeština</value>
   </data>
   <data name="Main_StatusNoGvd" xml:space="preserve">
     <value>bez grafikonu</value>
@@ -107,7 +86,7 @@
     <value>Vlak</value>
   </data>
   <data name="Grid_Type" xml:space="preserve">
-    <value>Typ</value>
+    <value>Druh</value>
   </data>
   <data name="Grid_Routing" xml:space="preserve">
     <value>Smer</value>
@@ -116,13 +95,13 @@
     <value>Príchod</value>
   </data>
   <data name="Grid_ArrivalDelay" xml:space="preserve">
-    <value>Meš. pr.</value>
+    <value>Meš. príchod</value>
   </data>
   <data name="Grid_Departure" xml:space="preserve">
     <value>Odchod</value>
   </data>
   <data name="Grid_DepartureDelay" xml:space="preserve">
-    <value>Meš. od.</value>
+    <value>Meš. odchod</value>
   </data>
   <data name="Grid_Track" xml:space="preserve">
     <value>Koľaj</value>
@@ -133,26 +112,17 @@
   <data name="Grid_DelayReason" xml:space="preserve">
     <value>Dôvod meškania</value>
   </data>
-  <data name="Grid_Events" xml:space="preserve">
-    <value>Udalostí</value>
-  </data>
   <data name="Grid_Name" xml:space="preserve">
     <value>Názov</value>
   </data>
   <data name="Source_Timetable" xml:space="preserve">
     <value>grafikon</value>
   </data>
-  <data name="Source_Diverted" xml:space="preserve">
-    <value>odklon</value>
-  </data>
   <data name="Source_Assigned" xml:space="preserve">
     <value>vybraná</value>
   </data>
   <data name="Source_Conflict" xml:space="preserve">
     <value>konflikt</value>
-  </data>
-  <data name="Source_Cancelled" xml:space="preserve">
-    <value>zrušený</value>
   </data>
   <data name="Manual_ReasonClear" xml:space="preserve">
     <value>00 - zmazať dôvod</value>
@@ -211,9 +181,6 @@
   <data name="Run_Format" xml:space="preserve">
     <value>{0} {1} {2} koľaj {3} ({4})</value>
   </data>
-  <data name="Run_Cancelled" xml:space="preserve">
-    <value> ZRUŠENÝ</value>
-  </data>
   <data name="Log_GvdLoadFailed" xml:space="preserve">
     <value>Grafikon sa nepodarilo načítať: {0}</value>
   </data>
@@ -242,13 +209,10 @@
     <value>Pripojené na {0}:{1}.</value>
   </data>
   <data name="Log_ConnectFailed" xml:space="preserve">
-    <value>Pripojenie zlyhalo: {0}</value>
+    <value>Pripojenie na {0}:{1} zlyhalo: {2}</value>
   </data>
   <data name="Log_PlanFailed" xml:space="preserve">
     <value>Plánovanie zlyhalo: {0}</value>
-  </data>
-  <data name="Log_Planned" xml:space="preserve">
-    <value>Naplánovaných {0} jázd, {1} udalostí.</value>
   </data>
   <data name="Log_NotSent" xml:space="preserve">
     <value>{0} sa neodoslala: {1}</value>
@@ -404,6 +368,327 @@
     <value>bez nástupišťa</value>
   </data>
   <data name="Main_ChooseGvdDir" xml:space="preserve">
-    <value>Vyberte priečinok s grafikonom (napr. DATA\Košice.2025)</value>
+    <value>Vyberte priečinok s grafikonom v priečinku DATA INISSu</value>
+  </data>
+  <data name="Source_Changed" xml:space="preserve">
+    <value>zmena</value>
+  </data>
+  <data name="Source_Manual" xml:space="preserve">
+    <value>ručne</value>
+  </data>
+  <data name="Run_Suppressed" xml:space="preserve">
+    <value> BEZ SPRÁV</value>
+  </data>
+  <data name="Event_Reason" xml:space="preserve">
+    <value> dôvod {0:00}</value>
+  </data>
+  <data name="EditError_Finished" xml:space="preserve">
+    <value>Vlak už v stanici skončil, jeho jazdu nemá zmysel meniť.</value>
+  </data>
+  <data name="EditError_ArrivalSent" xml:space="preserve">
+    <value>Príchod už bol ohlásený.</value>
+  </data>
+  <data name="EditError_NoArrival" xml:space="preserve">
+    <value>Východzí vlak nemá príchod.</value>
+  </data>
+  <data name="EditError_NoDeparture" xml:space="preserve">
+    <value>Končiaci vlak nemá odchod.</value>
+  </data>
+  <data name="EditError_DelayOutOfRange" xml:space="preserve">
+    <value>Meškanie musí byť od {0:0} do {1:0} minút.</value>
+  </data>
+  <data name="EditError_DepartureTooEarly" xml:space="preserve">
+    <value>Vlak by odišiel skôr, než v stanici pobudne minútu.</value>
+  </data>
+  <data name="EditError_TrackUnusable" xml:space="preserve">
+    <value>Túto koľaj INISSu ohlásiť nejde.</value>
+  </data>
+  <data name="EditError_ReasonOutOfRange" xml:space="preserve">
+    <value>Číslo dôvodu meškania musí byť od 0 do 99.</value>
+  </data>
+  <data name="EditError_NotPending" xml:space="preserve">
+    <value>Táto udalosť už prebehla alebo sa o vlaku správy neposielajú.</value>
+  </data>
+  <data name="AboutAppDescription" xml:space="preserve">
+    <value>Simulátor nadradeného systému ILTIS: posiela INISSu správy o vlakových cestách, príchodoch a odchodoch vlakov podľa grafikonu s náhodným aj ručne zadaným meškaním.</value>
+  </data>
+  <data name="AddDelay_Selected" xml:space="preserve">
+    <value>vybraným vlakom ({0})</value>
+  </data>
+  <data name="Cmd_OpenGvd" xml:space="preserve">
+    <value>Otvoriť grafikon</value>
+  </data>
+  <data name="Cmd_ReloadGvd" xml:space="preserve">
+    <value>Načítať grafikon znova</value>
+  </data>
+  <data name="Cmd_OpenScenario" xml:space="preserve">
+    <value>Otvoriť scenár</value>
+  </data>
+  <data name="Cmd_SaveScenario" xml:space="preserve">
+    <value>Uložiť scenár</value>
+  </data>
+  <data name="Cmd_Tracks" xml:space="preserve">
+    <value>Koľaje</value>
+  </data>
+  <data name="Cmd_Connect" xml:space="preserve">
+    <value>Pripojiť / odpojiť INISS</value>
+  </data>
+  <data name="Cmd_Plan" xml:space="preserve">
+    <value>Naplánovať deň</value>
+  </data>
+  <data name="Cmd_Start" xml:space="preserve">
+    <value>Spustiť</value>
+  </data>
+  <data name="Cmd_Pause" xml:space="preserve">
+    <value>Pozastaviť</value>
+  </data>
+  <data name="Cmd_Stop" xml:space="preserve">
+    <value>Zastaviť</value>
+  </data>
+  <data name="Cmd_Jump" xml:space="preserve">
+    <value>Skok na čas</value>
+  </data>
+  <data name="Cmd_Now" xml:space="preserve">
+    <value>Teraz (reálny čas)</value>
+  </data>
+  <data name="Cmd_SendToIniss" xml:space="preserve">
+    <value>Posielať do INISSu</value>
+  </data>
+  <data name="Cmd_SendNext" xml:space="preserve">
+    <value>Poslať ďalšiu udalosť teraz</value>
+  </data>
+  <data name="Cmd_SendEntryRoute" xml:space="preserve">
+    <value>Poslať vchodovú cestu teraz</value>
+  </data>
+  <data name="Cmd_SendReason" xml:space="preserve">
+    <value>Poslať dôvod meškania teraz</value>
+  </data>
+  <data name="Cmd_SendArrival" xml:space="preserve">
+    <value>Poslať príchod teraz</value>
+  </data>
+  <data name="Cmd_SendExitRoute" xml:space="preserve">
+    <value>Poslať odchodovú cestu teraz</value>
+  </data>
+  <data name="Cmd_SendDeparture" xml:space="preserve">
+    <value>Poslať odchod teraz</value>
+  </data>
+  <data name="Cmd_Transfer" xml:space="preserve">
+    <value>Prestup</value>
+  </data>
+  <data name="Cmd_ExpressTransfer" xml:space="preserve">
+    <value>Urýchlený prestup</value>
+  </data>
+  <data name="Cmd_AddDelay" xml:space="preserve">
+    <value>Pridať meškanie</value>
+  </data>
+  <data name="Cmd_Suppress" xml:space="preserve">
+    <value>Neposielať správy</value>
+  </data>
+  <data name="Cmd_Revert" xml:space="preserve">
+    <value>Vrátiť vylosované hodnoty</value>
+  </data>
+  <data name="Cmd_ManualMessage" xml:space="preserve">
+    <value>Ručná správa</value>
+  </data>
+  <data name="Cmd_HideFinished" xml:space="preserve">
+    <value>Skryť prebehnuté vlaky</value>
+  </data>
+  <data name="Cmd_Follow" xml:space="preserve">
+    <value>Sledovať aktuálny vlak</value>
+  </data>
+  <data name="Cmd_Find" xml:space="preserve">
+    <value>Hľadať vlak</value>
+  </data>
+  <data name="Cmd_TopMost" xml:space="preserve">
+    <value>Navrchu</value>
+  </data>
+  <data name="Cmd_AppSettings" xml:space="preserve">
+    <value>Nastavenia programu</value>
+  </data>
+  <data name="Cmd_Docs" xml:space="preserve">
+    <value>Dokumentácia</value>
+  </data>
+  <data name="Grid_State" xml:space="preserve">
+    <value>Stav</value>
+  </data>
+  <data name="Grid_Next" xml:space="preserve">
+    <value>Ďalšia udalosť</value>
+  </data>
+  <data name="Grid_Response" xml:space="preserve">
+    <value>Odpoveď INISSu</value>
+  </data>
+  <data name="Grid_NextFormat" xml:space="preserve">
+    <value>{0:HH:mm:ss} {1}</value>
+  </data>
+  <data name="Grid_NextCorrection" xml:space="preserve">
+    <value> (oprava)</value>
+  </data>
+  <data name="Grid_NextDone" xml:space="preserve">
+    <value>hotovo</value>
+  </data>
+  <data name="Grid_NextSuppressed" xml:space="preserve">
+    <value>bez správ</value>
+  </data>
+  <data name="Grid_Duplicate" xml:space="preserve">
+    <value>dvojité číslo - neposiela sa</value>
+  </data>
+  <data name="Grid_DuplicateTip" xml:space="preserve">
+    <value>V ten deň ide viac vlakov s týmto číslom. INISS páruje správy len podľa čísla, preto sa posiela iba prvý z nich.</value>
+  </data>
+  <data name="Grid_StateWaiting" xml:space="preserve">
+    <value>Čaká na prvú udalosť</value>
+  </data>
+  <data name="Grid_StateRunning" xml:space="preserve">
+    <value>Vlak je v stanici alebo k nej má postavenú cestu</value>
+  </data>
+  <data name="Grid_StateFinished" xml:space="preserve">
+    <value>Všetky udalosti vlaku prebehli</value>
+  </data>
+  <data name="Grid_StateSuppressed" xml:space="preserve">
+    <value>O vlaku sa neposielajú správy - INISS sa o ňom od ILTISu nič nedozvie</value>
+  </data>
+  <data name="Grid_ConflictTip" xml:space="preserve">
+    <value>Koľaj {0} drží v rovnakom čase aj: {1}</value>
+  </data>
+  <data name="Grid_ConflictWith" xml:space="preserve">
+    <value>{0} ({1:HH:mm}-{2:HH:mm})</value>
+  </data>
+  <data name="Grid_DelayFormat" xml:space="preserve">
+    <value>Meškanie zadajte v minútach, napríklad 5, -3 alebo 5:30.</value>
+  </data>
+  <data name="Grid_ResponseTip" xml:space="preserve">
+    <value>INISS {0:HH:mm:ss}: {2}
+"{1}"</value>
+  </data>
+  <data name="Log_AheadOfNow" xml:space="preserve">
+    <value>Virtuálny čas {0:HH:mm:ss} je pred skutočným, beh pokračuje bez skoku.</value>
+  </data>
+  <data name="Log_ConfigSaveFailed" xml:space="preserve">
+    <value>Nastavenia sa nepodarilo uložiť: {0}</value>
+  </data>
+  <data name="Log_DelayAdded" xml:space="preserve">
+    <value>Meškanie {0:+0;-0} min pridané {1} vlakom.</value>
+  </data>
+  <data name="Log_Disconnected" xml:space="preserve">
+    <value>Odpojené od INISSu.</value>
+  </data>
+  <data name="Log_EditFailed" xml:space="preserve">
+    <value>Vlak {0}: {1}</value>
+  </data>
+  <data name="Log_GtnLogWatching" xml:space="preserve">
+    <value>Sleduje sa log INISSu {0}.</value>
+  </data>
+  <data name="Log_GvdMissing" xml:space="preserve">
+    <value>Priečinok {0} už neexistuje.</value>
+  </data>
+  <data name="Log_InissRejected" xml:space="preserve">
+    <value>INISS neprijal správu o vlaku {0}: {1} ("{2}")</value>
+  </data>
+  <data name="Log_InissRejectedOther" xml:space="preserve">
+    <value>INISS neprijal správu: {0} ("{1}")</value>
+  </data>
+  <data name="Log_ScenarioFailed" xml:space="preserve">
+    <value>Scenár sa nepodarilo uložiť alebo načítať: {0}</value>
+  </data>
+  <data name="Log_ScenarioOpened" xml:space="preserve">
+    <value>Otvorený scenár {0}, ručných zmien: {1}.</value>
+  </data>
+  <data name="Log_ScenarioOtherStation" xml:space="preserve">
+    <value>Scenár patrí stanici {0}, načítaný grafikon je stanice {1}.</value>
+  </data>
+  <data name="Log_ScenarioSaved" xml:space="preserve">
+    <value>Scenár uložený do {0}, ručných zmien: {1}.</value>
+  </data>
+  <data name="Log_ScenarioTrainMissing" xml:space="preserve">
+    <value>vlak v tento deň nejde</value>
+  </data>
+  <data name="Log_SendOff" xml:space="preserve">
+    <value>Udalosti sa do INISSu neposielajú, len sa zapisujú sem.</value>
+  </data>
+  <data name="Log_SendOn" xml:space="preserve">
+    <value>Udalosti sa posielajú do INISSu.</value>
+  </data>
+  <data name="Log_SettingsChanged" xml:space="preserve">
+    <value>Nastavenia uložené. Model náhody platí od ďalšieho plánovania, spojenie od ďalšieho pripojenia.</value>
+  </data>
+  <data name="Main_Connect" xml:space="preserve">
+    <value>Pripojiť</value>
+  </data>
+  <data name="Main_ConnectMenu" xml:space="preserve">
+    <value>&amp;Pripojiť k INISSu</value>
+  </data>
+  <data name="Main_ConnectTip" xml:space="preserve">
+    <value>Pripojiť k INISSu (adresa a port v nastaveniach)</value>
+  </data>
+  <data name="Main_ConnectedTo" xml:space="preserve">
+    <value>pripojené k {0}:{1}</value>
+  </data>
+  <data name="Main_Disconnect" xml:space="preserve">
+    <value>Odpojiť</value>
+  </data>
+  <data name="Main_DisconnectMenu" xml:space="preserve">
+    <value>&amp;Odpojiť od INISSu</value>
+  </data>
+  <data name="Main_DisconnectTip" xml:space="preserve">
+    <value>Odpojiť od INISSu</value>
+  </data>
+  <data name="Main_DiscardChanges" xml:space="preserve">
+    <value>Plán má ručné zmeny. Nový plán ich zahodí - pokračovať?</value>
+  </data>
+  <data name="Main_GtnLogMissing" xml:space="preserve">
+    <value>log INISSu zatiaľ neexistuje</value>
+  </data>
+  <data name="Main_GtnLogNotFound" xml:space="preserve">
+    <value>log INISSu nenájdený</value>
+  </data>
+  <data name="Main_GtnLogNotFoundTip" xml:space="preserve">
+    <value>Log rozhrania sa v inštalácii INISSu nenašiel. Zadajte ho v nastaveniach alebo ho zapnite v INISSe (Loging\GTNLogOn).</value>
+  </data>
+  <data name="Main_GtnLogWatching" xml:space="preserve">
+    <value>log INISSu</value>
+  </data>
+  <data name="Main_ManualTip" xml:space="preserve">
+    <value>Text správy. Dá sa prepísať ručne - pošle sa presne to, čo je tu.</value>
+  </data>
+  <data name="Main_ScenarioFileName" xml:space="preserve">
+    <value>{0} {1:yyyy-MM-dd}.iltis</value>
+  </data>
+  <data name="Main_ScenarioFilter" xml:space="preserve">
+    <value>Scenár dňa (*.iltis)|*.iltis|Všetky súbory (*.*)|*.*</value>
+  </data>
+  <data name="Main_Speed" xml:space="preserve">
+    <value>{0}×</value>
+  </data>
+  <data name="Main_StatusDayDone" xml:space="preserve">
+    <value>všetky udalosti dňa prebehli</value>
+  </data>
+  <data name="Main_StatusGvd" xml:space="preserve">
+    <value>{0} ({1}) · {2} vlakov · {3} z {4} koľají · {5}</value>
+  </data>
+  <data name="Main_StatusGvdTip" xml:space="preserve">
+    <value>{0}
+Pole stanice v správach: {1}
+Platnosť {2:dd.MM.yyyy} - {3:dd.MM.yyyy}</value>
+  </data>
+  <data name="Main_StatusNext" xml:space="preserve">
+    <value>ďalšia {0:HH:mm:ss} {1} {2}</value>
+  </data>
+  <data name="Main_Title" xml:space="preserve">
+    <value>Simulátor ILTIS</value>
+  </data>
+  <data name="Main_TitleStation" xml:space="preserve">
+    <value>Simulátor ILTIS - {0} ({1})</value>
+  </data>
+  <data name="Settings_GtnLogFilter" xml:space="preserve">
+    <value>Log rozhrania (GTN.LOG)|GTN.LOG|Všetky súbory (*.*)|*.*</value>
+  </data>
+  <data name="Settings_HostEmpty" xml:space="preserve">
+    <value>Zadajte adresu počítača s INISSom.</value>
+  </data>
+  <data name="gtn" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gtn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Main_ManualNowTip" xml:space="preserve">
+    <value>Virtuálny čas simulácie, bez plánu skutočný. Prestup ide vždy so skutočným časom - INISS ho porovnáva so svojimi hodinami.</value>
   </data>
 </root>

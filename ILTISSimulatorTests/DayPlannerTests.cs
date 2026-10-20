@@ -1,4 +1,4 @@
-using GVDEditor.Domain.Entities;
+﻿using GVDEditor.Domain.Entities;
 using ILTISSimulator.Simulation;
 
 namespace ILTISSimulatorTests;
@@ -13,8 +13,7 @@ public class DayPlannerTests
     {
         Seed = seed,
         OnTimeProbability = 0.5,
-        TrackDiversionProbability = 0.2,
-        CancellationProbability = 0.0,
+        TrackChangeProbability = 0.2,
         DelayReasonProbability = 0.0
     };
 
@@ -157,10 +156,10 @@ public class DayPlannerTests
     }
 
     [TestMethod]
-    public void Plan_NoDiversion_KeepsTimetableTrack()
+    public void Plan_NoTrackChange_KeepsTimetableTrack()
     {
         var options = Options();
-        options.TrackDiversionProbability = 0.0;
+        options.TrackChangeProbability = 0.0;
 
         var run = Run(Plan(options), "2005");
 
@@ -169,14 +168,14 @@ public class DayPlannerTests
     }
 
     [TestMethod]
-    public void Plan_FullDiversion_MovesTrainOffItsTimetableTrack()
+    public void Plan_FullTrackChange_MovesTrainOffItsTimetableTrack()
     {
         var options = Options();
-        options.TrackDiversionProbability = 1.0;
+        options.TrackChangeProbability = 1.0;
 
         var run = Run(Plan(options), "2005");
 
-        Assert.AreEqual(TrackSource.Diverted, run.TrackSource);
+        Assert.AreEqual(TrackSource.Changed, run.TrackSource);
         Assert.AreNotEqual("2", run.Track.Key);
     }
 
@@ -186,7 +185,7 @@ public class DayPlannerTests
         for (var seed = 1; seed <= 50; seed++)
         {
             var runs = Plan(Options(seed))
-                .Where(run => !run.Cancelled && run.TrackSource != TrackSource.Conflict)
+                .Where(run => run.TrackSource != TrackSource.Conflict)
                 .ToList();
 
             foreach (var a in runs)
@@ -206,7 +205,7 @@ public class DayPlannerTests
     public void Plan_NeverAssignsExcludedTrack()
     {
         var options = Options();
-        options.TrackDiversionProbability = 1.0;
+        options.TrackChangeProbability = 1.0;
         options.ExcludedTrackKeys = new HashSet<string>(new[] { "3" }, StringComparer.OrdinalIgnoreCase);
 
         for (var seed = 1; seed <= 30; seed++)
@@ -223,7 +222,7 @@ public class DayPlannerTests
     {
         // Vlak 2011 má v grafikone koľaj 3. Vylúčenie znamená "neprideľuj ju", nie "prepíš grafikon".
         var options = Options();
-        options.TrackDiversionProbability = 0.0;
+        options.TrackChangeProbability = 0.0;
         options.ExcludedTrackKeys = new HashSet<string>(new[] { "3" }, StringComparer.OrdinalIgnoreCase);
 
         var run = Run(Plan(options), "2011");
@@ -308,15 +307,14 @@ public class DayPlannerTests
     }
 
     [TestMethod]
-    public void Plan_CancelledTrain_HasNoEvents()
+    public void Plan_DrawnValuesMatchCurrentAndRunIsUnchanged()
     {
-        var options = Options();
-        options.CancellationProbability = 1.0;
-
-        var runs = Plan(options);
-
-        Assert.IsTrue(runs.All(run => run.Cancelled));
-        Assert.IsTrue(runs.All(run => run.Events.Count == 0));
+        foreach (var run in Plan(Options()))
+        {
+            Assert.AreEqual(run.Current, run.Drawn, $"vlak {run.Train.Number}");
+            Assert.IsFalse(run.IsChanged, $"vlak {run.Train.Number}");
+            Assert.IsTrue(run.Events.All(simEvent => simEvent.State == SimEventState.Pending));
+        }
     }
 
     [TestMethod]

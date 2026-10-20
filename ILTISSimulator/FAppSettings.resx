@@ -1,0 +1,1170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!--
+    Microsoft ResX Schema
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="optionsNodeSimulation.Text" xml:space="preserve">
+    <value>Simulácia</value>
+  </data>
+  <data name="pSimulation.NodeText" xml:space="preserve">
+    <value>Simulácia</value>
+  </data>
+  <data name="&gt;&gt;pSimulation.Name" xml:space="preserve">
+    <value>pSimulation</value>
+  </data>
+  <data name="&gt;&gt;pSimulation.Type" xml:space="preserve">
+    <value>ExControls.ExOptionsPanel, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="ppSimulation.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="ppSimulation.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="ppSimulation.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="ppSimulation.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 6, 6, 6</value>
+  </data>
+  <data name="ppSimulation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>600, 440</value>
+  </data>
+  <data name="ppSimulation.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;ppSimulation.Name" xml:space="preserve">
+    <value>ppSimulation</value>
+  </data>
+  <data name="&gt;&gt;ppSimulation.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ppSimulation.Parent" xml:space="preserve">
+    <value>pSimulation</value>
+  </data>
+  <data name="&gt;&gt;ppSimulation.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lSimulationHint.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lSimulationHint.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="lSimulationHint.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 200</value>
+  </data>
+  <data name="lSimulationHint.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>560, 0</value>
+  </data>
+  <data name="lSimulationHint.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 8, 0, 0</value>
+  </data>
+  <data name="lSimulationHint.Size" type="System.Drawing.Size, System.Drawing">
+    <value>400, 21</value>
+  </data>
+  <data name="lSimulationHint.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lSimulationHint.Text" xml:space="preserve">
+    <value>Zmena platí pri ďalšom plánovaní dňa. Rovnaký seed a deň dajú vždy rovnaký plán.</value>
+  </data>
+  <data name="&gt;&gt;lSimulationHint.Name" xml:space="preserve">
+    <value>lSimulationHint</value>
+  </data>
+  <data name="&gt;&gt;lSimulationHint.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lSimulationHint.Parent" xml:space="preserve">
+    <value>ppSimulation</value>
+  </data>
+  <data name="&gt;&gt;lSimulationHint.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="gbRoutes.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="gbRoutes.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="gbRoutes.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="gbRoutes.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 6</value>
+  </data>
+  <data name="gbRoutes.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 4, 8, 8</value>
+  </data>
+  <data name="gbRoutes.Size" type="System.Drawing.Size, System.Drawing">
+    <value>588, 100</value>
+  </data>
+  <data name="gbRoutes.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="gbRoutes.Text" xml:space="preserve">
+    <value>Vlakové cesty</value>
+  </data>
+  <data name="&gt;&gt;gbRoutes.Name" xml:space="preserve">
+    <value>gbRoutes</value>
+  </data>
+  <data name="&gt;&gt;gbRoutes.Type" xml:space="preserve">
+    <value>ExControls.ExGroupBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;gbRoutes.Parent" xml:space="preserve">
+    <value>ppSimulation</value>
+  </data>
+  <data name="&gt;&gt;gbRoutes.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tlpRoutes.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="tlpRoutes.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="tlpRoutes.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 17</value>
+  </data>
+  <data name="tlpRoutes.Size" type="System.Drawing.Size, System.Drawing">
+    <value>572, 80</value>
+  </data>
+  <data name="tlpRoutes.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tlpRoutes.Name" xml:space="preserve">
+    <value>tlpRoutes</value>
+  </data>
+  <data name="&gt;&gt;tlpRoutes.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tlpRoutes.Parent" xml:space="preserve">
+    <value>gbRoutes</value>
+  </data>
+  <data name="&gt;&gt;tlpRoutes.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="gbModel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="gbModel.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="gbModel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="gbModel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 6</value>
+  </data>
+  <data name="gbModel.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 4, 8, 8</value>
+  </data>
+  <data name="gbModel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>588, 100</value>
+  </data>
+  <data name="gbModel.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="gbModel.Text" xml:space="preserve">
+    <value>Model náhody</value>
+  </data>
+  <data name="&gt;&gt;gbModel.Name" xml:space="preserve">
+    <value>gbModel</value>
+  </data>
+  <data name="&gt;&gt;gbModel.Type" xml:space="preserve">
+    <value>ExControls.ExGroupBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;gbModel.Parent" xml:space="preserve">
+    <value>ppSimulation</value>
+  </data>
+  <data name="&gt;&gt;gbModel.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tlpModel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="tlpModel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="tlpModel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 17</value>
+  </data>
+  <data name="tlpModel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>572, 80</value>
+  </data>
+  <data name="tlpModel.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tlpModel.Name" xml:space="preserve">
+    <value>tlpModel</value>
+  </data>
+  <data name="&gt;&gt;tlpModel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tlpModel.Parent" xml:space="preserve">
+    <value>gbModel</value>
+  </data>
+  <data name="&gt;&gt;tlpModel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lSeed.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lSeed.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="lSeed.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 6</value>
+  </data>
+  <data name="lSeed.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 13</value>
+  </data>
+  <data name="lSeed.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lSeed.Text" xml:space="preserve">
+    <value>Seed:</value>
+  </data>
+  <data name="&gt;&gt;lSeed.Name" xml:space="preserve">
+    <value>lSeed</value>
+  </data>
+  <data name="&gt;&gt;lSeed.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lSeed.Parent" xml:space="preserve">
+    <value>tlpModel</value>
+  </data>
+  <data name="&gt;&gt;lSeed.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="nudSeed.Location" type="System.Drawing.Point, System.Drawing">
+    <value>200, 3</value>
+  </data>
+  <data name="nudSeed.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 20</value>
+  </data>
+  <data name="nudSeed.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;nudSeed.Name" xml:space="preserve">
+    <value>nudSeed</value>
+  </data>
+  <data name="&gt;&gt;nudSeed.Type" xml:space="preserve">
+    <value>ExControls.ExNumericUpDown, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;nudSeed.Parent" xml:space="preserve">
+    <value>tlpModel</value>
+  </data>
+  <data name="&gt;&gt;nudSeed.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="lOnTime.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lOnTime.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="lOnTime.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 6</value>
+  </data>
+  <data name="lOnTime.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 13</value>
+  </data>
+  <data name="lOnTime.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="lOnTime.Text" xml:space="preserve">
+    <value>Vlaky načas [%]:</value>
+  </data>
+  <data name="&gt;&gt;lOnTime.Name" xml:space="preserve">
+    <value>lOnTime</value>
+  </data>
+  <data name="&gt;&gt;lOnTime.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lOnTime.Parent" xml:space="preserve">
+    <value>tlpModel</value>
+  </data>
+  <data name="&gt;&gt;lOnTime.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="nudOnTime.Location" type="System.Drawing.Point, System.Drawing">
+    <value>200, 3</value>
+  </data>
+  <data name="nudOnTime.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 20</value>
+  </data>
+  <data name="nudOnTime.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;nudOnTime.Name" xml:space="preserve">
+    <value>nudOnTime</value>
+  </data>
+  <data name="&gt;&gt;nudOnTime.Type" xml:space="preserve">
+    <value>ExControls.ExNumericUpDown, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;nudOnTime.Parent" xml:space="preserve">
+    <value>tlpModel</value>
+  </data>
+  <data name="&gt;&gt;nudOnTime.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="lMeanDelay.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lMeanDelay.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="lMeanDelay.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 6</value>
+  </data>
+  <data name="lMeanDelay.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 13</value>
+  </data>
+  <data name="lMeanDelay.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="lMeanDelay.Text" xml:space="preserve">
+    <value>Priemerné meškanie meškajúcich [min]:</value>
+  </data>
+  <data name="&gt;&gt;lMeanDelay.Name" xml:space="preserve">
+    <value>lMeanDelay</value>
+  </data>
+  <data name="&gt;&gt;lMeanDelay.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lMeanDelay.Parent" xml:space="preserve">
+    <value>tlpModel</value>
+  </data>
+  <data name="&gt;&gt;lMeanDelay.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="nudMeanDelay.Location" type="System.Drawing.Point, System.Drawing">
+    <value>200, 3</value>
+  </data>
+  <data name="nudMeanDelay.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 20</value>
+  </data>
+  <data name="nudMeanDelay.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;nudMeanDelay.Name" xml:space="preserve">
+    <value>nudMeanDelay</value>
+  </data>
+  <data name="&gt;&gt;nudMeanDelay.Type" xml:space="preserve">
+    <value>ExControls.ExNumericUpDown, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;nudMeanDelay.Parent" xml:space="preserve">
+    <value>tlpModel</value>
+  </data>
+  <data name="&gt;&gt;nudMeanDelay.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="lTrackChange.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lTrackChange.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="lTrackChange.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 6</value>
+  </data>
+  <data name="lTrackChange.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 13</value>
+  </data>
+  <data name="lTrackChange.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="lTrackChange.Text" xml:space="preserve">
+    <value>Zmena koľaje [%]:</value>
+  </data>
+  <data name="&gt;&gt;lTrackChange.Name" xml:space="preserve">
+    <value>lTrackChange</value>
+  </data>
+  <data name="&gt;&gt;lTrackChange.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lTrackChange.Parent" xml:space="preserve">
+    <value>tlpModel</value>
+  </data>
+  <data name="&gt;&gt;lTrackChange.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="nudTrackChange.Location" type="System.Drawing.Point, System.Drawing">
+    <value>200, 3</value>
+  </data>
+  <data name="nudTrackChange.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 20</value>
+  </data>
+  <data name="nudTrackChange.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;nudTrackChange.Name" xml:space="preserve">
+    <value>nudTrackChange</value>
+  </data>
+  <data name="&gt;&gt;nudTrackChange.Type" xml:space="preserve">
+    <value>ExControls.ExNumericUpDown, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;nudTrackChange.Parent" xml:space="preserve">
+    <value>tlpModel</value>
+  </data>
+  <data name="&gt;&gt;nudTrackChange.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="lReason.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lReason.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="lReason.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 6</value>
+  </data>
+  <data name="lReason.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 13</value>
+  </data>
+  <data name="lReason.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="lReason.Text" xml:space="preserve">
+    <value>Dôvod meškania (od 5 min) [%]:</value>
+  </data>
+  <data name="&gt;&gt;lReason.Name" xml:space="preserve">
+    <value>lReason</value>
+  </data>
+  <data name="&gt;&gt;lReason.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lReason.Parent" xml:space="preserve">
+    <value>tlpModel</value>
+  </data>
+  <data name="&gt;&gt;lReason.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="nudReason.Location" type="System.Drawing.Point, System.Drawing">
+    <value>200, 3</value>
+  </data>
+  <data name="nudReason.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 20</value>
+  </data>
+  <data name="nudReason.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;nudReason.Name" xml:space="preserve">
+    <value>nudReason</value>
+  </data>
+  <data name="&gt;&gt;nudReason.Type" xml:space="preserve">
+    <value>ExControls.ExNumericUpDown, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;nudReason.Parent" xml:space="preserve">
+    <value>tlpModel</value>
+  </data>
+  <data name="&gt;&gt;nudReason.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="lEntryLead.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lEntryLead.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="lEntryLead.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 6</value>
+  </data>
+  <data name="lEntryLead.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 13</value>
+  </data>
+  <data name="lEntryLead.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lEntryLead.Text" xml:space="preserve">
+    <value>Vchodová cesta pred príchodom [min]:</value>
+  </data>
+  <data name="&gt;&gt;lEntryLead.Name" xml:space="preserve">
+    <value>lEntryLead</value>
+  </data>
+  <data name="&gt;&gt;lEntryLead.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lEntryLead.Parent" xml:space="preserve">
+    <value>tlpRoutes</value>
+  </data>
+  <data name="&gt;&gt;lEntryLead.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="nudEntryLead.Location" type="System.Drawing.Point, System.Drawing">
+    <value>200, 3</value>
+  </data>
+  <data name="nudEntryLead.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 20</value>
+  </data>
+  <data name="nudEntryLead.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;nudEntryLead.Name" xml:space="preserve">
+    <value>nudEntryLead</value>
+  </data>
+  <data name="&gt;&gt;nudEntryLead.Type" xml:space="preserve">
+    <value>ExControls.ExNumericUpDown, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;nudEntryLead.Parent" xml:space="preserve">
+    <value>tlpRoutes</value>
+  </data>
+  <data name="&gt;&gt;nudEntryLead.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="lExitLead.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lExitLead.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="lExitLead.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 6</value>
+  </data>
+  <data name="lExitLead.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 13</value>
+  </data>
+  <data name="lExitLead.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="lExitLead.Text" xml:space="preserve">
+    <value>Odchodová cesta pred odchodom [min]:</value>
+  </data>
+  <data name="&gt;&gt;lExitLead.Name" xml:space="preserve">
+    <value>lExitLead</value>
+  </data>
+  <data name="&gt;&gt;lExitLead.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lExitLead.Parent" xml:space="preserve">
+    <value>tlpRoutes</value>
+  </data>
+  <data name="&gt;&gt;lExitLead.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="nudExitLead.Location" type="System.Drawing.Point, System.Drawing">
+    <value>200, 3</value>
+  </data>
+  <data name="nudExitLead.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 20</value>
+  </data>
+  <data name="nudExitLead.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;nudExitLead.Name" xml:space="preserve">
+    <value>nudExitLead</value>
+  </data>
+  <data name="&gt;&gt;nudExitLead.Type" xml:space="preserve">
+    <value>ExControls.ExNumericUpDown, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;nudExitLead.Parent" xml:space="preserve">
+    <value>tlpRoutes</value>
+  </data>
+  <data name="&gt;&gt;nudExitLead.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="cboxSecondTrack.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cboxSecondTrack.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 56</value>
+  </data>
+  <data name="cboxSecondTrack.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 6, 3, 3</value>
+  </data>
+  <data name="cboxSecondTrack.Size" type="System.Drawing.Size, System.Drawing">
+    <value>300, 17</value>
+  </data>
+  <data name="cboxSecondTrack.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="cboxSecondTrack.Text" xml:space="preserve">
+    <value>Odchod s druhou koľajou (INISS potom nastaví udalosť Odj)</value>
+  </data>
+  <data name="&gt;&gt;cboxSecondTrack.Name" xml:space="preserve">
+    <value>cboxSecondTrack</value>
+  </data>
+  <data name="&gt;&gt;cboxSecondTrack.Type" xml:space="preserve">
+    <value>ExControls.ExCheckBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cboxSecondTrack.Parent" xml:space="preserve">
+    <value>tlpRoutes</value>
+  </data>
+  <data name="&gt;&gt;cboxSecondTrack.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="optionsNodeConnection.Text" xml:space="preserve">
+    <value>Spojenie s INISSom</value>
+  </data>
+  <data name="pConnection.NodeText" xml:space="preserve">
+    <value>Spojenie s INISSom</value>
+  </data>
+  <data name="&gt;&gt;pConnection.Name" xml:space="preserve">
+    <value>pConnection</value>
+  </data>
+  <data name="&gt;&gt;pConnection.Type" xml:space="preserve">
+    <value>ExControls.ExOptionsPanel, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="ppConnection.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="ppConnection.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="ppConnection.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="ppConnection.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 6, 6, 6</value>
+  </data>
+  <data name="ppConnection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>600, 440</value>
+  </data>
+  <data name="ppConnection.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;ppConnection.Name" xml:space="preserve">
+    <value>ppConnection</value>
+  </data>
+  <data name="&gt;&gt;ppConnection.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ppConnection.Parent" xml:space="preserve">
+    <value>pConnection</value>
+  </data>
+  <data name="&gt;&gt;ppConnection.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="gbGtnLog.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="gbGtnLog.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="gbGtnLog.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="gbGtnLog.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 6</value>
+  </data>
+  <data name="gbGtnLog.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 4, 8, 8</value>
+  </data>
+  <data name="gbGtnLog.Size" type="System.Drawing.Size, System.Drawing">
+    <value>588, 100</value>
+  </data>
+  <data name="gbGtnLog.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="gbGtnLog.Text" xml:space="preserve">
+    <value>Log rozhrania INISSu</value>
+  </data>
+  <data name="&gt;&gt;gbGtnLog.Name" xml:space="preserve">
+    <value>gbGtnLog</value>
+  </data>
+  <data name="&gt;&gt;gbGtnLog.Type" xml:space="preserve">
+    <value>ExControls.ExGroupBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;gbGtnLog.Parent" xml:space="preserve">
+    <value>ppConnection</value>
+  </data>
+  <data name="&gt;&gt;gbGtnLog.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tlpGtnLog.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="tlpGtnLog.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="tlpGtnLog.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 17</value>
+  </data>
+  <data name="tlpGtnLog.Size" type="System.Drawing.Size, System.Drawing">
+    <value>572, 80</value>
+  </data>
+  <data name="tlpGtnLog.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tlpGtnLog.Name" xml:space="preserve">
+    <value>tlpGtnLog</value>
+  </data>
+  <data name="&gt;&gt;tlpGtnLog.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tlpGtnLog.Parent" xml:space="preserve">
+    <value>gbGtnLog</value>
+  </data>
+  <data name="&gt;&gt;tlpGtnLog.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="gbIniss.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="gbIniss.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="gbIniss.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="gbIniss.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 6</value>
+  </data>
+  <data name="gbIniss.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 4, 8, 8</value>
+  </data>
+  <data name="gbIniss.Size" type="System.Drawing.Size, System.Drawing">
+    <value>588, 100</value>
+  </data>
+  <data name="gbIniss.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="gbIniss.Text" xml:space="preserve">
+    <value>INISS</value>
+  </data>
+  <data name="&gt;&gt;gbIniss.Name" xml:space="preserve">
+    <value>gbIniss</value>
+  </data>
+  <data name="&gt;&gt;gbIniss.Type" xml:space="preserve">
+    <value>ExControls.ExGroupBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;gbIniss.Parent" xml:space="preserve">
+    <value>ppConnection</value>
+  </data>
+  <data name="&gt;&gt;gbIniss.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tlpIniss.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="tlpIniss.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="tlpIniss.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 17</value>
+  </data>
+  <data name="tlpIniss.Size" type="System.Drawing.Size, System.Drawing">
+    <value>572, 80</value>
+  </data>
+  <data name="tlpIniss.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tlpIniss.Name" xml:space="preserve">
+    <value>tlpIniss</value>
+  </data>
+  <data name="&gt;&gt;tlpIniss.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tlpIniss.Parent" xml:space="preserve">
+    <value>gbIniss</value>
+  </data>
+  <data name="&gt;&gt;tlpIniss.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lHost.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lHost.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="lHost.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 6</value>
+  </data>
+  <data name="lHost.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 13</value>
+  </data>
+  <data name="lHost.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lHost.Text" xml:space="preserve">
+    <value>Adresa:</value>
+  </data>
+  <data name="&gt;&gt;lHost.Name" xml:space="preserve">
+    <value>lHost</value>
+  </data>
+  <data name="&gt;&gt;lHost.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lHost.Parent" xml:space="preserve">
+    <value>tlpIniss</value>
+  </data>
+  <data name="&gt;&gt;lHost.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tbHost.Location" type="System.Drawing.Point, System.Drawing">
+    <value>60, 3</value>
+  </data>
+  <data name="tbHost.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 20</value>
+  </data>
+  <data name="tbHost.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;tbHost.Name" xml:space="preserve">
+    <value>tbHost</value>
+  </data>
+  <data name="&gt;&gt;tbHost.Type" xml:space="preserve">
+    <value>ExControls.ExTextBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;tbHost.Parent" xml:space="preserve">
+    <value>tlpIniss</value>
+  </data>
+  <data name="&gt;&gt;tbHost.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="lPort.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lPort.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="lPort.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 6</value>
+  </data>
+  <data name="lPort.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 13</value>
+  </data>
+  <data name="lPort.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="lPort.Text" xml:space="preserve">
+    <value>Port:</value>
+  </data>
+  <data name="&gt;&gt;lPort.Name" xml:space="preserve">
+    <value>lPort</value>
+  </data>
+  <data name="&gt;&gt;lPort.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lPort.Parent" xml:space="preserve">
+    <value>tlpIniss</value>
+  </data>
+  <data name="&gt;&gt;lPort.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="nudPort.Location" type="System.Drawing.Point, System.Drawing">
+    <value>200, 3</value>
+  </data>
+  <data name="nudPort.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 20</value>
+  </data>
+  <data name="nudPort.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;nudPort.Name" xml:space="preserve">
+    <value>nudPort</value>
+  </data>
+  <data name="&gt;&gt;nudPort.Type" xml:space="preserve">
+    <value>ExControls.ExNumericUpDown, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;nudPort.Parent" xml:space="preserve">
+    <value>tlpIniss</value>
+  </data>
+  <data name="&gt;&gt;nudPort.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="lPortHint.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lPortHint.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="lPortHint.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 6</value>
+  </data>
+  <data name="lPortHint.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 13</value>
+  </data>
+  <data name="lPortHint.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="lPortHint.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>560, 0</value>
+  </data>
+  <data name="lPortHint.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 6, 3, 3</value>
+  </data>
+  <data name="lPortHint.Text" xml:space="preserve">
+    <value>Port, na ktorom INISS počúva - v jeho registri GTN\RecvPort.</value>
+  </data>
+  <data name="&gt;&gt;lPortHint.Name" xml:space="preserve">
+    <value>lPortHint</value>
+  </data>
+  <data name="&gt;&gt;lPortHint.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lPortHint.Parent" xml:space="preserve">
+    <value>tlpIniss</value>
+  </data>
+  <data name="&gt;&gt;lPortHint.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="cboxWatchGtnLog.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cboxWatchGtnLog.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="cboxWatchGtnLog.Size" type="System.Drawing.Size, System.Drawing">
+    <value>300, 17</value>
+  </data>
+  <data name="cboxWatchGtnLog.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="cboxWatchGtnLog.Text" xml:space="preserve">
+    <value>Sledovať log a pri každej správe ukázať, ako ju INISS prijal</value>
+  </data>
+  <data name="&gt;&gt;cboxWatchGtnLog.Name" xml:space="preserve">
+    <value>cboxWatchGtnLog</value>
+  </data>
+  <data name="&gt;&gt;cboxWatchGtnLog.Type" xml:space="preserve">
+    <value>ExControls.ExCheckBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cboxWatchGtnLog.Parent" xml:space="preserve">
+    <value>tlpGtnLog</value>
+  </data>
+  <data name="&gt;&gt;cboxWatchGtnLog.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lGtnLog.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lGtnLog.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="lGtnLog.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 6</value>
+  </data>
+  <data name="lGtnLog.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 13</value>
+  </data>
+  <data name="lGtnLog.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="lGtnLog.Text" xml:space="preserve">
+    <value>Súbor:</value>
+  </data>
+  <data name="&gt;&gt;lGtnLog.Name" xml:space="preserve">
+    <value>lGtnLog</value>
+  </data>
+  <data name="&gt;&gt;lGtnLog.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lGtnLog.Parent" xml:space="preserve">
+    <value>tlpGtnLog</value>
+  </data>
+  <data name="&gt;&gt;lGtnLog.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tbGtnLog.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left, Right</value>
+  </data>
+  <data name="tbGtnLog.Location" type="System.Drawing.Point, System.Drawing">
+    <value>60, 26</value>
+  </data>
+  <data name="tbGtnLog.Size" type="System.Drawing.Size, System.Drawing">
+    <value>400, 20</value>
+  </data>
+  <data name="tbGtnLog.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;tbGtnLog.Name" xml:space="preserve">
+    <value>tbGtnLog</value>
+  </data>
+  <data name="&gt;&gt;tbGtnLog.Type" xml:space="preserve">
+    <value>ExControls.ExTextBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;tbGtnLog.Parent" xml:space="preserve">
+    <value>tlpGtnLog</value>
+  </data>
+  <data name="&gt;&gt;tbGtnLog.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="bBrowseGtnLog.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="bBrowseGtnLog.Location" type="System.Drawing.Point, System.Drawing">
+    <value>470, 25</value>
+  </data>
+  <data name="bBrowseGtnLog.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 23</value>
+  </data>
+  <data name="bBrowseGtnLog.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="bBrowseGtnLog.Text" xml:space="preserve">
+    <value>…</value>
+  </data>
+  <data name="&gt;&gt;bBrowseGtnLog.Name" xml:space="preserve">
+    <value>bBrowseGtnLog</value>
+  </data>
+  <data name="&gt;&gt;bBrowseGtnLog.Type" xml:space="preserve">
+    <value>ExControls.ExButton, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bBrowseGtnLog.Parent" xml:space="preserve">
+    <value>tlpGtnLog</value>
+  </data>
+  <data name="&gt;&gt;bBrowseGtnLog.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="lGtnLogHint.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lGtnLogHint.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="lGtnLogHint.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 6</value>
+  </data>
+  <data name="lGtnLogHint.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 13</value>
+  </data>
+  <data name="lGtnLogHint.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="lGtnLogHint.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>560, 0</value>
+  </data>
+  <data name="lGtnLogHint.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 6, 3, 3</value>
+  </data>
+  <data name="lGtnLogHint.Text" xml:space="preserve">
+    <value>Prázdne = nájsť v inštalácii INISSu, ku ktorej patrí grafikon. INISS píše log len so zapnutým Loging\GTNLogOn v registri.</value>
+  </data>
+  <data name="&gt;&gt;lGtnLogHint.Name" xml:space="preserve">
+    <value>lGtnLogHint</value>
+  </data>
+  <data name="&gt;&gt;lGtnLogHint.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lGtnLogHint.Parent" xml:space="preserve">
+    <value>tlpGtnLog</value>
+  </data>
+  <data name="&gt;&gt;lGtnLogHint.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>FAppSettings</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>ToolsCore.Forms.FAppSettingsBase, ToolsCore, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+</root>

@@ -5,7 +5,8 @@ using ILTISSimulator.Tools;
 namespace ILTISSimulator.Simulation;
 
 /// <summary>
-///     Jazda jedného vlaku stanicou v jeden deň tak, ako ju simulátor vylosoval.
+///     Jazda jedného vlaku stanicou v jeden deň tak, ako ju simulátor vylosoval a ako ju prípadne zmenil
+///     používateľ.
 /// </summary>
 public sealed class TrainRun
 {
@@ -34,12 +35,12 @@ public sealed class TrainRun
     public DateTime? PlannedDeparture { get; }
 
     /// <summary>
-    ///     Vylosované meškanie na príchode.
+    ///     Meškanie na príchode.
     /// </summary>
     public TimeSpan ArrivalDelay { get; internal set; }
 
     /// <summary>
-    ///     Vylosované meškanie na odchode. Môže byť menšie než meškanie na príchode, ak vlak skrátil pobyt.
+    ///     Meškanie na odchode. Môže byť menšie než meškanie na príchode, ak vlak skrátil pobyt.
     /// </summary>
     public TimeSpan DepartureDelay { get; internal set; }
 
@@ -64,15 +65,31 @@ public sealed class TrainRun
     public TrackSource TrackSource { get; internal set; }
 
     /// <summary>
-    ///     Vylosovaný dôvod meškania - poradové číslo v skupine <c>dz</c> zvukovej banky. Nula znamená, že
-    ///     sa dôvod neposiela.
+    ///     Dôvod meškania - poradové číslo v skupine <c>dz</c> zvukovej banky. Nula znamená, že sa dôvod
+    ///     neposiela.
     /// </summary>
     public int DelayReason { get; internal set; }
 
     /// <summary>
-    ///     Vlak bol zrušený - nepošle sa oň žiadna správa a neobsadí koľaj.
+    ///     O vlaku sa neposielajú správy. Rozhranie ILTIS-INISS nemá správu o zrušení vlaku, takže takto sa
+    ///     dá vyskúšať, čo INISS urobí, keď mu o vlaku nič nepríde.
     /// </summary>
-    public bool Cancelled { get; internal set; }
+    public bool Suppressed { get; internal set; }
+
+    /// <summary>
+    ///     Hodnoty, ktoré vylosoval plánovač. Používateľ sa k nim môže vrátiť.
+    /// </summary>
+    public RunValues Drawn { get; internal set; } = null!;
+
+    /// <summary>
+    ///     Aktuálne hodnoty jazdy.
+    /// </summary>
+    public RunValues Current => new(ArrivalDelay, DepartureDelay, Track, TrackSource, DelayReason);
+
+    /// <summary>
+    ///     Či používateľ jazdu zmenil oproti tomu, čo vylosoval plánovač.
+    /// </summary>
+    public bool IsChanged => Suppressed || Current != Drawn;
 
     /// <summary>
     ///     Od kedy vlak drží koľaj - od postavenia vjazdovej cesty.
@@ -85,15 +102,72 @@ public sealed class TrainRun
     public DateTime OccupiedTo { get; internal set; }
 
     /// <summary>
-    ///     Udalosti jazdy zoradené podľa času.
+    ///     Všetky udalosti jazdy - už vydané, preskočené aj čakajúce - zoradené podľa času.
     /// </summary>
     public IReadOnlyList<SimEvent> Events => _events;
 
-    internal void AddEvent(SimEventKind kind, DateTime plannedTime, DateTime time) =>
-        _events.Add(new SimEvent(this, kind, plannedTime, time, Track));
+    /// <summary>
+    ///     Posledná udalosť jazdy v stanici - odchod, pri končiacom vlaku príchod.
+    /// </summary>
+    public SimEventKind FinalKind => PlannedDeparture.HasValue ? SimEventKind.Departure : SimEventKind.Arrival;
+
+    /// <summary>
+    ///     Či už jazda v stanici skončila - jej posledná udalosť bola vydaná alebo preskočená. Takú jazdu
+    ///     už nemá zmysel meniť.
+    /// </summary>
+    public bool IsFinished => IsDone(FinalKind);
+
+    /// <summary>
+    ///     Najbližšia čakajúca udalosť.
+    /// </summary>
+    public SimEvent? NextEvent => _events.FirstOrDefault(simEvent => !simEvent.IsDone);
+
+    /// <summary>
+    ///     Zistí, či už udalosť daného druhu prebehla - bola vydaná alebo preskočená.
+    /// </summary>
+    /// <param name="kind">Druh udalosti.</param>
+    /// <returns><see langword="true" />, ak už udalosť daného druhu nečaká.</returns>
+    public bool IsDone(SimEventKind kind) => _events.Any(simEvent => simEvent.Kind == kind && simEvent.IsDone);
+
+    /// <summary>
+    ///     Naposledy vydaná alebo preskočená udalosť daného druhu.
+    /// </summary>
+    /// <param name="kind">Druh udalosti.</param>
+    /// <returns>Udalosť, alebo <see langword="null" />, ak žiadna taká ešte neprebehla.</returns>
+    public SimEvent? LastDone(SimEventKind kind) => _events
+        .Where(simEvent => simEvent.Kind == kind && simEvent.IsDone)
+        .MaxBy(simEvent => simEvent.Sequence);
+
+    /// <summary>
+    ///     Nahradí všetky udalosti jazdy.
+    /// </summary>
+    internal void ResetEvents(IEnumerable<SimEvent> events)
+    {
+        _events.Clear();
+        _events.AddRange(events);
+        Sort();
+    }
+
+    /// <summary>
+    ///     Nahradí čakajúce udalosti jazdy, vydané a preskočené ostanú.
+    /// </summary>
+    internal void ReplacePending(IEnumerable<SimEvent> events)
+    {
+        _events.RemoveAll(simEvent => !simEvent.IsDone);
+        _events.AddRange(events);
+        Sort();
+    }
+
+    private void Sort()
+    {
+        var sorted = _events.OrderBy(simEvent => simEvent.Time).ThenBy(simEvent => simEvent.Kind).ToList();
+
+        _events.Clear();
+        _events.AddRange(sorted);
+    }
 
     /// <inheritdoc />
     public override string ToString() =>
         Texts.F(Resources.Run_Format, Train.Type?.Key, Train.Number, Train.Routing?.CharSymbol, Track?.Key,
-            Texts.Of(TrackSource)) + (Cancelled ? Resources.Run_Cancelled : "");
+            Texts.Of(TrackSource)) + (Suppressed ? Resources.Run_Suppressed : "");
 }

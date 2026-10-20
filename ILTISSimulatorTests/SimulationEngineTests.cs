@@ -1,4 +1,4 @@
-using ILTISSimulator.Gtn;
+﻿using ILTISSimulator.Gtn;
 using ILTISSimulator.Simulation;
 
 namespace ILTISSimulatorTests;
@@ -18,8 +18,7 @@ public class SimulationEngineTests
         Seed = 5,
         OnTimeProbability = 1.0,
         DelayGrowthProbability = 0.0,
-        TrackDiversionProbability = 0.0,
-        CancellationProbability = 0.0
+        TrackChangeProbability = 0.0
     };
 
     private static SimulationEngine NewEngine(SimulationOptions? options = null) =>
@@ -36,12 +35,15 @@ public class SimulationEngineTests
     }
 
     [TestMethod]
-    public void Timeline_SkipsCancelledRuns()
+    public void Timeline_SkipsSuppressedRuns()
     {
-        var options = Options();
-        options.CancellationProbability = 1.0;
+        var runs = new DayPlanner(SimulationFixture.Gvd, Options()).Plan(Day);
+        var context = new PlanEditContext(Options(), Day);
 
-        var timeline = new SimulationTimeline(new DayPlanner(SimulationFixture.Gvd, options).Plan(Day));
+        foreach (var run in runs)
+            Assert.AreEqual(PlanEditError.None, PlanEditing.SetSuppressed(run, true, context));
+
+        var timeline = new SimulationTimeline(runs);
 
         Assert.AreEqual(0, timeline.Events.Count);
         Assert.IsTrue(timeline.IsFinished);
@@ -247,5 +249,115 @@ public class SimulationEngineTests
         var frozen = engine.VirtualTime;
         System.Threading.Thread.Sleep(150);
         Assert.AreEqual(frozen, engine.VirtualTime);
+    }
+
+    [TestMethod]
+    public void Edit_DuringRun_ChangesWhatIsSentAndRaisesPlanChanged()
+    {
+        using var engine = NewEngine();
+        var messages = new List<GtnMessage>();
+        var changed = new List<TrainRun>();
+        engine.EventDue += (_, args) => messages.Add(args.Message);
+        engine.PlanChanged += (_, args) => changed.AddRange(args.Runs);
+
+        engine.PlanDay(Day, Day.AddHours(10));
+        var run = engine.Runs!.Single(candidate => candidate.Train.Number == "2005");
+        var track = SimulationFixture.Gvd.Tracks.Single(candidate => candidate.Key == "1A");
+
+        var error = engine.Edit(run, (r, context) => PlanEditing.SetTrack(r, track, context));
+        engine.Pump(Day.AddHours(11));
+
+        Assert.AreEqual(PlanEditError.None, error);
+        CollectionAssert.AreEqual(new[] { run }, changed.ToArray());
+        Assert.IsTrue(messages.Where(message => message.TrainNumber == "2005").All(message => message.Track == "1A"));
+    }
+
+    [TestMethod]
+    public void Edit_RejectedChange_ReturnsReasonAndDoesNotRaisePlanChanged()
+    {
+        using var engine = NewEngine();
+        var raised = false;
+        engine.PlanChanged += (_, _) => raised = true;
+
+        engine.PlanDay(Day);
+        var originating = engine.Runs!.Single(candidate => candidate.Train.Number == "2007");
+
+        var error = engine.Edit(originating, (r, context) => PlanEditing.SetArrivalDelay(r, TimeSpan.FromMinutes(5), context));
+
+        Assert.AreEqual(PlanEditError.NoArrival, error);
+        Assert.IsFalse(raised);
+    }
+
+    [TestMethod]
+    public void Edit_UsesVirtualTimeForCorrections()
+    {
+        using var engine = NewEngine();
+        engine.PlanDay(Day);
+        var run = engine.Runs!.Single(candidate => candidate.Train.Number == "2005");
+        var track = SimulationFixture.Gvd.Tracks.Single(candidate => candidate.Key == "3");
+
+        engine.JumpTo(Day.AddHours(10).AddMinutes(12));
+        engine.Pump(Day.AddHours(10).AddMinutes(12));
+        engine.Edit(run, (r, context) => PlanEditing.SetDelayReason(r, 1, context));
+        engine.Edit(run, (r, context) => PlanEditing.SetTrack(r, track, context));
+
+        // Vjazdová cesta 10:11 sa skokom preskočila. Nový dôvod ide so svojím pravidelným časom, nová
+        // koľaj ako dodatočná vlaková cesta.
+        var reason = run.Events.Single(simEvent => simEvent.Kind == SimEventKind.DelayReason);
+        Assert.IsFalse(reason.IsCorrection);
+        Assert.AreEqual(Day.AddHours(10).AddMinutes(11), reason.Time);
+        Assert.IsTrue(run.Events.Any(simEvent => simEvent.IsCorrection && simEvent.Kind == SimEventKind.EntryRoute));
+    }
+
+    [TestMethod]
+    public void Stop_KeepsEditsAndDropsCorrections()
+    {
+        using var engine = NewEngine();
+        engine.PlanDay(Day);
+        var run = engine.Runs!.Single(candidate => candidate.Train.Number == "2005");
+        var track = SimulationFixture.Gvd.Tracks.Single(candidate => candidate.Key == "1A");
+
+        engine.Pump(Day.AddHours(10).AddMinutes(12));
+        engine.Edit(run, (r, context) => PlanEditing.SetTrack(r, track, context));
+        engine.Stop();
+
+        var (done, total) = engine.Progress();
+        Assert.AreEqual(0, done);
+        Assert.AreEqual("1A", run.Track.Key);
+        Assert.IsFalse(run.Events.Any(simEvent => simEvent.IsCorrection));
+        Assert.IsTrue(run.Events.All(simEvent => simEvent.State == SimEventState.Pending && simEvent.Track.Key == "1A"));
+        Assert.AreEqual(engine.Timeline!.Total, total);
+    }
+
+    [TestMethod]
+    public void MessageBuilder_DepartureCarriesSecondTrackOnlyWhenEnabled()
+    {
+        var run = new DayPlanner(SimulationFixture.Gvd, Options()).Plan(Day).Single(candidate => candidate.Train.Number == "2005");
+        var departure = run.Events.Single(simEvent => simEvent.Kind == SimEventKind.Departure);
+        var arrival = run.Events.Single(simEvent => simEvent.Kind == SimEventKind.Arrival);
+
+        var withSecond = new GtnMessageBuilder(SimulationFixture.Gvd.StationId, true);
+        var withoutSecond = new GtnMessageBuilder(SimulationFixture.Gvd.StationId);
+
+        // INISS nastavi udalost Odj len pri odchode s oboma kolajami
+        Assert.AreEqual("2", withSecond.Build(departure).SecondTrack);
+        Assert.AreEqual(34, GtnEncoder.Encode(withSecond.Build(departure)).Length);
+        Assert.IsNull(withoutSecond.Build(departure).SecondTrack);
+        Assert.IsNull(withSecond.Build(arrival).SecondTrack);
+    }
+
+    [TestMethod]
+    public void Stop_ReturnsToPlannedStartAndSkipsEarlierEventsAgain()
+    {
+        using var engine = NewEngine();
+        engine.PlanDay(Day, Day.AddHours(11));
+        var skipped = engine.Progress().Done;
+
+        engine.Pump(Day.AddHours(23).AddMinutes(55));
+        engine.Stop();
+
+        Assert.AreEqual(Day.AddHours(11), engine.VirtualTime);
+        Assert.AreEqual(skipped, engine.Progress().Done);
+        Assert.IsTrue(engine.Runs!.Single(run => run.Train.Number == "2005").IsFinished, "vlak pred 11:00 ostal preskočený");
     }
 }

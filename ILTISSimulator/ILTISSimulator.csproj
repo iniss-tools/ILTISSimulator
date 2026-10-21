@@ -10,8 +10,16 @@
 		<ApplicationIcon>gtn.ico</ApplicationIcon>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
 		<LangVersion>default</LangVersion>
-		<!-- referencuje GVDEditor, ktory je pripnuty na win-x64 (MSB3270) -->
-		<PlatformTarget>x64</PlatformTarget>
+		<!-- Ako GVDEditor, ktory referencuje (inak MSB3270). Bez RID kopiruje SDK do runtimes\ aj nativne kniznice
+		     pre Android, Linux a macOS (tahaju ich balicky ako System.IO.Ports). SelfContained=false: program je
+		     zavisly od frameworku. AppendRuntimeIdentifierToOutputPath=false: vystup ostava v bin\<konfiguracia>\net10.0-windows,
+		     odkial ho berie ILTISSimulatorInstaller.iss. -->
+		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
+		<SelfContained>false</SelfContained>
+		<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+		<!-- Slovencina je v hlavnej zostave, prelozena je len cestina. Ostatne jazyky su satelity balickov
+		     (System.ServiceModel a spol.), ktore program nikdy nezobrazi. -->
+		<SatelliteResourceLanguages>cs</SatelliteResourceLanguages>
 	</PropertyGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\..\ExControls\ExControls\ExControls.csproj" />

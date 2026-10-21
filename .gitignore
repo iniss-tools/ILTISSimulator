@@ -334,3 +334,7 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+
+# Inno Setup output
+Output/
+*-setup.exe

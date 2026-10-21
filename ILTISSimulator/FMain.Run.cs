@@ -59,6 +59,7 @@ internal sealed partial class FMain
 
         ttMain.SetToolTip(tbManual, Resources.Main_ManualTip);
         ttMain.SetToolTip(cbManualNow, Resources.Main_ManualNowTip);
+        ttMain.SetToolTip(cbManualRegular, Resources.Main_ManualRegularTip);
         tmrClock.Start();
     }
 
@@ -159,7 +160,8 @@ internal sealed partial class FMain
             DelayReasonProbability = settings.DelayReasonPercent / 100.0,
             EntryRouteLead = TimeSpan.FromMinutes(settings.EntryRouteLeadMinutes),
             ExitRouteLead = TimeSpan.FromMinutes(settings.ExitRouteLeadMinutes),
-            SendSecondTrack = settings.SendSecondTrack,
+            SendLineTrack = settings.SendLineTrack,
+            LineTrack = settings.LineTrack,
             DelayReasons = UsableReasons().Select(reason => reason.Number).ToList(),
             ExcludedTrackKeys = new HashSet<string>(_excludedTracks, StringComparer.OrdinalIgnoreCase)
         };

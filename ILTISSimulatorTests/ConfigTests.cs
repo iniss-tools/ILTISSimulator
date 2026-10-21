@@ -19,6 +19,8 @@ public class ConfigTests
         config.Connection.WatchGtnLog = false;
         config.Simulation.Seed = 42;
         config.Simulation.TrackChangePercent = 15;
+        config.Simulation.SendLineTrack = false;
+        config.Simulation.LineTrack = "2A";
         config.View.HideFinished = true;
         config.ExcludedTracks.Set(5613600, ["BUS", "VYLUKA"]);
         config.DesktopCols[DesktopColumns.Response].Visible = false;
@@ -35,6 +37,8 @@ public class ConfigTests
             Assert.IsFalse(read.Connection.WatchGtnLog);
             Assert.AreEqual(42, read.Simulation.Seed);
             Assert.AreEqual(15, read.Simulation.TrackChangePercent);
+            Assert.IsFalse(read.Simulation.SendLineTrack);
+            Assert.AreEqual("2A", read.Simulation.LineTrack);
             Assert.IsTrue(read.View.HideFinished);
             CollectionAssert.AreEquivalent(new[] { "BUS", "VYLUKA" }, read.ExcludedTracks.Get(5613600).ToArray());
             Assert.AreEqual(0, read.ExcludedTracks.Get(1).Count);

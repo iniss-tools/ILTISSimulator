@@ -169,9 +169,9 @@
             this.fieldTrack = new System.Windows.Forms.FlowLayoutPanel();
             this.lManualTrack = new System.Windows.Forms.Label();
             this.cbManualTrack = new ExControls.ExComboBox();
-            this.fieldSecondTrack = new System.Windows.Forms.FlowLayoutPanel();
-            this.lManualSecondTrack = new System.Windows.Forms.Label();
-            this.cbManualSecondTrack = new ExControls.ExComboBox();
+            this.fieldLineTrack = new System.Windows.Forms.FlowLayoutPanel();
+            this.lManualLineTrack = new System.Windows.Forms.Label();
+            this.cbManualLineTrack = new ExControls.ExComboBox();
             this.fieldRouteKind = new System.Windows.Forms.FlowLayoutPanel();
             this.lManualRouteKind = new System.Windows.Forms.Label();
             this.cbManualRouteKind = new ExControls.ExComboBox();
@@ -181,6 +181,9 @@
             this.fieldTransferKind = new System.Windows.Forms.FlowLayoutPanel();
             this.lManualTransferKind = new System.Windows.Forms.Label();
             this.cbManualTransferKind = new ExControls.ExComboBox();
+            this.fieldRegularTime = new System.Windows.Forms.FlowLayoutPanel();
+            this.cbManualRegular = new ExControls.ExCheckBox();
+            this.dtpManualRegular = new ExControls.ExDateTimePicker();
             this.statusStripMain = new System.Windows.Forms.StatusStrip();
             this.tsslStation = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsslPlan = new System.Windows.Forms.ToolStripStatusLabel();
@@ -227,10 +230,11 @@
             this.fieldTrain.SuspendLayout();
             this.fieldTime.SuspendLayout();
             this.fieldTrack.SuspendLayout();
-            this.fieldSecondTrack.SuspendLayout();
+            this.fieldLineTrack.SuspendLayout();
             this.fieldRouteKind.SuspendLayout();
             this.fieldDelayReason.SuspendLayout();
             this.fieldTransferKind.SuspendLayout();
+            this.fieldRegularTime.SuspendLayout();
             this.statusStripMain.SuspendLayout();
             this.cmsPlan.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlan)).BeginInit();
@@ -1127,10 +1131,11 @@
             this.flowManual.Controls.Add(this.fieldTrain);
             this.flowManual.Controls.Add(this.fieldTime);
             this.flowManual.Controls.Add(this.fieldTrack);
-            this.flowManual.Controls.Add(this.fieldSecondTrack);
+            this.flowManual.Controls.Add(this.fieldLineTrack);
             this.flowManual.Controls.Add(this.fieldRouteKind);
             this.flowManual.Controls.Add(this.fieldDelayReason);
             this.flowManual.Controls.Add(this.fieldTransferKind);
+            this.flowManual.Controls.Add(this.fieldRegularTime);
             resources.ApplyResources(this.flowManual, "flowManual");
             this.flowManual.Name = "flowManual";
             // 
@@ -1259,24 +1264,24 @@
             this.cbManualTrack.TextChanged += new System.EventHandler(this.Manual_Changed);
             this.cbManualTrack.Name = "cbManualTrack";
             // 
-            // fieldSecondTrack
+            // fieldLineTrack
             // 
-            this.fieldSecondTrack.Controls.Add(this.lManualSecondTrack);
-            this.fieldSecondTrack.Controls.Add(this.cbManualSecondTrack);
-            resources.ApplyResources(this.fieldSecondTrack, "fieldSecondTrack");
-            this.fieldSecondTrack.WrapContents = false;
-            this.fieldSecondTrack.Name = "fieldSecondTrack";
+            this.fieldLineTrack.Controls.Add(this.lManualLineTrack);
+            this.fieldLineTrack.Controls.Add(this.cbManualLineTrack);
+            resources.ApplyResources(this.fieldLineTrack, "fieldLineTrack");
+            this.fieldLineTrack.WrapContents = false;
+            this.fieldLineTrack.Name = "fieldLineTrack";
             // 
-            // lManualSecondTrack
+            // lManualLineTrack
             // 
-            resources.ApplyResources(this.lManualSecondTrack, "lManualSecondTrack");
-            this.lManualSecondTrack.Name = "lManualSecondTrack";
+            resources.ApplyResources(this.lManualLineTrack, "lManualLineTrack");
+            this.lManualLineTrack.Name = "lManualLineTrack";
             // 
-            // cbManualSecondTrack
+            // cbManualLineTrack
             // 
-            resources.ApplyResources(this.cbManualSecondTrack, "cbManualSecondTrack");
-            this.cbManualSecondTrack.TextChanged += new System.EventHandler(this.Manual_Changed);
-            this.cbManualSecondTrack.Name = "cbManualSecondTrack";
+            resources.ApplyResources(this.cbManualLineTrack, "cbManualLineTrack");
+            this.cbManualLineTrack.TextChanged += new System.EventHandler(this.Manual_Changed);
+            this.cbManualLineTrack.Name = "cbManualLineTrack";
             // 
             // fieldRouteKind
             // 
@@ -1337,6 +1342,28 @@
             this.cbManualTransferKind.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbManualTransferKind.SelectedIndexChanged += new System.EventHandler(this.Manual_Changed);
             this.cbManualTransferKind.Name = "cbManualTransferKind";
+            //
+            // fieldRegularTime
+            //
+            this.fieldRegularTime.Controls.Add(this.cbManualRegular);
+            this.fieldRegularTime.Controls.Add(this.dtpManualRegular);
+            resources.ApplyResources(this.fieldRegularTime, "fieldRegularTime");
+            this.fieldRegularTime.WrapContents = false;
+            this.fieldRegularTime.Name = "fieldRegularTime";
+            //
+            // cbManualRegular
+            //
+            resources.ApplyResources(this.cbManualRegular, "cbManualRegular");
+            this.cbManualRegular.CheckedChanged += new System.EventHandler(this.cbManualRegular_CheckedChanged);
+            this.cbManualRegular.Name = "cbManualRegular";
+            //
+            // dtpManualRegular
+            //
+            resources.ApplyResources(this.dtpManualRegular, "dtpManualRegular");
+            this.dtpManualRegular.CustomFormat = "dd.MM. HH:mm:ss";
+            this.dtpManualRegular.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpManualRegular.ValueChanged += new System.EventHandler(this.Manual_Changed);
+            this.dtpManualRegular.Name = "dtpManualRegular";
             // 
             // statusStripMain
             // 
@@ -1519,14 +1546,16 @@
             this.cmsPlan.PerformLayout();
             this.statusStripMain.ResumeLayout(false);
             this.statusStripMain.PerformLayout();
+            this.fieldRegularTime.ResumeLayout(false);
+            this.fieldRegularTime.PerformLayout();
             this.fieldTransferKind.ResumeLayout(false);
             this.fieldTransferKind.PerformLayout();
             this.fieldDelayReason.ResumeLayout(false);
             this.fieldDelayReason.PerformLayout();
             this.fieldRouteKind.ResumeLayout(false);
             this.fieldRouteKind.PerformLayout();
-            this.fieldSecondTrack.ResumeLayout(false);
-            this.fieldSecondTrack.PerformLayout();
+            this.fieldLineTrack.ResumeLayout(false);
+            this.fieldLineTrack.PerformLayout();
             this.fieldTrack.ResumeLayout(false);
             this.fieldTrack.PerformLayout();
             this.fieldTime.ResumeLayout(false);
@@ -1706,9 +1735,9 @@
         private System.Windows.Forms.FlowLayoutPanel fieldTrack;
         private System.Windows.Forms.Label lManualTrack;
         private ExControls.ExComboBox cbManualTrack;
-        private System.Windows.Forms.FlowLayoutPanel fieldSecondTrack;
-        private System.Windows.Forms.Label lManualSecondTrack;
-        private ExControls.ExComboBox cbManualSecondTrack;
+        private System.Windows.Forms.FlowLayoutPanel fieldLineTrack;
+        private System.Windows.Forms.Label lManualLineTrack;
+        private ExControls.ExComboBox cbManualLineTrack;
         private System.Windows.Forms.FlowLayoutPanel fieldRouteKind;
         private System.Windows.Forms.Label lManualRouteKind;
         private ExControls.ExComboBox cbManualRouteKind;
@@ -1718,6 +1747,9 @@
         private System.Windows.Forms.FlowLayoutPanel fieldTransferKind;
         private System.Windows.Forms.Label lManualTransferKind;
         private ExControls.ExComboBox cbManualTransferKind;
+        private System.Windows.Forms.FlowLayoutPanel fieldRegularTime;
+        private ExControls.ExCheckBox cbManualRegular;
+        private ExControls.ExDateTimePicker dtpManualRegular;
         private System.Windows.Forms.StatusStrip statusStripMain;
         private System.Windows.Forms.ToolStripStatusLabel tsslStation;
         private System.Windows.Forms.ToolStripStatusLabel tsslPlan;

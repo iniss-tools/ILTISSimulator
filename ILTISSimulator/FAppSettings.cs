@@ -55,7 +55,9 @@ internal sealed partial class FAppSettings : FAppSettingsBase
         SetValue(nudReason, simulation.DelayReasonPercent);
         SetValue(nudEntryLead, simulation.EntryRouteLeadMinutes);
         SetValue(nudExitLead, simulation.ExitRouteLeadMinutes);
-        cboxSecondTrack.Checked = simulation.SendSecondTrack;
+        cboxLineTrack.Checked = simulation.SendLineTrack;
+        tbLineTrack.Text = simulation.LineTrack;
+        UpdateLineTrackFields();
 
         var connection = Config.Connection;
         tbHost.Text = connection.Host;
@@ -77,6 +79,13 @@ internal sealed partial class FAppSettings : FAppSettingsBase
             return false;
         }
 
+        if (cboxLineTrack.Checked && string.IsNullOrWhiteSpace(tbLineTrack.Text))
+        {
+            ToolsCore.Tools.Utils.ShowWarning(Resources.Settings_LineTrackEmpty);
+            optionsView.ShowPanel(pSimulation.Name);
+            return false;
+        }
+
         Config.Shortcuts.SetFromRows(Shortcuts);
         Config.DesktopCols.SetValues(Columns);
 
@@ -89,7 +98,8 @@ internal sealed partial class FAppSettings : FAppSettingsBase
             DelayReasonPercent = decimal.ToInt32(nudReason.Value),
             EntryRouteLeadMinutes = decimal.ToInt32(nudEntryLead.Value),
             ExitRouteLeadMinutes = decimal.ToInt32(nudExitLead.Value),
-            SendSecondTrack = cboxSecondTrack.Checked
+            SendLineTrack = cboxLineTrack.Checked,
+            LineTrack = tbLineTrack.Text.Trim()
         };
         Config.Connection = Config.Connection with
         {
@@ -124,6 +134,10 @@ internal sealed partial class FAppSettings : FAppSettingsBase
     protected override Style CreateStyleInstance(string name) => new IltisStyle { Name = name };
 
     private void cboxWatchGtnLog_CheckedChanged(object? sender, EventArgs e) => UpdateGtnLogFields();
+
+    private void cboxLineTrack_CheckedChanged(object? sender, EventArgs e) => UpdateLineTrackFields();
+
+    private void UpdateLineTrackFields() => tbLineTrack.Enabled = cboxLineTrack.Checked;
 
     private void UpdateGtnLogFields()
     {

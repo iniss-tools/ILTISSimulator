@@ -52,7 +52,9 @@
             this.nudEntryLead = new ExControls.ExNumericUpDown();
             this.lExitLead = new System.Windows.Forms.Label();
             this.nudExitLead = new ExControls.ExNumericUpDown();
-            this.cboxSecondTrack = new ExControls.ExCheckBox();
+            this.cboxLineTrack = new ExControls.ExCheckBox();
+            this.tbLineTrack = new ExControls.ExTextBox();
+            this.lLineTrackHint = new System.Windows.Forms.Label();
             ExControls.OptionsNode optionsNodeConnection = new ExControls.OptionsNode();
             this.pConnection = new ExControls.ExOptionsPanel(this.optionsView);
             this.ppConnection = new System.Windows.Forms.Panel();
@@ -134,7 +136,9 @@
             this.tlpRoutes.Controls.Add(this.nudEntryLead);
             this.tlpRoutes.Controls.Add(this.lExitLead);
             this.tlpRoutes.Controls.Add(this.nudExitLead);
-            this.tlpRoutes.Controls.Add(this.cboxSecondTrack);
+            this.tlpRoutes.Controls.Add(this.cboxLineTrack);
+            this.tlpRoutes.Controls.Add(this.tbLineTrack);
+            this.tlpRoutes.Controls.Add(this.lLineTrackHint);
             resources.ApplyResources(this.tlpRoutes, "tlpRoutes");
             this.tlpRoutes.ColumnCount = 3;
             this.tlpRoutes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
@@ -287,14 +291,28 @@
             this.nudExitLead.Value = new decimal(new int[] { 2, 0, 0, 0 });
             this.nudExitLead.Name = "nudExitLead";
             // 
-            // cboxSecondTrack
+            // cboxLineTrack
             // 
-            resources.ApplyResources(this.cboxSecondTrack, "cboxSecondTrack");
-            this.tlpRoutes.SetCellPosition(this.cboxSecondTrack, new System.Windows.Forms.TableLayoutPanelCellPosition(0, 2));
-            this.tlpRoutes.SetColumnSpan(this.cboxSecondTrack, 3);
-            this.cboxSecondTrack.BoxBackColor = System.Drawing.Color.White;
-            this.cboxSecondTrack.HighlightColor = System.Drawing.SystemColors.Highlight;
-            this.cboxSecondTrack.Name = "cboxSecondTrack";
+            resources.ApplyResources(this.cboxLineTrack, "cboxLineTrack");
+            this.tlpRoutes.SetCellPosition(this.cboxLineTrack, new System.Windows.Forms.TableLayoutPanelCellPosition(0, 2));
+            this.cboxLineTrack.BoxBackColor = System.Drawing.Color.White;
+            this.cboxLineTrack.HighlightColor = System.Drawing.SystemColors.Highlight;
+            this.cboxLineTrack.CheckedChanged += new System.EventHandler(this.cboxLineTrack_CheckedChanged);
+            this.cboxLineTrack.Name = "cboxLineTrack";
+            // 
+            // tbLineTrack
+            // 
+            resources.ApplyResources(this.tbLineTrack, "tbLineTrack");
+            this.tlpRoutes.SetCellPosition(this.tbLineTrack, new System.Windows.Forms.TableLayoutPanelCellPosition(1, 2));
+            this.tbLineTrack.MaxLength = 4;
+            this.tbLineTrack.Name = "tbLineTrack";
+            // 
+            // lLineTrackHint
+            // 
+            resources.ApplyResources(this.lLineTrackHint, "lLineTrackHint");
+            this.tlpRoutes.SetCellPosition(this.lLineTrackHint, new System.Windows.Forms.TableLayoutPanelCellPosition(0, 3));
+            this.tlpRoutes.SetColumnSpan(this.lLineTrackHint, 3);
+            this.lLineTrackHint.Name = "lLineTrackHint";
             // 
             // pConnection
             // 
@@ -494,7 +512,9 @@
         private ExControls.ExNumericUpDown nudEntryLead;
         private System.Windows.Forms.Label lExitLead;
         private ExControls.ExNumericUpDown nudExitLead;
-        private ExControls.ExCheckBox cboxSecondTrack;
+        private ExControls.ExCheckBox cboxLineTrack;
+        private ExControls.ExTextBox tbLineTrack;
+        private System.Windows.Forms.Label lLineTrackHint;
         private ExControls.ExOptionsPanel pConnection;
         private System.Windows.Forms.Panel ppConnection;
         private ExControls.ExGroupBox gbGtnLog;

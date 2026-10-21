@@ -144,8 +144,11 @@
   <data name="lExitLead.Text" xml:space="preserve">
     <value>Odjezdová cesta před odjezdem [min]:</value>
   </data>
-  <data name="cboxSecondTrack.Text" xml:space="preserve">
-    <value>Odjezd s druhou kolejí (INISS pak nastaví událost Odj)</value>
+  <data name="cboxLineTrack.Text" xml:space="preserve">
+    <value>Odjezd s traťovou kolejí:</value>
+  </data>
+  <data name="lLineTrackHint.Text" xml:space="preserve">
+    <value>INISS pak nastaví událost Odj a vlak po odjezdu ze seznamu smaže. Traťovou kolej dosadí následujícím zastávkám na trati.</value>
   </data>
   <data name="optionsNodeConnection.Text" xml:space="preserve">
     <value>Spojení s INISSem</value>

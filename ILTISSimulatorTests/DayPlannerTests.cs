@@ -1,4 +1,5 @@
 ﻿using GVDEditor.Domain.Entities;
+using ILTISSimulator.Data;
 using ILTISSimulator.Simulation;
 
 namespace ILTISSimulatorTests;
@@ -42,6 +43,47 @@ public class DayPlannerTests
         Assert.AreEqual(runs.Count, runs.Select(run => run.Train.Number).Distinct().Count());
         Assert.AreEqual(4, Run(runs, "2011").Train.ID);
         CollectionAssert.AreEqual(new[] { 5 }, planner.SkippedDuplicates.Select(train => train.ID).ToArray());
+    }
+
+    [TestMethod]
+    public void Plan_SkipsBusesBeforePairingNumbers()
+    {
+        // INISS pri párovaní preskakuje vlaky druhu Bus - aj keď sa ich kľúč z TrTypes.txt volá inak (NAD).
+        // Vlak 4 je autobus, takže číslo 2011 patrí vlaku 5 a ten už nie je dvojité číslo.
+        var dir = Path.Combine(Path.GetTempPath(), "ILTISSimulatorTests-" + Guid.NewGuid().ToString("N"));
+        Directory.CreateDirectory(dir);
+        try
+        {
+            foreach (var file in Directory.GetFiles(SimulationFixture.TestDataDir))
+                File.Copy(file, Path.Combine(dir, Path.GetFileName(file)));
+
+            File.WriteAllLines(Path.Combine(dir, "TRTYPES.txt"), ["Os", "R", "Bus,NAD,NAD"]);
+            var export = Path.Combine(dir, "EXPORT3A.txt");
+            File.WriteAllText(export, File.ReadAllText(export)
+                .Replace("1,\"2005\",\"\",\"Os\"", "1,\"2005\",\"\",\"NAD\"", StringComparison.Ordinal)
+                .Replace("4,\"2011\",\"\",\"Os\"", "4,\"2011\",\"\",\"Bus\"", StringComparison.Ordinal));
+
+            var planner = new DayPlanner(GvdLightReader.Read(dir), Options());
+            var runs = planner.Plan(SimulationFixture.FirstDay);
+
+            CollectionAssert.AreEquivalent(new[] { 2, 5 }, runs.Select(run => run.Train.ID).ToArray());
+            CollectionAssert.AreEqual(new[] { 1, 4 }, planner.SkippedBuses.Select(train => train.ID).ToArray());
+            Assert.IsEmpty(planner.SkippedDuplicates);
+        }
+        finally
+        {
+            Directory.Delete(dir, true);
+        }
+    }
+
+    [TestMethod]
+    public void IsBus_DecidesByBuiltInTypeNotKey()
+    {
+        Assert.IsTrue(GvdData.IsBus(new Train { Type = new TrainType("Bus") }));
+        Assert.IsTrue(GvdData.IsBus(new Train { Type = new TrainType("Bus") { Key = "NAD", TextInTable = "NAD" } }));
+        Assert.IsFalse(GvdData.IsBus(new Train { Type = new TrainType("X1", "Bus", "Bus") }));
+        Assert.IsFalse(GvdData.IsBus(new Train { Type = new TrainType("Os") }));
+        Assert.IsFalse(GvdData.IsBus(new Train()));
     }
 
     [TestMethod]

@@ -897,11 +897,11 @@ namespace ILTISSimulator.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to druhá koľaj.
+        ///   Looks up a localized string similar to traťová koľaj.
         /// </summary>
-        internal static string Field_SecondTrack {
+        internal static string Field_LineTrack {
             get {
-                return ResourceManager.GetString("Field_SecondTrack", resourceCulture);
+                return ResourceManager.GetString("Field_LineTrack", resourceCulture);
             }
         }
         
@@ -2221,6 +2221,60 @@ namespace ILTISSimulator.Properties {
         internal static string Diagram_DragInfo {
             get {
                 return ResourceManager.GetString("Diagram_DragInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Traťová koľaj musí mať 1 až {0} znaky..
+        /// </summary>
+        internal static string Error_LineTrack {
+            get {
+                return ResourceManager.GetString("Error_LineTrack", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zadajte traťovú koľaj alebo vypnite odchod s traťovou koľajou..
+        /// </summary>
+        internal static string Settings_LineTrackEmpty {
+            get {
+                return ResourceManager.GetString("Settings_LineTrackEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vynechané autobusy (INISS ich s ILTISom nepáruje): {0}.
+        /// </summary>
+        internal static string Engine_SkippedBuses {
+            get {
+                return ResourceManager.GetString("Engine_SkippedBuses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to autobus - neposiela sa.
+        /// </summary>
+        internal static string Grid_Bus {
+            get {
+                return ResourceManager.GetString("Grid_Bus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vlak je druhu Bus. INISS autobusy s ILTISom nepáruje, preto sa o ňom správy neposielajú..
+        /// </summary>
+        internal static string Grid_BusTip {
+            get {
+                return ResourceManager.GetString("Grid_BusTip", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Plánovaný príchod pri 0802, odchod pri 0803 a 0804. INISS potom páruje vlak podľa neho, nie podľa času udalosti..
+        /// </summary>
+        internal static string Main_ManualRegularTip {
+            get {
+                return ResourceManager.GetString("Main_ManualRegularTip", resourceCulture);
             }
         }
     }

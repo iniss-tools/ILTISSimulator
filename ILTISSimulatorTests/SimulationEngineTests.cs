@@ -330,20 +330,52 @@ public class SimulationEngineTests
     }
 
     [TestMethod]
-    public void MessageBuilder_DepartureCarriesSecondTrackOnlyWhenEnabled()
+    public void MessageBuilder_DepartureCarriesLineTrackOnlyWhenEnabled()
     {
         var run = new DayPlanner(SimulationFixture.Gvd, Options()).Plan(Day).Single(candidate => candidate.Train.Number == "2005");
         var departure = run.Events.Single(simEvent => simEvent.Kind == SimEventKind.Departure);
         var arrival = run.Events.Single(simEvent => simEvent.Kind == SimEventKind.Arrival);
+        var exitRoute = run.Events.Single(simEvent => simEvent.Kind == SimEventKind.ExitRoute);
 
-        var withSecond = new GtnMessageBuilder(SimulationFixture.Gvd.StationId, true);
-        var withoutSecond = new GtnMessageBuilder(SimulationFixture.Gvd.StationId);
+        var withLineTrack = new GtnMessageBuilder(SimulationFixture.Gvd.StationId, " 5 ");
+        var withoutLineTrack = new GtnMessageBuilder(SimulationFixture.Gvd.StationId);
 
-        // INISS nastavi udalost Odj len pri odchode s oboma kolajami
-        Assert.AreEqual("2", withSecond.Build(departure).SecondTrack);
-        Assert.AreEqual(34, GtnEncoder.Encode(withSecond.Build(departure)).Length);
-        Assert.IsNull(withoutSecond.Build(departure).SecondTrack);
-        Assert.IsNull(withSecond.Build(arrival).SecondTrack);
+        // ako ILTIS: odchod nesie tratovu kolaj, nie stanicnu - INISS potom nastavi Odj a vlak zmaze
+        var message = withLineTrack.Build(departure);
+        Assert.AreEqual("2", message.Track);
+        Assert.AreEqual("5", message.LineTrack);
+        Assert.AreEqual(34, GtnEncoder.Encode(message).Length);
+        Assert.IsNull(withoutLineTrack.Build(departure).LineTrack);
+        Assert.IsNull(new GtnMessageBuilder(SimulationFixture.Gvd.StationId, "").LineTrack);
+        Assert.IsNull(withLineTrack.Build(arrival).LineTrack);
+        Assert.IsNull(withLineTrack.Build(exitRoute).LineTrack);
+    }
+
+    [TestMethod]
+    public void Engine_UsesLineTrackFromOptions()
+    {
+        var options = Options();
+        options.LineTrack = "2";
+        using (var engine = new SimulationEngine(SimulationFixture.Gvd, options))
+            Assert.AreEqual("2", engine.Messages.LineTrack);
+
+        options.SendLineTrack = false;
+        using (var engine = new SimulationEngine(SimulationFixture.Gvd, options))
+            Assert.IsNull(engine.Messages.LineTrack);
+    }
+
+    [TestMethod]
+    public void Options_RejectLineTrackThatDoesNotFitMessage()
+    {
+        var options = Options();
+
+        options.LineTrack = "12345";
+        Assert.ThrowsExactly<ArgumentOutOfRangeException>(options.Validate);
+        options.LineTrack = " ";
+        Assert.ThrowsExactly<ArgumentOutOfRangeException>(options.Validate);
+
+        options.SendLineTrack = false;
+        options.Validate();
     }
 
     [TestMethod]

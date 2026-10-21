@@ -678,35 +678,92 @@
   <data name="&gt;&gt;nudExitLead.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="cboxSecondTrack.AutoSize" type="System.Boolean, mscorlib">
+  <data name="cboxLineTrack.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="cboxSecondTrack.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 56</value>
+  <data name="cboxLineTrack.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
   </data>
-  <data name="cboxSecondTrack.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 6, 3, 3</value>
+  <data name="cboxLineTrack.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 55</value>
   </data>
-  <data name="cboxSecondTrack.Size" type="System.Drawing.Size, System.Drawing">
-    <value>300, 17</value>
+  <data name="cboxLineTrack.Size" type="System.Drawing.Size, System.Drawing">
+    <value>170, 17</value>
   </data>
-  <data name="cboxSecondTrack.TabIndex" type="System.Int32, mscorlib">
+  <data name="cboxLineTrack.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="cboxSecondTrack.Text" xml:space="preserve">
-    <value>Odchod s druhou koľajou (INISS potom nastaví udalosť Odj)</value>
+  <data name="cboxLineTrack.Text" xml:space="preserve">
+    <value>Odchod s traťovou koľajou:</value>
   </data>
-  <data name="&gt;&gt;cboxSecondTrack.Name" xml:space="preserve">
-    <value>cboxSecondTrack</value>
+  <data name="&gt;&gt;cboxLineTrack.Name" xml:space="preserve">
+    <value>cboxLineTrack</value>
   </data>
-  <data name="&gt;&gt;cboxSecondTrack.Type" xml:space="preserve">
+  <data name="&gt;&gt;cboxLineTrack.Type" xml:space="preserve">
     <value>ExControls.ExCheckBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;cboxSecondTrack.Parent" xml:space="preserve">
+  <data name="&gt;&gt;cboxLineTrack.Parent" xml:space="preserve">
     <value>tlpRoutes</value>
   </data>
-  <data name="&gt;&gt;cboxSecondTrack.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;cboxLineTrack.ZOrder" xml:space="preserve">
     <value>4</value>
+  </data>
+  <data name="tbLineTrack.Location" type="System.Drawing.Point, System.Drawing">
+    <value>200, 53</value>
+  </data>
+  <data name="tbLineTrack.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 20</value>
+  </data>
+  <data name="tbLineTrack.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;tbLineTrack.Name" xml:space="preserve">
+    <value>tbLineTrack</value>
+  </data>
+  <data name="&gt;&gt;tbLineTrack.Type" xml:space="preserve">
+    <value>ExControls.ExTextBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;tbLineTrack.Parent" xml:space="preserve">
+    <value>tlpRoutes</value>
+  </data>
+  <data name="&gt;&gt;tbLineTrack.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="lLineTrackHint.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lLineTrackHint.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="lLineTrackHint.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 82</value>
+  </data>
+  <data name="lLineTrackHint.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 13</value>
+  </data>
+  <data name="lLineTrackHint.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="lLineTrackHint.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>560, 0</value>
+  </data>
+  <data name="lLineTrackHint.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="lLineTrackHint.Text" xml:space="preserve">
+    <value>INISS potom nastaví udalosť Odj a vlak po odchode zo zoznamu zmaže. Traťovú koľaj dosadí nasledujúcim zastávkam na trati.</value>
+  </data>
+  <data name="&gt;&gt;lLineTrackHint.Name" xml:space="preserve">
+    <value>lLineTrackHint</value>
+  </data>
+  <data name="&gt;&gt;lLineTrackHint.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lLineTrackHint.Parent" xml:space="preserve">
+    <value>tlpRoutes</value>
+  </data>
+  <data name="&gt;&gt;lLineTrackHint.ZOrder" xml:space="preserve">
+    <value>6</value>
   </data>
   <data name="optionsNodeConnection.Text" xml:space="preserve">
     <value>Spojenie s INISSom</value>

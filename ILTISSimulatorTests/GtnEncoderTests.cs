@@ -72,7 +72,7 @@ public class GtnEncoderTests
     }
 
     [TestMethod]
-    public void Encode_Departure_AppendsSecondTrackOnlyWhenSet()
+    public void Encode_Departure_AppendsLineTrackOnlyWhenSet()
     {
         var message = new GtnMessage
         {
@@ -85,11 +85,134 @@ public class GtnEncoderTests
 
         Assert.AreEqual(30, GtnEncoder.Encode(message).Length);
 
-        message.SecondTrack = "3";
+        message.LineTrack = "1";
         var text = GtnEncoder.Encode(message);
 
         Assert.AreEqual(34, text.Length);
-        Assert.AreEqual("3   ", GtnEncoder.Field(text, 30, GtnEncoder.LenTrack));
+        Assert.AreEqual("1   ", GtnEncoder.Field(text, 30, GtnEncoder.LenTrack));
+    }
+
+    [TestMethod]
+    public void Encode_Route_AppendsLineTrackAfterTrack()
+    {
+        // 0804 nesie traťovú koľaj na pozícii 31, za druhom cesty a koľajou.
+        var message = new GtnMessage
+        {
+            Type = GtnMessageType.Route,
+            StationField = "613600",
+            TrainNumber = "2005",
+            Time = new DateTime(2024, 8, 29, 20, 12, 40),
+            RouteKind = GtnRouteKind.Exit,
+            Track = "1A",
+            LineTrack = "2"
+        };
+
+        var text = GtnEncoder.Encode(message);
+
+        Assert.AreEqual(35, text.Length);
+        Assert.AreEqual("2   ", GtnEncoder.Field(text, 31, GtnEncoder.LenTrack));
+        Assert.IsTrue(GtnEncoder.TryDecode(text, message.Time, out var decoded, out var error), error);
+        Assert.AreEqual("1A", decoded!.Track);
+        Assert.AreEqual("2", decoded.LineTrack);
+    }
+
+    [TestMethod]
+    public void Encode_Arrival_IgnoresLineTrack()
+    {
+        var message = new GtnMessage
+        {
+            Type = GtnMessageType.Arrival,
+            StationField = "613600",
+            TrainNumber = "2005",
+            Time = new DateTime(2024, 8, 29, 20, 12, 40),
+            Track = "2",
+            LineTrack = "1"
+        };
+
+        Assert.AreEqual(30, GtnEncoder.Encode(message).Length);
+    }
+
+    [TestMethod]
+    public void Encode_RegularTime_FollowsTracksAtFixedPosition()
+    {
+        var regular = new DateTime(2026, 10, 20, 14, 10, 0);
+        var message = new GtnMessage
+        {
+            Type = GtnMessageType.Arrival, StationField = "123400", TrainNumber = "1234",
+            Time = new DateTime(2026, 10, 20, 14, 15, 0), Track = "2", RegularTime = regular
+        };
+
+        // 0802: koľaj 26-29, pravidelný čas 30-39
+        Assert.AreEqual("08021234001234  10201415002   1020141000", GtnEncoder.Encode(message));
+
+        // 0803 bez traťovej koľaje: jej miesto 30-33 ostane prázdne, pravidelný čas 34-43
+        message.Type = GtnMessageType.Departure;
+        Assert.AreEqual("08031234001234  10201415002       1020141000", GtnEncoder.Encode(message));
+
+        message.LineTrack = "1";
+        Assert.AreEqual("08031234001234  10201415002   1   1020141000", GtnEncoder.Encode(message));
+
+        // 0804: druh cesty 26, koľaj 27-30, traťová koľaj 31-34, pravidelný čas 35-44
+        message.Type = GtnMessageType.Route;
+        message.RouteKind = GtnRouteKind.Exit;
+        message.LineTrack = null;
+        Assert.AreEqual("08041234001234  102014150012       1020141000", GtnEncoder.Encode(message));
+    }
+
+    [TestMethod]
+    public void TryDecode_RegularTime_RoundTripsForEveryType()
+    {
+        var reference = new DateTime(2026, 10, 20, 14, 0, 0);
+        var regular = new DateTime(2026, 10, 20, 14, 10, 0);
+
+        foreach (var type in new[] { GtnMessageType.Arrival, GtnMessageType.Departure, GtnMessageType.Route })
+        {
+            var original = new GtnMessage
+            {
+                Type = type, StationField = "123400", TrainNumber = "1234", Time = new DateTime(2026, 10, 20, 14, 15, 0),
+                RouteKind = GtnRouteKind.Entry, Track = "2", RegularTime = regular
+            };
+
+            Assert.IsTrue(GtnEncoder.TryDecode(GtnEncoder.Encode(original), reference, out var decoded, out var error), error);
+            Assert.AreEqual(regular, decoded!.RegularTime, type.Key);
+            Assert.AreEqual("2", decoded.Track, type.Key);
+            Assert.IsNull(decoded.LineTrack, type.Key);
+        }
+    }
+
+    [TestMethod]
+    [DataRow("")]
+    [DataRow("0000000000")]
+    [DataRow("          ")]
+    [DataRow(" 0 0  00")]
+    [DataRow("000")]
+    public void TryDecode_RegularTimeOfSpacesAndZeros_IsMissing(string field)
+    {
+        // INISS berie pole len z medzier a núl (aj skrátené) ako chýbajúci pravidelný čas.
+        Assert.IsTrue(GtnEncoder.TryDecode("0802136000190   08311824002   " + field, CaptureTime, out var message, out var error), error);
+        Assert.IsNull(message!.RegularTime);
+    }
+
+    [TestMethod]
+    [DataRow("083118")]
+    [DataRow("08311824xx")]
+    [DataRow("1")]
+    public void TryDecode_InvalidRegularTime_StopsMessageLikeHeaderTime(string field)
+    {
+        // Neprázdne pole musí mať presne 10 znakov s číselnými dvojicami, inak INISS správu odmietne.
+        Assert.IsFalse(GtnEncoder.TryDecode("08031360006428  08311839004   1   " + field, CaptureTime, out var message, out var error));
+        Assert.IsNull(message);
+        Assert.AreEqual("unrecognized date/time format", error);
+    }
+
+    [TestMethod]
+    public void TryDecode_RegularTime_UsesSameYearRuleAsHeader()
+    {
+        // V januári patrí decembrový pravidelný čas do minulého roka.
+        var reference = new DateTime(2027, 1, 2, 0, 10, 0);
+
+        Assert.IsTrue(GtnEncoder.TryDecode("08021234001234  01020015002   1231235500", reference, out var message, out var error), error);
+        Assert.AreEqual(new DateTime(2026, 12, 31, 23, 55, 0), message!.RegularTime);
     }
 
     [TestMethod]
@@ -167,6 +290,22 @@ public class GtnEncoderTests
     }
 
     [TestMethod]
+    public void TryDecode_AlternativeCodes_AreReadAsTheirCounterparts()
+    {
+        // INISS spracuje 1802 až 1804 rovnako ako 0802 až 0804; 1805 nepozná.
+        Assert.IsTrue(GtnEncoder.TryDecode("1802613600" + "2005  " + "0829201240" + "2", CaptureTime, out var arrival, out var error), error);
+        Assert.AreEqual(GtnMessageType.Arrival, arrival!.Type);
+        Assert.IsTrue(GtnEncoder.TryDecode("1803613600" + "2005  " + "0829201240" + "2   1", CaptureTime, out var departure, out error), error);
+        Assert.AreEqual(GtnMessageType.Departure, departure!.Type);
+        Assert.AreEqual("1", departure.LineTrack);
+        Assert.IsTrue(GtnEncoder.TryDecode("1804613600" + "2005  " + "0829201240" + "12", CaptureTime, out var route, out error), error);
+        Assert.AreEqual(GtnMessageType.Route, route!.Type);
+
+        Assert.IsFalse(GtnEncoder.TryDecode("1805613600" + "2005  " + "0829201240" + "01", CaptureTime, out _, out error));
+        Assert.AreEqual("unknown message type", error);
+    }
+
+    [TestMethod]
     public void TryDecode_MonthOutOfRange_IsNormalisedNotRejected()
     {
         // INISS hodnoty nekontroluje, iba ich nechá normalizovať funkciou mktime.
@@ -177,13 +316,21 @@ public class GtnEncoderTests
     }
 
     [TestMethod]
-    public void ResolveYear_MirrorsInissRollingWindow()
+    [DataRow(10, 10, 2026)]
+    [DataRow(9, 10, 2026)]
+    [DataRow(4, 10, 2026)]
+    [DataRow(3, 10, 2027)]
+    [DataRow(1, 10, 2027)]
+    [DataRow(12, 10, 2026)]
+    [DataRow(12, 6, 2025)]
+    [DataRow(11, 6, 2026)]
+    [DataRow(1, 6, 2026)]
+    [DataRow(1, 8, 2027)]
+    [DataRow(2, 8, 2026)]
+    public void ResolveYear_KeepsMonthWithinSixBackAndFiveAhead(int month, int currentMonth, int expectedYear)
     {
-        var reference = new DateTime(2024, 8, 29);
-
-        Assert.AreEqual(2024, GtnEncoder.ResolveYear(8, reference));
-        Assert.AreEqual(2025, GtnEncoder.ResolveYear(7, reference));
-        Assert.AreEqual(2023, GtnEncoder.ResolveYear(9, reference));
+        // INISS: rozdiel mesiacov (správa mínus teraz) 6 a viac = minulý rok, -7 a menej = budúci rok.
+        Assert.AreEqual(expectedYear, GtnEncoder.ResolveYear(month, new DateTime(2026, currentMonth, 15)));
     }
 
     [TestMethod]
@@ -194,12 +341,16 @@ public class GtnEncoderTests
     }
 
     [TestMethod]
-    public void PreservesYear_IsFalseForEventsFarFromNow()
+    public void PreservesYear_IsFalseOutsideInissWindow()
     {
         var reference = new DateTime(2024, 8, 29);
 
         Assert.IsTrue(GtnEncoder.PreservesYear(new DateTime(2024, 8, 29, 20, 0, 0), reference));
-        Assert.IsFalse(GtnEncoder.PreservesYear(new DateTime(2024, 10, 1, 20, 0, 0), reference));
+        Assert.IsTrue(GtnEncoder.PreservesYear(new DateTime(2024, 10, 1, 20, 0, 0), reference));
+        Assert.IsTrue(GtnEncoder.PreservesYear(new DateTime(2024, 2, 1, 20, 0, 0), reference));
+        Assert.IsTrue(GtnEncoder.PreservesYear(new DateTime(2025, 1, 31, 20, 0, 0), reference));
+        Assert.IsFalse(GtnEncoder.PreservesYear(new DateTime(2024, 1, 31, 20, 0, 0), reference));
+        Assert.IsFalse(GtnEncoder.PreservesYear(new DateTime(2025, 2, 1, 20, 0, 0), reference));
     }
 
     [TestMethod]
@@ -214,7 +365,7 @@ public class GtnEncoderTests
             TrainNumber = "2005",
             Time = new DateTime(2024, 8, 29, 20, 12, 40),
             Track = "1A",
-            SecondTrack = "3"
+            LineTrack = "1"
         };
 
         Assert.IsTrue(GtnEncoder.TryDecode(GtnEncoder.Encode(original), reference, out var decoded, out var error), error);
@@ -224,7 +375,7 @@ public class GtnEncoderTests
         Assert.AreEqual(original.TrainNumber, decoded.TrainNumber);
         Assert.AreEqual(original.Time, decoded.Time);
         Assert.AreEqual(original.Track, decoded.Track);
-        Assert.AreEqual(original.SecondTrack, decoded.SecondTrack);
+        Assert.AreEqual(original.LineTrack, decoded.LineTrack);
     }
 
     [TestMethod]
@@ -370,7 +521,7 @@ public class GtnEncoderTests
     [TestMethod]
     public void Field_BeyondEndOfMessage_IsEmptyNotError()
     {
-        // INISS chýbajúce koncové pole nepovažuje za chybu - preto je druhá koľaj v 0803 voliteľná.
+        // INISS chýbajúce koncové pole nepovažuje za chybu - preto je traťová koľaj v 0803 a 0804 voliteľná.
         Assert.AreEqual("", GtnEncoder.Field("0802", 26, GtnEncoder.LenTrack));
         Assert.AreEqual("02", GtnEncoder.Field("0802", 2, GtnEncoder.LenTrack));
     }

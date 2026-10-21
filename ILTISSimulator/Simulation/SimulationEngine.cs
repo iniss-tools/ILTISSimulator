@@ -35,7 +35,7 @@ public sealed class SimulationEngine : IDisposable
         Options = options ?? throw new ArgumentNullException(nameof(options));
         Options.Validate();
 
-        Messages = new GtnMessageBuilder(gvd.StationId, Options.SendSecondTrack);
+        Messages = new GtnMessageBuilder(gvd.StationId, Options.SendLineTrack ? Options.LineTrack : null);
     }
 
     /// <summary>
@@ -68,6 +68,12 @@ public sealed class SimulationEngine : IDisposable
     ///     <see cref="DayPlanner.SkippedDuplicates" />.
     /// </summary>
     public IReadOnlyList<GVDEditor.Domain.Entities.Train> SkippedDuplicates { get; private set; } = [];
+
+    /// <summary>
+    ///     Autobusy, ktoré plánovanie vynechalo, lebo ich INISS s ILTISom nepáruje - viď
+    ///     <see cref="DayPlanner.SkippedBuses" />.
+    /// </summary>
+    public IReadOnlyList<GVDEditor.Domain.Entities.Train> SkippedBuses { get; private set; } = [];
 
     /// <summary>
     ///     Od kedy sa deň simuluje - skoršie udalosti sa pri plánovaní preskočili.
@@ -144,10 +150,15 @@ public sealed class SimulationEngine : IDisposable
             OnLog(Texts.F(Resources.Engine_Planned, Day, Runs.Count, Timeline.Total, skipped, Options.Seed));
 
             SkippedDuplicates = planner.SkippedDuplicates;
+            SkippedBuses = planner.SkippedBuses;
 
             if (planner.SkippedDuplicates.Count > 0)
                 OnLog(Texts.F(Resources.Engine_SkippedDuplicates,
                     string.Join(", ", planner.SkippedDuplicates.Select(train => train.Number).Distinct())));
+
+            if (planner.SkippedBuses.Count > 0)
+                OnLog(Texts.F(Resources.Engine_SkippedBuses,
+                    string.Join(", ", planner.SkippedBuses.Select(train => train.Number).Distinct())));
         }
     }
 

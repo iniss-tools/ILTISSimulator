@@ -1,4 +1,5 @@
 using ILTISSimulator.Diagram;
+using ILTISSimulator.Simulation;
 using System.ComponentModel;
 using System.Xml.Serialization;
 using ToolsCore.XML;
@@ -155,10 +156,16 @@ public record SimulationSettings
     public int ExitRouteLeadMinutes { get; set; } = 2;
 
     /// <summary>
-    ///     Posielať v odchode aj druhú koľaj, aby INISS nastavil udalosť <c>Odj</c>.
+    ///     Posielať v odchode traťovú koľaj, aby INISS nastavil udalosť <c>Odj</c> a vlak po odchode zmazal.
     /// </summary>
-    [XmlElement("SecondTrack"), DefaultValue(true)]
-    public bool SendSecondTrack { get; set; } = true;
+    [XmlElement("SendLineTrack"), DefaultValue(true)]
+    public bool SendLineTrack { get; set; } = true;
+
+    /// <summary>
+    ///     Traťová koľaj odchodu.
+    /// </summary>
+    [XmlElement("LineTrack"), DefaultValue(SimulationOptions.DefaultLineTrack)]
+    public string LineTrack { get; set; } = SimulationOptions.DefaultLineTrack;
 }
 
 /// <summary>

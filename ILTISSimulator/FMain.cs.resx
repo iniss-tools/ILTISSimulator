@@ -459,8 +459,11 @@
   <data name="lManualTrack.Text" xml:space="preserve">
     <value>Kolej:</value>
   </data>
-  <data name="lManualSecondTrack.Text" xml:space="preserve">
-    <value>2. kolej:</value>
+  <data name="lManualLineTrack.Text" xml:space="preserve">
+    <value>Traťová kolej:</value>
+  </data>
+  <data name="cbManualRegular.Text" xml:space="preserve">
+    <value>Pravidelný čas:</value>
   </data>
   <data name="lManualDelayReason.Text" xml:space="preserve">
     <value>Důvod:</value>

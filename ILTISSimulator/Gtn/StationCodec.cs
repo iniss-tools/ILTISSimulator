@@ -8,19 +8,18 @@ namespace ILTISSimulator.Gtn;
 /// </summary>
 /// <remarks>
 ///     <para>
-///         INISS z poľa číta iba prvých päť znakov, prečíta ich ako číslo a pripočíta
-///         <see cref="InissBase" />. Šiesty znak poľa nemá na výsledok vplyv. Na stranu odosielateľa z toho
-///         vychádza pravidlo: do poľa ide <strong>posledných päť číslic identifikátora stanice</strong>
-///         z grafikonu, teda <c>ID mod 100 000</c>.
+///         INISS z poľa číta iba prvých päť znakov a prečíta ich ako celé číslo - medzery pred ním a za ním
+///         smú byť, iný znak nie. Šiesty znak poľa nemá na výsledok vplyv. Prečítané číslo porovná s číslom
+///         stanice vlaku: zhoda je pri rovnosti, alebo pri rovnosti modulo <see cref="Modulus" />, keď je jedno
+///         z čísel menšie ako <see cref="Modulus" />.
+///     </para>
+///     <para>
+///         Päť znakov dá najviac 99 999, takže rozhoduje vždy <strong>posledných päť číslic identifikátora
+///         stanice</strong> z grafikonu, teda <c>ID mod 100 000</c>. To ide do poľa pri odosielaní.
 ///     </para>
 /// </remarks>
 public static class StationCodec
 {
-    /// <summary>
-    ///     Konštanta, ktorú INISS pripočítava k prečítanému číslu stanice.
-    /// </summary>
-    public const int InissBase = 5400000;
-
     /// <summary>
     ///     Počet znakov poľa stanice, ktoré INISS naozaj číta.
     /// </summary>
@@ -51,37 +50,44 @@ public static class StationCodec
     }
 
     /// <summary>
-    ///     Vráti hodnotu, na ktorú sa identifikátor stanice cez toto rozhranie zobrazí. Dve stanice s rovnakým
-    ///     výsledkom nie je možné v správach GTN rozlíšiť.
+    ///     Vráti hodnotu, podľa ktorej INISS stanicu v správach rozlišuje - posledných päť číslic identifikátora.
+    ///     Dve stanice s rovnakým výsledkom nie je možné v správach GTN rozlíšiť.
     /// </summary>
     /// <param name="stationId">Identifikátor stanice z grafikonu.</param>
-    /// <returns>Hodnota, ktorú INISS zo správy prečíta.</returns>
-    public static int NormalizeAsIniss(int stationId) => InissBase + stationId % Modulus;
+    /// <returns>Číslo, ktoré pre túto stanicu INISS zo správy prečíta.</returns>
+    public static int NormalizeAsIniss(int stationId) => stationId % Modulus;
 
     /// <summary>
-    ///     Dekóduje pole stanice presne tak, ako to robí INISS: vezme prvých päť znakov, prečíta ich ako číslo
-    ///     a pripočíta <see cref="InissBase" />.
+    ///     Prečíta pole stanice presne tak, ako to robí INISS: vezme prvých päť znakov a prečíta ich ako celé
+    ///     číslo, medzery pred ním a za ním pripustí.
     /// </summary>
     /// <param name="field">Pole stanice zo správy.</param>
-    /// <param name="stationId">Hodnota, ako jej rozumie INISS.</param>
+    /// <param name="number">Prečítané číslo.</param>
     /// <returns>
     ///     <see langword="true" />, ak sa pole podarilo prečítať; inak <see langword="false" />, čo INISS
     ///     zaloguje ako <c>unknown station number format</c>.
     /// </returns>
-    public static bool TryDecodeAsIniss(string field, out int stationId)
+    public static bool TryDecodeAsIniss(string field, out int number)
     {
-        stationId = 0;
+        number = 0;
 
         if (string.IsNullOrEmpty(field))
             return false;
 
         var significant = field.Length > SignificantDigits ? field.Substring(0, SignificantDigits) : field;
-        if (!int.TryParse(significant, NumberStyles.AllowLeadingWhite, CultureInfo.InvariantCulture, out var number))
-            return false;
-
-        stationId = InissBase + number;
-        return true;
+        return int.TryParse(significant, NumberStyles.AllowLeadingWhite | NumberStyles.AllowTrailingWhite,
+            CultureInfo.InvariantCulture, out number);
     }
+
+    /// <summary>
+    ///     Porovná číslo zo správy s identifikátorom stanice tak, ako to robí INISS: rovnosť, alebo rovnosť modulo
+    ///     <see cref="Modulus" />, keď je jedno z čísel menšie ako <see cref="Modulus" />.
+    /// </summary>
+    /// <param name="number">Číslo prečítané z poľa stanice.</param>
+    /// <param name="stationId">Identifikátor stanice z grafikonu.</param>
+    /// <returns><see langword="true" />, ak INISS číslo priradí tejto stanici.</returns>
+    public static bool SameStation(int number, int stationId) =>
+        number == stationId || ((number < Modulus || stationId < Modulus) && number % Modulus == stationId % Modulus);
 
     /// <summary>
     ///     Zistí, či pole stanice zo správy adresuje danú stanicu.
@@ -90,5 +96,5 @@ public static class StationCodec
     /// <param name="stationId">Identifikátor stanice z grafikonu.</param>
     /// <returns><see langword="true" />, ak INISS správu priradí tejto stanici.</returns>
     public static bool Matches(string field, int stationId) =>
-        TryDecodeAsIniss(field, out var decoded) && decoded == NormalizeAsIniss(stationId);
+        TryDecodeAsIniss(field, out var number) && SameStation(number, stationId);
 }

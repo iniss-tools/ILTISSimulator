@@ -234,6 +234,7 @@ internal sealed partial class FMain : ExForm
             return;
 
         UpdateMainUi();
+        FillManualLineTracks();
         AppendLog(LogKind.Info, Resources.Log_SettingsChanged);
     }
 

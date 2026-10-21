@@ -1,4 +1,5 @@
 using GVDEditor.Domain.Entities;
+using ToolsCore.Iniss.Expressions;
 
 namespace ILTISSimulator.Data;
 
@@ -7,6 +8,11 @@ namespace ILTISSimulator.Data;
 /// </summary>
 public sealed class GvdData
 {
+    /// <summary>
+    ///     Index zabudovaného druhu <c>Bus</c> v tabuľke druhov INISSu.
+    /// </summary>
+    private static readonly int BusTypeIndex = ExprTrainTypes.IndexOf("Bus");
+
     internal GvdData(GVDInfo info, List<TrainType> trainTypes, List<Track> tracks, List<Train> trains,
         Dictionary<int, BitArray> trainDays)
     {
@@ -102,6 +108,20 @@ public sealed class GvdData
         var arrival = ArrivalOn(train, day);
 
         return arrival.HasValue && departure < arrival.Value ? departure.AddDays(1) : departure;
+    }
+
+    /// <summary>
+    ///     Zistí, či je vlak autobus - teda či je jeho zabudovaný druh <c>Bus</c>. Rozhoduje kategória druhu,
+    ///     nie kľúč: druh, ktorý v <c>TrTypes.txt</c> mapuje iný kľúč (napríklad <c>NAD</c>) na <c>Bus</c>, je tiež
+    ///     autobus. INISS s ILTISom autobusy nepáruje.
+    /// </summary>
+    /// <param name="train">Vlak.</param>
+    /// <returns><see langword="true" />, ak je vlak autobus.</returns>
+    public static bool IsBus(Train train)
+    {
+        ArgumentNullException.ThrowIfNull(train);
+
+        return train.Type is { } type && ExprTrainTypes.IndexOf(type.CategoryTrain) == BusTypeIndex;
     }
 
     /// <summary>

@@ -16,8 +16,13 @@ internal static class SimulationFixture
     public static readonly DateTime FirstDay = new(2024, 1, 1);
 
     /// <summary>
+    ///     Priečinok s testovacím grafikonom.
+    /// </summary>
+    public static string TestDataDir =>
+        Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? ".", "TestData");
+
+    /// <summary>
     ///     Načítaný testovací grafikon.
     /// </summary>
-    public static GvdData Gvd => _gvd ??= GvdLightReader.Read(Path.Combine(
-        Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? ".", "TestData"));
+    public static GvdData Gvd => _gvd ??= GvdLightReader.Read(TestDataDir);
 }

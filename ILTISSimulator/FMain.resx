@@ -6328,82 +6328,82 @@
   <data name="&gt;&gt;cbManualTrack.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="fieldSecondTrack.AutoSize" type="System.Boolean, mscorlib">
+  <data name="fieldLineTrack.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="fieldSecondTrack.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="fieldLineTrack.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="fieldSecondTrack.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="fieldLineTrack.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 12, 0</value>
   </data>
-  <data name="fieldSecondTrack.TabIndex" type="System.Int32, mscorlib">
+  <data name="fieldLineTrack.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
-  <data name="fieldSecondTrack.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="fieldLineTrack.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="fieldSecondTrack.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="fieldLineTrack.Size" type="System.Drawing.Size, System.Drawing">
     <value>150, 29</value>
   </data>
-  <data name="&gt;&gt;fieldSecondTrack.Name" xml:space="preserve">
-    <value>fieldSecondTrack</value>
+  <data name="&gt;&gt;fieldLineTrack.Name" xml:space="preserve">
+    <value>fieldLineTrack</value>
   </data>
-  <data name="&gt;&gt;fieldSecondTrack.Type" xml:space="preserve">
+  <data name="&gt;&gt;fieldLineTrack.Type" xml:space="preserve">
     <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;fieldSecondTrack.Parent" xml:space="preserve">
+  <data name="&gt;&gt;fieldLineTrack.Parent" xml:space="preserve">
     <value>flowManual</value>
   </data>
-  <data name="&gt;&gt;fieldSecondTrack.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;fieldLineTrack.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="lManualSecondTrack.AutoSize" type="System.Boolean, mscorlib">
+  <data name="lManualLineTrack.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="lManualSecondTrack.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="lManualLineTrack.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left</value>
   </data>
-  <data name="lManualSecondTrack.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="lManualLineTrack.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 6, 3, 0</value>
   </data>
-  <data name="lManualSecondTrack.TabIndex" type="System.Int32, mscorlib">
+  <data name="lManualLineTrack.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="lManualSecondTrack.Text" xml:space="preserve">
-    <value>2. koľaj:</value>
+  <data name="lManualLineTrack.Text" xml:space="preserve">
+    <value>Traťová koľaj:</value>
   </data>
-  <data name="&gt;&gt;lManualSecondTrack.Name" xml:space="preserve">
-    <value>lManualSecondTrack</value>
+  <data name="&gt;&gt;lManualLineTrack.Name" xml:space="preserve">
+    <value>lManualLineTrack</value>
   </data>
-  <data name="&gt;&gt;lManualSecondTrack.Type" xml:space="preserve">
+  <data name="&gt;&gt;lManualLineTrack.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;lManualSecondTrack.Parent" xml:space="preserve">
-    <value>fieldSecondTrack</value>
+  <data name="&gt;&gt;lManualLineTrack.Parent" xml:space="preserve">
+    <value>fieldLineTrack</value>
   </data>
-  <data name="&gt;&gt;lManualSecondTrack.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;lManualLineTrack.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="cbManualSecondTrack.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="cbManualLineTrack.Location" type="System.Drawing.Point, System.Drawing">
     <value>50, 3</value>
   </data>
-  <data name="cbManualSecondTrack.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="cbManualLineTrack.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 23</value>
   </data>
-  <data name="cbManualSecondTrack.TabIndex" type="System.Int32, mscorlib">
+  <data name="cbManualLineTrack.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;cbManualSecondTrack.Name" xml:space="preserve">
-    <value>cbManualSecondTrack</value>
+  <data name="&gt;&gt;cbManualLineTrack.Name" xml:space="preserve">
+    <value>cbManualLineTrack</value>
   </data>
-  <data name="&gt;&gt;cbManualSecondTrack.Type" xml:space="preserve">
+  <data name="&gt;&gt;cbManualLineTrack.Type" xml:space="preserve">
     <value>ExControls.ExComboBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;cbManualSecondTrack.Parent" xml:space="preserve">
-    <value>fieldSecondTrack</value>
+  <data name="&gt;&gt;cbManualLineTrack.Parent" xml:space="preserve">
+    <value>fieldLineTrack</value>
   </data>
-  <data name="&gt;&gt;cbManualSecondTrack.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;cbManualLineTrack.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="fieldRouteKind.AutoSize" type="System.Boolean, mscorlib">
@@ -6638,6 +6638,87 @@
     <value>fieldTransferKind</value>
   </data>
   <data name="&gt;&gt;cbManualTransferKind.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="fieldRegularTime.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="fieldRegularTime.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="fieldRegularTime.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 12, 0</value>
+  </data>
+  <data name="fieldRegularTime.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="fieldRegularTime.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="fieldRegularTime.Size" type="System.Drawing.Size, System.Drawing">
+    <value>230, 29</value>
+  </data>
+  <data name="&gt;&gt;fieldRegularTime.Name" xml:space="preserve">
+    <value>fieldRegularTime</value>
+  </data>
+  <data name="&gt;&gt;fieldRegularTime.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;fieldRegularTime.Parent" xml:space="preserve">
+    <value>flowManual</value>
+  </data>
+  <data name="&gt;&gt;fieldRegularTime.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="cbManualRegular.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cbManualRegular.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 5, 3, 0</value>
+  </data>
+  <data name="cbManualRegular.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 5</value>
+  </data>
+  <data name="cbManualRegular.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 19</value>
+  </data>
+  <data name="cbManualRegular.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="cbManualRegular.Text" xml:space="preserve">
+    <value>Pravidelný čas:</value>
+  </data>
+  <data name="&gt;&gt;cbManualRegular.Name" xml:space="preserve">
+    <value>cbManualRegular</value>
+  </data>
+  <data name="&gt;&gt;cbManualRegular.Type" xml:space="preserve">
+    <value>ExControls.ExCheckBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cbManualRegular.Parent" xml:space="preserve">
+    <value>fieldRegularTime</value>
+  </data>
+  <data name="&gt;&gt;cbManualRegular.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="dtpManualRegular.Location" type="System.Drawing.Point, System.Drawing">
+    <value>106, 3</value>
+  </data>
+  <data name="dtpManualRegular.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 23</value>
+  </data>
+  <data name="dtpManualRegular.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;dtpManualRegular.Name" xml:space="preserve">
+    <value>dtpManualRegular</value>
+  </data>
+  <data name="&gt;&gt;dtpManualRegular.Type" xml:space="preserve">
+    <value>ExControls.ExDateTimePicker, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;dtpManualRegular.Parent" xml:space="preserve">
+    <value>fieldRegularTime</value>
+  </data>
+  <data name="&gt;&gt;dtpManualRegular.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="statusStripMain.Location" type="System.Drawing.Point, System.Drawing">

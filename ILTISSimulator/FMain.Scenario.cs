@@ -69,7 +69,8 @@ internal sealed partial class FMain
         var day = scenario.Day.ToDateTime(TimeOnly.MinValue);
         var from = day + scenario.From.ToTimeSpan();
         var options = scenario.ToOptions(UsableReasons().Select(reason => reason.Number), SelectedSpeed);
-        options.SendSecondTrack = Config.Simulation.SendSecondTrack;
+        options.SendLineTrack = Config.Simulation.SendLineTrack;
+        options.LineTrack = Config.Simulation.LineTrack;
 
         var failed = new List<(RunChange Change, PlanEditError Error)>();
         if (!Plan(day, from, options, (runs, context) => failed.AddRange(scenario.Apply(runs, _gvd.Tracks, context))))

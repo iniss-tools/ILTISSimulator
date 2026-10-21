@@ -15,7 +15,10 @@ internal sealed partial class FMain
         _manualUpdating = true;
         dtpManualTime.Value = DateTime.Now;
         dtpManualTime.Enabled = !cbManualNow.Checked;
+        dtpManualRegular.Value = DateTime.Now;
+        dtpManualRegular.Enabled = cbManualRegular.Checked;
         FillManualChoices();
+        FillManualLineTracks();
         _manualUpdating = false;
 
         UpdateManualFields();
@@ -107,12 +110,9 @@ internal sealed partial class FMain
             cbManualTrain.Text = trains[0];
 
         var tracks = UsableTracks().Select(track => track.Key).ToArray();
-        foreach (var box in new[] { cbManualTrack, cbManualSecondTrack })
-        {
-            box.Items.Clear();
-            box.Items.Add("");
-            box.Items.AddRange(tracks);
-        }
+        cbManualTrack.Items.Clear();
+        cbManualTrack.Items.Add("");
+        cbManualTrack.Items.AddRange(tracks);
 
         if (cbManualTrack.Text.Length == 0 && tracks.Length != 0)
             cbManualTrack.Text = tracks[0];
@@ -121,6 +121,22 @@ internal sealed partial class FMain
 
         _manualUpdating = false;
         UpdateManualPreview();
+    }
+
+    /// <summary>
+    ///     Ponuka traťovej koľaje ručnej správy - prázdna (pole sa neposiela) a traťová koľaj z nastavení simulácie.
+    ///     Staničné koľaje sa neponúkajú, traťová koľaj patrí trati.
+    /// </summary>
+    private void FillManualLineTracks()
+    {
+        var text = cbManualLineTrack.Text;
+
+        cbManualLineTrack.Items.Clear();
+        cbManualLineTrack.Items.Add("");
+        if (Config.Simulation.LineTrack.Trim() is { Length: > 0 } lineTrack)
+            cbManualLineTrack.Items.Add(lineTrack);
+
+        cbManualLineTrack.Text = text;
     }
 
     /// <summary>
@@ -135,6 +151,7 @@ internal sealed partial class FMain
         cbManualTrain.Text = run.Train.Number;
         if (run.Track?.Key is { Length: > 0 } track)
             cbManualTrack.Text = track;
+        PrefillManualRegularTime();
         _manualUpdating = false;
 
         UpdateManualPreview();
@@ -161,9 +178,45 @@ internal sealed partial class FMain
             return;
 
         if (sender == cbManualType)
+        {
             UpdateManualFields();
 
+            _manualUpdating = true;
+            PrefillManualRegularTime();
+            _manualUpdating = false;
+        }
+
         UpdateManualPreview();
+    }
+
+    private void cbManualRegular_CheckedChanged(object? sender, EventArgs e)
+    {
+        dtpManualRegular.Enabled = cbManualRegular.Checked;
+
+        if (cbManualRegular.Checked)
+        {
+            _manualUpdating = true;
+            PrefillManualRegularTime();
+            _manualUpdating = false;
+        }
+
+        Manual_Changed(sender, e);
+    }
+
+    /// <summary>
+    ///     Doplní pravidelný čas z plánu vlaku vybraného v tabuľke - príchod pri 0802, odchod pri 0803 a 0804.
+    /// </summary>
+    private void PrefillManualRegularTime()
+    {
+        if (SelectedRuns() is not [var run, ..])
+            return;
+
+        var planned = SelectedValue<GtnMessageType>(cbManualType) == GtnMessageType.Arrival
+            ? run.PlannedArrival ?? run.PlannedDeparture
+            : run.PlannedDeparture ?? run.PlannedArrival;
+
+        if (planned is { } time)
+            dtpManualRegular.Value = time;
     }
 
     private void cbManualNow_CheckedChanged(object? sender, EventArgs e)
@@ -190,8 +243,11 @@ internal sealed partial class FMain
     {
         var type = SelectedValue<GtnMessageType>(cbManualType);
 
-        fieldTrack.Visible = type == GtnMessageType.Arrival || type == GtnMessageType.Departure || type == GtnMessageType.Route;
-        fieldSecondTrack.Visible = type == GtnMessageType.Departure;
+        var trainMovement = type == GtnMessageType.Arrival || type == GtnMessageType.Departure || type == GtnMessageType.Route;
+
+        fieldTrack.Visible = trainMovement;
+        fieldLineTrack.Visible = type == GtnMessageType.Departure || type == GtnMessageType.Route;
+        fieldRegularTime.Visible = trainMovement;
         fieldRouteKind.Visible = type == GtnMessageType.Route;
         fieldDelayReason.Visible = type == GtnMessageType.DelayReason;
         fieldTransferKind.Visible = type == GtnMessageType.Transfer;
@@ -228,14 +284,15 @@ internal sealed partial class FMain
         }
 
         message.Track = cbManualTrack.Text.Trim();
+        message.RegularTime = cbManualRegular.Checked ? dtpManualRegular.Value : null;
 
         if (type == GtnMessageType.Route)
             message.RouteKind = SelectedValue<GtnRouteKind>(cbManualRouteKind);
 
-        if (type == GtnMessageType.Departure)
+        if (type == GtnMessageType.Departure || type == GtnMessageType.Route)
         {
-            var second = cbManualSecondTrack.Text.Trim();
-            message.SecondTrack = second.Length == 0 ? null : second;
+            var lineTrack = cbManualLineTrack.Text.Trim();
+            message.LineTrack = lineTrack.Length == 0 ? null : lineTrack;
         }
 
         return message;

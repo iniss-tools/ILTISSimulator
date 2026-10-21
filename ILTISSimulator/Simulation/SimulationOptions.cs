@@ -1,4 +1,5 @@
-﻿using ILTISSimulator.Properties;
+﻿using ILTISSimulator.Gtn;
+using ILTISSimulator.Properties;
 using ILTISSimulator.Tools;
 
 namespace ILTISSimulator.Simulation;
@@ -78,10 +79,22 @@ public sealed class SimulationOptions
     public double TrackChangeProbability { get; set; } = 0.07;
 
     /// <summary>
-    ///     Posielať v odchode 080-3 aj druhú koľaj (rovnakú ako prvú). INISS nastaví udalosť pre automatiku
-    ///     <c>Odj</c> len pri odchode s oboma koľajami.
+    ///     Traťová koľaj, ktorú simulátor predvolene posiela v odchode.
     /// </summary>
-    public bool SendSecondTrack { get; set; } = true;
+    public const string DefaultLineTrack = "1";
+
+    /// <summary>
+    ///     Posielať v odchode 080-3 aj traťovú koľaj <see cref="LineTrack" />. Ako ILTIS - INISS potom nastaví
+    ///     udalosť pre automatiku <c>Odj</c> a vlak v stanici ukončí (prepne ho do posledného stavu kategórie,
+    ///     teda ho zo zoznamu zmaže). Bez traťovej koľaje odchod dosadí len koľaj a meškanie.
+    /// </summary>
+    public bool SendLineTrack { get; set; } = true;
+
+    /// <summary>
+    ///     Traťová koľaj odchodu - koľaj trate, na ktorú vlak zo stanice odchádza. INISS ju dosadí nasledujúcim
+    ///     zastávkam trasy, vlaku v stanici zo správy nie.
+    /// </summary>
+    public string LineTrack { get; set; } = DefaultLineTrack;
 
     /// <summary>
     ///     Ako dlho po odchode zostáva koľaj obsadená.
@@ -151,6 +164,9 @@ public sealed class SimulationOptions
 
         if (TrackReleaseMargin < TimeSpan.Zero)
             throw new ArgumentOutOfRangeException(nameof(TrackReleaseMargin), Resources.Error_TrackReleaseMargin);
+
+        if (SendLineTrack && (string.IsNullOrWhiteSpace(LineTrack) || LineTrack.Trim().Length > GtnEncoder.LenTrack))
+            throw new ArgumentOutOfRangeException(nameof(LineTrack), Texts.F(Resources.Error_LineTrack, GtnEncoder.LenTrack));
     }
 
     private static void CheckProbability(double value, string name)

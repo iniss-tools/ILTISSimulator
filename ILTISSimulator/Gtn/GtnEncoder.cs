@@ -18,7 +18,9 @@ namespace ILTISSimulator.Gtn;
 ///         <item><description>16, dĺžka 10 - dátum a čas <c>MMddHHmmss</c></description></item>
 ///         <item><description>26, dĺžka 1 - iba 0804: druh vlakovej cesty</description></item>
 ///         <item><description>26 (0802/0803) resp. 27 (0804), dĺžka 4 - koľaj (trimuje sa)</description></item>
-///         <item><description>30, dĺžka 4 - iba 0803: druhá koľaj (trimuje sa)</description></item>
+///         <item><description>30 (0803) resp. 31 (0804), dĺžka 4 - traťová koľaj (trimuje sa)</description></item>
+///         <item><description>30 (0802), 34 (0803) resp. 35 (0804), dĺžka 10 - pravidelný čas <c>MMddHHmmss</c>
+///             (netrimuje sa)</description></item>
 ///     </list>
 ///     Polia za koncom reťazca vracia INISS ako prázdne, nie ako chybu.
 /// </remarks>
@@ -39,6 +41,16 @@ public static class GtnEncoder
     ///     Formát dátumu a času v správe. Rok správa nenesie, INISS si ho dopočíta - viď <see cref="ResolveYear" />.
     /// </summary>
     public const string TimeFormat = "MMddHHmmss";
+
+    /// <summary>
+    ///     O koľko mesiacov dozadu od aktuálneho mesiaca dopočíta INISS ešte tento rok.
+    /// </summary>
+    public const int MonthsBack = 6;
+
+    /// <summary>
+    ///     O koľko mesiacov dopredu od aktuálneho mesiaca dopočíta INISS ešte tento rok.
+    /// </summary>
+    public const int MonthsAhead = 5;
 
     /// <summary>
     ///     Najstarší dátum, ktorý INISS prijme. Čas skladá cez <c>mktime</c>, ktorá staršie dátumy odmieta
@@ -100,6 +112,11 @@ public static class GtnEncoder
     ///     Dĺžka poľa s koľajou.
     /// </summary>
     public const int LenTrack = 4;
+
+    /// <summary>
+    ///     Dĺžka poľa s pravidelným časom - rovnaký formát ako čas v hlavičke.
+    /// </summary>
+    public const int LenRegularTime = LenTime;
 
     /// <summary>
     ///     Pozícia poľa s dôvodom meškania (iba 080-5).
@@ -169,8 +186,12 @@ public static class GtnEncoder
 
         builder.Append(Fixed(message.Track, LenTrack, Resources.Field_Track));
 
-        if (message.Type == GtnMessageType.Departure && message.SecondTrack != null)
-            builder.Append(Fixed(message.SecondTrack, LenTrack, Resources.Field_SecondTrack));
+        // pravidelny cas ma pevnu poziciu za kolajami - chybajucu tratovu kolaj pred nim treba doplnit medzerami
+        if (CarriesLineTrack(message.Type) && (message.LineTrack != null || message.RegularTime != null))
+            builder.Append(Fixed(message.LineTrack ?? "", LenTrack, Resources.Field_LineTrack));
+
+        if (message.RegularTime is { } regularTime)
+            builder.Append(regularTime.ToString(TimeFormat, CultureInfo.InvariantCulture));
 
         return builder.ToString();
     }
@@ -263,12 +284,25 @@ public static class GtnEncoder
         if (type == GtnMessageType.Route)
             message.RouteKind = ParseRouteKind(Field(text, PosRouteKind, LenRouteKind));
 
-        if (type == GtnMessageType.Departure)
+        var posRegularTime = posTrack + LenTrack;
+        if (CarriesLineTrack(type))
         {
-            var second = Field(text, posTrack + LenTrack, LenTrack).Trim();
-            message.SecondTrack = second.Length == 0 ? null : second;
+            var lineTrack = Field(text, posRegularTime, LenTrack).Trim();
+            message.LineTrack = lineTrack.Length == 0 ? null : lineTrack;
+            posRegularTime += LenTrack;
         }
 
+        var regularField = Field(text, posRegularTime, LenRegularTime);
+        if (IsMissingTime(regularField))
+            return true;
+
+        if (!TryParseTime(regularField, reference, out var regularTime, out error))
+        {
+            message = null;
+            return false;
+        }
+
+        message.RegularTime = regularTime;
         return true;
     }
 
@@ -284,24 +318,28 @@ public static class GtnEncoder
         TryDecode(text, DateTime.Now, out message, out error);
 
     /// <summary>
-    ///     Dopočíta rok k mesiacu zo správy rovnako, ako to robí INISS: rovnaký mesiac ako teraz znamená tento
-    ///     rok, skorší mesiac budúci rok a neskorší mesiac minulý rok. Pre udalosti blízko aktuálneho času to
-    ///     vychádza správne aj cez prelom roka.
+    ///     Dopočíta rok k mesiacu zo správy rovnako, ako to robí INISS: mesiac správy má ležať v okne od šiestich
+    ///     mesiacov dozadu po päť mesiacov dopredu. Pri rozdiele mesiacov (správa mínus teraz) 6 a viac je to
+    ///     minulý rok, pri -7 a menej budúci rok, inak tento rok - napríklad v decembri januárová správa patrí
+    ///     do budúceho roka a v januári decembrová do minulého.
     /// </summary>
     /// <param name="month">Mesiac zo správy.</param>
     /// <param name="reference">Čas, voči ktorému sa rok dopočítava.</param>
     /// <returns>Rok, ktorý INISS dosadí.</returns>
     public static int ResolveYear(int month, DateTime reference)
     {
-        if (month == reference.Month)
-            return reference.Year;
+        var difference = month - reference.Month;
 
-        return month < reference.Month ? reference.Year + 1 : reference.Year - 1;
+        if (difference > MonthsAhead)
+            return reference.Year - 1;
+
+        return difference < -MonthsBack ? reference.Year + 1 : reference.Year;
     }
 
     /// <summary>
     ///     Zistí, či INISS prečíta zo správy ten istý rok, aký do nej vložil simulátor. Vracia
-    ///     <see langword="false" /> pre udalosti vzdialené od aktuálneho času viac než mesiac.
+    ///     <see langword="false" /> pre udalosti, ktorých mesiac leží mimo okna <see cref="MonthsBack" /> mesiacov
+    ///     dozadu až <see cref="MonthsAhead" /> mesiacov dopredu od aktuálneho mesiaca.
     /// </summary>
     /// <param name="time">Čas udalosti.</param>
     /// <param name="reference">Čas, voči ktorému INISS rok dopočítava.</param>
@@ -348,6 +386,16 @@ public static class GtnEncoder
 
         return value.PadRight(length);
     }
+
+    /// <remarks>
+    ///     INISS berie pravidelný čas ako chýbajúci, keď pole obsahuje len medzery a nuly v ľubovoľnom zložení
+    ///     (vrátane prázdneho alebo skráteného poľa). Inak ho rozoberá rovnako ako čas v hlavičke a chyba správu
+    ///     zastaví.
+    /// </remarks>
+    private static bool IsMissingTime(string field) => field.All(c => c is ' ' or '0');
+
+    private static bool CarriesLineTrack(GtnMessageType? type) =>
+        type == GtnMessageType.Departure || type == GtnMessageType.Route;
 
     private static GtnRouteKind ParseRouteKind(string field) => field switch
     {

@@ -3,8 +3,8 @@ using ToolsCore.Iniss.Tools;
 namespace ILTISSimulator.Gtn;
 
 /// <summary>
-///     Typ správy rozhrania ILTIS-INISS (GTN). INISS pozná iba tieto tri typy, ostatné zaloguje ako
-///     <c>unknown message type</c>.
+///     Typ správy rozhrania ILTIS-INISS (GTN). INISS pozná typy 0802 až 0806 a kódy 1802 až 1804 ako inú podobu
+///     0802 až 0804; ostatné zaloguje ako <c>unknown message type</c>.
 /// </summary>
 public sealed class GtnMessageType : Enumeration<GtnMessageType>
 {
@@ -14,12 +14,12 @@ public sealed class GtnMessageType : Enumeration<GtnMessageType>
     public static readonly GtnMessageType Arrival = new("0802", "Príchod vlaku");
 
     /// <summary>
-    ///     080-3 Odchod vlaku. Ako jediná správa nesie druhú koľaj (pre ďalšie nájdené vlaky).
+    ///     080-3 Odchod vlaku. Spolu s 080-4 nesie traťovú koľaj (pre nasledujúce zastávky trasy).
     /// </summary>
     public static readonly GtnMessageType Departure = new("0803", "Odchod vlaku");
 
     /// <summary>
-    ///     080-4 Vlaková cesta. Ako jediná správa nesie príznak druhu vlakovej cesty.
+    ///     080-4 Vlaková cesta. Ako jediná správa nesie príznak druhu vlakovej cesty, spolu s 080-3 aj traťovú koľaj.
     /// </summary>
     public static readonly GtnMessageType Route = new("0804", "Vlaková cesta");
 
@@ -38,11 +38,18 @@ public sealed class GtnMessageType : Enumeration<GtnMessageType>
     }
 
     /// <summary>
-    ///     Vráti typ správy podľa štvorznakového kódu na začiatku správy.
+    ///     Vráti typ správy podľa štvorznakového kódu na začiatku správy. Kódy 1802 až 1804 sú len inou podobou
+    ///     0802 až 0804.
     /// </summary>
     /// <param name="code">Kód typu správy (napr. <c>0802</c>).</param>
     /// <returns>Typ správy alebo <see langword="null" />, ak kód nezodpovedá žiadnemu známemu typu.</returns>
-    public static GtnMessageType? FromCode(string code) => GetValues().FirstOrDefault(type => type.Key == code);
+    public static GtnMessageType? FromCode(string code) => code switch
+    {
+        "1802" => Arrival,
+        "1803" => Departure,
+        "1804" => Route,
+        _ => GetValues().FirstOrDefault(type => type.Key == code)
+    };
 
     /// <inheritdoc />
     public override string ToString() => $"{Key} - {Name}";

@@ -91,8 +91,8 @@ internal sealed partial class FMain
     #region Riadky
 
     /// <summary>
-    ///     Naplní tabuľku jazdami naplánovaného dňa. Vlaky vynechané pre dvojité číslo sú medzi nimi ako sivé
-    ///     riadky, aby bolo vidno, prečo sa o nich nič neposiela.
+    ///     Naplní tabuľku jazdami naplánovaného dňa. Vlaky vynechané pre dvojité číslo a autobusy sú medzi nimi
+    ///     ako sivé riadky, aby bolo vidno, prečo sa o nich nič neposiela.
     /// </summary>
     private void FillGrid()
     {
@@ -110,9 +110,9 @@ internal sealed partial class FMain
 
             var day = _engine.Day;
             var entries = runs
-                .Select(run => (Time: run.PlannedArrival ?? run.PlannedDeparture ?? day, Run: (TrainRun?)run, Train: run.Train))
-                .Concat(_engine.SkippedDuplicates.Select(train => (
-                    Time: GvdData.ArrivalOn(train, day) ?? GvdData.DepartureOn(train, day) ?? day, Run: (TrainRun?)null, Train: train)))
+                .Select(run => (Time: run.PlannedArrival ?? run.PlannedDeparture ?? day, Run: (TrainRun?)run, Train: run.Train, Bus: false))
+                .Concat(_engine.SkippedDuplicates.Select(train => Skipped(train, false)))
+                .Concat(_engine.SkippedBuses.Select(train => Skipped(train, true)))
                 .OrderBy(entry => entry.Time)
                 .ThenBy(entry => entry.Train.ID);
 
@@ -121,7 +121,7 @@ internal sealed partial class FMain
                 var row = dgvPlan.Rows[dgvPlan.Rows.Add()];
                 if (entry.Run is null)
                 {
-                    FillDuplicateRow(row, entry.Train, day);
+                    FillSkippedRow(row, entry.Train, day, entry.Bus);
                     continue;
                 }
 
@@ -129,6 +129,9 @@ internal sealed partial class FMain
                 _rowByRun[entry.Run] = row;
                 FillRow(row, entry.Run);
             }
+
+            (DateTime Time, TrainRun? Run, Train Train, bool Bus) Skipped(Train train, bool bus) =>
+                (GvdData.ArrivalOn(train, day) ?? GvdData.DepartureOn(train, day) ?? day, null, train, bus);
         }
         finally
         {
@@ -162,17 +165,20 @@ internal sealed partial class FMain
             cReason.Items.Add(ReasonText(number));
     }
 
-    private void FillDuplicateRow(DataGridViewRow row, Train train, DateTime day)
+    /// <summary>
+    ///     Riadok vlaku, o ktorom sa nič neposiela - dvojité číslo alebo autobus.
+    /// </summary>
+    private void FillSkippedRow(DataGridViewRow row, Train train, DateTime day, bool bus)
     {
         row.Cells[cState.Index].Value = IconImages.For(dgvPlan, "status-info");
-        row.Cells[cState.Index].ToolTipText = Resources.Grid_DuplicateTip;
+        row.Cells[cState.Index].ToolTipText = bus ? Resources.Grid_BusTip : Resources.Grid_DuplicateTip;
         row.Cells[cTrain.Index].Value = train.Number;
         row.Cells[cType.Index].Value = train.Type?.Key ?? "";
         row.Cells[cRouting.Index].Value = RoutingImage(train.Routing);
         row.Cells[cArrival.Index].Value = Time(GvdData.ArrivalOn(train, day));
         row.Cells[cDeparture.Index].Value = Time(GvdData.DepartureOn(train, day));
         row.Cells[cTrack.Index].Value = null;
-        row.Cells[cNext.Index].Value = Resources.Grid_Duplicate;
+        row.Cells[cNext.Index].Value = bus ? Resources.Grid_Bus : Resources.Grid_Duplicate;
         row.Cells[cName.Index].Value = train.Name;
         row.ReadOnly = true;
         row.DefaultCellStyle.ForeColor = Palette.Dim(dgvPlan.DefaultCellStyle.ForeColor, dgvPlan.DefaultCellStyle.BackColor);

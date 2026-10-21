@@ -40,6 +40,15 @@ public sealed class DayPlanner
     public IReadOnlyList<Train> SkippedDuplicates { get; private set; } = new List<Train>();
 
     /// <summary>
+    ///     Autobusy, ktoré posledné plánovanie vynechalo - viď <see cref="GvdData.IsBus" />.
+    /// </summary>
+    /// <remarks>
+    ///     INISS pri párovaní správy s vlakom preskakuje vlaky druhu <c>Bus</c>, takže by každú správu o nich
+    ///     odmietol s <c>train … not found</c>. Vlak s rovnakým číslom, ktorý autobusom nie je, sa ďalej páruje.
+    /// </remarks>
+    public IReadOnlyList<Train> SkippedBuses { get; private set; } = new List<Train>();
+
+    /// <summary>
     ///     Naplánuje jeden deň. Rovnaký deň a rovnaký <see cref="SimulationOptions.Seed" /> dajú vždy rovnaký
     ///     výsledok.
     /// </summary>
@@ -55,8 +64,12 @@ public sealed class DayPlanner
             throw new InvalidOperationException(
                 Resources.Error_NoTrackLeft);
 
-        var byNumber = _gvd.TrainsOn(day)
-            .OrderBy(train => train.ID)
+        var trains = _gvd.TrainsOn(day).OrderBy(train => train.ID).ToList();
+
+        SkippedBuses = trains.Where(GvdData.IsBus).ToList();
+
+        var byNumber = trains
+            .Where(train => !GvdData.IsBus(train))
             .GroupBy(train => train.Number)
             .ToList();
 

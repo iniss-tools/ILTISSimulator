@@ -7,7 +7,7 @@ namespace ILTISSimulator.Gtn;
 public sealed record GtnMessage
 {
     /// <summary>
-    ///     Typ správy (0802 / 0803 / 0804).
+    ///     Typ správy (0802 až 0806).
     /// </summary>
     public GtnMessageType? Type { get; set; }
 
@@ -38,11 +38,22 @@ public sealed record GtnMessage
     public string Track { get; set; } = "";
 
     /// <summary>
-    ///     Druhá koľaj - uplatní sa iba pri <see cref="GtnMessageType.Departure" />, kde ju INISS dosadzuje
-    ///     ďalším vlakom nájdeným pod tým istým číslom. <see langword="null" /> znamená, že sa pole neposiela;
-    ///     INISS chýbajúce koncové pole nepovažuje za chybu.
+    ///     Traťová koľaj - koľaj trate, na ktorú vlak zo stanice odchádza. Uplatní sa iba pri
+    ///     <see cref="GtnMessageType.Departure" /> a <see cref="GtnMessageType.Route" />. Vlaku v stanici zo správy
+    ///     ju INISS nedosadí - dostanú ju nasledujúce zastávky trasy. Odchod s traťovou koľajou navyše nastaví
+    ///     udalosť <c>Odj</c> a vlak v stanici ukončí (prepne ho do posledného stavu kategórie).
+    ///     <see langword="null" /> znamená, že sa pole neposiela; INISS chýbajúce koncové pole nepovažuje za chybu.
     /// </summary>
-    public string? SecondTrack { get; set; }
+    public string? LineTrack { get; set; }
+
+    /// <summary>
+    ///     Pravidelný čas vlaku - plánovaný príchod pri <see cref="GtnMessageType.Arrival" />, plánovaný odchod pri
+    ///     <see cref="GtnMessageType.Departure" /> a <see cref="GtnMessageType.Route" /> v stanici zo správy. S ním
+    ///     INISS páruje vlak podľa tohto času, nie podľa času udalosti, a správu o vlaku, ktorý v stanici nie je,
+    ///     uplatní na nasledujúce stanice trasy. ILTIS ho neposiela. <see langword="null" /> znamená, že sa pole
+    ///     neposiela.
+    /// </summary>
+    public DateTime? RegularTime { get; set; }
 
     /// <summary>
     ///     Poradové číslo dôvodu meškania - uplatní sa iba pri <see cref="GtnMessageType.DelayReason" />.

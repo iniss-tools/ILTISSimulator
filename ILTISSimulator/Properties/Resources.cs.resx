@@ -337,8 +337,8 @@
   <data name="Field_Track" xml:space="preserve">
     <value>kolej</value>
   </data>
-  <data name="Field_SecondTrack" xml:space="preserve">
-    <value>druhá kolej</value>
+  <data name="Field_LineTrack" xml:space="preserve">
+    <value>traťová kolej</value>
   </data>
   <data name="Tracks_HiddenOne" xml:space="preserve">
     <value>1 kolej se v seznamu neuvádí</value>
@@ -790,5 +790,23 @@ Hodnoty z příkazového řádku platí do zavření programu, nastavení se nem
   </data>
   <data name="Diagram_DragInfo" xml:space="preserve">
     <value>Kolej {0}, {1:+0;-0;0} min</value>
+  </data>
+  <data name="Error_LineTrack" xml:space="preserve">
+    <value>Traťová kolej musí mít 1 až {0} znaky.</value>
+  </data>
+  <data name="Settings_LineTrackEmpty" xml:space="preserve">
+    <value>Zadejte traťovou kolej nebo vypněte odjezd s traťovou kolejí.</value>
+  </data>
+  <data name="Engine_SkippedBuses" xml:space="preserve">
+    <value>Vynechány autobusy (INISS je s ILTISem nepáruje): {0}</value>
+  </data>
+  <data name="Grid_Bus" xml:space="preserve">
+    <value>autobus - neposílá se</value>
+  </data>
+  <data name="Grid_BusTip" xml:space="preserve">
+    <value>Vlak je druhu Bus. INISS autobusy s ILTISem nepáruje, proto se o něm zprávy neposílají.</value>
+  </data>
+  <data name="Main_ManualRegularTip" xml:space="preserve">
+    <value>Plánovaný příjezd u 0802, odjezd u 0803 a 0804. INISS pak páruje vlak podle něj, ne podle času události.</value>
   </data>
 </root>

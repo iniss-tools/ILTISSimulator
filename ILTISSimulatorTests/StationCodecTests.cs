@@ -41,10 +41,20 @@ public class StationCodecTests
     }
 
     [TestMethod]
-    public void TryDecodeAsIniss_UsesFirstFiveDigitsAndAddsBase()
+    public void TryDecodeAsIniss_ReadsFirstFiveCharactersAsNumber()
     {
-        Assert.IsTrue(StationCodec.TryDecodeAsIniss("136000", out var stationId));
-        Assert.AreEqual(5413600, stationId);
+        Assert.IsTrue(StationCodec.TryDecodeAsIniss("136000", out var number));
+        Assert.AreEqual(13600, number);
+    }
+
+    [TestMethod]
+    public void TryDecodeAsIniss_AllowsSpacesAroundNumberOnly()
+    {
+        Assert.IsTrue(StationCodec.TryDecodeAsIniss(" 13600", out var leading));
+        Assert.AreEqual(1360, leading);
+        Assert.IsTrue(StationCodec.TryDecodeAsIniss("1360 0", out var trailing));
+        Assert.AreEqual(1360, trailing);
+        Assert.IsFalse(StationCodec.TryDecodeAsIniss("13 600", out _));
     }
 
     [TestMethod]
@@ -82,11 +92,24 @@ public class StationCodecTests
     }
 
     [TestMethod]
+    public void SameStation_ComparesByEqualityOrLastFiveDigits()
+    {
+        // INISS: rovnosť, alebo rovnosť modulo 100 000, keď je jedno z čísel menšie ako 100 000.
+        Assert.IsTrue(StationCodec.SameStation(13600, Kosice));
+        Assert.IsTrue(StationCodec.SameStation(13600, 13600));
+        Assert.IsTrue(StationCodec.SameStation(Kosice, Kosice));
+        Assert.IsFalse(StationCodec.SameStation(5713600, Kosice));
+        Assert.IsFalse(StationCodec.SameStation(16590, Kosice));
+    }
+
+    [TestMethod]
     public void NormalizeAsIniss_LosesStationPrefix()
     {
         // Prefix identifikátora sa cestou stráca - dve stanice s rovnakými poslednými piatimi číslicami
         // sú pre rozhranie GTN nerozlíšiteľné.
+        Assert.AreEqual(13600, StationCodec.NormalizeAsIniss(5613600));
         Assert.AreEqual(StationCodec.NormalizeAsIniss(5613600), StationCodec.NormalizeAsIniss(5713600));
+        Assert.IsTrue(StationCodec.Matches(StationCodec.Encode(5613600), 5713600));
         Assert.AreEqual(StationCodec.Encode(5613600), StationCodec.Encode(5713600));
     }
 }

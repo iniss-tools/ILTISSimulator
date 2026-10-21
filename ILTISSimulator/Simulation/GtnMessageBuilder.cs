@@ -13,19 +13,19 @@ public sealed class GtnMessageBuilder
     ///     Vytvorí staviteľa správ pre stanicu.
     /// </summary>
     /// <param name="stationId">Identifikátor stanice z grafikonu (napr. 5613600).</param>
-    /// <param name="sendSecondTrack">Či v odchode posielať aj druhú koľaj - viď
-    ///     <see cref="SimulationOptions.SendSecondTrack" />.</param>
-    public GtnMessageBuilder(int stationId, bool sendSecondTrack = false)
+    /// <param name="lineTrack">Traťová koľaj, ktorá ide v odchode; <see langword="null" /> alebo prázdna = odchod
+    ///     bez nej - viď <see cref="SimulationOptions.SendLineTrack" />.</param>
+    public GtnMessageBuilder(int stationId, string? lineTrack = null)
     {
         StationId = stationId;
         StationField = StationCodec.Encode(stationId);
-        SendSecondTrack = sendSecondTrack;
+        LineTrack = string.IsNullOrWhiteSpace(lineTrack) ? null : lineTrack.Trim();
     }
 
     /// <summary>
-    ///     Či sa v odchode posiela aj druhá koľaj.
+    ///     Traťová koľaj, ktorá ide v odchode, alebo <see langword="null" />, ak sa odchod posiela bez nej.
     /// </summary>
-    public bool SendSecondTrack { get; }
+    public string? LineTrack { get; }
 
     /// <summary>
     ///     Identifikátor stanice z grafikonu.
@@ -73,8 +73,8 @@ public sealed class GtnMessageBuilder
                 break;
             case SimEventKind.Departure:
                 message.Type = GtnMessageType.Departure;
-                if (SendSecondTrack && message.Track.Length > 0)
-                    message.SecondTrack = message.Track;
+                if (LineTrack is not null && message.Track.Length > 0)
+                    message.LineTrack = LineTrack;
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(simEvent), Texts.F(Resources.Error_UnknownEventKind, simEvent.Kind));

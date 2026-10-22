@@ -8,6 +8,7 @@ using ToolsCore.Commands;
 using ToolsCore.Forms;
 using ToolsCore.Iniss.Tools;
 using ToolsCore.Tools;
+using ToolsCore.Updates;
 using ToolsCore.XML;
 using ToolsCore;
 using Utils = ToolsCore.Tools.Utils;
@@ -125,6 +126,7 @@ internal sealed partial class FMain : ExForm
         _commands.Add(IltisCommands.AppSettings, ShowAppSettings).Bind(tsmimAppSettings, tsbAppSettings);
         _commands.Add(IltisCommands.Docs, () => Utils.OpenShell(DocsLink)).Bind(tsmimDocs);
         _commands.Add(IltisCommands.InfoApp, ShowInfoApp).Bind(tsmimInfoApp);
+        _commands.Add(IltisCommands.CheckUpdates, () => AppUpdates.CheckNow(this), () => AppUpdates.Available).Bind(tsmimCheckUpdates);
     }
 
     /// <summary>
@@ -351,6 +353,7 @@ internal sealed partial class FMain : ExForm
     {
         AppRegistry.RegisterJumpList(GlobalResources.RRecentFiles);
         SetRecentGvd();
+        AppUpdates.CheckOnStartup(this, Config);
 
         // grafikon zadany ako argument ma prednost pred naposledy otvorenym
         var path = _commandLine.Gvd;

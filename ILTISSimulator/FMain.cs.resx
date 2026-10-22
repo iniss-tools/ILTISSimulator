@@ -237,6 +237,9 @@
   <data name="tsmimInfoApp.Text" xml:space="preserve">
     <value>&amp;O programu</value>
   </data>
+  <data name="tsmimCheckUpdates.Text" xml:space="preserve">
+    <value>&amp;Zkontrolovat aktualizace...</value>
+  </data>
   <data name="tssbOpenGvd.Text" xml:space="preserve">
     <value>Otevřít grafikon</value>
   </data>

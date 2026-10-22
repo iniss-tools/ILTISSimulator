@@ -45,6 +45,7 @@ internal static class IltisCommands
 
     // bez nastavitelnej skratky
     public static CommandInfo InfoApp => new(nameof(InfoApp), nameof(InfoApp), Shortcut.None);
+    public static CommandInfo CheckUpdates => new(nameof(CheckUpdates), nameof(CheckUpdates), Shortcut.None);
     public static CommandInfo Exit => new(nameof(Exit), nameof(Exit), Shortcut.None);
 
     /// <summary>

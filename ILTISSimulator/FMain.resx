@@ -4786,6 +4786,18 @@
   <data name="&gt;&gt;tsmimInfoApp.Type" xml:space="preserve">
     <value>ToolsCore.Icons.IconToolStripMenuItem, ToolsCore, Culture=neutral, PublicKeyToken=null</value>
   </data>
+  <data name="tsmimCheckUpdates.Size" type="System.Drawing.Size, System.Drawing">
+    <value>260, 26</value>
+  </data>
+  <data name="tsmimCheckUpdates.Text" xml:space="preserve">
+    <value>&amp;Skontrolovať aktualizácie...</value>
+  </data>
+  <data name="&gt;&gt;tsmimCheckUpdates.Name" xml:space="preserve">
+    <value>tsmimCheckUpdates</value>
+  </data>
+  <data name="&gt;&gt;tsmimCheckUpdates.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="toolStripMain.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 32</value>
   </data>

@@ -69,7 +69,7 @@ public record IltisConfig : ConfigBase
     public ViewSettings View { get; set; } = new();
 
     /// <inheritdoc />
-    public override string LinkAppSettingsGuide => "http://iniss.6f.sk/docs/iltissimulator/nastavenia-programu/";
+    public override string LinkAppSettingsGuide => "https://iniss-tools.fvat.sk/docs/iltissimulator/nastavenia-programu/";
 }
 
 /// <summary>

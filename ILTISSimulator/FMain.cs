@@ -23,7 +23,7 @@ internal sealed partial class FMain : ExForm
     /// <summary>
     ///     Adresa dokumentácie programu.
     /// </summary>
-    private const string DocsLink = "http://iniss.6f.sk/docs/iltissimulator/";
+    private const string DocsLink = "https://iniss-tools.fvat.sk/docs/iltissimulator/";
 
     private readonly AppSession<IltisConfig, IltisStyle> _session;
     private readonly CommandLine _commandLine;

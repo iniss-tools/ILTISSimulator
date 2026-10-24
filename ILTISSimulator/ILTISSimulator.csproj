@@ -10,7 +10,7 @@
 		<Description>Simulátor rozhrania ILTIS-INISS (GTN)</Description>
 		<NeutralLanguage>sk</NeutralLanguage>
 		<StartupObject>ILTISSimulator.Program</StartupObject>
-		<ApplicationIcon>gtn.ico</ApplicationIcon>
+		<ApplicationIcon>ilt.ico</ApplicationIcon>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
 		<LangVersion>default</LangVersion>
 		<!-- Ako GVDEditor, ktory referencuje (inak MSB3270). Bez RID kopiruje SDK do runtimes\ aj nativne kniznice
